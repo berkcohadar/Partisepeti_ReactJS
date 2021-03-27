@@ -1,0 +1,428 @@
+{
+    "menuPrimary": {
+        "menu_1": [
+            {
+                "text": "Home",
+                "url": "/",
+                "extraClass": "menu-item-has-children",
+                "subClass": "sub-menu",
+                "subMenu": [
+                    {
+                        "text": "Marketplace Full Width",
+                        "url": "/"
+                    },
+                    {
+                        "text": "Home Auto Parts",
+                        "url": "/home/auto-part"
+                    },
+                    {
+                        "text": "Home Technology",
+                        "url": "/home/technology"
+                    },
+                    {
+                        "text": "Home Organic",
+                        "url": "/home/organic"
+                    },
+                    {
+                        "text": "Home Marketplace V1",
+                        "url": "/home/market-place"
+                    },
+                    {
+                        "text": "Home Marketplace V2",
+                        "url": "/home/market-place-2"
+                    },
+                    {
+                        "text": "Home Marketplace V3",
+                        "url": "/home/market-place-3"
+                    },
+                    {
+                        "text": "Home Marketplace V4",
+                        "url": "/home/market-place-4"
+                    },
+                    {
+                        "text": "Home Electronic",
+                        "url": "/home/electronic"
+                    },
+                    {
+                        "text": "Home Furniture",
+                        "url": "/home/furniture"
+                    }
+                ]
+            },
+            {
+                "text": "Shop",
+                "url": "/alisveris",
+                "extraClass": "menu-item-has-children has-mega-menu",
+                "subClass": "sub-menu",
+                "mega": "true",
+                "childs": [
+                    {
+                        "heading": "Catalog Pages",
+                        "megaItems": [
+                            {
+                                "text": "Shop Default",
+                                "url": "/alisveris"
+                            },
+                            {
+                                "text": "Shop Fullwidth",
+                                "url": "/shop/shop-fullwidth"
+                            },
+                            {
+                                "text": "Shop Categories",
+                                "url": "/shop/shop-categories"
+                            },
+                            {
+                                "text": "Shop Sidebar",
+                                "url": "/shop/shop-sidebar"
+                            },
+                            {
+                                "text": "Shop Without Banner",
+                                "url": "/shop/shop-sidebar-without-banner"
+                            },
+                            {
+                                "text": "Shop Carousel",
+                                "url": "/shop/shop-carousel"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Product Layout",
+                        "megaItems": [
+                            {
+                                "text": "Default",
+                                "url": "/product/3"
+                            },
+                            {
+                                "text": "Extended",
+                                "url": "/product/extended/7"
+                            },
+                            {
+                                "text": "Full Content",
+                                "url": "/product/full-content/7"
+                            },
+                            {
+                                "text": "Boxed",
+                                "url": "/product/boxed/7"
+                            },
+                            {
+                                "text": "Sidebar",
+                                "url": "/product/sidebar/7"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Product Types",
+                        "megaItems": [
+                            {
+                                "text": "Simple",
+                                "url": "/product/3"
+                            },
+                            {
+                                "text": "Image swatches",
+                                "url": "/product/image-swatches/11"
+                            },
+                            {
+                                "text": "Countdown",
+                                "url": "/product/countdown/10"
+                            },
+                            {
+                                "text": "Affiliate",
+                                "url": "/product/affiliate/7"
+                            },
+                            {
+                                "text": "On sale",
+                                "url": "/product/on-sale/7"
+                            },
+                            {
+                                "text": "Grouped",
+                                "url": "/product/groupped/22"
+                            },
+                            {
+                                "text": "Out Of Stock",
+                                "url": "/product/out-of-stock/7"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Ecomerce Pages",
+                        "megaItems": [
+                            {
+                                "text": "Shopping Cart",
+                                "url": "/account/shopping-cart"
+                            },
+                            {
+                                "text": "Checkout",
+                                "url": "/account/checkout"
+                            },
+                            {
+                                "text": "Whishlist",
+                                "url": "/account/wishlist"
+                            },
+                            {
+                                "text": "Compare",
+                                "url": "/account/compare"
+                            },
+                            {
+                                "text": "Order Tracking",
+                                "url": "/account/order-tracking"
+                            },
+                            {
+                                "text": "My Account",
+                                "url": "/account/login"
+                            },
+                            {
+                                "text": "Login / Register",
+                                "url": "/account/login"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "text": "Pages",
+                "url": "",
+                "extraClass": "menu-item-has-children has-mega-menu",
+                "subClass": "sub-menu",
+                "mega": "true",
+                "childs": [
+                    {
+                        "heading": "Basic Page",
+                        "megaItems": [
+                            {
+                                "text": "About Us",
+                                "url": "/page/about-us"
+                            },
+                            {
+                                "text": "Contact",
+                                "url": "/page/contact-us"
+                            },
+                            {
+                                "text": "Faqs",
+                                "url": "/page/faqs"
+                            },
+                            {
+                                "text": "404 Page",
+                                "url": "/page/page-404"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Vendor Pages",
+                        "megaItems": [
+                            {
+                                "text": "Become a Vendor",
+                                "url": "/vendor/become-a-vendor"
+                            },
+                            {
+                                "text": "Vendor Store",
+                                "url": "/vendor/vendor-store"
+                            },
+                            {
+                                "text": "Store List",
+                                "url": "/stores"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "text": "Blogs",
+                "url": "/blog",
+                "current": "shop",
+                "extraClass": "menu-item-has-children has-mega-menu",
+                "subClass": "sub-menu",
+                "mega": "true",
+                "childs": [
+                    {
+                        "heading": "Blog Layout",
+                        "megaItems": [
+                            {
+                                "text": "Grid",
+                                "url": "/blog"
+                            },
+                            {
+                                "text": "Small Thumb",
+                                "url": "/blog/blog-small-thumbnail"
+                            },
+                            {
+                                "text": "Left Sidebar",
+                                "url": "/blog/blog-left-sidebar"
+                            },
+                            {
+                                "text": "Right Sidebar",
+                                "url": "/blog/blog-right-sidebar"
+                            }
+                        ]
+                    },
+                    {
+                        "heading": "Single Blog",
+                        "megaItems": [
+                            {
+                                "text": "Single 1",
+                                "url": "/post/default"
+                            },
+                            {
+                                "text": "Single 2",
+                                "url": "/post/detail-2"
+                            },
+                            {
+                                "text": "Single 3",
+                                "url": "/post/detail-3"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "product_categories": [
+        {
+            "icon": "",
+            "text": "Parti Ürünleri",
+            "url": "/parti-malzemeleri",
+            "priority": 2,
+            "extraClass": "menu-item-has-children has-mega-menu",
+            "subClass": "sub-menu",
+            "mega": "true",
+            "childs": [
+                {
+                    "heading": "Kutlamalar",
+                    "megaItems": [
+                        {
+                            "icon": "",
+                            "text": "Yılbaşı Ürünleri",
+                            "url": "/parti-malzemeleri",
+                            "priority": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "icon": "",
+            "text": "Kek ve Kurabiye",
+            "url": "/bonnyfood",
+            "priority": 0,
+            "extraClass": "menu-item-has-children has-mega-menu",
+            "subClass": "sub-menu",
+            "mega": "true",
+            "childs": [
+                {
+                    "heading": "Hediye Çeşitleri",
+                    "megaItems": [
+                        {
+                            "icon": "",
+                            "text": "Kurabiye Çeşitleri",
+                            "url": "/bonnyfood",
+                            "priority": 0
+                        },
+                        {
+                            "icon": "",
+                            "text": "Pasta Çeşitleri",
+                            "url": "/bonnyfood",
+                            "priority": 1
+                        },
+                        {
+                            "icon": "",
+                            "text": "Yenilebilir Çiçek",
+                            "url": "/bonnyfood",
+                            "priority": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "icon": "",
+            "text": "Balon Aranjman",
+            "url": "/balon-buketi",
+            "priority": 1,
+            "extraClass": "menu-item-has-children has-mega-menu",
+            "subClass": "sub-menu",
+            "mega": "true",
+            "childs": [
+                {
+                    "heading": "Kutlama Çeşitleri",
+                    "megaItems": [
+                        {
+                            "icon": "",
+                            "text": "Sevgiliye Sürpriz",
+                            "url": "/balon-buketi",
+                            "priority": 0
+                        },
+                        {
+                            "icon": "",
+                            "text": "Doğum Günü",
+                            "url": "/balon-buketi",
+                            "priority": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "icon": "",
+            "text": "Kişiye Özel",
+            "url": "/parti-malzemeleri",
+            "priority": 3,
+            "childs": null
+        }
+    ],
+
+    "backend-result":[
+        {
+            "title": "Parti Ürünleri",
+            "category": "parti-malzemeleri",
+            "priority": 2,
+            "menu_type": "left",
+            "childs": [
+                {
+                    "title": "Yılbaşı Ürünleri",
+                    "category": "parti-malzemeleri",
+                    "priority": 0
+                }
+            ]
+        },
+        {
+            "title": "Bonnyfood",
+            "category": "bonnyfood",
+            "priority": 0,
+            "menu_type": "left",
+            "childs": [
+                {
+                    "title": "Kurabiye Çeşitleri",
+                    "category": "bonnyfood",
+                    "priority": 0
+                },
+                {
+                    "title": "Pastalar",
+                    "category": "bonnyfood",
+                    "priority": 1
+                },
+                {
+                    "title": "Yenilebilir Çiçek",
+                    "category": "bonnyfood",
+                    "priority": 2
+                }
+            ]
+        },
+        {
+            "title": "Balon Aranjman",
+            "category": "balon-buketi",
+            "priority": 1,
+            "menu_type": "left",
+            "childs": [
+                {
+                    "title": "Sevgiliye Sürpriz",
+                    "category": "balon-buketi",
+                    "priority": 0
+                },
+                {
+                    "title": "Doğum Günü",
+                    "category": "balon-buketi",
+                    "priority": 1
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,188 @@
+.ps-product--detail .ant-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #000;
+}
+
+.ps-product--detail .ant-tabs .ant-tabs-tab-btn {
+    transition: all 0.3s ease-in-out;
+    &:hover{
+        color: #000;
+    }
+}
+.ant-tabs-ink-bar {
+    background: #fcaa32;
+}
+
+.account-menu {
+    background-color: #fff;
+    width:100%;
+    padding: 10px 8px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-flow:column nowrap;
+    // box-shadow: 0px 0px 2px 0px #1a1b29;
+    border-radius: 5px;
+}
+
+.account-menu-item {
+    display: block;
+    width:100%;
+    margin-bottom:6px;
+    padding-left:8px;
+    height:4.5rem;
+    transition: 0s;
+    cursor: pointer;
+    outline: none;
+    &:hover{
+        border-radius: 5px;
+        box-shadow: 0px 0px 4px 0px #1a1b29;
+    }
+}
+
+.account-menu-item-active {
+    display: block;
+    width:100%;
+    margin-bottom:6px;
+    padding-left:8px;
+    height:4.5rem;
+    transition: 0s;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 0px #1a1b29;
+
+    &:hover{
+        border-radius: 5px;
+        box-shadow: 0px 0px 3px 0px #1a1b29;
+    }
+}
+
+
+.account-menu-item-p {
+    display: block;
+    color:#1a1b29 !important;
+    padding-top:0.6rem;
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+
+.CampaignDiv {
+    top:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin:0px auto;
+    margin-bottom: 15px;
+    width:75%;
+    height: 120px;
+    border-radius:10px;
+    @media screen and (max-width: 960px) {
+        display: none;
+        width:0;
+        height:0;
+    }
+}
+
+.CampaignItem {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin:auto;
+    width:90px;
+    height:90px;
+    border:1px groove #e0e0e0;
+    border-radius:100px;
+    box-shadow: 0px 0px 10px 0px #1a1b29;
+    transition: transform 0.3s;
+    cursor:pointer;
+    position: relative;
+    overflow: hidden;
+    &:hover{
+        transform: scale(1.1);
+    }
+    &::select{
+        transform: scale(1.1);
+    }
+    img{
+        display: inline;
+        margin: 0 auto;
+        margin-left: -25%;
+        height: 100%;
+        width: auto !important;
+        max-width: 9999999px !important;
+    }
+}
+
+.home-new-slider{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    div{
+        height: 600px;
+    }
+    p{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 22px;
+        color: #fff;
+        bottom: 1%;
+        right: 3%;
+        letter-spacing: -1px;  
+        background:  #1a1b29; /* fallback color */
+        background: rgba( #1a1b29, 0.6);
+        padding: 0 5px;
+        border-radius: 8px;
+        height: 15%;
+        width: 20%;
+        transition: all 0.5s;
+        border:1px solid transparent;
+        cursor: pointer;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+        &:hover{
+            border:1px solid #1a1b29;
+            background: rgba( #1a1b29, 0.9);
+            box-shadow: 0px 0px 10px 0px #1a1b29;
+            // transform: scale(1.01);
+        }
+    }
+}
+
+.home-new-slider>div>img {
+    width:70vw;
+    border-radius: 5px;
+    display: inline;
+    margin-top: -100px;
+}
+
+.home-new-slide{
+    opacity:0;
+    transition-duration: 1s ease;
+    transform: scale(1);
+
+}
+
+.home-new-slide.active{
+    opacity:1;
+    transition-duration: 1s;
+    transform: scale(1.01);
+}
+
+.ps-carousel-item{
+    border-radius:5px;
+    box-shadow: 0px 0px 2px 0px #909090;  
+    transition: all .2s;
+    margin:0 7px;
+    margin-bottom: 15px;
+    &:hover{
+        box-shadow: 0px 0px 12px 0px #909090;
+    }
+}

@@ -1,0 +1,478 @@
+{
+    "categories": [
+        {
+            "id": "1",
+            "thumbnail": "/static/img/categories/shop/1.jpg",
+            "title": "Clothing & Apparel",
+            "links": ["Accessories", "Bags", "Kid's Fashion", "Mens"]
+        },
+        {
+            "id": "2",
+            "thumbnail": "/static/img/categories/shop/2.jpg",
+            "title": "Garden & Kitchen",
+            "links": ["Cookware", "Decoration", "Furniture", "Garden Tools"]
+        },
+        {
+            "id": "3",
+            "thumbnail": "/static/img/categories/shop/3.jpg",
+            "title": "Consumer Electrics",
+            "links": [
+                "Air Conditioners",
+                "Audios & Theaters",
+                "Car Electronics",
+                "Office Electronics"
+            ]
+        },
+        {
+            "id": "4",
+            "thumbnail": "/static/img/categories/shop/4.jpg",
+            "title": "Health & Beauty",
+            "links": ["Equipments", "Hair Care", "Perfumer", "Skin Care"]
+        },
+        {
+            "id": "5",
+            "thumbnail": "/static/img/categories/shop/5.jpg",
+            "title": "Computers & Technologies",
+            "links": ["Desktop PC", "Laptop", "Smartphones"]
+        },
+        {
+            "id": "6",
+            "thumbnail": "/static/img/categories/shop/6.jpg",
+            "title": "Jewelry & Watches",
+            "links": ["Gemstones Jewelry", "Men's Watches", "Women's Watches"]
+        },
+        {
+            "id": "7",
+            "thumbnail": "/static/img/categories/shop/7.jpg",
+            "title": "Phone & Accessories",
+            "links": ["Iphone 8", "Iphone X", "Samsung Note 8"]
+        },
+        {
+            "id": "8",
+            "thumbnail": "/static/img/categories/shop/8.jpg",
+            "title": "Sport & Outdoor",
+            "links": ["Freezer Burn", "Frigde Cooler", "Wine Cabinets"]
+        }
+    ],
+    "shop_categories_catalog": [
+        {
+            "text": "Clothing & Apparel",
+            "url": "/alisveris",
+            "extraClass": "menu-item-has-children",
+            "subClass": "sub-menu",
+            "subMenu": [
+                {
+                    "text": "Womens",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Mens",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Bags",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Sunglasses",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Accessories",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Kid's Fashion",
+                    "url": "/alisveris"
+                }
+            ]
+        },
+        {
+            "text": "Garden & Kitchen",
+            "url": "/alisveris",
+            "extraClass": "menu-item-has-children",
+            "subClass": "sub-menu",
+            "subMenu": [
+                {
+                    "text": "Cookware",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Decoration",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Furniture",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Garden Tools",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Home Improvement",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Powers And Hand Tools",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Utensil & Gadget",
+                    "url": "/alisveris"
+                }
+            ]
+        },
+        {
+            "text": "Consumer Electrics",
+            "url": "/alisveris",
+            "extraClass": "menu-item-has-children",
+            "subClass": "sub-menu",
+            "subMenu": [
+                {
+                    "text": "Air Conditioners",
+                    "url": "/alisveris",
+                    "extraClass": "menu-item-has-children",
+                    "subClass": "sub-menu",
+                    "subMenu": [
+                        {
+                            "text": "Accessories",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Type Hanging Cell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Type Hanging Wall",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "text": "Audios & Theaters",
+                    "url": "/alisveris",
+                    "extraClass": "menu-item-has-children",
+                    "subClass": "sub-menu",
+                    "subMenu": [
+                        {
+                            "text": "Headphone",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Home Theater System",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Speakers",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "text": "Car Electronics",
+                    "url": "/alisveris",
+                    "extraClass": "menu-item-has-children",
+                    "subClass": "sub-menu",
+                    "subMenu": [
+                        {
+                            "text": "Audio & Video",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Car Security",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Radar Detector",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Vehicle GPS",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "text": "Office Electronics",
+                    "url": "/alisveris",
+                    "extraClass": "menu-item-has-children",
+                    "subClass": "sub-menu",
+                    "subMenu": [
+                        {
+                            "text": "Printers",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Projectors",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Scanners",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Store & Business",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "text": "TV Televisions",
+                    "url": "/alisveris",
+                    "extraClass": "menu-item-has-children",
+                    "subClass": "sub-menu",
+                    "subMenu": [
+                        {
+                            "text": "4K Ultra HD TVs",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "LED TVs",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "OLED TVs",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "text": "Washing Machines",
+                    "url": "/alisveris",
+                    "extraClass": "menu-item-has-children",
+                    "subClass": "sub-menu",
+                    "subMenu": [
+                        {
+                            "text": "Type Drying Clothes",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Type Horizontal",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Type Vertical",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "text": "Refrigerators",
+                    "url": "/alisveris"
+                }
+            ]
+        },
+        {
+            "text": "Computers & Technologies",
+            "url": "/alisveris",
+            "extraClass": "menu-item-has-children",
+            "subClass": "sub-menu",
+            "subMenu": [
+                {
+                    "text": "Desktop PC",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Laptop",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Smartphones",
+                    "url": "/alisveris"
+                }
+            ]
+        },
+        {
+            "text": "Jewelry & Watches",
+            "url": "/alisveris",
+            "extraClass": "menu-item-has-children",
+            "subClass": "sub-menu",
+            "subMenu": [
+                {
+                    "text": "Gemstone Jewelry",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Men's Watches",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Women's Watches",
+                    "url": "/alisveris"
+                }
+            ]
+        },
+        {
+            "text": "Phones & Accessories",
+            "url": "/alisveris",
+            "extraClass": "menu-item-has-children",
+            "subClass": "sub-menu",
+            "subMenu": [
+                {
+                    "text": "Iphone 8",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Iphone X",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Sam Sung Note 8",
+                    "url": "/alisveris"
+                },
+                {
+                    "text": "Sam Sung S8",
+                    "url": "/alisveris"
+                }
+            ]
+        }
+    ],
+    "electronicCollection": [
+        {
+            "type": "large",
+            "imagePath": "/static/img/categories/electronic/large.jpg",
+            "text": ""
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/electronic/1.jpg",
+            "text": "Audios & Theaters ",
+            "item": 2
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/electronic/2.jpg",
+            "text": "TV Televisions",
+            "item": 2
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/electronic/3.jpg",
+            "text": "Washing Machines",
+            "item": 4
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/electronic/4.jpg",
+            "text": "Air Conditioners",
+            "item": 5
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/electronic/5.jpg",
+            "text": "Refrigerators",
+            "item": 10
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/electronic/6.jpg",
+            "text": "Office Electronics",
+            "item": 2
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/electronic/7.jpg",
+            "text": "Car Electronics",
+            "item": 3
+        }
+    ],
+    "clothingCollection": [
+        {
+            "type": "large",
+            "imagePath": "/static/img/categories/clothing/large.jpg",
+            "text": ""
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/clothing/1.jpg",
+            "text": "Womens",
+            "item": 2
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/clothing/2.jpg",
+            "text": "Mens",
+            "item": 2
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/clothing/3.jpg",
+            "text": "Shoes",
+            "item": 4
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/clothing/4.jpg",
+            "text": "Bags",
+            "item": 5
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/clothing/5.jpg",
+            "text": "Sunglasses",
+            "item": 10
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/clothing/6.jpg",
+            "text": "Accessories",
+            "item": 2
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/clothing/7.jpg",
+            "text": "Kid's Fashion",
+            "item": 3
+        }
+    ],
+    "kitchenCollection": [
+        {
+            "type": "large",
+            "imagePath": "/static/img/categories/kitchen/large.jpg",
+            "text": ""
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/kitchen/1.jpg",
+            "text": "Furniture",
+            "item": 2
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/kitchen/2.jpg",
+            "text": "Decoration",
+            "item": 2
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/kitchen/3.jpg",
+            "text": "Utensil & Gadget",
+            "item": 4
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/kitchen/4.jpg",
+            "text": "Cookware",
+            "item": 5
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/kitchen/5.jpg",
+            "text": "Powers And Hand Tools",
+            "item": 10
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/kitchen/6.jpg",
+            "text": "Garden Tools",
+            "item": 2
+        },
+        {
+            "type": "item",
+            "imagePath": "/static/img/categories/kitchen/7.jpg",
+            "text": "Home Improvement",
+            "item": 3
+        }
+    ]
+}

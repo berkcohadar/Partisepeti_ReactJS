@@ -1,0 +1,838 @@
+{
+    "megamenu": [
+        {
+            "text": "Laptop",
+            "url": "/blog",
+            "subMenu": [
+                {
+                    "heading": "Gaming Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Office Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Business Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Dell laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Asus laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "HP laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "text": "Gaming PC",
+            "url": "/alisveris",
+            "subMenu": [
+                {
+                    "heading": "Gaming Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Office Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Business Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Dell laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Asus laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "HP laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "text": "Workstation",
+            "url": "/alisveris",
+            "subMenu": [
+                {
+                    "heading": "Gaming Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Office Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Business Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Dell laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Asus laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "HP laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "text": "PC Components",
+            "url": "/alisveris",
+            "subMenu": [
+                {
+                    "heading": "Gaming Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Office Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Business Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Dell laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Asus laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "HP laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "text": "Monitor",
+            "url": "/alisveris",
+            "subMenu": [
+                {
+                    "heading": "Gaming Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Office Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Business Laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Acer",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Asus",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Dell laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "Asus laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                },
+                {
+                    "heading": "HP laptop",
+                    "url": "/alisveris",
+                    "subMenu": [
+                        {
+                            "text": "Inspiron Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "G Series",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Dell",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "MSI",
+                            "url": "/alisveris"
+                        },
+                        {
+                            "text": "Lenovo",
+                            "url": "/alisveris"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "text": "Keyboard",
+            "url": "/alisveris"
+        },
+        {
+            "text": "Mouse & MousePad",
+            "url": "/alisveris"
+        },
+        {
+            "text": "Headphone",
+            "url": "/alisveris"
+        },
+        {
+            "text": "Audio Devices",
+            "url": "/alisveris"
+        },
+        {
+            "text": "Network Components",
+            "url": "/alisveris"
+        },
+        {
+            "text": "Accessories",
+            "url": "/alisveris"
+        }
+    ]
+}

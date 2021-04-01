@@ -12,7 +12,7 @@ const HomeDefaultBanner = () => {
     const [bannerItems, setBannerItems] = useState(0);
     const [promotion1, setPromotion1] = useState(null);
     const [promotion2, setPromotion2] = useState(null);
-
+    const [interval, handleInterval] = useState(0);
     async function getBannerItems() {
         const responseData = await MediaRepository.getBannersBySlug(
             'banner-home-fullwidth'
@@ -32,6 +32,8 @@ const HomeDefaultBanner = () => {
             setPromotion2(getItemBySlug(responseData, 'main_2'));
         }
     }
+    const handleOnMouseOver = () => {clearInterval(interval);};
+    const handleOnMouseOut= () => { handleInterval(setInterval(changeSlide, 4000)); };
     const changeSlide = () => {
         const lastIndex = data.length - 1;
         setBannerItems(bannerItems => {
@@ -42,7 +44,7 @@ const HomeDefaultBanner = () => {
     useEffect(() => {
         getBannerItems();
         getPromotions();
-        const interval = setInterval(changeSlide, 6000);
+        handleInterval(setInterval(changeSlide, 4000));
         return () => clearInterval(interval);
     }, []);
 
@@ -142,7 +144,7 @@ const HomeDefaultBanner = () => {
                                         ? {
                                               transform: 'scale(1.2)',
                                               boxShadow:
-                                                  '0px 0px 15px 0px #1a1b29',
+                                                  '0px 0px 15px 0px #1c1a18',
                                           }
                                         : null
                                 }>
@@ -161,6 +163,8 @@ const HomeDefaultBanner = () => {
                     {data.map((slide, index) => {
                         return (
                             <div
+                                onMouseEnter={() => handleOnMouseOver()}
+                                onMouseLeave={() => handleOnMouseOut()}
                                 className={
                                     index === bannerItems ? 'home-new-slide active' : 'home-new-slide'
                                 }

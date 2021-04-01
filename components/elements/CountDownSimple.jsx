@@ -41,7 +41,7 @@ class CountDownSimple extends Component {
                     <span className="days mr-1">{days}</span>
                 </li>
                 <li>
-                    <span className="hours ml-1 mr-1">{hours}</span>
+                    <span className="hours mr-1">{hours}</span>
                 </li>
                 <li>
                     <span className="minutes ml-1 mr-1">{minutes}</span>

@@ -38,9 +38,20 @@ const ProductGroupByCarousel = ({ collectionSlug, title, layout = 'standard' }) 
         e.preventDefault();
         sliderRef.current.slickNext();
     };
-
+    const changeSlide = () => {
+        try{
+            sliderRef.current.slickNext();
+        }
+        catch(err){
+            console.log(err)
+        }
+    };
+    
+    
     useEffect(() => {
         getProducts();
+        const interval = setInterval(changeSlide, 5000);
+        return () => clearInterval(interval);
     }, []);
 
     const carouselFullwidth = {
@@ -180,9 +191,3 @@ const ProductGroupByCarousel = ({ collectionSlug, title, layout = 'standard' }) 
 };
 
 export default ProductGroupByCarousel;
-// const changeSlide = () => {
-//     sliderRef.current.slickNext();
-//   };
-  
-//   const interval = setInterval(changeSlide, 5000);
-//   return () => clearInterval(interval);

@@ -50,7 +50,7 @@ const ProductGroupDealOfDay = ({
     if (!loading) {
         if (productItems && productItems.length > 0) {
             const slideItems = productItems.map((item) => (
-                <ProductDealOfDay product={item} key={item.id} />
+                <ProductDealOfDay className="ps-carousel-item" product={item} key={item.id} />
             ));
             productItemsView = (
                 <Slider {...carouselStandard} className="ps-carousel outside">

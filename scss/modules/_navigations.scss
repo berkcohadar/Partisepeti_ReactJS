@@ -12,6 +12,7 @@
         > * {
             width: 100%;
         }
+
     }
 
     &__extra {
@@ -61,6 +62,15 @@
         justify-content: space-between;
         align-items: center;
         padding-left: 35px;
+        .navigation__extra{
+            >li{
+                >a{
+                    &:hover{
+                        color: $color-psbutton;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -85,6 +95,14 @@
             &:last-child {
                 margin-right: 0;
             }
+            li{
+                a{
+                    &:hover{
+                        color: $color-psbutton;
+                    }
+                }
+            }
+
         }
     }
     .header__actions {

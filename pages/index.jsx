@@ -16,18 +16,19 @@ const HomepageDefaultPage = () => {
     return (
         <ContainerHomeDefault title="Eğlenceye Dair Her Şey">
             <HomeDefaultBanner />
-            <SiteFeatures />
+            {/* <SiteFeatures /> */}
             <HomeDefaultDealOfDay collectionSlug="3" />
+            <HomeDefaultProductListing
+                collectionSlug="2"
+                title="Kek & Kurabiye"
+            />
             <HomeAdsColumns />
             <HomeDefaultTopCategories />
             <HomeDefaultProductListing
                 collectionSlug="3"
                 title="Hediye & Sürpriz"
             />
-            <HomeDefaultProductListing
-                collectionSlug="2"
-                title="Kek & Kurabiye"
-            />
+
             <HomeDefaultProductListing
                 collectionSlug="1"
                 title="Parti Malzemeleri"

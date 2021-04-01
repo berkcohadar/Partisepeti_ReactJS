@@ -4,6 +4,7 @@ import SkeletonProduct from '~/components/elements/skeletons/SkeletonProduct';
 import { getProductsByCollectionHelper } from '~/utilities/strapi-fetch-data-helpers';
 import { generateTempArray } from '~/utilities/common-helpers';
 import { ProductGroupWithCarousel } from '~/components/partials/product/ProductGroupWithCarousel';
+import ProductGroupByCarousel from '~/components/partials/product/ProductGroupByCarousel';
 
 const HomeDefaultProductListing = ({ collectionSlug, title }) => {
     const [productItems, setProductItems] = useState(null);
@@ -71,6 +72,7 @@ const HomeDefaultProductListing = ({ collectionSlug, title }) => {
                     products={productItems}
                     type="fullwidth"
                 />
+                // <ProductGroupByCarousel layout="" collectionSlug="1" title="deneme"></ProductGroupByCarousel>
             );
         } else {
             productItemsView = <p>No product(s) found.</p>;

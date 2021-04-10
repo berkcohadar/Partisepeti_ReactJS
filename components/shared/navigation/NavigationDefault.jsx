@@ -17,7 +17,6 @@ const NavigationDefault = () => {
     useEffect(() => {
         setLoading(true);
         const data = MediaRepository.getNavigationMenu();
-        console.log(data);
         data.then((result) => {
             setCategories(result);
             setLoading(false);
@@ -50,7 +49,7 @@ const NavigationDefault = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/account/order-tracking">
+                            <Link href="/uyelik/order-tracking">
                                 <a>Siparişim Nerede?</a>
                             </Link>
                         </li>

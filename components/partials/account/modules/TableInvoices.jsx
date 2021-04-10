@@ -50,7 +50,7 @@ class TableInvoices extends Component {
                 key: 'invoiceId',
                 width: '120px',
                 render: (text, record) => (
-                    <Link href="/account/invoice-detail">
+                    <Link href="/uyelik/invoice-detail">
                         {record.invoiceId}
                     </Link>
                 ),

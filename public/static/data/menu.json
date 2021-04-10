@@ -148,31 +148,31 @@
                         "megaItems": [
                             {
                                 "text": "Shopping Cart",
-                                "url": "/account/shopping-cart"
+                                "url": "/uyelik/shopping-cart"
                             },
                             {
                                 "text": "Checkout",
-                                "url": "/account/checkout"
+                                "url": "/uyelik/checkout"
                             },
                             {
                                 "text": "Whishlist",
-                                "url": "/account/wishlist"
+                                "url": "/uyelik/wishlist"
                             },
                             {
                                 "text": "Compare",
-                                "url": "/account/compare"
+                                "url": "/uyelik/compare"
                             },
                             {
                                 "text": "Order Tracking",
-                                "url": "/account/order-tracking"
+                                "url": "/uyelik/order-tracking"
                             },
                             {
                                 "text": "My Account",
-                                "url": "/account/login"
+                                "url": "/uyelik/login"
                             },
                             {
                                 "text": "Login / Register",
-                                "url": "/account/login"
+                                "url": "/uyelik/login"
                             }
                         ]
                     }

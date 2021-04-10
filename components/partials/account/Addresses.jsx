@@ -10,15 +10,15 @@ class Addresses extends Component {
 
     render() {
         const profilemenu = [
-            { icon: <ShoppingOutlined />, title: "Siparişlerim", url: '/account/orders', active: true,},
-            { icon: <HeartFilled />, title: "Koleksiyonlarım", url: '/account/collections', },
-            { icon: <UserOutlined />, title: "Üyelik Bilgilerim", url: '/account/user-information', },
-            { icon: <EnvironmentOutlined />, title: "Adreslerim", url: '/account/addresses', },
-            { icon: <FireFilled />, title: "Kampanyalarım", url: '/account/campaigns', },
-            { icon: <CarryOutOutlined />, title: "Anımsatıcılarım", url: '/account/reminders', },
-            { icon: <LikeOutlined />, title: "Değerlendirmelerim", url: '/account/reviews', },
-            { icon: <BellOutlined />, title: "İzinler", url: '/account/notifications', },
-            { icon: <CommentOutlined />, title: "Yardım", url: '/account/help', },
+            { icon: <ShoppingOutlined />, title: "Siparişlerim", url: '/uyelik/siparislerim', active: true,},
+            { icon: <HeartFilled />, title: "Koleksiyonlarım", url: '/uyelik/collections', },
+            { icon: <UserOutlined />, title: "Üyelik Bilgilerim", url: '/uyelik/user-information', },
+            { icon: <EnvironmentOutlined />, title: "Adreslerim", url: '/uyelik/addresses', },
+            { icon: <FireFilled />, title: "Kampanyalarım", url: '/uyelik/campaigns', },
+            { icon: <CarryOutOutlined />, title: "Anımsatıcılarım", url: '/uyelik/reminders', },
+            { icon: <LikeOutlined />, title: "Değerlendirmelerim", url: '/uyelik/reviews', },
+            { icon: <BellOutlined />, title: "İzinler", url: '/uyelik/notifications', },
+            { icon: <CommentOutlined />, title: "Yardım", url: '/uyelik/help', },
           ];
         return (
             <section className="ps-my-account ps-page--account">
@@ -34,7 +34,6 @@ class Addresses extends Component {
                                             <p>username@gmail.com</p>
                                         </figure>
                                     </div>
-                                    {console.log("\n\n\nSESSION",)}
                                     <div className="account-menu">
                                         {profilemenu.map((elem, index) => (
                                             <Link href={elem.url}>
@@ -67,7 +66,7 @@ class Addresses extends Component {
                                                         You Have Not Set Up This
                                                         Type Of Address Yet.
                                                     </p>
-                                                    <Link href="/account/edit-address">
+                                                    <Link href="/uyelik/edit-address">
                                                         <a>Edit</a>
                                                     </Link>
                                                 </div>
@@ -83,7 +82,7 @@ class Addresses extends Component {
                                                         You Have Not Set Up This
                                                         Type Of Address Yet.
                                                     </p>
-                                                    <Link href="/account/edit-address">
+                                                    <Link href="/uyelik/edit-address">
                                                         <a>Edit</a>
                                                     </Link>
                                                 </div>

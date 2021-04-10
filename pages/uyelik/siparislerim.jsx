@@ -1,7 +1,7 @@
 import React from 'react';
 
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import EditAddress from '~/components/partials/account/EditAddress';
+import Orders from '~/components/partials/account/Orders';
 import ContainerPage from '~/components/layouts/ContainerPage';
 
 const CustomerOrdersPage = () => {
@@ -18,7 +18,7 @@ const CustomerOrdersPage = () => {
         <ContainerPage title="Edit Address" boxed={true}>
             <div className="ps-page--my-account">
                 <BreadCrumb breacrumb={breadCrumb} />
-                <EditAddress />
+                <Orders />
             </div>
         </ContainerPage>
     );

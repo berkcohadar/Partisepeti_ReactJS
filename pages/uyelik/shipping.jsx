@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
 
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import Payment from '~/components/partials/account/Payment';
-import { useDispatch, connect } from 'react-redux';
+import Shipping from '~/components/partials/account/Shipping';
 import { getCart } from '~/store/cart/action';
 import ContainerPage from '~/components/layouts/ContainerPage';
 
-const PaymentPage = () => {
+const ShippingPage = () => {
     const breadCrumb = [
         {
             text: 'Anasayfa',
@@ -14,14 +14,14 @@ const PaymentPage = () => {
         },
         {
             text: 'Alışveriş Sepetim',
-            url: '/account/shopping-cart',
+            url: '/uyelik/shopping-cart',
         },
         {
             text: 'Ödeme Bilgileri',
-            url: '/account/checkout',
+            url: '/uyelik/checkout',
         },
         {
-            text: 'Payment',
+            text: 'Shipping',
         },
     ];
     const dispatch = useDispatch();
@@ -30,13 +30,13 @@ const PaymentPage = () => {
     }, [dispatch]);
 
     return (
-        <ContainerPage title="Payment" boxed={true}>
+        <ContainerPage title="Shipping" boxed={true}>
             <div className="ps-page--simple">
                 <BreadCrumb breacrumb={breadCrumb} />
-                <Payment />
+                <Shipping />
             </div>
         </ContainerPage>
     );
 };
 
-export default connect()(PaymentPage);
+export default connect()(ShippingPage);

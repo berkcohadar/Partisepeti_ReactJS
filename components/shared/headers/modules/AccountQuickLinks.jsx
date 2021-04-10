@@ -15,27 +15,27 @@ const AccountQuickLinks = (props) => {
     const accountLinks = [
         {
             text: 'Siparişlerim',
-            url: '/account/orders',
+            url: '/uyelik/siparislerim',
         },
         {
             text: 'Üyelik Bilgilerim',
-            url: '/account/user-information',
+            url: '/uyelik/user-information',
         },
         {
             text: 'Bildirimler',
-            url: '/account/notifications',
+            url: '/uyelik/notifications',
         },
         {
             text: 'Koleksiyonlarım',
-            url: '/account/recent-viewed-product',
+            url: '/uyelik/recent-viewed-product',
         },
         {
             text: 'Adreslerim',
-            url: '/account/addresses',
+            url: '/uyelik/addresses',
         },
         {
             text: 'Kampanyalarım',
-            url: '/account/user-information',
+            url: '/uyelik/user-information',
         },
     ];
     const { isLoggedIn, profile } = props;
@@ -69,15 +69,15 @@ const AccountQuickLinks = (props) => {
         return (
             <div className="ps-block--user-header">
                 <div className="ps-block__left">
-                    <Link href="/account/login">
+                    <Link href="/uyelik/login">
                         <i className="icon-user"></i>
                     </Link>
                 </div>
                 <div className="ps-block__right">
-                    <Link href="/account/login">
+                    <Link href="/uyelik/login">
                         <a>Giriş</a>
                     </Link>
-                    <Link href="/account/register">
+                    <Link href="/uyelik/register">
                         <a>Üye Ol</a>
                     </Link>
                 </div>

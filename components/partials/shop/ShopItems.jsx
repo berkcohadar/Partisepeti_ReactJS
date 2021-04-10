@@ -8,12 +8,12 @@ import { useRouter } from 'next/router';
 import { generateTempArray } from '~/utilities/common-helpers';
 import SkeletonProduct from '~/components/elements/skeletons/SkeletonProduct';
 
-const ShopItems = ({ columns = 4, pageSize = 10 }) => {
+const ShopItems = ({productItems, columns = 4, pageSize = 10 }) => {
     const Router = useRouter();
     const { page } = Router.query;
     const { query } = Router;
     const [listView, setListView] = useState(true);
-    const [productItems, setProductItems] = useState(null);
+    // const [productItems, setProductItems] = useState(null);
     const [total, setTotal] = useState(0);
     const [loading, setLoading] = useState(false);
     const [classes, setClasses] = useState(
@@ -25,20 +25,20 @@ const ShopItems = ({ columns = 4, pageSize = 10 }) => {
         setListView(!listView);
     }
 
-    async function getProducts(params) {
-        setLoading(true);
-        const responseData = await ProductRepository.getProducts(params);
-        if (responseData) {
-            setProductItems(responseData.items.results);
-            setTotal(responseData.items.count);
-            setTimeout(
-                function () {
-                    setLoading(false);
-                }.bind(this),
-                250
-            );
-        }
-    }
+    // async function getProducts(params) {
+    //     setLoading(true);
+    //     const responseData = await ProductRepository.getProducts(params);
+    //     if (responseData) {
+    //         setProductItems(responseData.items.results);
+    //         setTotal(responseData.items.count);
+    //         setTimeout(
+    //             function () {
+    //                 setLoading(false);
+    //             }.bind(this),
+    //             250
+    //         );
+    //     }
+    // }
 
     function handlePagination(page, pageSize) {
         Router.push(`/alisveris?page=${page}`);
@@ -104,7 +104,7 @@ const ShopItems = ({ columns = 4, pageSize = 10 }) => {
             };
         }
         // getTotalRecords();
-        getProducts(params);
+        // getProducts(params);
         handleSetColumns();
     }, [query]);
 

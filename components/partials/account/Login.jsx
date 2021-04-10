@@ -36,12 +36,12 @@ class Login extends Component {
                         onFinish={this.handleLoginSubmit.bind(this)}>
                         <ul className="ps-tab-list">
                             <li className="active">
-                                <Link href="/account/login">
+                                <Link href="/uyelik/login">
                                     <a>Giriş</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/account/register">
+                                <Link href="/uyelik/register">
                                     <a>Üye Ol</a>
                                 </Link>
                             </li>

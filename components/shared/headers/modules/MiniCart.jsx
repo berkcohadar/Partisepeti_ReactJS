@@ -30,10 +30,10 @@ class MiniCart extends Component {
                             <strong>₺ {amount ? amount : 0}</strong>
                         </h3>
                         <figure>
-                            <Link href="/account/shopping-cart">
+                            <Link href="/uyelik/shopping-cart">
                                 <a className="ps-btn ps-btn--black">Detay</a>
                             </Link>
-                            <Link href="/account/checkout">
+                            <Link href="/uyelik/checkout">
                                 <a className="ps-btn ">Satın Al</a>
                             </Link>
                         </figure>

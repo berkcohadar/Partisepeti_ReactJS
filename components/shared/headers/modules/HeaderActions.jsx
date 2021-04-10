@@ -15,7 +15,7 @@ const HeaderActions = (props) => {
     }
     return (
         <div className="header__actions">
-            <Link href="/account/compare">
+            <Link href="/uyelik/compare">
                 <a className="header__extra">
                     <i className="icon-chart-bars"></i>
                     <span>
@@ -23,7 +23,7 @@ const HeaderActions = (props) => {
                     </span>
                 </a>
             </Link>
-            <Link href="/account/wishlist">
+            <Link href="/uyelik/wishlist">
                 <a className="header__extra">
                     <i className="icon-heart"></i>
                     <span>

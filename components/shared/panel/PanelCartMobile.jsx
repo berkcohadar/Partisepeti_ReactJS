@@ -77,10 +77,10 @@ class PanelCartMobile extends Component {
                             Toplam:<strong>₺    {amount}</strong>
                         </h3>
                         <figure>
-                            <Link href="/account/shopping-cart">
+                            <Link href="/uyelik/shopping-cart">
                                 <a className="ps-btn ps-btn--black">Sepeti Detayı</a>
                             </Link>
-                            <Link href="/account/checkout">
+                            <Link href="/uyelik/checkout">
                                 <a className="ps-btn">Sepeti Onayla</a>
                             </Link>
                         </figure>

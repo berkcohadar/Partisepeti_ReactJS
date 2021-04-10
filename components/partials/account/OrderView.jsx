@@ -1,0 +1,54 @@
+import React, { useState } from 'react';
+import OrderItems from "./OrderItems"
+const OrderView = () => {
+    const [comp, setComponent] = useState("");
+    const [height, setHeight] = useState("20vh");
+    const deliveryComponent = <p>Kargo Takip</p>;
+    const orderComponent = <p>Sipariş Detayı</p>;
+    const helpComponent = <p>Sorun Bildir</p>;
+    const [first_click, setClick] = useState(false);
+    const [button, setButton] = useState(null);
+    const [order, setOrder] = useState(null);
+
+    const buttonHandle = (event, component, buttonNo) => {
+        event.stopPropagation();
+        if (first_click == false) {
+        setButton(buttonNo);
+        setClick(true);
+        setHeight("75vh");
+        setComponent(component);
+        } else if (buttonNo == button) {
+        setClick(false);
+        setHeight("20vh");
+        setComponent(null);
+        } else {
+        setClick(false);
+        setComponent(component);
+        }
+    };
+    const data = [0,1]
+    return (
+        <div className="ps-section__content">
+            {data.map((id,index) => (
+                <div className="ps-order-item" key={index} style={order===index?{height:height,boxShadow:"0px 0px 4px 0px #1c1a18"}:{height:"20vh"}} onClick={() => {setHeight("60vh"); setOrder(index); setComponent(<OrderItems />)}}>
+                    <div className="ps-order-item-area">
+                        <div className="ps-order-item-main">
+                            <div className="ps-order-item-main-status"><h4>Teslim Edildi</h4></div>
+                            <div className="ps-order-item-main-buttons">
+                            <button className="ps-btn" onClick={() => buttonHandle()}>Sorun Bildir</button>
+                            <button className="ps-btn" onClick={() => buttonHandle()}>Sipariş Detayı</button>
+                            <button className="ps-btn" onClick={() => buttonHandle()}>Kargom Nerede?</button>
+                            </div>
+                        </div>
+                        <div className="ps-order-item-info">
+                        </div>
+                    </div>
+                    <div className="ps-order-item-drawer" style={comp&&order===index?{opacity:1,display:"block"}:{}}>
+                    {comp}
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+};
+export default OrderView;

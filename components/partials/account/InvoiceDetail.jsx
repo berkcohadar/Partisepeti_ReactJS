@@ -14,33 +14,33 @@ class InvoiceDetail extends Component {
         const accountLinks = [
             {
                 text: 'Account Information',
-                url: '/account/user-information',
+                url: '/uyelik/user-information',
                 icon: 'icon-user',
             },
             {
                 text: 'Notifications',
-                url: '/account/notifications',
+                url: '/uyelik/notifications',
                 icon: 'icon-alarm-ringing',
             },
             {
                 text: 'Invoices',
-                url: '/account/invoices',
+                url: '/uyelik/invoices',
                 icon: 'icon-papers',
                 active: true,
             },
             {
                 text: 'Address',
-                url: '/account/addresses',
+                url: '/uyelik/addresses',
                 icon: 'icon-papers',
             },
             {
                 text: 'Recent Viewed Product',
-                url: '/account/recent-viewed-product',
+                url: '/uyelik/recent-viewed-product',
                 icon: 'icon-papers',
             },
             {
                 text: 'Wishlist',
-                url: '/account/wishlist',
+                url: '/uyelik/wishlist',
                 icon: 'icon-papers',
             },
         ];
@@ -189,7 +189,7 @@ class InvoiceDetail extends Component {
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <Link href="/account/invoices">
+                                        <Link href="/uyelik/invoices">
                                             <a className="ps-btn ps-btn--sm ">
                                                 Back to invoices
                                             </a>

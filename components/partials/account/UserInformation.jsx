@@ -5,15 +5,15 @@ import {HeartFilled,CarryOutOutlined,EnvironmentOutlined,LikeOutlined,ShoppingOu
 
 const UserInformation = () => {
     const profilemenu = [
-        { icon: <ShoppingOutlined />, title: "Siparişlerim", url: '/account/orders', },
-        { icon: <HeartFilled />, title: "Koleksiyonlarım", url: '/account/collections', },
-        { icon: <UserOutlined />, title: "Üyelik Bilgilerim", url: '/account/user-information', active: true,},
-        { icon: <EnvironmentOutlined />, title: "Adreslerim", url: '/account/addresses', },
-        { icon: <FireFilled />, title: "Kampanyalarım", url: '/account/campaigns', },
-        { icon: <CarryOutOutlined />, title: "Anımsatıcılarım", url: '/account/reminders', },
-        { icon: <LikeOutlined />, title: "Değerlendirmelerim", url: '/account/reviews', },
-        { icon: <BellOutlined />, title: "İzinler", url: '/account/notifications', },
-        { icon: <CommentOutlined />, title: "Yardım", url: '/account/help', },
+        { icon: <ShoppingOutlined />, title: "Siparişlerim", url: '/uyelik/siparislerim', },
+        { icon: <HeartFilled />, title: "Koleksiyonlarım", url: '/uyelik/collections', },
+        { icon: <UserOutlined />, title: "Üyelik Bilgilerim", url: '/uyelik/user-information', active: true,},
+        { icon: <EnvironmentOutlined />, title: "Adreslerim", url: '/uyelik/addresses', },
+        { icon: <FireFilled />, title: "Kampanyalarım", url: '/uyelik/campaigns', },
+        { icon: <CarryOutOutlined />, title: "Anımsatıcılarım", url: '/uyelik/reminders', },
+        { icon: <LikeOutlined />, title: "Değerlendirmelerim", url: '/uyelik/reviews', },
+        { icon: <BellOutlined />, title: "İzinler", url: '/uyelik/notifications', },
+        { icon: <CommentOutlined />, title: "Yardım", url: '/uyelik/help', },
       ];
     return (
         <section className="ps-my-account ps-page--account">

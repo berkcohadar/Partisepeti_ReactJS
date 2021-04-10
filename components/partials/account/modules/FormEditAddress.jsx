@@ -8,33 +8,21 @@ class FormEditAddress extends Component {
                     <h3>Billing address</h3>
                 </div>
                 <div className="ps-form__content">
+                    <div className="form-group" style={{display:"flex",justifyContent:"space-between"}}>
+                        <input type="text" style={{maxWidth:"48%"}} placeholder="İsim" className="form-control"/>
+                        <input type="text" style={{maxWidth:"48%"}} placeholder="Soyisim" className="form-control"/>
+                    </div>
                     <div className="form-group">
                         <label>
-                            FirstName <sup>*</sup>
+                            Email address <sup>*</sup>
                         </label>
                         <input type="text" placeholder="" className="form-control"/>
                     </div>
                     <div className="form-group">
-                        <label>
-                            Lastname <sup>*</sup>
-                        </label>
-                        <input type="text" placeholder="" className="form-control"/>
-                    </div>
-                    <div className="form-group">
-                        <label>
-                            Company Name
-                        </label>
-                        <input type="text" placeholder="" className="form-control"/>
-                    </div>
+                        </div>
                     <div className="form-group">
                         <label>
                             Country <sup>*</sup>
-                        </label>
-                        <input type="text" placeholder="" className="form-control"/>
-                    </div>
-                    <div className="form-group">
-                        <label>
-                            Street Address <sup>*</sup>
                         </label>
                         <input type="text" placeholder="" className="form-control"/>
                     </div>
@@ -52,7 +40,7 @@ class FormEditAddress extends Component {
                     </div>
                     <div className="form-group">
                         <label>
-                            Email address <sup>*</sup>
+                            Street Address <sup>*</sup>
                         </label>
                         <input type="text" placeholder="" className="form-control"/>
                     </div>

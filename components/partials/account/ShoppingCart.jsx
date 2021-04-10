@@ -202,7 +202,7 @@ class ShoppingCart extends Component {
                                         </h3>
                                     </div>
                                 </div>
-                                <Link href="/account/checkout">
+                                <Link href="/uyelik/checkout">
                                     <a className="ps-btn ps-btn--fullwidth">
                                         Sepeti Onayla
                                     </a>

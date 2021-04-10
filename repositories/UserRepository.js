@@ -11,6 +11,7 @@ class UserRepository {
             url: baseUrl + '/auth/login/',
             headers: {"Content-Type": "application/json"}, 
             data: JSON.stringify({
+                username: e.username,
                 email: e.username,
                 password: e.password,
               }),})

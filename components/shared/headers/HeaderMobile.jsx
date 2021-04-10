@@ -24,7 +24,7 @@ class HeaderMobile extends Component {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/account/order-tracking">
+                                <Link href="/uyelik/order-tracking">
                                     <a>Tract your order</a>
                                 </Link>
                             </li>

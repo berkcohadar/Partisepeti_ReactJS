@@ -14,7 +14,7 @@ class ElectronicHeaderActions extends Component {
         const { wishlist, auth } = this.props;
         return (
             <div className="header__actions">
-                <Link href="/account/wishlist">
+                <Link href="/uyelik/wishlist">
                     <a className="header__extra">
                         <i className="icon-heart"></i>
                         <span>

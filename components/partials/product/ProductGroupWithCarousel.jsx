@@ -21,7 +21,6 @@ export const ProductGroupWithCarousel = ({ products, type = 'normal' }) => {
     const handleOnMouseOut= () => { handleInterval(setInterval(changeSlide, 5000)); };
     
     useEffect(() => {
-        console.log(mouse)
         if(mouse) {
             handleInterval(setInterval(changeSlide, 5000));
             return () => clearInterval(interval);

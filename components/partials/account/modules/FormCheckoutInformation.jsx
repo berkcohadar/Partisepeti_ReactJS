@@ -9,7 +9,7 @@ class FormCheckoutInformation extends Component {
     }
 
     handleLoginSubmit = () => {
-        Router.push('/account/shipping');
+        Router.push('/uyelik/shipping');
     };
 
     render() {
@@ -169,7 +169,7 @@ class FormCheckoutInformation extends Component {
                     </div>
                 </div>
                 <div className="ps-form__submit">
-                    <Link href="/account/cart">
+                    <Link href="/uyelik/cart">
                         <a>
                             <i className="icon-arrow-left mr-2"></i>
                             Sepete geri dön

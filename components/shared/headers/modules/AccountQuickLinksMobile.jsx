@@ -17,27 +17,27 @@ class AccountQuickLinks extends Component {
         const accountLinks = [
             {
                 text: 'Account Information',
-                url: '/account/user-information',
+                url: '/uyelik/user-information',
             },
             {
                 text: 'Notifications',
-                url: '/account/notifications',
+                url: '/uyelik/notifications',
             },
             {
                 text: 'Invoices',
-                url: '/account/invoices',
+                url: '/uyelik/invoices',
             },
             {
                 text: 'Address',
-                url: '/account/addresses',
+                url: '/uyelik/addresses',
             },
             {
                 text: 'Recent Viewed Product',
-                url: '/account/recent-viewed-product',
+                url: '/uyelik/recent-viewed-product',
             },
             {
                 text: 'Wishlist',
-                url: '/account/wishlist',
+                url: '/uyelik/wishlist',
             },
         ];
         const menu = (

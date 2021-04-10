@@ -101,12 +101,12 @@ const FooterWidgets = () => (
                     </Link>
                 </li>
                 <li>
-                    <Link href="/account/checkout">
+                    <Link href="/uyelik/checkout">
                         <a>Checkout</a>
                     </Link>
                 </li>
                 <li>
-                    <Link href="/account/user-information">
+                    <Link href="/uyelik/user-information">
                         <a>My account</a>
                     </Link>
                 </li>

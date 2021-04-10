@@ -23,7 +23,7 @@ const ModuleDetailShoppingActions = ({ product, extended = false }) => {
         tmp.quantity = quantity;
         dispatch(addItem(tmp));
         setTimeout(function () {
-            Router.push('/account/checkout');
+            Router.push('/uyelik/checkout');
         }, 1000);
     };
 

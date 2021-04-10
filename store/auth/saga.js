@@ -37,8 +37,9 @@ function* logOutSaga() {
 function* loginRequest({payload}) {
     try {
         const data = yield call(UserRepository.loginRequest, payload);
+        console.log(data);
         if(!data.error) {
-            yield put(loginSuccess(data,payload.username));
+            yield put(loginSuccess(data));
             modalSuccess('success');
         } else {
             modalDanger('warning');

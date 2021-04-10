@@ -18,7 +18,7 @@ export function register(payload) {
 }
 
 export function loginSuccess(result,email) {
-    return { type: actionTypes.LOGIN_SUCCESS,payload:result,email:email};
+    return { type: actionTypes.LOGIN_SUCCESS,payload:result};
 }
 
 export function loginFail(err) {

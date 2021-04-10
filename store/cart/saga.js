@@ -59,7 +59,6 @@ function* addItemSaga(payload) {
     if (!payload.product.quantity) {
         payload.product.quantity = 1
     }
-    console.log(payload.product.quantity);
     try {
         const { product } = payload;
         const localCart = JSON.parse(localStorage.getItem('persist:partisepeti')).cart;

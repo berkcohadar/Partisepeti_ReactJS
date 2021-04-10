@@ -30,7 +30,6 @@ const ProductGroupDealOfDay = ({
         }
 
         if (responseData) {
-            console.log(responseData);
             setProductItems(responseData.items);
             setTimeout(
                 function () {

@@ -258,7 +258,7 @@
 .ps-form--account {
     max-width: 430px;
     margin: 0 auto !important;
-    padding-top: 130px;
+    // padding-top: 130px;
     @extend %list-reset;
 
     .ps-tab-list {
@@ -619,6 +619,9 @@
 }
 
 .ps-form--edit-address {
+    background-color: rgba( #1c1a18, 0.1);
+    padding: 20px;
+    border-radius: 8px;
     .ps-form__header {
         margin-bottom: 30px;
         padding-bottom: 10px;

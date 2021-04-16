@@ -48,14 +48,27 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
         }
     }
     const handleItemFilter = (item) => {
+        if (Router.query.properties__property ){
+            if (Router.query.properties__property.includes(item)){
+                // Router.query.properties__property.isArray ? 
+                Router.push( Router.asPath.replace('properties__property=Sevgililer%20G%C3%BCn%C3%BC',''));
+                delete Router.query['properties__property']
+            }
+            return;
+        }
         setIndex(item);
         Router.push(
-            Router.query.category
+            Router.query.category || Router.query.properties__property 
                 ? Router.asPath + '&properties__property=' + item
                 : Router.asPath + '/?properties__property=' + item
         );
+
     };
-    useEffect(() => {
+    const removeItemFilter = (item) => {
+        console.log(Router.query)
+    };
+    
+    useEffect(() => {   
         let params= {};
         if (query) {
             if (query.page) params["page"] = page;
@@ -105,11 +118,7 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
                                                                   className="form-control"
                                                                   type="checkbox"
                                                                   id={subItem}
-                                                                  onChange={() =>
-                                                                      handleItemFilter(
-                                                                        subItem
-                                                                      )
-                                                                  }
+                                                                  onChange={() => handleItemFilter(subItem)}
                                                               />
                                                               <label
                                                                   htmlFor={

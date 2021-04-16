@@ -5,11 +5,11 @@ const ModuleShopSortBy = () => {
         <select
             className="ps-select form-control"
             data-placeholder="Sort Items">
-            <option>Sort by latest</option>
-            <option>Sort by popularity</option>
-            <option>Sort by average rating</option>
-            <option>Sort by price: low to high</option>
-            <option>Sort by price: high to low</option>
+            <option>En Yeniler</option>
+            <option>En Çok Satılanlar</option>
+            <option>En Çok Beğenilenler</option>
+            <option>Fiyata Göre: Artan</option>
+            <option>Fiyata Göre: Azalan</option>
         </select>
     );
 };

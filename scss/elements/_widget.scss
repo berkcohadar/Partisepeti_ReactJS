@@ -1,10 +1,8 @@
 .widget {
     position: relative;
     padding-bottom: 20px;
-    margin-bottom: 20px;
 
     .widget-title {
-        margin-bottom: 2.5rem;
         font-weight: 700;
     }
 
@@ -22,7 +20,6 @@
     .widget-title {
         font-family: $font-1st;
         display: block;
-        margin-bottom: 2.5rem;
         font-size: 1.6rem;
         font-weight: 600;
         color: #222222;
@@ -65,16 +62,35 @@
 }
 
 .widget_shop {
-    padding: 25px 20px;
-    background-color: #f5f5f5;
+    padding: 10px 20px;
     @extend %list-reset;
 
     .widget-title {
-        margin-bottom: 25px;
+        margin-top: 15px;
         font-size: 18px;
         text-transform: uppercase;
-        font-weight: 400;
+        font-weight: 750;
         color: $color-1st;
+    }
+    ul{
+        padding-left: 10px !important;
+        li{
+            i{
+                cursor: pointer;
+                font-size: 10px;
+                span{
+                    color:black;
+                    border-bottom: 1px solid transparent;
+                    font-size: 14px;
+                }
+                &:hover{
+                    color:black;
+                    span{
+                        border-bottom: 1px solid black;
+                    }
+                }
+            }
+        }
     }
 
     .ps-checkbox {
@@ -114,6 +130,11 @@
             color: #999999;
             font-size: 14px;
         }
+        &:hover{
+            .form-control{
+                border-color: $color-psbutton;
+            }
+        }
 
         input[type='checkbox']:checked ~ label {
             font-weight: 500;
@@ -126,6 +147,7 @@
 
             &:after {
             }
+
         }
 
         &.ps-checkbox--color {
@@ -177,11 +199,8 @@
     }
 
     figure {
-        margin-top: 15px;
-        padding-bottom: 15px;
-        padding-top: 15px;
-        border-bottom: 1px solid #ccc;
-
+        border-bottom: 1px solid rgba($color-1st,0.5);
+        padding-left: 10px;
         &:last-child {
             border-bottom: none;
         }
@@ -355,7 +374,7 @@
 
 .widget_features {
     margin-bottom: 30px;
-    background-color: #FCB956;
+    background-color: rgba($color-psbutton,0.9);
     padding: 20px;
 
     p {
@@ -399,28 +418,42 @@
     h3 {
         padding: 14px 20px;
         border-radius:5px 5px 0 0;
-        background-color: rgba($color-psbutton,0.9);
+        background-color: $color-navbar;
         font-size: 20px;
         font-weight: 600;
-        margin-bottom: 40px;
         margin-top: 0;
-        color: $color-1st;
+        color: $color-heading;
         width: 100%;
     }
 
     .widget__content {
-        padding: 20px;
     }
 
     .ps-product {
-        margin-bottom: 30px;
-        border: 1px solid #eaeaea;
-        transition: all 0.4s ease;
-        border-radius: 5px;
+        background-color: #fff;
+
+        height: 150px;
+        margin-bottom: 10px;
+        border: 1px solid transparent;
+        transition: all 0.2s ease;
+        border-radius: 8px;
+        box-shadow: none;
+        display: flex;
         .ps-product__content {
             display: block;
         }
-
+        .ps-product__vendor{
+            display: none;
+        }
+        .ps-product__thumbnail{
+            zoom: 0.65;
+            height: inherit;
+            min-height: inherit;
+            max-height: inherit;
+            width: 40%;
+            min-width: 40%;
+            max-width: 40%;
+        }
         &:hover {
             border-bottom: 1px solid silver;
 

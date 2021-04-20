@@ -33,7 +33,7 @@ const WidgetProductSameBrands = ({ collectionSlug }) => {
     if (!loading) {
         if (productItems && productItems.length > 0) {
             productItemsView = productItems.map((item,index) => (
-                index<5?<Product product={item} key={item.id} />:""
+                <Product product={item} key={item.id} />
             ));
         } else {
             productItemsView = <p>No product found.</p>;
@@ -46,7 +46,7 @@ const WidgetProductSameBrands = ({ collectionSlug }) => {
 
     return (
         <aside className="widget widget_same-brand">
-            <h3>Aynı Satıcıdan</h3>
+            <h3>Benzer Ürünler</h3>
             <div className="widget__content">{productItemsView}</div>
         </aside>
     );

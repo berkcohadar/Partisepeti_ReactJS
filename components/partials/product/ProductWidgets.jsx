@@ -7,10 +7,10 @@ import WidgetShopAds from '~/components/shared/widgets/WidgetShopAds';
 const ProductWidgets = () => {
     return (
         <section>
+            <WidgetProductSameBrands collectionSlug="1" />
             <WidgetProductFeatures />
             <WidgetSaleOnSite />
             <WidgetShopAds />
-            <WidgetProductSameBrands collectionSlug="2" />
         </section>
     );
 };

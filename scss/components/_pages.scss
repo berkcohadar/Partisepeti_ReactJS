@@ -322,12 +322,12 @@
 
         .ps-page__left {
             padding-right: 30px;
-            max-width: calc(100% - 290px);
+            max-width: calc(100% - 25%);
         }
 
         .ps-page__right {
-            min-width: 290px;
-            max-width: 290px;
+            min-width: 25%;
+            max-width: 25%;
         }
     }
 

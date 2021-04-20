@@ -21,7 +21,7 @@ const WidgetShopFilterByPriceRange = () => {
     return (
         <aside className="widget widget_shop">
             <figure>
-                <h4 className="widget-title">By Price</h4>
+                <h4 className="widget-title">Fiyat</h4>
                 <Slider
                     range
                     defaultValue={[0, 2000]}
@@ -29,7 +29,7 @@ const WidgetShopFilterByPriceRange = () => {
                     onAfterChange={(e) => handleChangeRange(e)}
                 />
                 <p>
-                    Price: ${min} - $ {max}
+                    Fiyat: ₺{min} - ₺{max}
                 </p>
             </figure>
         </aside>

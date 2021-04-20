@@ -39,7 +39,8 @@ const WidgetShopCategories = () => {
                 <li
                     key={item.slug}
                     className={item.slug === slug ? 'active' : ''}>
-                    <Link href={`/alisveris?category=${item.id}`}>{item.name}</Link>
+                        
+                    <Link href={`/alisveris?category=${item.id}`}><i className="icon-chevron-right mr-2"> <span>{item.name}</span> </i></Link>
                 </li>
             ));
             categoriesView = <ul className="ps-list--categories">{items}</ul>;
@@ -51,7 +52,7 @@ const WidgetShopCategories = () => {
 
     return (
         <aside className="widget widget_shop">
-            <h4 className="widget-title">Categories</h4>
+            <h4 className="widget-title">Kategoriler</h4>
             {categoriesView}
         </aside>
     );

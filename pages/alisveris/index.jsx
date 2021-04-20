@@ -12,6 +12,7 @@ import WidgetShopFilterByPriceRange from '~/components/shared/widgets/WidgetShop
 
 import ProductRepository from '~/repositories/ProductRepository';
 import { useRouter } from 'next/router';
+
 const ShopDefaultPage = ({ pageSize = 10 }) => {
     const breadCrumb = [
         {
@@ -19,7 +20,7 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
             url: '/',
         },
         {
-            text: 'Shop Default',
+            text: 'Alışveriş', //Shop Default
         },
     ];
     //...
@@ -31,9 +32,9 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
     const [productItems, setProductItems] = useState(null);
     const [total, setTotal] = useState(0);
     const [index1, setIndex] = useState(0);
+    const [checked_filters, setFilters] = useState(null);
 
     async function getProducts(params) {
-        // console.log('PARAMS\n\n',params);
         setLoading(true);
         const responseData = await ProductRepository.getProducts(params);
         if (responseData) {
@@ -47,52 +48,77 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
             );
         }
     }
+
     const handleItemFilter = (item) => {
-        if (Router.query.properties__property ){
-            if (Router.query.properties__property.includes(item)){
-                // Router.query.properties__property.isArray ? 
-                Router.push( Router.asPath.replace('properties__property=Sevgililer%20G%C3%BCn%C3%BC',''));
-                delete Router.query['properties__property']
+        if (Router.query.props) {
+            if (Router.query.props.includes(item)) {
+                if (Router.query.props.length < 3) {
+                    Router.push(
+                        Router.asPath.replace('&props=' + item + '+', '')
+                    );
+                    delete Router.query['props'];
+                } else Router.push(Router.asPath.replace(item + '+', ''));
+                return;
             }
-            return;
         }
         setIndex(item);
         Router.push(
-            Router.query.category || Router.query.properties__property 
-                ? Router.asPath + '&properties__property=' + item
-                : Router.asPath + '/?properties__property=' + item
+            Router.query.category
+                ? Router.query.props
+                    ? Router.asPath + item + '+'
+                    : Router.asPath + '&props=' + item + '+'
+                : Router.asPath + '?props=' + item + '+'
         );
+    };
 
-    };
-    const removeItemFilter = (item) => {
-        console.log(Router.query)
-    };
-    
-    useEffect(() => {   
-        let params= {};
+    useEffect(() => {
+        let params = {};
         if (query) {
-            if (query.page) params["page"] = page;
+            if (query.page) params['page'] = page;
             if (query.category) params['category'] = query.category;
-            if (query.properties__property) params['properties__property'] = query.properties__property;
+            if (query.props) {
+                params['props'] = query.props;
+                setFilters(query.props.split(' '));
+            }
+            if (!query.props && checked_filters) setFilters(null);
             else params = query;
-        } 
-        else params = { _limit: pageSize,};
+        } else params = { _limit: pageSize };
         getProducts(params);
     }, [query]);
-    
+
     let brandsView = {};
     if (productItems && productItems.length > 0) {
         productItems.map((item) =>
             item.properties.map((property) => {
-                brandsView[property.code.code]!==undefined
-                    ? brandsView[property.code.code].includes(property.property)
+                brandsView[property.code.code] !== undefined
+                    ? brandsView[property.code.code].some((row) =>
+                          row.includes(property.id)
+                      )
                         ? null
-                        : brandsView[property.code.code].push(property.property)
-                    : (brandsView[property.code.code] = [property.property]);
+                        : brandsView[property.code.code].push([
+                              property.property,
+                              property.id,
+                          ])
+                    : (brandsView[property.code.code] = [
+                          [property.property, property.id],
+                      ]);
             })
         );
+        productItems.map((item) => {
+            brandsView['Renk'] !== undefined
+                ? brandsView['Renk'].includes(item.color)
+                    ? null
+                    : brandsView['Renk'].push(item.color)
+                : (brandsView['Renk'] = [item.color]);
+            brandsView['Boyut'] !== undefined
+                ? brandsView['Boyut'].includes(item.size)
+                    ? null
+                    : brandsView['Boyut'].push(item.size)
+                : (brandsView['Boyut'] = [item.size]);
+        });
     }
     //...
+
     return (
         <ContainerShop title="Shop">
             <div className="ps-page--shop">
@@ -104,37 +130,70 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
                     <div className="ps-layout--shop">
                         <div className="ps-layout__left">
                             <WidgetShopCategories productItems={productItems} />
-                            {/* <WidgetShopBrands productItems={productItems} /> */}
                             <aside className="widget widget_shop widget_shop--brand">
+                                <h4 className="widget-title">Filtreler</h4>
                                 <figure>
                                     {brandsView
-                                        ? Object.keys(brandsView).map((item, index) => {
-                                              return (
-                                                  <div>
-                                                      <h5>{item} </h5>
-                                                      {brandsView[item].map((subItem) => (
-                                                          <div className="ps-checkbox">
-                                                              <input
-                                                                  className="form-control"
-                                                                  type="checkbox"
-                                                                  id={subItem}
-                                                                  onChange={() => handleItemFilter(subItem)}
-                                                              />
-                                                              <label
-                                                                  htmlFor={
-                                                                    subItem
-                                                                  }>
-                                                                  {subItem}
-                                                              </label>
-                                                          </div>
-                                                      ))}
-                                                  </div>
-                                              );
-                                          })
+                                        ? Object.keys(brandsView).map(
+                                              (item, index) => {
+                                                  return (
+                                                      <div>
+                                                          <h5>{item} </h5>
+                                                          {brandsView[item].map(
+                                                              (subItem) => (
+                                                                  <div className="ps-checkbox">
+                                                                      <input
+                                                                          className="form-control"
+                                                                          type="checkbox"
+                                                                          id={
+                                                                            item ===
+                                                                            'Renk' ||
+                                                                        item ===
+                                                                            'Boyut'
+                                                                            ? subItem
+                                                                            : subItem[0]
+                                                                          }
+                                                                          onChange={() =>
+                                                                              handleItemFilter(
+                                                                                  subItem[1]
+                                                                              )
+                                                                          }
+                                                                          checked={
+                                                                              checked_filters
+                                                                                  ? checked_filters.includes(
+                                                                                        '' +
+                                                                                            subItem[1]
+                                                                                    )
+                                                                                  : false
+                                                                          }
+                                                                      />
+                                                                      <label
+                                                                          htmlFor={
+                                                                              item ===
+                                                                                  'Renk' ||
+                                                                              item ===
+                                                                                  'Boyut'
+                                                                                  ? subItem
+                                                                                  : subItem[0]
+                                                                          }>
+                                                                          {item ===
+                                                                              'Renk' ||
+                                                                          item ===
+                                                                              'Boyut'
+                                                                              ? subItem
+                                                                              : subItem[0]}
+                                                                      </label>
+                                                                  </div>
+                                                              )
+                                                          )}
+                                                      </div>
+                                                  );
+                                              }
+                                          )
                                         : null}
                                 </figure>
                             </aside>
-                            <WidgetShopFilterByPriceRange />
+                            {/* <WidgetShopFilterByPriceRange /> */}
                         </div>
                         <div className="ps-layout__right">
                             <ShopItems

@@ -38,7 +38,7 @@ const ShopCategories = () => {
                 <li
                     key={item.slug}
                     className={item.slug === slug ? 'active' : ''}>
-                    <Link href={`/alisveris?category=${item.id}`}>{item.name}</Link>
+                    <Link href={`/alisveris?categories=${item.id}`}>{item.name}</Link>
                 </li>
             ));
             categoriesView = <ul className="ps-list--categories">{items}</ul>;

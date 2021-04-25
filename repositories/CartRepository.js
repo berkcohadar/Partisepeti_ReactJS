@@ -11,7 +11,7 @@ class CartRepository {
         const reponse = await axios({
             method: 'post',
             url: baseUrl + '/orders/add-to-cart/',
-            headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
+            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token}, 
             data: JSON.stringify({
                 customer: email,
                 product: product.products[0].id,
@@ -24,6 +24,20 @@ class CartRepository {
             .catch((error) =>  {return { error: JSON.stringify(error) }});
         return reponse;
     }
+    async removeFromCart(cartItemId){
+        const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
+        const reponse = await axios({
+            method: 'delete',
+            url: baseUrl + '/orders/remove-from-cart/'+cartItemId,
+            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token}, 
+            })
+            .then((response) => {
+                return response;
+            })
+            .catch((error) =>  {return { error: JSON.stringify(error) }});
+        return reponse;
+    }
+
     // async addToCartGuest(e) {
     //     const reponse = await axios({
     //         method: 'post',

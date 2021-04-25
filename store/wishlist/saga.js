@@ -12,6 +12,7 @@ const modalSuccess = (type) => {
         message: 'Added to wishlisht!',
         description: 'This product has been added to wishlist!',
         duration: 1,
+        className:"antd-notification",
     });
 };
 const modalWarning = (type) => {
@@ -20,6 +21,7 @@ const modalWarning = (type) => {
         message: 'Removed from wishlist',
         description: 'This product has been removed from wishlist!',
         duration: 1,
+        className:"antd-notification",
     });
 };
 

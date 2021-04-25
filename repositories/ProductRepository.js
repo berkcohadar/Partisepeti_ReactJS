@@ -13,9 +13,27 @@ class ProductRepository {
     }
 
     async getProducts(params) {
+        if(params){
+            if ('properties' in params){
+                params['properties'] = params['properties'].split(' ')
+                params['properties'].pop()
+                params = Object.keys(params)
+                    .map(
+                        (key) => key=='properties'? params[key].map((prop)=>  `${encodeURIComponent(key)}=${encodeURIComponent(prop)}`).join('&'):
+                            `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
+                    )
+                    .join('&');
+            }
+            else{
+                params = serializeQuery(params)
+            }
+        }
+        else{
+            params = serializeQuery(params)
+        }
         const reponse = await Repository.get(
-            `${baseUrl}/items/?${serializeQuery(params)}`
-            // http://127.0.0.1:8000/items/?search=value&category=2
+            `${baseUrl}/items/?${params}`
+            // http://127.0.0.1:8000/items/?search=value&categories=2
         )
             .then((response) => {
                 return {
@@ -67,7 +85,7 @@ class ProductRepository {
 
     async getProductsByCategory(payload) {
         const reponse = await Repository.get(
-            `${baseUrl}/items/?category=${payload}`
+            `${baseUrl}/items/?categories=${payload}`
         )
             .then((response) => {
                 if (response.data) {

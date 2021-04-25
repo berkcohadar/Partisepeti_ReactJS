@@ -304,6 +304,24 @@
   background-color: #ffba00 !important;
   border: solid 1px rgba(#1c1a18,0.8) !important;
 }
+
+
+.ant-notification {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  -webkit-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum';
+  position: fixed;
+  z-index: 1010;
+  max-width: calc(100vw - 32px);
+  margin-right: 24px; }
 /*
 
 export const OrderItem = styled.div`

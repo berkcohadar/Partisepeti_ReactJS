@@ -40,7 +40,7 @@ const WidgetShopCategories = () => {
                     key={item.slug}
                     className={item.slug === slug ? 'active' : ''}>
                         
-                    <Link href={`/alisveris?category=${item.id}`}><i className="icon-chevron-right mr-2"> <span>{item.name}</span> </i></Link>
+                    <Link href={`/alisveris?categories=${item.id}`}><i className="icon-chevron-right mr-2"> <span>{item.name}</span> </i></Link>
                 </li>
             ));
             categoriesView = <ul className="ps-list--categories">{items}</ul>;

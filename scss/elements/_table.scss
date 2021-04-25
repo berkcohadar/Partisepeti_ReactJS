@@ -166,32 +166,39 @@
         }
     }
 
-    @include media('<md') {
-        tbody {
-            tr {
-                td {
-                    min-width: 200px;
+    // @include media('<md') {
+    //     tbody {
+    //         tr {
+    //             td {
+    //                 min-width: 200px;
 
-                    &:first-child {
-                        max-width: 50px;
-                        min-width: 50px;
-                        text-align: center;
-                    }
+    //                 &:first-child {
+    //                     max-width: 50px;
+    //                     min-width: 50px;
+    //                     text-align: center;
+    //                 }
 
-                    &:nth-child(2) {
-                        min-width: 300px;
-                    }
-                }
-            }
-        }
-    }
+    //                 &:nth-child(2) {
+    //                     min-width: 300px;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 .ps-table--shopping-cart {
     thead {
+        // background-color: $color-navbar;
+        background: $color-1st;
+        // background: -moz-linear-gradient(135deg, $color-navbar 0%, $color-navbar 24%, $color-1st 61%);
+        // background: -webkit-linear-gradient(135deg, $color-navbar 0%, $color-navbar 24%, $color-1st 61%);
+        // background: -o-linear-gradient(135deg, $color-navbar 0%, $color-navbar 24%, $color-1st 61%);
+        // background: -ms-linear-gradient(135deg, $color-navbar 0%, $color-navbar 24%, $color-1st 61%);
+        // background: linear-gradient(135deg, $color-navbar 0%, $color-navbar 24%, $color-1st 61%);
+        // text-shadow: 0px 0px 3px #fff;
         tr {
             th {
-                background-color: $color-psbutton;
                 padding: 15px 20px;
                 text-transform: uppercase;
                 color: $color-heading;
@@ -212,6 +219,7 @@
 
     tbody {
         tr {
+            border-radius: 5px;
             td {
                 padding: 20px 10px;
                 vertical-align: middle;
@@ -239,17 +247,30 @@
                     }
                 }
             }
+            
         }
     }
 
     @include media('<md') {
+        .form-group--number {
+            button{
+                display: none;
+            }
+        }
         tbody {
             tr {
                 td {
-                    min-width: 200px;
-
-                    &:first-child {
-                        min-width: 400px;
+                    &:nth-child(2) {
+                        display: none;
+                    }
+                }
+            }
+        }
+        thead{
+            tr {
+                th {
+                    &:nth-child(2) {
+                        display: none;
                     }
                 }
             }
@@ -288,13 +309,6 @@
     @include media('<sm') {
         .title {
             font-size: 14px;
-        }
-        tbody {
-            tr {
-                td {
-                    min-width: 200px;
-                }
-            }
         }
     }
 

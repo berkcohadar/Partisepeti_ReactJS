@@ -71,7 +71,7 @@ const NewArrivals = ({ collectionSlug }) => {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/shop?category=health-and-beauty">
+                            <Link href="/shop?categories=health-and-beauty">
                                 <a>Health & Beauty</a>
                             </Link>
                         </li>

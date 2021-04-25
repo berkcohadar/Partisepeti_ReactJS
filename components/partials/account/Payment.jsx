@@ -14,7 +14,7 @@ class Payment extends Component {
         };
     }
 
-    handleChangePaymentMethod = e => {
+    handleChangePaymentMethod = (e) => {
         this.setState({ method: e.target.value });
     };
 

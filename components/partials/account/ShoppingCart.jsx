@@ -28,7 +28,7 @@ class ShoppingCart extends Component {
         this.props.dispatch(decreaseItemQty(product));
     }
 
-    handleRemoveCartItem = product => {
+    handleRemoveCartItem = (product) => {
         this.props.dispatch(removeItem(product));
     };
 
@@ -44,26 +44,27 @@ class ShoppingCart extends Component {
                     <div className="ps-section__header">
                         <h1>Sepet Detayı</h1>
                     </div>
-                    <div className="ps-section__content">
-                        <div className="table-responsive">
-                            <table className="table ps-table--shopping-cart">
-                                <thead>
-                                    <tr>
-                                        <th>Ürün</th>
-                                        <th>Fiyat</th>
-                                        <th>Adet</th>
-                                        <th>Toplam</th>
-                                        <th>{"\t"}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {currentCartItems.map(product => (
-                                        <tr key={product.id}>
-                                            <td>
-                                                <ProductCart
-                                                    product={product}
-                                                />
-                                                {/*<div className="ps-product--cart">
+                    <div className="ps-cart-display-page">
+                        <div className="ps-section__content">
+                            <div className="table-responsive">
+                                <table className="table ps-table--shopping-cart">
+                                    <thead>
+                                        <tr>
+                                            <th>Ürün</th>
+                                            <th>Fiyat</th>
+                                            <th>Adet</th>
+                                            <th>Toplam</th>
+                                            <th>{'\t'}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {currentCartItems.map((product) => (
+                                            <tr key={product.id}>
+                                                <td>
+                                                    <ProductCart
+                                                        product={product}
+                                                    />
+                                                    {/*<div className="ps-product--cart">
                                                     <div className="ps-product__thumbnail">
                                                         <Link
                                                             href="/product/[pid]"
@@ -94,78 +95,82 @@ class ShoppingCart extends Component {
                                                         </p>
                                                     </div>
                                                 </div>*/}
-                                            </td>
-                                            <td className="price">
-                                            ₺   {product.products[0].cart_price}
-                                            </td>
-                                            <td>
-                                                <div className="form-group--number">
-                                                    <button
-                                                        className="up"
-                                                        onClick={this.handleIncreaseItemQty.bind(
+                                                </td>
+                                                <td className="price">
+                                                    ₺{' '}
+                                                    {
+                                                        product.products[0]
+                                                            .cart_price
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <div className="form-group--number">
+                                                        <button
+                                                            className="up"
+                                                            onClick={this.handleIncreaseItemQty.bind(
+                                                                this,
+                                                                product
+                                                            )}>
+                                                            +
+                                                        </button>
+                                                        <button
+                                                            className="down"
+                                                            onClick={this.handleDecreaseItemQty.bind(
+                                                                this,
+                                                                product
+                                                            )}>
+                                                            -
+                                                        </button>
+                                                        <input
+                                                            className="form-control"
+                                                            type="text"
+                                                            placeholder="1"
+                                                            value={
+                                                                product.quantity
+                                                            }
+                                                            readOnly={true}
+                                                        />
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    ₺
+                                                    {product.quantity *
+                                                        product.products[0]
+                                                            .cart_price}
+                                                </td>
+                                                <td>
+                                                    <a
+                                                        href="#"
+                                                        onClick={this.handleRemoveCartItem.bind(
                                                             this,
                                                             product
                                                         )}>
-                                                        +
-                                                    </button>
-                                                    <button
-                                                        className="down"
-                                                        onClick={this.handleDecreaseItemQty.bind(
-                                                            this,
-                                                            product
-                                                        )}>
-                                                        -
-                                                    </button>
-                                                    <input
-                                                        className="form-control"
-                                                        type="text"
-                                                        placeholder="1"
-                                                        value={product.quantity}
-                                                        readOnly={true}
-                                                    />
-                                                </div>
-                                            </td>
-                                            <td>
-                                            ₺
-                                                {product.quantity *
-                                                    product.products[0].cart_price}
-                                            </td>
-                                            <td>
-                                                <a
-                                                    href="#"
-                                                    onClick={this.handleRemoveCartItem.bind(
-                                                        this,
-                                                        product
-                                                    )}>
-                                                    <i className="icon-cross"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                                                        <i className="icon-cross"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div className="ps-section__cart-actions">
-                            <Link href="/alisveris">
-                                <a>
-                                    <i className="icon-arrow-left mr-2"></i>
-                                    Alışverişe geri dön
-                                </a>
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="ps-section__footer">
-                        <div className="row justify-content-end">
-                            <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
-                                <div className="ps-block--shopping-total">
-                                    <div className="ps-block__header">
-                                        <p>
-                                        Sepet Toplamı <span> ₺ {amount}</span>
-                                        </p>
-                                    </div>
-                                    <div className="ps-block__content">
-                                        <ul className="ps-block__product">
-                                            {/* {cartItems.length > 0
+                        <div className="ps-section__footer">
+                            <div className="row justify-content-end">
+                                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                    <div className="ps-block--shopping-total">
+                                        <div className="ps-block__header">
+                                            <p>
+                                                Sepet Toplamı{' '}
+                                                <span> ₺ {amount}</span>
+                                            </p>
+                                            <p>
+                                                İndirim{' '}
+                                                <span> ₺ 0</span>
+                                            </p>
+                                        </div>
+                                        <div className="ps-block__content">
+                                            <ul className="ps-block__product">
+                                                {/* {cartItems.length > 0
                                                 ? cartItems.map(
                                                       (product, index) => {
                                                           if (index < 3) {
@@ -196,33 +201,41 @@ class ShoppingCart extends Component {
                                                       }
                                                   )
                                                 : ''} */}
-                                        </ul>
-                                        <h3>
-                                            Toplam <span>₺{amount}</span>
-                                        </h3>
+                                            </ul>
+                                            <h3>
+                                                Toplam <span>₺{amount}</span>
+                                            </h3>
+                                        </div>
                                     </div>
+                                    <Link href="/uyelik/checkout">
+                                        <a className="ps-btn ps-btn--fullwidth">
+                                            Sepeti Onayla
+                                        </a>
+                                    </Link>
                                 </div>
-                                <Link href="/uyelik/checkout">
-                                    <a className="ps-btn ps-btn--fullwidth">
-                                        Sepeti Onayla
-                                    </a>
-                                </Link>
                             </div>
                         </div>
                     </div>
+                    <div className="ps-section__cart-actions">
+                                <Link href="/alisveris">
+                                    <a>
+                                        <i className="icon-arrow-left mr-2"></i>
+                                        Alışverişe geri dön
+                                    </a>
+                                </Link>
+                            </div>
                 </div>
                 <BackTop>
-            <button className="ps-btn--backtop">
-                <i className="icon-arrow-up"></i>
-            </button>
-        </BackTop>
+                    <button className="ps-btn--backtop">
+                        <i className="icon-arrow-up"></i>
+                    </button>
+                </BackTop>
             </div>
-        
         );
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return state.cart;
 };
 export default connect(mapStateToProps)(ShoppingCart);

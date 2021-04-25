@@ -8,14 +8,11 @@ import { useRouter } from 'next/router';
 import { generateTempArray } from '~/utilities/common-helpers';
 import SkeletonProduct from '~/components/elements/skeletons/SkeletonProduct';
 
-const ShopItems = ({productItems, columns = 4, pageSize = 10 }) => {
+const ShopItems = ({productItems, columns = 4, pageSize = 10 ,total=0,loading=false}) => {
     const Router = useRouter();
     const { page } = Router.query;
     const { query } = Router;
     const [listView, setListView] = useState(true);
-    // const [productItems, setProductItems] = useState(null);
-    const [total, setTotal] = useState(0);
-    const [loading, setLoading] = useState(false);
     const [classes, setClasses] = useState(
         'col-xl-4 col-lg-4 col-md-3 col-sm-6 col-6'
     );
@@ -25,30 +22,8 @@ const ShopItems = ({productItems, columns = 4, pageSize = 10 }) => {
         setListView(!listView);
     }
 
-    // async function getProducts(params) {
-    //     setLoading(true);
-    //     const responseData = await ProductRepository.getProducts(params);
-    //     if (responseData) {
-    //         setProductItems(responseData.items.results);
-    //         setTotal(responseData.items.count);
-    //         setTimeout(
-    //             function () {
-    //                 setLoading(false);
-    //             }.bind(this),
-    //             250
-    //         );
-    //     }
-    // }
-
     function handlePagination(page, pageSize) {
         Router.push(`/alisveris?page=${page}`);
-    }
-
-    async function getTotalRecords(params) {
-        const responseData = await ProductRepository.getTotalRecords();
-        // if (responseData) {
-        //     setTotal(responseData);
-        // }
     }
 
     function handleSetColumns() {
@@ -74,9 +49,9 @@ const ShopItems = ({productItems, columns = 4, pageSize = 10 }) => {
     useEffect(() => {
         let params;
         if (query) {
-            if(query.category && query.page){
+            if(query.categories && query.page){
                 params = {
-                    category:query.category,
+                    categories:query.categories,
                     page: page,
                     _limit: pageSize,
                 };
@@ -87,9 +62,9 @@ const ShopItems = ({productItems, columns = 4, pageSize = 10 }) => {
                     _limit: pageSize,
                 };
             }
-            else if (query.category) {
+            else if (query.categories) {
                 params = {
-                    category: query.category,
+                    categories: query.categories,
                     _limit: pageSize,
                 };
             }

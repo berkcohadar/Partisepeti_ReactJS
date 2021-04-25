@@ -32,12 +32,12 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
     const [productItems, setProductItems] = useState(null);
     const [total, setTotal] = useState(0);
     const [index1, setIndex] = useState(0);
-    const [checked_filters, setFilters] = useState(null);
+    const [checked_filters, setFilters] = useState([]);
 
     async function getProducts(params) {
         setLoading(true);
         const responseData = await ProductRepository.getProducts(params);
-        if (responseData) {
+        if (responseData.items) {
             setProductItems(responseData.items.results);
             setTotal(responseData.items.count);
             setTimeout(
@@ -50,24 +50,25 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
     }
 
     const handleItemFilter = (item) => {
-        if (Router.query.props) {
-            if (Router.query.props.includes(item)) {
-                if (Router.query.props.length < 3) {
+        if (Router.query.properties) {
+            var tmp = Router.query.properties.split(' ')
+            if (tmp.includes(''+item)) {
+                if (Router.query.properties.length < 3) {
                     Router.push(
-                        Router.asPath.replace('&props=' + item + '+', '')
+                        Router.asPath.replace('&properties=' + item + '+', '')
                     );
-                    delete Router.query['props'];
+                    delete Router.query['properties'];
                 } else Router.push(Router.asPath.replace(item + '+', ''));
                 return;
             }
         }
         setIndex(item);
         Router.push(
-            Router.query.category
-                ? Router.query.props
+            Router.query.categories
+                ? Router.query.properties
                     ? Router.asPath + item + '+'
-                    : Router.asPath + '&props=' + item + '+'
-                : Router.asPath + '?props=' + item + '+'
+                    : Router.asPath + '&properties=' + item + '+'
+                : Router.asPath + '?properties=' + item + '+'
         );
     };
 
@@ -75,12 +76,15 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
         let params = {};
         if (query) {
             if (query.page) params['page'] = page;
-            if (query.category) params['category'] = query.category;
-            if (query.props) {
-                params['props'] = query.props;
-                setFilters(query.props.split(' '));
+            if (query.categories) params['categories'] = query.categories;
+            if (query.properties) {
+                var temp = query.properties.split(' ');
+                temp.pop();
+                setFilters(temp);
+                params['properties'] = query.properties;
+
             }
-            if (!query.props && checked_filters) setFilters(null);
+            else if (!query.properties && checked_filters.length==0) setFilters([]);
             else params = query;
         } else params = { _limit: pageSize };
         getProducts(params);
@@ -105,17 +109,24 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
             })
         );
         productItems.map((item) => {
-            brandsView['Renk'] !== undefined
+            if (item.color) 
+            {
+                brandsView['Renk'] !== undefined
                 ? brandsView['Renk'].includes(item.color)
                     ? null
                     : brandsView['Renk'].push(item.color)
                 : (brandsView['Renk'] = [item.color]);
-            brandsView['Boyut'] !== undefined
+            }
+            if (item.size) 
+            {
+            brandsView['Boyut'] !== undefined 
                 ? brandsView['Boyut'].includes(item.size)
                     ? null
                     : brandsView['Boyut'].push(item.size)
                 : (brandsView['Boyut'] = [item.size]);
+            }
         });
+        console.log(brandsView);
     }
     //...
 
@@ -200,6 +211,8 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
                                 productItems={productItems}
                                 columns={6}
                                 pageSize={18}
+                                total={total}
+                                loading={loading}
                             />
                             <ProductGroupByCarousel
                                 collectionSlug="3"

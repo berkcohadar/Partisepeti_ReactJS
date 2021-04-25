@@ -40,7 +40,7 @@ class CollectionRepository {
 
     async getProductsByCollectionSlug(slug) {
         const reponse = await Repository.get(
-            `${baseUrl}/items/?category=${slug}`
+            `${baseUrl}/items/?categories=${slug}`
         )
             .then((response) => {
                 if (response.data.results && response.data.results.length > 0) {

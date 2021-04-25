@@ -8,7 +8,7 @@ class UserRepository {
     async loginRequest(e) {
         const reponse = await axios({
             method: 'post',
-            url: baseUrl + '/auth/login/',
+            url: baseUrl + '/rest-auth/login/',
             headers: {"Content-Type": "application/json"}, 
             data: JSON.stringify({
                 username: e.username,
@@ -26,7 +26,7 @@ class UserRepository {
     async registerRequest(e) {
         const reponse = await axios({
             method: 'post',
-            url: baseUrl + '/auth/registration/',
+            url: baseUrl + '/rest-auth/registration/',
             headers: {"Content-Type": "application/json"}, 
             data: JSON.stringify({
                 email: e.username,

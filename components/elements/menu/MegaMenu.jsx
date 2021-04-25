@@ -9,7 +9,7 @@ const MegaMenu = ({ source }) => {
                 <ul className="mega-menu__list">
                 { source.childs.map((subItem) => (
                     <li key={subItem.title}>
-                        <Link href={'/alisveris?category='+subItem.category}>
+                        <Link href={'/alisveris?categories='+subItem.category_id}>
                             <a>{subItem.title}</a>
                         </Link>
                     </li>
@@ -19,7 +19,7 @@ const MegaMenu = ({ source }) => {
     }
     return (
         <li className="menu-item-has-children has-mega-menu">
-            <Link href={source.category !== '' ? '/alisveris?category='+source.category : '/'}>
+            <Link href={source.category_id !== '' ? '/alisveris?categories='+source.category_id : '/'}>
                 <a>
                     {source.icon && <i className={source.icon}></i>}
                     {source.title}

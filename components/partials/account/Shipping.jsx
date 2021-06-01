@@ -11,7 +11,7 @@ const Shipping = () => {
                 </div>
                 <div className="ps-section__content">
                     <div className="row">
-                        <div className="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                        <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12">
                             <div className="ps-block--shipping">
                                 <div className="ps-block__panel">
                                     <figure>
@@ -51,7 +51,7 @@ const Shipping = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12  ps-block--checkout-order">
+                        <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12  ps-block--checkout-order">
                             <div className="ps-form__orders">
                                 <ModulePaymentOrderSummary shipping={true} />
                             </div>

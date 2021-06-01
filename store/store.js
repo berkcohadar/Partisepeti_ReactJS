@@ -17,7 +17,7 @@ const bindMiddleware = middleware => {
 const persistConfig = {
     key: 'partisepeti',
     storage,
-    whitelist: ['cart', 'compare', 'auth', 'wishlist', 'user','collection',],
+    whitelist: ['cart', 'compare', 'auth', 'wishlist', 'user','collection','order'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

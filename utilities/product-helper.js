@@ -84,65 +84,89 @@ export function StrapiProductBadge(product) {
 
 export function StrapiProductPrice(product) {
     let view;
-    try{
-    if (product.products[0].market_price > product.products[0].cart_price) {
-        view = (
-            <p className="ps-product__price sale">
-                ₺{formatCurrency(product.products[0].cart_price)}
-                <del className="ml-2">
-                ₺{formatCurrency(product.products[0].market_price)}
-                </del>
-            </p>
-        );
-    } else {
-        view = (
-            <p className="ps-product__price">
-                ₺{formatCurrency(product.products[0].cart_price)}
-            </p>
-        );
-    }
-    return view;}
-    catch(err){
-        view = (
-            <p className="ps-product__price">
-                ₺{0}
-            </p>
-        );
-        return view;
+    if (product.cartItemId){
+        try {
+            if (product.product.market_price > product.product.cart_price) {
+                view = (
+                    <p className="ps-product__price sale">
+                        ₺{formatCurrency(product.product.cart_price)}
+                        <del className="ml-2">
+                            ₺{formatCurrency(product.product.market_price)}
+                        </del>
+                    </p>
+                );
+            } else {
+                view = (
+                    <p className="ps-product__price">
+                        ₺{formatCurrency(product.product.cart_price)}
+                    </p>
+                );
+            }
+            return view;
+        } catch (err) {
+            view = <p className="ps-product__price">ERROR</p>;
+            return view;
+        }
+    } else{
+        try {
+            if (product.products[0].market_price > product.products[0].cart_price) {
+                view = (
+                    <p className="ps-product__price sale">
+                        ₺{formatCurrency(product.products[0].cart_price)}
+                        <del className="ml-2">
+                            ₺{formatCurrency(product.products[0].market_price)}
+                        </del>
+                    </p>
+                );
+            } else {
+                view = (
+                    <p className="ps-product__price">
+                        ₺{formatCurrency(product.products[0].cart_price)}
+                    </p>
+                );
+            }
+            return view;
+        } catch (err) {
+            view = <p className="ps-product__price">₺{0}</p>;
+            return view;
+        }
     }
 }
 
 export function StrapiProductPriceExpanded(product) {
     let view;
-    try{
+    try {
         if (product.products[0].market_price > product.products[0].cart_price) {
-        view = (
-            <p className="ps-product__price sale">
-                ₺{formatCurrency(product.products[0].cart_price)}
-                <del className="ml-2">
-                ₺{formatCurrency(product.products[0].market_price)}
-                </del>
-                <small>%{100-Math.round((product.products[0].cart_price/product.products[0].market_price)*100)} İndirim</small>
-            </p>
-        );
-    } else {
-        view = (
-            <p className="ps-product__price">
-                ${formatCurrency(product.products[0].cart_price)}
-            </p>
-        );
-    }
-    return view;
-    }
-    catch(err){
-        view = (
-            <p className="ps-product__price">
-                ${0}
-            </p>
-        );
+            view = (
+                <p className="ps-product__price sale">
+                    ₺{formatCurrency(product.products[0].cart_price)}
+                    <del className="ml-2">
+                        ₺{formatCurrency(product.products[0].market_price)}
+                    </del>
+                    <small>
+                        %
+                        {100 -
+                            Math.round(
+                                (product.products[0].cart_price /
+                                    product.products[0].market_price) *
+                                    100
+                            )}{' '}
+                        İndirim
+                    </small>
+                </p>
+            );
+        } else {
+            view = (
+                <p className="ps-product__price">
+                    ${formatCurrency(product.products[0].cart_price)}
+                </p>
+            );
+        }
+        return view;
+    } catch (err) {
+        view = <p className="ps-product__price">${0}</p>;
         return view;
     }
-    
 }
 
 export function StrapiProductThumbnail(product) {
@@ -153,9 +177,19 @@ export function StrapiProductThumbnail(product) {
             <Link href="/product/[pid]" as={`/product/${product.id}`}>
                 <a>
                     <LazyLoad>
+                        <img src={`${product.thumbnail}`} alt={product.title} />
+                    </LazyLoad>
+                </a>
+            </Link>
+        );
+    } else if (product.item.thumbnail) {
+        view = (
+            <Link href="/product/[pid]" as={`/product/${product.product.id}`}>
+                <a>
+                    <LazyLoad>
                         <img
-                            src={`${product.thumbnail}`}
-                            alt={product.title}
+                            src={`${product.item.thumbnail}`}
+                            alt={product.item.title}
                         />
                     </LazyLoad>
                 </a>
@@ -166,7 +200,10 @@ export function StrapiProductThumbnail(product) {
             <Link href="/product/[pid]" as={`/product/${product.id}`}>
                 <a>
                     <LazyLoad>
-                        <img src="/static/img/not-found.jpg" alt="partisepeti" />
+                        <img
+                            src="/static/img/not-found.jpg"
+                            alt="partisepeti"
+                        />
                     </LazyLoad>
                 </a>
             </Link>

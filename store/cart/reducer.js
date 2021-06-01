@@ -15,9 +15,9 @@ function reducer(state = initCart, action) {
         case actionTypes.UPDATE_CART_SUCCESS:
             return {
                 ...state,
-                ...{ cartItems: action.payload.cartItems },
-                ...{ amount: action.payload.amount },
-                ...{ cartTotal: action.payload.cartTotal },
+                ...{ cartItems: action.payload.results? action.payload.results: action.payload.cartItems},
+                ...{ amount: action.payload.results? action.payload.results[0].amount: action.payload.amount},
+                ...{ cartTotal: action.payload.results? action.payload.count: action.payload.cartTotal},
             };
         case actionTypes.CLEAR_CART_SUCCESS:
             return {

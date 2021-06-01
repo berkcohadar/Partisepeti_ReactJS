@@ -125,9 +125,9 @@
     /**/
     .ps-section__content{
         margin: 0 auto;
-        min-width: 60%;
-        width: 60%;
-        max-width: 60%;
+        min-width: 63%;
+        width: 63%;
+        max-width: 63%;
     }   
     .ps-section__footer{
         margin: 0 auto;
@@ -135,6 +135,30 @@
         max-width: 30%;
         position: sticky;
         top: 8rem;
+    }
+    @include media('<1630px') {
+        .ps-section__content{
+            margin: 0 auto;
+            min-width: 75%;
+            width: 75%;
+            max-width: 75%;
+        }   
+    }
+    @include media('<1510px') {
+        .ps-section__content{
+            margin: 0 auto;
+            min-width: 80%;
+            width: 80%;
+            max-width: 80%;
+        }
+    }
+    @include media('<1270px') {
+        .ps-section__content{
+            margin: 0 auto;
+            min-width: 90%;
+            width: 90%;
+            max-width: 90%;
+        }
     }
     /**/    
     @include media('<lg') {

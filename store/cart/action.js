@@ -60,7 +60,7 @@ export function decreaseItemQty(product) {
 export function updateCartSuccess(payload) {
     return {
         type: actionTypes.UPDATE_CART_SUCCESS,
-        payload,
+        payload: payload,
     };
 }
 

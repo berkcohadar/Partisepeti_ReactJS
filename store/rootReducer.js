@@ -10,6 +10,8 @@ import collection from './collection/reducer';
 import media from './media/reducer';
 import app from './app/reducer';
 import user from './user/reducer';
+import order from './order/reducer';
+
 
 export default combineReducers({
     auth,
@@ -22,5 +24,6 @@ export default combineReducers({
     collection,
     media,
     app,
-    user
+    user,
+    order
 });

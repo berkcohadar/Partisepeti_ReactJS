@@ -95,26 +95,6 @@ class NavigationList extends Component {
                     placement="right"
                     closable={false}
                     onClose={this.handleDrawerClose}
-                    visible={this.state.cartDrawer}>
-                    <div className="ps-panel--wrapper">
-                        <div className="ps-panel__header">
-                            <h3>Alışveriş Sepetim</h3>
-                            <span
-                                className="ps-panel__close"
-                                onClick={this.handleDrawerClose}>
-                                <i className="icon-cross"></i>
-                            </span>
-                        </div>
-                        <div className="ps-panel__content">
-                            <PanelCartMobile />
-                        </div>
-                    </div>
-                </Drawer>
-                <Drawer
-                    className="ps-panel--mobile"
-                    placement="right"
-                    closable={false}
-                    onClose={this.handleDrawerClose}
                     visible={this.state.searchDrawer}>
                     <div className="ps-panel--wrapper">
                         <div className="ps-panel__header">
@@ -127,6 +107,26 @@ class NavigationList extends Component {
                         </div>
                         <div className="ps-panel__content">
                             <PanelSearch />
+                        </div>
+                    </div>
+                </Drawer>
+                <Drawer
+                    className="ps-panel--mobile"
+                    placement="right"
+                    closable={false}
+                    onClose={this.handleDrawerClose}
+                    visible={this.state.cartDrawer}>
+                    <div className="ps-panel--wrapper">
+                        <div className="ps-panel__header">
+                            <h3>Alışveriş Sepetim</h3>
+                            <span
+                                className="ps-panel__close"
+                                onClick={this.handleDrawerClose}>
+                                <i className="icon-cross"></i>
+                            </span>
+                        </div>
+                        <div className="ps-panel__content">
+                            <PanelCartMobile />
                         </div>
                     </div>
                 </Drawer>
@@ -161,19 +161,19 @@ class NavigationList extends Component {
                     </a>
                     <a
                         className={`navigation__item ${
-                            categoriesDrawer === true ? 'active' : ''
-                        }`}
-                        onClick={this.handleShowCategoriesDrawer}>
-                        <i className="icon-list4"></i>
-                        {/* <span> Categories</span> */}
-                    </a>
-                    <a
-                        className={`navigation__item ${
                             searchDrawer === true ? 'active' : ''
                         }`}
                         onClick={this.handleShowSearchDrawer}>
                         <i className="icon-magnifier"></i>
                         {/* <span> Search</span> */}
+                    </a>
+                    <a
+                        className={`navigation__item ${
+                            categoriesDrawer === true ? 'active' : ''
+                        }`}
+                        onClick={this.handleShowCategoriesDrawer}>
+                        <i className="icon-user"></i>
+                        {/* <span> Categories</span> */}
                     </a>
                     <a
                         className={`navigation__item ${

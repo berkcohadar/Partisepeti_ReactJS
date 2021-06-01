@@ -22,12 +22,12 @@ const ProductOnCart = ({ product }) => {
                     onClick={(e) => handleRemoveCartItem(e)}>
                     <i className="icon-cross"></i>
                 </a>
-                <Link href="/product/[pid]" as={`/product/${product.id}`}>
-                    <a className="ps-product__title">{product.title}</a>
+                <Link href="/product/[pid]" as={`/product/${product.product.id}`}>
+                    <a className="ps-product__title">{product.item.title}</a>
                 </Link>
                 <p>
                     <small>
-                        ₺{product.products[0].cart_price} x {product.quantity}
+                        ₺{product.product.cart_price} x {product.quantity}
                     </small>
                 </p>
             </div>

@@ -15,7 +15,6 @@ const Product = ({ product }) => {
     const priceView = StrapiProductPrice(product);
     const thumbnailImage = StrapiProductThumbnail(product);
     const badgeView = StrapiProductBadge(product);
-
     return (
         <div className="ps-product ps-carousel-item">
             <div className="ps-product__thumbnail">

@@ -3453,7 +3453,8 @@
         }
 
         strong {
-            text-align: right;
+            max-width: 10em;
+            // text-align: left;
         }
     }
 

@@ -2,25 +2,29 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import { Form, Input } from 'antd';
+import { createOrder,orderInfo } from '~/store/order/action';
+import { connect } from 'react-redux';
 
 class FormCheckoutInformation extends Component {
     constructor(props) {
         super(props);
+        this.state = {};
     }
 
-    handleLoginSubmit = () => {
-        Router.push('/uyelik/shipping');
+    handleLoginSubmit = (form) => {
+        this.props.dispatch(orderInfo(form));
+        Router.push('/uyelik/payment');
     };
 
     render() {
         return (
             <Form
                 className="ps-form__billing-info"
-                onFinish={this.handleLoginSubmit}>
+                onFinish={this.handleLoginSubmit.bind(this)}>
                 <h3 className="ps-form__heading">İletişim Bilgileri</h3>
                 <div className="form-group">
                     <Form.Item
-                        name="name"
+                        name="email"
                         rules={[
                             {
                                 required: true,
@@ -183,5 +187,7 @@ class FormCheckoutInformation extends Component {
         );
     }
 }
-
-export default FormCheckoutInformation;
+const mapStateToProps = state => {
+    return state;
+};
+export default connect(mapStateToProps)(FormCheckoutInformation);

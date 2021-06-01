@@ -15,7 +15,9 @@ class Login extends Component {
 
     static getDerivedStateFromProps(props) {
         if (props.isLoggedIn === true) {
-            Router.push('/');
+            setTimeout(function () {
+                Router.push('/');
+            }, 1500);
         }
         return false;
     }

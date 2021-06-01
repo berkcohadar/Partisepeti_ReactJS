@@ -61,32 +61,60 @@ const HomeDefaultBanner = () => {
 
     // Views
     let mainCarouselView;
+    // {
+    //     id: 0,
+    //     url:
+    //         'https://images.pexels.com/photos/5422609/pexels-photo-5422609.jpeg',
+    //     alt: 'Yilbasi Isik Agac Christmas',
+    //     description:'Korkutmaya hazır mısın?'
+    // },
+    // {
+    //     id: 1,
+    //     url:
+    //         'https://images.pexels.com/photos/5727889/pexels-photo-5727889.jpeg',
+    //     alt: 'Sevgililer Gunu Valentines Day Hediye Sürpriz 14 Subat',
+    //     description:'Yılbaşını sevdiklerinizle geçirin!'
+    // },
+    // {
+    //     id: 2,
+    //     url:
+    //         'https://images.pexels.com/photos/6032713/pexels-photo-6032713.jpeg',
+    //     alt: 'Yilbasi Isik Agac Christmas',
+    //     description:'Ağacınızı süslediniz mi?'
+    // },
+    // {
+    //     id: 3,
+    //     url:
+    //         'https://images.unsplash.com/photo-1530098403657-0d93d64d087d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fHZhbGVudGluZXMlMjBkYXl8ZW58MHx8MHw%3D',
+    //     alt: 'Yilbasi Isik Agac Christmas',
+    //     description:'Folyo balonlarımıza göz attınız mı?'
+    // },
     const data = [
         {
             id: 0,
             url:
-                'https://images.pexels.com/photos/5422609/pexels-photo-5422609.jpeg',
+                'https://images.unsplash.com/photo-1576028133998-dfa6cf1ea901?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8',
             alt: 'Yilbasi Isik Agac Christmas',
             description:'Korkutmaya hazır mısın?'
         },
         {
             id: 1,
             url:
-                'https://images.pexels.com/photos/5727889/pexels-photo-5727889.jpeg',
+                'https://images.unsplash.com/photo-1606830733744-0ad778449672?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fGNocmlzdG1hcyUyMGluc3RhZ3JhbSUyMHN0b3J5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1',
             alt: 'Sevgililer Gunu Valentines Day Hediye Sürpriz 14 Subat',
             description:'Yılbaşını sevdiklerinizle geçirin!'
         },
         {
             id: 2,
             url:
-                'https://images.pexels.com/photos/6032713/pexels-photo-6032713.jpeg',
+                'https://images.pexels.com/photos/5634668/pexels-photo-5634668.jpeg',
             alt: 'Yilbasi Isik Agac Christmas',
             description:'Ağacınızı süslediniz mi?'
         },
         {
             id: 3,
             url:
-                'https://images.unsplash.com/photo-1530098403657-0d93d64d087d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fHZhbGVudGluZXMlMjBkYXl8ZW58MHx8MHw%3D',
+                'https://images.pexels.com/photos/5635101/pexels-photo-5635101.jpeg',
             alt: 'Yilbasi Isik Agac Christmas',
             description:'Folyo balonlarımıza göz attınız mı?'
         },
@@ -163,8 +191,8 @@ const HomeDefaultBanner = () => {
                     {data.map((slide, index) => {
                         return (
                             <div
-                                onMouseEnter={() => handleOnMouseOver()}
-                                onMouseLeave={() => handleOnMouseOut()}
+                                // onMouseEnter={() => handleOnMouseOver()}
+                                // onMouseLeave={() => handleOnMouseOut()}
                                 className={
                                     index === bannerItems ? 'home-new-slide active' : 'home-new-slide'
                                 }

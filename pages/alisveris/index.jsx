@@ -126,7 +126,6 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
                 : (brandsView['Boyut'] = [item.size]);
             }
         });
-        console.log(brandsView);
     }
     //...
 

@@ -242,16 +242,22 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 20px 30px;
-    border-top: 1px solid #ccc;
-    background-color: #ffffff;
+    padding: 30px 30px;
+    height: 90px;
+    background-color: $color-1st;
+    box-shadow: 0px 0px 12px 0px #000;
+    border-radius: 8px 8px 0 0;
+    // border-radius: 40px 40px 0 0; /*if iphone */
+    z-index: 999;
 
     .navigation__item {
         text-align: center;
 
         i {
             font-size: 26px;
-            font-weight: 1000;
+            font-weight: 500;
+            color: $color-heading;
+            text-shadow: 0px 0px 2px $color-heading;
         }
 
         span {

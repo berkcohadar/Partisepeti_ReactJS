@@ -8,13 +8,14 @@ class CartRepository {
     async addToCart(product) {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         const email = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).email;
-        const reponse = await axios({
+
+        const response = await axios({
             method: 'post',
             url: baseUrl + '/orders/add-to-cart/',
             headers: {"Content-Type": "application/json", "Authorization": "JWT "+token}, 
             data: JSON.stringify({
                 customer: email,
-                product: product.products[0].id,
+                product: product.product.id,
                 quantity: product.quantity,
               }),
             })
@@ -22,11 +23,11 @@ class CartRepository {
                 return response.data.id;
             })
             .catch((error) =>  {return { error: JSON.stringify(error) }});
-        return reponse;
+        return response;
     }
     async removeFromCart(cartItemId){
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
-        const reponse = await axios({
+        const response = await axios({
             method: 'delete',
             url: baseUrl + '/orders/remove-from-cart/'+cartItemId,
             headers: {"Content-Type": "application/json", "Authorization": "JWT "+token}, 
@@ -35,11 +36,11 @@ class CartRepository {
                 return response;
             })
             .catch((error) =>  {return { error: JSON.stringify(error) }});
-        return reponse;
+        return response;
     }
 
     // async addToCartGuest(e) {
-    //     const reponse = await axios({
+    //     const response = await axios({
     //         method: 'post',
     //         url: baseUrl + 'orders/guest/add-to-cart/',
     //         headers: {"Content-Type": "application/json"}, 
@@ -53,20 +54,20 @@ class CartRepository {
     //             return response.data;
     //         })
     //         .catch((error) => ({ error: JSON.stringify(error) }));
-    //     return reponse;
+    //     return response;
     // }
     async getCart() {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
-        const reponse = await axios({
+        const response = await axios({
             method: 'get',
-            url: baseUrl + '/customers/profile/',
-            headers: {"Content-Type": "application/json", "Authorization": "Token "+token,}, 
+            url: baseUrl + '/orders/cart/',
+            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token,}, 
             })
             .then((response) => {
                 return response.data;
             })
             .catch((error) => ({ error: JSON.stringify(error) }));
-        return reponse.results[0];
+        return response;
     }
 }
 

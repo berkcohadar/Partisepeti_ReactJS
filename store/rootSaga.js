@@ -10,6 +10,7 @@ import WishlistSaga from './wishlist/saga';
 import CollectionSaga from './collection/saga';
 import MediaSaga from './media/saga';
 import App from './app/saga';
+import OrderSaga from './order/saga';
 
 export default function* rootSaga() {
     yield all([
@@ -23,6 +24,7 @@ export default function* rootSaga() {
         CollectionSaga(),
         MediaSaga(),
         UserSaga(),
+        OrderSaga(),
         App(),
     ]);
 }

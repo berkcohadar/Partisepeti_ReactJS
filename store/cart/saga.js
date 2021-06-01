@@ -1,4 +1,4 @@
-import { all, put, takeEvery , call} from 'redux-saga/effects';
+import { all, put, takeEvery, call } from 'redux-saga/effects';
 import { notification } from 'antd';
 import { polyfill } from 'es6-promise';
 import CartRepository from '../../repositories/CartRepository';
@@ -19,60 +19,122 @@ const modalSuccess = (type) => {
         message: 'Eklendi!',
         // description: 'This product has been added to your cart!',
         duration: 2,
-        className:"antd-notification",
-        closeIcon:null,
+        className: 'antd-notification',
+        closeIcon: null,
         style: {
-            width:'200px',
-            height:'56px',
-            color:'rgb(28,26,24)',
-            borderRadius:'8px',
-            boxShadow:'0px 0px 6px 0px rgba(28,26,24, 0.8)',
+            width: '200px',
+            height: '56px',
+            color: 'rgb(28,26,24)',
+            borderRadius: '8px',
+            boxShadow: '0px 0px 6px 0px rgba(28,26,24, 0.8)',
             backgroundColor: 'rgba(255, 255, 255, .15)',
-            backdropFilter:'blur(8px)',
-
-          },
-        icon: <i className='icon-check' style={{fontWeight:'900', fontSize:'24px', backgroundColor:'#a8e063', backgroundImage: 'linear-gradient(180deg, #56ab2f, #a8e063)', backgroundSize:'100%',backgroundClip:'text',WebkitTextFillColor:'transparent',backgroundRepeat:'repeat',WebkitBackgroundClip:'text' }} />,
+            backdropFilter: 'blur(8px)',
+        },
+        icon: (
+            <i
+                className="icon-check"
+                style={{
+                    fontWeight: '900',
+                    fontSize: '24px',
+                    backgroundColor: '#a8e063',
+                    backgroundImage:
+                        'linear-gradient(180deg, #56ab2f, #a8e063)',
+                    backgroundSize: '100%',
+                    backgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundRepeat: 'repeat',
+                    WebkitBackgroundClip: 'text',
+                }}
+            />
+        ),
     });
 };
-
 
 const modalWarning = (type) => {
     notification[type]({
         placement: 'bottomRight',
-        message: "Silindi!" ,
+        message: 'Silindi!',
         // description: 'This product has been removed from your cart!',
         duration: 2,
-        className:"antd-notification",
+        className: 'antd-notification',
         style: {
-            width:'200px',
-            color:'rgb(28,26,24)',
-            borderRadius:'8px',
-            boxShadow:'0px 0px 6px 0px rgba(28,26,24, 0.8)',
+            width: '200px',
+            color: 'rgb(28,26,24)',
+            borderRadius: '8px',
+            boxShadow: '0px 0px 6px 0px rgba(28,26,24, 0.8)',
             backgroundColor: 'rgba(255, 255, 255, .15)',
-            backdropFilter:'blur(8px)',
-          },
-        icon: <i className='icon-cross' style={{fontWeight:'900', fontSize:'24px', backgroundColor:'#a8e063', backgroundImage: 'linear-gradient(180deg, #56ab2f, #a8e063)', backgroundSize:'100%',backgroundClip:'text',WebkitTextFillColor:'transparent',backgroundRepeat:'repeat',WebkitBackgroundClip:'text' }} />,
+            backdropFilter: 'blur(8px)',
+        },
+        icon: (
+            <i
+                className="icon-cross"
+                style={{
+                    fontWeight: '900',
+                    fontSize: '24px',
+                    backgroundColor: '#a8e063',
+                    backgroundImage:
+                        'linear-gradient(180deg, #56ab2f, #a8e063)',
+                    backgroundSize: '100%',
+                    backgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundRepeat: 'repeat',
+                    WebkitBackgroundClip: 'text',
+                }}
+            />
+        ),
     });
 };
 
 export const calculateAmount = (obj) => {
-    let total=0;
-    obj.map((item) => {total += item.quantity * (item.products[0].cart_price)});
+    let total = 0;
+    obj.map((item) => {
+        total += item.quantity * item.product.cart_price;
+    });
     return total;
-}
+};
 
 function* getCartSaga() {
+    console.log("\n\n\nUPDATE_CART\n\n",)
     try {
-        if(JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).isLoggedIn) {
-            // const data = yield call(CartRepository.getCart);
-            // if(data.error){
-            //     yield put(getCartError(data.error));
-            // } else{
-            //     yield put(updateCartSuccess(data));
-            // }
-            yield put(getCartSuccess());
-        }
-        else{
+        if ( JSON.parse( JSON.parse(localStorage.getItem('persist:partisepeti')).auth ).isLoggedIn ) {
+            const response = yield call(CartRepository.getCart);
+            if (response.error) {
+                yield put(getCartError(data.error));
+            } else {
+                const localCart = JSON.parse(
+                    localStorage.getItem('persist:partisepeti')
+                ).cart;
+                let currentCart = JSON.parse(localCart);
+                currentCart.cartItems = [];
+                currentCart.cartTotal = 0;
+                currentCart.amount = 0;
+                response.results.map((key, index) => {
+                    let product = {
+                        product: {
+                            id: key.product.id,
+                            store: key.product.store,
+                            market_price: key.product.market_price,
+                            cart_price: key.product.cart_price,
+                            campaign_price: key.product.campaign_price,
+                        },
+                        item: {
+                            id: key.item.id,
+                            barcode: key.item.barcode,
+                            title: key.item.title,
+                            brand: key.item.brand,
+                            thumbnail: key.item.thumbnail,
+                        },
+                        quantity: key.quantity,
+                        cartItemId: key.id,
+                    };
+                    currentCart.cartItems.push(product);
+                    currentCart.cartTotal++;
+                });
+                console.log("\n\n\nCURRENT CART",currentCart)
+                currentCart.amount = calculateAmount(currentCart.cartItems);
+                yield put(updateCartSuccess(currentCart));
+            }
+        } else {
             yield put(getCartSuccess());
         }
     } catch (err) {
@@ -82,39 +144,70 @@ function* getCartSaga() {
 
 function* addItemSaga(payload) {
     if (!payload.product.quantity) {
-        payload.product.quantity = 1
+        payload.product.quantity = 1;
     }
     try {
-        const { product } = payload;
-        const localCart = JSON.parse(localStorage.getItem('persist:partisepeti')).cart;
+        const product = {
+            product: {
+                id: payload.product.products[0].id,
+                store: payload.product.products[0].store,
+                market_price: payload.product.products[0].market_price,
+                cart_price: payload.product.products[0].cart_price,
+                campaign_price: payload.product.products[0].campaign_price,
+            },
+            item: {
+                id: payload.product.id,
+                barcode: payload.product.barcode,
+                title: payload.product.title,
+                brand: payload.product.brand,
+                thumbnail: payload.product.thumbnail,
+            },
+            quantity: payload.product.quantity,
+            cartItemId: undefined,
+        };
+
+        const localCart = JSON.parse(
+            localStorage.getItem('persist:partisepeti')
+        ).cart;
         let currentCart = JSON.parse(localCart);
         let existItem = currentCart.cartItems.find(
-            (item) => item.id === product.id
+            (item) => item.product.id === product.product.id
         );
         if (existItem) {
             existItem.quantity += product.quantity;
-            if(JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).isLoggedIn) {
-                const data =  yield call(CartRepository.addToCart, existItem);
-                if(data.error){
+            if (
+                JSON.parse(
+                    JSON.parse(localStorage.getItem('persist:partisepeti')).auth
+                ).isLoggedIn
+            ) {
+                const data = yield call(CartRepository.addToCart, existItem);
+                if (data.error) {
                     existItem.quantity -= product.quantity;
                     yield put(getCartError(data.error));
-                } else{
+                } else {
                     existItem.cartItemId = data;
                 }
             }
         } else {
-            if(JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).isLoggedIn) {
+            if (
+                JSON.parse(
+                    JSON.parse(localStorage.getItem('persist:partisepeti')).auth
+                ).isLoggedIn
+            ) {
                 const data = yield call(CartRepository.addToCart, product);
-                if(data.error){
+                if (data.error) {
                     yield put(getCartError(data.error));
-                }
-                else{
+                } else {
+                    /* if error occured */
                     product.cartItemId = data;
                     currentCart.cartTotal++;
                     currentCart.cartItems.push(product);
                 }
+            } else {
+                /* user not auth */
+                currentCart.cartTotal++;
+                currentCart.cartItems.push(product);
             }
-
         }
 
         currentCart.amount = calculateAmount(currentCart.cartItems);
@@ -134,13 +227,18 @@ function* removeItemSaga(payload) {
         let index = localCart.cartItems.findIndex(
             (item) => item.id === product.id
         );
-        if(JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).isLoggedIn) {
-            const data = yield call(CartRepository.removeFromCart, product.cartItemId);
-            console.log("REMOVE ITEM - RESPONSE\n",data);
-            if(data.error){
+        if (
+            JSON.parse(
+                JSON.parse(localStorage.getItem('persist:partisepeti')).auth
+            ).isLoggedIn
+        ) {
+            const data = yield call(
+                CartRepository.removeFromCart,
+                product.cartItemId
+            );
+            if (data.error) {
                 yield put(getCartError(data.error));
-            }
-            else{
+            } else {
                 localCart.cartTotal = localCart.cartTotal - 1; //product.quantity
                 localCart.cartItems.splice(index, 1);
                 localCart.amount = calculateAmount(localCart.cartItems);
@@ -150,8 +248,7 @@ function* removeItemSaga(payload) {
                     localCart.cartTotal = 0;
                 }
             }
-        }
-        else{
+        } else {
             localCart.cartTotal = localCart.cartTotal - 1; //product.quantity
             localCart.cartItems.splice(index, 1);
             localCart.amount = calculateAmount(localCart.cartItems);
@@ -169,7 +266,8 @@ function* removeItemSaga(payload) {
 }
 
 function* increaseQtySaga(payload) {
-    try {selectedItem
+    try {
+        selectedItem;
         const { product } = payload;
         let localCart = JSON.parse(
             JSON.parse(localStorage.getItem('persist:partisepeti')).cart
@@ -180,10 +278,17 @@ function* increaseQtySaga(payload) {
         if (selectedItem) {
             selectedItem.quantity++;
             localCart.amount = calculateAmount(localCart.cartItems);
-            if(JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).isLoggedIn) {
-                const data =  yield call(CartRepository.addToCart, existItem);
+            if (
+                JSON.parse(
+                    JSON.parse(localStorage.getItem('persist:partisepeti')).auth
+                ).isLoggedIn
+            ) {
+                const data = yield call(CartRepository.addToCart, existItem);
             } else {
-                const data = yield call(CartRepository.addToCartGuest, existItem);
+                const data = yield call(
+                    CartRepository.addToCartGuest,
+                    existItem
+                );
             }
         }
         yield put(updateCartSuccess(localCart));
@@ -205,10 +310,17 @@ function* decreaseItemQtySaga(payload) {
         if (selectedItem) {
             selectedItem.quantity--;
             localCart.amount = calculateAmount(localCart.cartItems);
-            if(JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).isLoggedIn) {
-                const data =  yield call(CartRepository.addToCart, existItem);
+            if (
+                JSON.parse(
+                    JSON.parse(localStorage.getItem('persist:partisepeti')).auth
+                ).isLoggedIn
+            ) {
+                const data = yield call(CartRepository.addToCart, existItem);
             } else {
-                const data = yield call(CartRepository.addToCartGuest, existItem);
+                const data = yield call(
+                    CartRepository.addToCartGuest,
+                    existItem
+                );
             }
         }
         yield put(updateCartSuccess(localCart));

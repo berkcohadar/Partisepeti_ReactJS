@@ -235,6 +235,10 @@
                 }
                 .ps-product--cart {
                     max-width: 500px;
+                
+                    .ps-product__thumbnail{
+                        min-width: 40%;
+                    }
                 }
                 &:first-child {
                     text-align: left;

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Link from 'next/link';
 import { Radio, Select } from 'antd';
 import ModulePaymentOrderSummary from '~/components/partials/account/modules/ModulePaymentOrderSummary';
+import { createOrder,orderInfo } from '~/store/order/action';
+import Router from 'next/router';
 
 const { Option } = Select;
 
@@ -17,16 +19,20 @@ class Payment extends Component {
     handleChangePaymentMethod = (e) => {
         this.setState({ method: e.target.value });
     };
-
+    handleMakePayment = () => {
+        this.props.dispatch(createOrder(this.props.orderInfo));
+        // while(this.props.paymentUrl=="");
+        // Router.push(this.props.paymentUrl);
+    };
     render() {
-        let month = [],
-            year = [];
-        for (let i = 1; i <= 12; i++) {
-            month.push(i);
-        }
-        for (let i = 2019; i <= 2050; i++) {
-            year.push(i);
-        }
+        // let month = [],
+        //     year = [];
+        // for (let i = 1; i <= 12; i++) {
+        //     month.push(i);
+        // }
+        // for (let i = 2019; i <= 2050; i++) {
+        //     year.push(i);
+        // }
         return (
             <div className="ps-checkout ps-section--shopping">
                 <div className="container">
@@ -35,37 +41,32 @@ class Payment extends Component {
                     </div>
                     <div className="ps-section__content">
                         <div className="row">
-                            <div className="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                            <div className="col-xl-7 col-lg-7 col-md-12 col-sm-12">
                                 <div className="ps-block--shipping">
                                     <div className="ps-block__panel">
                                         <figure>
-                                            <small>İletişim</small>
-                                            <p>test@gmail.com</p>
+                                            <strong>İletişim</strong>
+                                            <p>{this.props.orderInfo.email}</p>
                                             <Link href="/uyelik/checkout">
                                                 <a>Değiştir</a>
                                             </Link>
                                         </figure>
                                         <figure>
-                                            <small>Adres</small>
+                                            <strong>Adres</strong>
                                             <p>
-                                                2015 South Street, Midland,
-                                                Texas
+                                            {this.props.orderInfo.address}
                                             </p>
                                             <Link href="/uyelik/checkout">
                                                 <a>Değiştir</a>
                                             </Link>
                                         </figure>
                                     </div>
-                                    <h4>Teslimat</h4>
-                                    <div className="ps-block__panel">
-                                        <figure>
-                                            <small>
-                                                International Shipping
-                                            </small>
-                                            <strong>$20.00</strong>
-                                        </figure>
+                                    <div className="form-group">
+                                        <button className="ps-btn ps-btn--fullwidth" onClick={this.handleMakePayment}>
+                                            Siparişi Tamamla
+                                        </button>
                                     </div>
-                                    <h4>Kart Bilgileri</h4>
+                                    {/* <h4>Kart Bilgileri</h4>
                                     <div className="ps-block--payment-method">
                                         <div className="ps-block__header">
                                             <Radio.Group
@@ -182,18 +183,18 @@ class Payment extends Component {
                                                 </div>
                                             )}
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div className="ps-block__footer">
-                                        <Link href="/uyelik/shipping">
+                                        <Link href="/uyelik/checkout">
                                             <a>
                                                 <i className="icon-arrow-left mr-2"></i>
-                                                Return to shipping
+                                                Teslimat Bilgilerini Değiştir
                                             </a>
                                         </Link>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 ">
+                            <div className="col-xl-5 col-lg-5 col-md-12 col-sm-12 ">
                                 <div className="ps-form__orders">
                                     <ModulePaymentOrderSummary />
                                 </div>
@@ -205,5 +206,8 @@ class Payment extends Component {
         );
     }
 }
+const mapStateToProps = state => {
+    return state.order;
+};
+export default connect(mapStateToProps)(Payment);
 
-export default connect()(Payment);

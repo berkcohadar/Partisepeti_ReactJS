@@ -64,43 +64,11 @@ class ShoppingCart extends Component {
                                                     <ProductCart
                                                         product={product}
                                                     />
-                                                    {/*<div className="ps-product--cart">
-                                                    <div className="ps-product__thumbnail">
-                                                        <Link
-                                                            href="/product/[pid]"
-                                                            as={`/product/${product.id}`}>
-                                                            <a>
-                                                                <img
-                                                                    src={
-                                                                        product.thumbnail
-                                                                    }
-                                                                    alt="partisepeti"
-                                                                />
-                                                            </a>
-                                                        </Link>
-                                                    </div>
-                                                    <div className="ps-product__content">
-                                                        <Link
-                                                            href="/product/[pid]"
-                                                            as={`/product/${product.id}`}>
-                                                            <a className="ps-product__title">
-                                                                {product.title}
-                                                            </a>
-                                                        </Link>
-                                                        <p>
-                                                            Satıcı:
-                                                            <strong>
-                                                                {product.vendor}
-                                                            </strong>
-                                                        </p>
-                                                    </div>
-                                                </div>*/}
                                                 </td>
                                                 <td className="price">
                                                     ₺{' '}
                                                     {
-                                                        product.products[0]
-                                                            .cart_price
+                                                        product.product.cart_price
                                                     }
                                                 </td>
                                                 <td>
@@ -135,8 +103,7 @@ class ShoppingCart extends Component {
                                                 <td>
                                                     ₺
                                                     {product.quantity *
-                                                        product.products[0]
-                                                            .cart_price}
+                                                        product.product.cart_price}
                                                 </td>
                                                 <td>
                                                     <a

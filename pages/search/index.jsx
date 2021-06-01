@@ -94,26 +94,64 @@ const SearchPage = ({ query }) => {
     }
 
     return (
-        <ContainerPage title={`Search results for: "${keyword}" `} boxed={true}>
-            <div className="ps-page">
-                <BreadCrumb breacrumb={breadcrumb} />
-            </div>
-            <div className="container">
-                <div className="ps-shop ps-shop--search">
-                    <div className="container">
-                        <div className="ps-shop__header">
-                            <h1>
-                            Arama sonuçları gösteriliyor: "<strong>{keyword}</strong>"
-                            </h1>
+        <ContainerShop title="Shop">
+            <div className="ps-page--shop">
+                <BreadCrumb breacrumb={breadCrumb} layout="fullwidth" />
+                <div className="ps-container">
+                    <div className="ps-layout--shop">
+                        <div className="ps-layout__left">
+                            <WidgetShopCategories productItems={productItems} />
+                            <aside className="widget widget_shop widget_shop--brand">
+                                <figure>
+                                    {brandsView
+                                        ? Object.keys(brandsView).map((item, index) => {
+                                              return (
+                                                  <div>
+                                                      <h5>{item} </h5>
+                                                      {brandsView[item].map((subItem) => (
+                                                          <div className="ps-checkbox">
+                                                              <input
+                                                                  className="form-control"
+                                                                  type="checkbox"
+                                                                  id={subItem[0]}
+                                                                  onChange={() => handleItemFilter(subItem[1])}
+                                                                  checked={checked_filters?checked_filters.includes(""+subItem[1]):false}
+                                                              />
+                                                              <label
+                                                                  htmlFor={
+                                                                    subItem[0]
+                                                                  }>
+                                                                  {subItem[0]}
+                                                              </label>
+                                                          </div>
+                                                      ))}
+                                                  </div>
+                                              );
+                                          })
+                                        : null}
+                                </figure>
+                            </aside>
+                            <WidgetShopFilterByPriceRange />
                         </div>
-                        <div className="ps-shop__content">
-                            {statusView}
-                            {shopItemsView}
+                        <div className="ps-layout__right">
+                            <ShopItems
+                                productItems={productItems}
+                                columns={6}
+                                pageSize={18}
+                            />
+                            <ProductGroupByCarousel
+                                collectionSlug="3"
+                                title="Best Sale Items"
+                            />
+                            <ProductGroupByCarousel
+                                collectionSlug="1"
+                                title="Recommended Items"
+                            />
                         </div>
                     </div>
                 </div>
             </div>
-        </ContainerPage>
+        </ContainerShop>
     );
 };
 
@@ -122,3 +160,24 @@ SearchPage.getInitialProps = async ({ query }) => {
 };
 
 export default SearchPage;
+
+<ContainerPage title={`Search results for: "${keyword}" `} boxed={true}>
+<div className="ps-page">
+    <BreadCrumb breacrumb={breadcrumb} />
+</div>
+<div className="container">
+    <div className="ps-shop ps-shop--search">
+        <div className="container">
+            <div className="ps-shop__header">
+                <h1>
+                Arama sonuçları gösteriliyor: "<strong>{keyword}</strong>"
+                </h1>
+            </div>
+            <div className="ps-shop__content">
+                {statusView}
+                {shopItemsView}
+            </div>
+        </div>
+    </div>
+</div>
+</ContainerPage>

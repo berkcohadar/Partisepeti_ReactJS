@@ -53,7 +53,11 @@ class MiniCart extends Component {
         return (
             <div className="ps-cart--mini">
                 <a className="header__extra" href="#">
-                {cartTotal ? <i className="icon-cart-full"></i> : <i className="icon-cart"></i>}
+                    {cartTotal ? (
+                        <i className="icon-cart-full"></i>
+                    ) : (
+                        <i className="icon-cart"></i>
+                    )}
                     <span>
                         <i>{cartTotal ? cartTotal : 0}</i>
                     </span>

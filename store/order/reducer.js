@@ -1,0 +1,33 @@
+import { actionTypes } from './action';
+
+export const initialState = {
+    orders:[],
+    orderInfo:null,
+    paymentScript: "",
+    paymentUrl: "",
+};
+
+function reducer(state = initialState, action) {
+    switch (action.type) {
+        case actionTypes.GET_ORDER_SUCCESS:
+            return {
+                ...state,
+                ...{ orders: action.payload },
+            };
+        case actionTypes.ORDER_INFO:
+            return {
+                ...state,
+                ...{ orderInfo: action.payload },
+            };
+        case actionTypes.CREATE_ORDER_FORM_SUCCESS:
+            return {
+                ...state,
+                ...{ paymentScript: action.payload.checkoutFormContent },
+                ...{ paymentUrl: action.payload.paymentPageUrl },
+            };
+        default:
+            return state;
+    }
+}
+
+export default reducer;

@@ -482,10 +482,17 @@
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        padding: 10px 30px;
+        padding: 10px 10px;
         border-bottom: none;
 
         .navigation__left {
+            display: flex;
+            align-items: center;
+            .ps-logo{
+                width: 70%;
+            }
+        }
+        .navigation__right{
             display: flex;
             align-items: center;
         }
@@ -579,7 +586,7 @@
         }
 
         .navigation--mobile {
-            padding: 10px 20px;
+            padding: 10px 10px;
         }
     }
 

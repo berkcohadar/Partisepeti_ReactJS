@@ -50,8 +50,8 @@ const ProductGroupByCarousel = ({ collectionSlug, title, layout = 'standard' }) 
     
     useEffect(() => {
         getProducts();
-        const interval = setInterval(changeSlide, 5000);
-        return () => clearInterval(interval);
+        // const interval = setInterval(changeSlide, 5000);
+        // return () => clearInterval(interval);
     }, []);
 
     const carouselFullwidth = {

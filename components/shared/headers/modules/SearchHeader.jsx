@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback  } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import { Spin } from 'antd';
@@ -43,7 +43,17 @@ const SearchHeader = () => {
         e.preventDefault();
         Router.push(`/search?keyword=${keyword}`);
     }
-
+    const escFunction = useCallback((event) => {
+        if(event.keyCode === 27) {
+            handleClearKeyword();
+          //Do whatever when esc is pressed
+        }
+      }, []);
+    function handleClickOutside(event) {
+        if (inputEl.current && !inputEl.current.contains(event.target)) {
+            handleClearKeyword();
+        }
+    }
     useEffect(() => {
         setLoading(true);
         const data = CollectionRepository.getCollections();
@@ -74,6 +84,13 @@ const SearchHeader = () => {
             setLoading(false);
             setIsSearch(false);
         }
+        document.addEventListener("keydown", escFunction, false);
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+        document.removeEventListener("keydown", escFunction, false);
+        document.removeEventListener("mousedown", handleClickOutside);
+        };
     }, [debouncedSearchTerm]);
 
     // Views
@@ -106,7 +123,7 @@ const SearchHeader = () => {
                 </option>
             ))
         } else{
-            selectOptionView = <p>Bekleniyor...</p>;
+            selectOptionView = <option value={0} key={"loading"}>Bekleniyor...</option>;
         }
         if (keyword !== '') {
             clearTextView = (

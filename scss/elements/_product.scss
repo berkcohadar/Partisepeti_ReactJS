@@ -25,8 +25,10 @@
     border: 1px solid transparent;
     border-radius: 5px;
     border-bottom: none;
+    border: none;
     @extend %list-reset;
-
+    // min-width: 200px;
+    max-width: 270px;
     .ant-rate {
         .ant-rate-star {
             i {
@@ -50,11 +52,16 @@
 
     .ps-product__price {
         position: relative;
-        font-size: 16px;
+        font-size: 19px;
         color: $color-heading;
+        margin-top: 18px;
+        margin-bottom: 0px;
+        font-weight: 600;
 
+        text-align: justify;  /* For Edge */
+        text-align-last: right;
         &.sale {
-            color: #f30;
+            color: #C1554D;
 
             del {
                 color: $color-text;
@@ -70,12 +77,9 @@
         padding: 10px 25px;
         background-color: rgba($color-psbutton,0.6);
         transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0s;
-        transition-delay: 0.2s;
         border-radius: 100%;
-
+        transition: background-color 0.2s;
         li {
-            // margin: 0;
-            // margin-right: 6px;
             max-width: 40px;
             a {
                 display: flex;
@@ -85,8 +89,9 @@
                 height: 28px;
                 border-radius: 50%;
                 margin-top:25%;
+                
                 i {
-                    color: black;
+                    color: $color-1st;
                     font-size: 27px;
                     @include transform(scale3d(1, 1, 1));
                     transition: all 0.2s cubic-bezier(0.7, 0, 0.3, 1) 0s;
@@ -152,15 +157,12 @@
         font-size: 14px;
         line-height: 1.2em;
         min-height: 3.6rem;
-        color: #06c;
+        font-weight: 500;
+        color: $color-1st;
         --max-lines: 2;
         max-height: calc(1.2em * var(--max-lines));
         overflow: hidden;
         padding-right: 1rem;
-
-        &:hover {
-            color: $color-1st;
-        }
     }
 
     .ps-product__progress-bar {
@@ -218,11 +220,12 @@
         }
         .ps-product__actions {
             position: absolute;
-            bottom: 0;
-            left: 50%;
+            opacity: 0;
+            bottom: -30%;
             height: 150px;
             border-radius: 100%;
-            @include transform(translate(-50%, 95%));
+            // left: 50%;
+            // @include transform(translate(-50%, 115%));
         }
     }
 
@@ -262,7 +265,9 @@
     &:hover {
         .ps-product__thumbnail {
             .ps-product__actions {
-                @include transform(translate(-50%, 65%));
+                // @include transform(translate(-50%, 95%));
+                opacity: 1;
+
             }
         }
 
@@ -331,6 +336,7 @@
     border-radius:5px;
     box-shadow: 0px 0px 2px 0px #909090;  
     transition: all .2s;
+    max-width: none;
     > * {
         width: 100%;
     }
@@ -2379,32 +2385,37 @@
     align-items: flex-start;
     border: none;
     box-shadow: none;
-    margin-bottom: 5px;
-    border-radius: 0px;
+    margin: 4px;
+
+    border-radius: 6px;
+    cursor: pointer;
+    // transition: all 0.3s ease-in-out;
     > * {
         flex-basis: 100%;
     }
-
+    padding: 12px !important;
     .ps-product__title {
         padding-bottom: 0;
         margin-bottom: 0;
     }
 
     .ps-product__price {
-        font-size: 12px;
+        font-size: 17px;
+        margin-top: 0;
         margin-bottom: 0;
+
     }
 
     .ps-product__thumbnail {
-        max-width: 60px;
-        min-width: 60px;
-        height: 60px;
-        min-height: 60px;
-        max-height: 60px;
+        max-width: 80px;
+        min-width: 80px;
+        height: 80px;
+        min-height: 80px;
+        max-height: 80px;
         img{
-            height: 60px;
-            min-height: 60px;
-            max-height: 60px;
+            height: 80px;
+            min-height: 80px;
+            max-height: 80px;
         }
     }
 
@@ -2413,10 +2424,11 @@
     }
 
     &:hover {
-        border-radius: 0px;
+        border-radius: 6px;
+        box-shadow: 0px 0px 8px 0px #909090;
         border: none;
-        border-bottom: 1px solid $color-1st !important;
-        box-shadow: none;
+        // border-bottom: 1px solid $color-1st !important;
+        // box-shadow: none;
     }
 
     @include media('<xs') {

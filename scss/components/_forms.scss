@@ -141,7 +141,7 @@
         z-index: 999;
         background-color: #fff;
         border: 1px solid #eaeaea;
-        padding: 10px 20px;
+        padding: 10px 10px;
         @include transform(scale3d(1, 1, 0));
         transition: all 0.4s ease;
         opacity: 0;
@@ -159,7 +159,6 @@
         }
 
         .ps-product {
-            border-bottom: 1px solid #eaeaea;
             padding-bottom: 10px;
         }
     }

@@ -324,6 +324,11 @@
   z-index: 1010;
   max-width: calc(100vw - 32px);
   margin-right: 24px; }
+
+.ant-form{
+  position: sticky;
+  top:10rem;
+}
 /*
 
 export const OrderItem = styled.div`

@@ -87,7 +87,7 @@ const ProductItems = ({ products, columns = 4 }) => {
         <div className="ps-shopping">
             <div className="ps-shopping__header">
                 <p>
-                    <strong className="mr-2">{total}</strong>
+                    <strong className="mr-2">{productItems.length}</strong>
                     Ürün bulundu
                 </p>
                 <div className="ps-shopping__actions">

@@ -270,10 +270,13 @@ figure {
     i {
         margin-right: 0.5em;
         &.fa-star {
-            color: $color-1st;
+            color: $color-psbutton;
         }
         &.fa-star-o {
             color: #999;
+        }
+        &.fa-star-half-o{
+            color: $color-psbutton;
         }
         &:last-child {
             margin-right: 0;

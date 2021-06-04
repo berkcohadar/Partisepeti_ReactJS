@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseDomain = 'http://192.168.1.10:8000/api'; // API for products
+const baseDomain = 'http://192.168.1.21:8000/api'; // API for products
 export const basePostUrl = 'https://beta.apinouthemes.com'; // API for post
 export const baseStoreURL = 'https://beta.apinouthemes.com'; // API for vendor(store)
 

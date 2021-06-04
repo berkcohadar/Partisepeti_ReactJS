@@ -88,7 +88,7 @@ const ModuleStoreItems = ({ products, columns = 4, pageSize = 12 }) => {
         <div className="ps-shopping">
             <div className="ps-shopping__header">
                 <p>
-                    <strong className="mr-2">{total}</strong>
+                    <strong className="mr-2">{productItems.length}</strong>
                     Ürün bulundu
                 </p>
                 <div className="ps-shopping__actions">

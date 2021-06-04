@@ -79,7 +79,7 @@ export const carouselInSidebar = {
 export const carouselFullwidth = {
     dots: false,
     infinite: true,
-    speed: 750,
+    speed: 500,
     slidesToShow: 6,
     slidesToScroll: 3,
     arrows: true,

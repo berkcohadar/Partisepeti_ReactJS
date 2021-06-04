@@ -413,7 +413,8 @@
 
 .widget_same-brand {
     border: 1px solid #e1e1e1;
-    border-radius:5px;
+    border-radius:5px; 
+
 
     h3 {
         padding: 14px 20px;
@@ -427,18 +428,44 @@
     }
 
     .widget__content {
+        // max-height: 60vh;
+        // overflow-y: scroll;
+        // overflow-x: hidden;
     }
 
     .ps-product {
         background-color: #fff;
 
-        height: 150px;
+        height: 180px;
         margin-bottom: 10px;
-        border: 1px solid transparent;
         transition: all 0.2s ease;
         border-radius: 8px;
         box-shadow: none;
         display: flex;
+        overflow: hidden;
+        cursor: pointer;
+        max-width: none;
+        border:none;
+        .ps-product__price {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .ps-product__title{
+            width: 80%;
+        }
+        .ps-product__remove{
+            display: none;
+            font-size: 16px;
+        }
+        .ps-product__container{
+            width: 100%;
+        }
+        .ps-product__actions{
+            display: none; /* no drawer menu */
+        }
         .ps-product__content {
             display: block;
         }
@@ -447,7 +474,8 @@
         }
         .ps-product__thumbnail{
             zoom: 0.65;
-            height: inherit;
+            overflow: hidden;
+            height: inherit; /* foto kaymasi mi bu*/
             min-height: inherit;
             max-height: inherit;
             width: 40%;
@@ -455,8 +483,6 @@
             max-width: 40%;
         }
         &:hover {
-            border-bottom: 1px solid silver;
-
             .ps-product__content {
                 display: block;
                 @include show;
@@ -465,6 +491,12 @@
                 &.hover {
                     display: none;
                 }
+            }
+            .ps-product__remove{
+                display: flex;
+                position: absolute;
+                top:1.5rem;
+                right: 1.5rem;                
             }
         }
     }

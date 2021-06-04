@@ -94,7 +94,6 @@ export const calculateAmount = (obj) => {
 };
 
 function* getCartSaga() {
-    console.log("\n\n\nUPDATE_CART\n\n",)
     try {
         if ( JSON.parse( JSON.parse(localStorage.getItem('persist:partisepeti')).auth ).isLoggedIn ) {
             const response = yield call(CartRepository.getCart);
@@ -130,7 +129,6 @@ function* getCartSaga() {
                     currentCart.cartItems.push(product);
                     currentCart.cartTotal++;
                 });
-                console.log("\n\n\nCURRENT CART",currentCart)
                 currentCart.amount = calculateAmount(currentCart.cartItems);
                 yield put(updateCartSuccess(currentCart));
             }

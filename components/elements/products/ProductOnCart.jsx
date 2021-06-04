@@ -4,7 +4,7 @@ import { StrapiProductThumbnail } from '~/utilities/product-helper';
 import { removeItem } from '~/store/cart/action';
 import { useDispatch } from 'react-redux';
 
-const ProductOnCart = ({ product }) => {
+const ProductOnCart = ({product}) => {
     const dispatch = useDispatch();
 
     const handleRemoveCartItem = (e) => {
@@ -12,7 +12,7 @@ const ProductOnCart = ({ product }) => {
         dispatch(removeItem(product));
     };
     return (
-        <div className="ps-product--cart-mobile">
+        <div className="ps-product--cart-mobile" >
             <div className="ps-product__thumbnail">
                 {StrapiProductThumbnail(product)}
             </div>

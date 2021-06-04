@@ -26,6 +26,12 @@ const ShopItems = ({productItems, columns = 4, pageSize = 10 ,total=0,loading=fa
         Router.push(`/alisveris?page=${page}`);
     }
 
+    // 'tn': 320px,
+// 'xs': 480px,
+// 'sm': 768px,
+// 'md': 992px,
+// 'lg': 1200px,
+
     function handleSetColumns() {
         switch (columns) {
             case 2:
@@ -37,7 +43,7 @@ const ShopItems = ({productItems, columns = 4, pageSize = 10 ,total=0,loading=fa
                 return 4;
                 break;
             case 6:
-                setClasses('col-xl-2 col-lg-4 col-md-6 col-sm-6 col-6');
+                setClasses('col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6');
                 return 6;
                 break;
 
@@ -89,7 +95,7 @@ const ShopItems = ({productItems, columns = 4, pageSize = 10 ,total=0,loading=fa
         if (productItems && productItems.length > 0) {
             if (listView) {
                 const items = productItems.map((item) => (
-                    <div className={classes} key={item.id}>
+                    <div  className={classes} key={item.id}>
                         <Product product={item} />
                     </div>
                 ));
@@ -119,7 +125,7 @@ const ShopItems = ({productItems, columns = 4, pageSize = 10 ,total=0,loading=fa
         <div className="ps-shopping">
             <div className="ps-shopping__header">
                 <p>
-                    <strong className="mr-2">{total}</strong>
+                    <strong className="mr-2">{productItems?productItems.length:"-"}</strong>
                     Ürün bulundu
                 </p>
                 <div className="ps-shopping__actions">

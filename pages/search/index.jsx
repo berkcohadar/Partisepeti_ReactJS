@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ContainerPage from '~/components/layouts/ContainerPage';
+import ContainerShop from '~/components/layouts/ContainerShop';
+
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import ProductRepository from '~/repositories/ProductRepository.js';
 import Product from '~/components/elements/products/Product';
 import ProductGroupGridItems from '~/components/partials/product/ProductGroupGridItems';
+import WidgetShopCategories from '~/components/shared/widgets/WidgetShopCategories';
+import ShopItems from '~/components/partials/shop/ShopItems';
 
 const SearchPage = ({ query }) => {
     const [pageSize] = useState(100);
@@ -67,7 +71,9 @@ const SearchPage = ({ query }) => {
             if (productItems.length > 0) {
                 const items = productItems.map((item) => {
                     return (
-                        <div className="col-xl-2 col-lg-4 col-md-6 col-sm-6 col-6" key={item.id}>
+                        <div
+                            className="col-xl-2 col-lg-4 col-md-6 col-sm-6 col-6"
+                            key={item.id}>
                             <Product product={item} />
                         </div>
                     );
@@ -80,7 +86,7 @@ const SearchPage = ({ query }) => {
                         <strong style={{ color: '#000' }}>
                             {productItems.length}
                         </strong>{' '}
-                        ürün bulundu.
+                        <small>ürün bulundu.</small>
                     </p>
                 );
             } else {
@@ -96,14 +102,14 @@ const SearchPage = ({ query }) => {
     return (
         <ContainerShop title="Shop">
             <div className="ps-page--shop">
-                <BreadCrumb breacrumb={breadCrumb} layout="fullwidth" />
+                <BreadCrumb breacrumb={breadcrumb} layout="fullwidth" />
                 <div className="ps-container">
                     <div className="ps-layout--shop">
                         <div className="ps-layout__left">
                             <WidgetShopCategories productItems={productItems} />
                             <aside className="widget widget_shop widget_shop--brand">
                                 <figure>
-                                    {brandsView
+                                    {/* {brandsView
                                         ? Object.keys(brandsView).map((item, index) => {
                                               return (
                                                   <div>
@@ -128,25 +134,31 @@ const SearchPage = ({ query }) => {
                                                   </div>
                                               );
                                           })
-                                        : null}
+                                        : null} */}
                                 </figure>
                             </aside>
-                            <WidgetShopFilterByPriceRange />
+                            {/* <WidgetShopFilterByPriceRange /> */}
                         </div>
                         <div className="ps-layout__right">
+                            <div className="ps-shop__header">
+                                <h5>
+                                    Arama sonuçları gösteriliyor: "
+                                    <strong>{keyword}</strong>"
+                                </h5>
+                            </div>
                             <ShopItems
                                 productItems={productItems}
                                 columns={6}
                                 pageSize={18}
                             />
-                            <ProductGroupByCarousel
+                            {/* <ProductGroupByCarousel
                                 collectionSlug="3"
                                 title="Best Sale Items"
                             />
                             <ProductGroupByCarousel
                                 collectionSlug="1"
                                 title="Recommended Items"
-                            />
+                            /> */}
                         </div>
                     </div>
                 </div>
@@ -161,7 +173,8 @@ SearchPage.getInitialProps = async ({ query }) => {
 
 export default SearchPage;
 
-<ContainerPage title={`Search results for: "${keyword}" `} boxed={true}>
+{
+    /* <ContainerPage title={`Search results for: "${keyword}" `} boxed={true}>
 <div className="ps-page">
     <BreadCrumb breacrumb={breadcrumb} />
 </div>
@@ -180,4 +193,5 @@ export default SearchPage;
         </div>
     </div>
 </div>
-</ContainerPage>
+</ContainerPage> */
+}

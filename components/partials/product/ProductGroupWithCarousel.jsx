@@ -17,14 +17,13 @@ export const ProductGroupWithCarousel = ({ products, type = 'normal' }) => {
         }
     };
     
-    const handleOnMouseOver = () => {handleMouse(0);clearInterval(interval);};
-    const handleOnMouseOut= () => { handleInterval(setInterval(changeSlide, 5000)); };
+    const handleOnMouseOver = () => {clearInterval(interval);};
+    const handleOnMouseOut= () => {handleInterval(setInterval(changeSlide, 5000));clearInterval(interval);};
     
     useEffect(() => {
-        if(mouse) {
-            handleInterval(setInterval(changeSlide, 5000));
-            return () => clearInterval(interval);
-        }
+        handleInterval(setInterval(changeSlide, 5000))
+        return () => clearInterval(interval);
+       
     }, []);
     
     if (type === 'fullwidth') {

@@ -167,6 +167,7 @@ const HomeDefaultBanner = () => {
                         return (
                             <div
                               className="CampaignItem"
+                              key={index}
                                 style={
                                   bannerItems == index
                                         ? {

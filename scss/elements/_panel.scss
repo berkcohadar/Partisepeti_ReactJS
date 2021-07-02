@@ -81,6 +81,7 @@
 
     .ant-drawer-body {
         padding: 0 !important;
+        border: none;
     }
 
     .ps-panel__header {
@@ -113,6 +114,10 @@
 
     .ps-panel__content {
         padding: 0 20px;
+        background-color: $color-navbar;
+        > ul {
+            background-color: $color-navbar;
+        }
     }
 
     .ps-panel__search-results {
@@ -158,9 +163,12 @@
 
     .ps-panel__header {
         position: relative;
+        border: 1px solid $color-1st;
+        box-shadow: 0 0 8px 0 $color-1st;
     }
 
     .ps-panel__content {
+        border: 1px solid $color-navbar;
         height: calc(100vh - 50px);
     }
 }

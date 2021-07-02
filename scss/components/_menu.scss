@@ -113,14 +113,15 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    padding: 15px 30px 10px;
+    padding: 10px 20px;
     background-color: #fff;
     @include transition(all 0.4s ease);
-    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0px 0px 6px 0px $color-navbar;
+
 
     > * {
         width: 100%;
-        padding: 10px 15px;
     }
 
     h4 {
@@ -145,8 +146,9 @@
                 line-height: 20px;
                 padding: 5px 0;
                 font-size: 14px;
+                font-weight: 500;
                 background-color: transparent;
-                border-bottom: 1px solid transparent;
+                border-bottom: 2px solid transparent;
                 &.has-badge {
                     padding-right: 20px;
 
@@ -175,7 +177,7 @@
                 }
 
                 &:hover {
-                    border-bottom: 1px solid $color-psbutton;
+                    border-bottom: 2px solid $color-psbutton;
                 }
             }
         }
@@ -366,8 +368,10 @@
 
     .menu--dropdown {
         background-color: $color-heading;
-        border: 1px solid #d3d3d3;
         min-width: 260px;
+        border-radius: 6px;
+        box-shadow: 0px 0px 6px 0px $color-navbar;
+
         li>a{
             color: #000;
 
@@ -386,6 +390,7 @@
 }
 
 .menu--dropdown {
+
     ul {
         margin: 0;
         padding: 0;
@@ -393,9 +398,9 @@
     }
 
     > li {
+        border-radius: 6px;
         padding: 0 20px;
         transition: all 0.4s ease;
-
         > a {
             display: block;
             padding: 10px 0;
@@ -549,21 +554,46 @@
             > a {
                 color: $color-heading;
                 font-size: 16px;
+                font-weight: 500;
             }
 
             > span {
                 font-size: 16px;
                 color: $color-heading;
+                font-weight: 500;
+
             }
+            > i::before {
+                color: $color-psbutton !important;
+                background: $color-psbutton !important;
+            }
+            > i::after {
+                color: $color-psbutton !important;
+                background: $color-psbutton !important;
+
+            }
+            .ant-menu-submenu-arrow::after {
+                color: $color-psbutton !important;
+                background: $color-psbutton !important;
+            }
+
         }
 
         > .ant-menu-sub {
             padding-left: 20px;
+            background: #3d3d3d;
+            border-radius: 6px;
+            border: none;
         }
     }
-
+    .ant-menu-item a{
+        color: $color-heading;
+    }
     .ant-menu-item-active {
         color: $color-1st;
         background-color: transparent;
+    }
+    .ant-menu-item::after{
+        // display: none !important;
     }
 }

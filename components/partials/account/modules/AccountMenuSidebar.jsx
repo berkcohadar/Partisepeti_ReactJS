@@ -29,10 +29,7 @@ const AccountMenuSidebar = ({ data }) => (
             {profilemenu.map((elem, index) => (
                 <Link href={elem.url}>
                     <span
-                        className={
-                            elem.active
-                                ? 'account-menu-item-active'
-                                : 'account-menu-item'
+                        className={'account-menu-item'+ (elem.active ? ' active' :"")
                         }
                         key={'sub' + index}>
                         <a className="account-menu-item-p">

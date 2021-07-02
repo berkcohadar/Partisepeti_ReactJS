@@ -38,7 +38,7 @@ class EditAddress extends Component {
                                     <div className="account-menu">
                                         {profilemenu.map((elem, index) => (
                                             <Link href={elem.url}>
-                                            <span className={elem.active ? 'account-menu-item-active' : 'account-menu-item'}
+                                            <span className={ 'account-menu-item'+ elem.active ? ' active' :""}
                                                 key={'sub' + index}>
                                                 
                                                 <a className="account-menu-item-p">

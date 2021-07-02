@@ -44,8 +44,8 @@ const HomeDefaultBanner = () => {
     useEffect(() => {
         getBannerItems();
         getPromotions();
-        handleInterval(setInterval(changeSlide, 4000));
-        return () => clearInterval(interval);
+        // handleInterval(setInterval(changeSlide, 4000));
+        // return () => clearInterval(interval);
     }, []);
 
     const carouselSetting = {
@@ -93,51 +93,90 @@ const HomeDefaultBanner = () => {
         {
             id: 0,
             url:
-                'https://images.unsplash.com/photo-1576028133998-dfa6cf1ea901?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8',
+                'https://images.unsplash.com/photo-1576028133998-dfa6cf1ea901?auto=compress',
             alt: 'Yilbasi Isik Agac Christmas',
-            description:'Korkutmaya hazır mısın?'
+            description:'Korkutmaya hazır mısın?',
+            category:"Yılbaşı Süsleri"
         },
         {
             id: 1,
             url:
-                'https://images.unsplash.com/photo-1606830733744-0ad778449672?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fGNocmlzdG1hcyUyMGluc3RhZ3JhbSUyMHN0b3J5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1',
+                'https://images.unsplash.com/photo-1606830733744-0ad778449672?auto=compress',
             alt: 'Sevgililer Gunu Valentines Day Hediye Sürpriz 14 Subat',
-            description:'Yılbaşını sevdiklerinizle geçirin!'
+            description:'Yılbaşını sevdiklerinizle geçirin!',
+            category:"Yılbaşı Ağaçları"
         },
         {
             id: 2,
             url:
-                'https://images.pexels.com/photos/5634668/pexels-photo-5634668.jpeg',
+                'https://images.pexels.com/photos/5634668/pexels-photo-5634668.jpeg?auto=compress',
             alt: 'Yilbasi Isik Agac Christmas',
-            description:'Ağacınızı süslediniz mi?'
+            description:'Ağacınızı süslediniz mi?',
+            category:"Halloween Ürünleri"
         },
         {
             id: 3,
             url:
-                'https://images.pexels.com/photos/5635101/pexels-photo-5635101.jpeg',
+                'https://images.pexels.com/photos/5635101/pexels-photo-5635101.jpeg?auto=compress',
             alt: 'Yilbasi Isik Agac Christmas',
-            description:'Folyo balonlarımıza göz attınız mı?'
+            description:'Folyo balonlarımıza göz attınız mı?',
+            category:"Halloween Kostümleri"
         },
         {
             id: 4,
             url:
-                'https://images.unsplash.com/photo-1511895654441-f6a0e1db5cbd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Njh8fGNocmlzdG1hcyUyMGxpZ2h0c3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=f                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ',
+                'https://images.unsplash.com/photo-1511895654441-f6a0e1db5cbd?auto=compress',
             alt: 'Yilbasi Isik Agac Christmas',
-            description:"Birbirinden güzel ağaç süsleri Partisepeti'nde!"
+            description:"Birbirinden güzel ağaç süsleri Partisepeti'nde!",
+            category:"Ağaç Süsleri"
         },
         {
             id: 5,
             url:
-                'https://images.pexels.com/photos/1303080/pexels-photo-1303080.jpeg',
+                'https://images.pexels.com/photos/1303080/pexels-photo-1303080.jpeg?auto=compress',
             alt: 'Yilbasi Isik Agac Christmas',
-            description:'Yaklaşan bir doğum günü mü var?'
+            description:'Yaklaşan bir doğum günü mü var?',
+            category:"Hediye Kutuları"
         },
         {
             id: 6,
             url:
-                'https://images.unsplash.com/photo-1611142287927-64cede3148da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1',
+                'https://images.unsplash.com/photo-1611142287927-64cede3148da?auto=compress',
             alt: 'Yilbasi Isik Agac Christmas',
-            description:"Birbirinden güzel balon buketleri Partisepeti'nde"
+            description:"Birbirinden güzel balon buketleri Partisepeti'nde",
+            category:"Zincir Balonlar"
+        },
+        {
+            id: 7,
+            url:
+                'https://images.pexels.com/photos/1303080/pexels-photo-1303080.jpeg?auto=compress',
+            alt: 'Yilbasi Isik Agac Christmas',
+            description:'Yaklaşan bir doğum günü mü var?',
+            category:"Hediye Kutuları"
+        },
+        {
+            id: 8,
+            url:
+                'https://images.pexels.com/photos/5634668/pexels-photo-5634668.jpeg?auto=compress',
+            alt: 'Yilbasi Isik Agac Christmas',
+            description:'Ağacınızı süslediniz mi?',
+            category:"Halloween Ürünleri"
+        },
+        {
+            id: 9,
+            url:
+                'https://images.unsplash.com/photo-1511895654441-f6a0e1db5cbd?auto=compress',
+            alt: 'Yilbasi Isik Agac Christmas',
+            description:"Birbirinden güzel ağaç süsleri Partisepeti'nde!",
+            category:"Ağaç Süsleri"
+        },
+        {
+            id: 10,
+            url:
+                'https://images.unsplash.com/photo-1606830733744-0ad778449672?auto=compress',
+            alt: 'Sevgililer Gunu Valentines Day Hediye Sürpriz 14 Subat',
+            description:'Yılbaşını sevdiklerinizle geçirin!',
+            category:"Yılbaşı Ağaçları"
         },
     ];
     if (data) {
@@ -165,24 +204,25 @@ const HomeDefaultBanner = () => {
                 <div className="CampaignDiv">
                     {data.map((slide, index) => {
                         return (
-                            <div
-                              className="CampaignItem"
-                              key={index}
-                                style={
-                                  bannerItems == index
-                                        ? {
-                                              transform: 'scale(1.2)',
-                                              boxShadow:
-                                                  '0px 0px 15px 0px #1c1a18',
-                                          }
-                                        : null
-                                }>
-                                <img
-                                    className="CampaignItemImage"
-                                    id={index}
-                                    onClick={() => setBannerItems(index)}
-                                    src={slide.url}></img>{' '}
-                            </div>
+                                <div
+                                className="CampaignItem"
+                                key={index}
+                                    style={
+                                    bannerItems == index
+                                            ? {
+                                                transform: 'scale(1.3)',
+                                                boxShadow:
+                                                    '0px 0px 10px 0px #1c1a18',
+                                            }
+                                            : null
+                                    }
+                                    onClick={() => setBannerItems(index)}>
+                                    <img
+                                        className="CampaignItemImage"
+                                        id={index}
+                                        src={slide.url}></img>{' '}
+                                    <p style={bannerItems == index? {transform: 'scale(0.8)'}: null}>{slide.category}</p>
+                                </div>   
                         );
                     })}
                 </div>

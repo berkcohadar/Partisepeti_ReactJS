@@ -17,7 +17,6 @@ const CustomerOrdersPage = () => {
     return (
         <ContainerPage title="Edit Address" boxed={true}>
             <div className="ps-page--my-account">
-                <BreadCrumb breacrumb={breadCrumb} />
                 <Orders />
             </div>
         </ContainerPage>

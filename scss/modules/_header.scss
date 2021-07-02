@@ -1,6 +1,5 @@
 .header {
     @extend %list-reset;
-
     .header__extra {
         display: inline-block;
         position: relative;
@@ -80,6 +79,7 @@
         padding: 25px 0;
         background-color: $color-1st;
         border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease-out;
 
         .ps-container,
         .container {
@@ -110,7 +110,6 @@
                 }
             }
         }
-
         .header__top {
             position: fixed;
             top: 0;
@@ -118,7 +117,7 @@
             z-index: 1000;
             border-bottom: none;
             box-shadow: 0px 0px 20px 0px $color-1st;
-            padding: 10px 0;
+            padding: 15px 0;
             // background: linear-gradient(135deg, rgba(37,49,65,1) 0%, rgba(37,49,65,1) 24%, rgba(26,27,41,1) 61%);
 
         }

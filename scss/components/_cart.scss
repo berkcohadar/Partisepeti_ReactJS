@@ -3,31 +3,47 @@
 
     .ps-cart__items {
         position: relative;
-        padding: 20px;
+        padding: 10px;
         max-height: 300px;
         overflow: auto;
         background-color: #fff;
-        border: 1px solid #e1e1e1;
         border-radius: 5px 5px 0 0;
+        border: 1px solid #e1e1e1;
         border-bottom: none;
         color: $color-1st;
-        &:before {
-            content: '';
-            display: inline-block;
-            position: absolute;
-            top: -8px;
-            right: 30px;
-            width: 16px;
-            height: 16px;
-            border-left: 1px solid #e1e1e1;
-            border-top: 1px solid #e1e1e1;
-            background-color: #ffffff;
-            @include transform(rotate(45deg));
-            @include transform-origin(50% 50%);
-        }
+        // &:before {
+        //     content: '';
+        //     display: inline-block;
+        //     position: absolute;
+        //     top: -8px;
+        //     right: 30px;
+        //     width: 16px;
+        //     height: 16px;
+        //     border-left: 1px solid #e1e1e1;
+        //     border-top: 1px solid #e1e1e1;
+        //     background-color: #ffffff;
+        //     @include transform(rotate(45deg));
+        //     @include transform-origin(50% 50%);
+        // }
 
         .ps-product--cart-mobile {
-            margin-bottom: 30px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            padding-right: 5px;
+            height: 80px;
+            border: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            overflow: hidden;
+            .ps-product__remove{
+                opacity: 0;
+            }
+            &:hover{
+                box-shadow: 0px 0px 6px 0px $color-1st;
+                .ps-product__remove{
+                    opacity: 1;
+                }
+            }
         }
     }
 

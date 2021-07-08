@@ -61,7 +61,7 @@ class UserRepository {
         const reponse = await axios({
             method: 'post',
             url: baseUrl + '/profile/update/',
-            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token}, 
+            headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
                 user: {
                     first_name: e.first_name,
@@ -84,7 +84,7 @@ class UserRepository {
         const reponse = await axios({
             method: 'get',
             url: baseUrl + '/profile/address/',
-            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token,}, 
+            headers: {"Content-Type": "application/json", "Authorization": "Token "+token,}, 
             })
             .then((response) => {
                 return response.data;
@@ -99,7 +99,7 @@ class UserRepository {
         const reponse = await axios({
             method: 'post',
             url: baseUrl + '/profile/address/add/',
-            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token}, 
+            headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
                 "customer": e.email,
                 "first_name": e.first_name,
@@ -126,7 +126,7 @@ class UserRepository {
         const reponse = await axios({
             method: 'post',
             url: baseUrl + '/profile/address/update/'+e.id+'/',
-            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token}, 
+            headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
                 "customer": e.email,
                 "first_name": e.first_name,
@@ -153,7 +153,7 @@ class UserRepository {
         const reponse = await axios({
             method: 'post',
             url: baseUrl + '/profile/address/delete/'+e.id+'/',
-            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token},
+            headers: {"Content-Type": "application/json", "Authorization": "Token "+token},
             })
             .then((response) => {
                 return response.data;

@@ -8,11 +8,15 @@ class CartRepository {
     async addToCart(product) {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         const email = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).email;
-
+        console.log(JSON.stringify({
+            customer: email,
+            product: product.product.id,
+            quantity: product.quantity,
+          }),)
         const response = await axios({
             method: 'post',
             url: baseUrl + '/orders/add-to-cart/',
-            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token}, 
+            headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
                 customer: email,
                 product: product.product.id,
@@ -30,7 +34,7 @@ class CartRepository {
         const response = await axios({
             method: 'delete',
             url: baseUrl + '/orders/remove-from-cart/'+cartItemId,
-            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token}, 
+            headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             })
             .then((response) => {
                 return response;
@@ -61,7 +65,7 @@ class CartRepository {
         const response = await axios({
             method: 'get',
             url: baseUrl + '/orders/cart/',
-            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token,}, 
+            headers: {"Content-Type": "application/json", "Authorization": "Token "+token,}, 
             })
             .then((response) => {
                 return response.data;

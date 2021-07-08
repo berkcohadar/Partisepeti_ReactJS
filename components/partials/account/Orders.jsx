@@ -1,17 +1,17 @@
 import React, { Component,useState } from 'react';
 import Link from 'next/link';
-import { Form, Input, Radio, DatePicker } from 'antd';
 import AccountMenuSidebar from './modules/AccountMenuSidebar';
-import TableNotifications from './modules/TableNotifications';
-import {HeartFilled,CarryOutOutlined,EnvironmentOutlined,LikeOutlined,ShoppingOutlined,BellOutlined,CommentOutlined,UserOutlined,FireFilled,} from "@ant-design/icons";
 import OrderView from './OrderView';
-
-
+import { connect } from 'react-redux';
+import { getOrders } from '~/store/order/action';
 
 class Orders extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+    }
+    componentDidUpdate() {
+        this.props.dispatch(getOrders());
     }
 
     render() {
@@ -31,6 +31,14 @@ class Orders extends Component {
                                         <h3>Siparişlerim</h3>
                                     </div>
                                     <OrderView></OrderView>
+                                    {this.state.orders.map((order)=>{
+                                        <div>
+                                            <p>{order.status}</p>
+                                            <p>{order.order_no}</p> 
+                                            <p>{order.total_amount}</p>
+                                            <p>Bitti</p>
+                                        </div>
+                                    })}
                                 </div>
                             </div>
                         </div>
@@ -40,4 +48,8 @@ class Orders extends Component {
         );
     }
 }
-export default Orders;
+
+const mapStateToProps = (state) => {
+    return state.orders;
+};
+export default connect(mapStateToProps)(Orders);

@@ -17,7 +17,7 @@ export function register(payload) {
     return { type: actionTypes.REGISTER_REQUEST,payload:payload };
 }
 
-export function loginSuccess(result,email) {
+export function loginSuccess(result) {
     return { type: actionTypes.LOGIN_SUCCESS,payload:result};
 }
 

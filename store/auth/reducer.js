@@ -14,11 +14,11 @@ function reducer(state = initState, action) {
             return {
                 ...state,
                 ...{
-                    token: action.payload.token,
+                    token: action.payload.key,
                     isLoggedIn: true,
-                    email: action.payload.user.email,
-                    name: action.payload.user.first_name,
-                    surname: action.payload.user.last_name,
+                    email: action.payload.user.username,
+                    // name: action.payload.user.first_name,
+                    // surname: action.payload.user.last_name,
                 },
             };
         case actionTypes.LOGOUT_SUCCESS:

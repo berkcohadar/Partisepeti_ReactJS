@@ -10,7 +10,7 @@ class UserRepository {
         const reponse = await axios({
             method: 'post',
             url: baseUrl + '/orders/create-order/',
-            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token}, 
+            headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
                 cart_items: e.cartItems,
                 customer: e.email,
@@ -54,13 +54,13 @@ class UserRepository {
         const reponse = await axios({
             method: 'get',
             url: baseUrl + '/orders/customer-orders/',
-            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token}, 
+            headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             })
             .then((response) => {
                 return response.data;
             })
             .catch((error) => ({ error: JSON.stringify(error) }));
-        return reponse.results[0];
+        return reponse.results;
     }
 }
 

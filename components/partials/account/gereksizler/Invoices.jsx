@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import AccountMenuSidebar from './modules/AccountMenuSidebar';
-import TableInvoices from './modules/TableInvoices';
+import AccountMenuSidebar from '../modules/AccountMenuSidebar';
+import TableInvoices from './TableInvoices';
 
 class Invoices extends Component {
     constructor(props) {

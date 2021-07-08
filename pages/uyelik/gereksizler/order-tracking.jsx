@@ -1,5 +1,5 @@
 import React from 'react';
-import OrderTracking from '~/components/partials/account/OrderTracking';
+import OrderTracking from '~/components/partials/account/gereksizler/OrderTracking';
 import BreadCrumb from '~/components/elements/BreadCrumb';
 import ContainerPage from '~/components/layouts/ContainerPage';
 

@@ -16,16 +16,25 @@ const HomeDefaultProductListing = ({ collectionSlug, title }) => {
             title: 'Yeni Ürünler',
             name: 'new-arrivals',
             slug: collectionSlug,
+            filter:"&ordering=-id",
         },
         {
             title: 'Çok Satan',
             name: 'best-seller',
-            slug: 'fullwidth-clothing-best-sellers',
+            slug: collectionSlug,
+            filter:"&ordering=-total_order",
         },
         {
             title: 'Popüler Ürünler',
             name: 'most-popular',
-            slug: 'fullwidth-clothing-most-popular',
+            slug: collectionSlug,
+            filter:"&ordering=-rate_counter",
+        },
+        {
+            title: 'Puanı Yüksek',
+            name: 'best-rating',
+            slug: collectionSlug,
+            filter:"&ordering=-rating",
         },
     ];
 
@@ -46,7 +55,7 @@ const HomeDefaultProductListing = ({ collectionSlug, title }) => {
     function handleChangeTab(e, tab) {
         e.preventDefault();
         setCurrentCollection(tab.name);
-        getProducts(tab.slug);
+        getProducts(tab.slug+tab.filter);
     }
 
     useEffect(() => {

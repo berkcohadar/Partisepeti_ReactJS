@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addItem } from '../../../store/cart/action';
-import { removeCompareItem } from '../../../store/compare/action';
+import { addItem } from '../../../../store/cart/action';
+import { removeCompareItem } from '../../../../store/compare/action';
 import Link from 'next/link';
 import { Rate } from 'antd';
 

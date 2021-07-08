@@ -28,22 +28,22 @@ const HomepageDefaultPage = () => {
             {/* <SiteFeatures /> */}
             {/* <HomeDefaultDealOfDay collectionSlug="3" /> */}
             <HomeDefaultProductListing
-                collectionSlug="3"
+                collectionSlug="20"
                 title="Popüler Ürünler"
             />
             <HomeDefaultProductListing
-                collectionSlug="2"
+                collectionSlug="21"
                 title="Kek & Kurabiye"
             />
             <HomeAdsColumns />
             <HomeDefaultTopCategories />
             <HomeDefaultProductListing
-                collectionSlug="3"
+                collectionSlug="22"
                 title="Hediye & Sürpriz"
             />
 
             <HomeDefaultProductListing
-                collectionSlug="1"
+                collectionSlug="20"
                 title="Parti Malzemeleri"
             />
             {/* <HomeAds />

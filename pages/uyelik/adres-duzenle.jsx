@@ -1,28 +1,27 @@
 import React from 'react';
 
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import UserInformation from '~/components/partials/account/UserInformation';
+import EditAddress from '~/components/partials/account/EditAddress';
 import ContainerPage from '~/components/layouts/ContainerPage';
 
-const UserInformationPage = () => {
+const EditAddressPage = () => {
     const breadCrumb = [
         {
             text: 'Anasayfa',
             url: '/',
         },
         {
-            text: 'User Information',
+            text: 'Edit address',
         },
     ];
-
     return (
-        <ContainerPage title="User Information" boxed={true}>
+        <ContainerPage title="Edit Address" boxed={true}>
             <div className="ps-page--my-account">
-                <BreadCrumb breacrumb={breadCrumb} />
-                <UserInformation />
+                {/* <BreadCrumb breacrumb={breadCrumb} /> */}
+                <EditAddress />
             </div>
         </ContainerPage>
     );
 };
 
-export default UserInformationPage;
+export default EditAddressPage;

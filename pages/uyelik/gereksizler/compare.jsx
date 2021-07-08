@@ -1,6 +1,6 @@
 import React from 'react';
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import Compare from '~/components/partials/account/Compare';
+import Compare from '~/components/partials/account/gereksizler/Compare';
 import ContainerPage from '~/components/layouts/ContainerPage';
 
 const ComparePage = () => {

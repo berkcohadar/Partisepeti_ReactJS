@@ -1,7 +1,7 @@
 export const actionTypes = {
-    GET_ORDER: 'GET_ORDER',
-    GET_ORDER_SUCCESS: 'GET_ORDER_SUCCESS',
-    GET_ORDER_ERROR: 'GET_ORDER_ERROR',
+    GET_ORDERS: 'GET_ORDERS',
+    GET_ORDERS_SUCCESS: 'GET_ORDERS_SUCCESS',
+    GET_ORDERS_ERROR: 'GET_ORDERS_ERROR',
 
     ORDER_INFO: 'ORDER_INFO',
 
@@ -11,20 +11,20 @@ export const actionTypes = {
     CREATE_ORDER_ERROR: 'CREATE_ORDER_ERROR',
 };
 
-export function getOrder() {
-    return { type: actionTypes.GET_ORDER };
+export function getOrders() {
+    return { type: actionTypes.GET_ORDERS };
 }
 
-export function getOrderSuccess(payload) {
+export function getOrdersSuccess(payload) {
     return {
-        type: actionTypes.GET_ORDER_SUCCESS,
+        type: actionTypes.GET_ORDERS_SUCCESS,
         payload: payload,
     };
 }
 
-export function getOrderError(error) {
+export function getOrdersError(error) {
     return {
-        type: actionTypes.GET_ORDER_ERROR,
+        type: actionTypes.GET_ORDERS_ERROR,
         error,
     };
 }

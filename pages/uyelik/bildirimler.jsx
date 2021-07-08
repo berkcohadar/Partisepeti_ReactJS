@@ -17,7 +17,7 @@ const AccountNotificationsPage = () => {
     return (
         <ContainerPage title="Notifications" boxed={true}>
             <div className="ps-page--my-account">
-                <BreadCrumb breacrumb={breadCrumb} />
+                {/* <BreadCrumb breacrumb={breadCrumb} /> */}
                 <Notifications />
             </div>
         </ContainerPage>

@@ -1,36 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import {HeartFilled,CarryOutOutlined,EnvironmentOutlined,LikeOutlined,ShoppingOutlined,BellOutlined,CommentOutlined,UserOutlined,FireFilled,} from "@ant-design/icons";
+import {HeartOutlined,CarryOutOutlined,EnvironmentOutlined,LikeOutlined,ShoppingOutlined,BellOutlined,CommentOutlined,UserOutlined,FireOutlined,} from "@ant-design/icons";
+import { useRouter } from 'next/router';
 
-/* 
+const AccountMenuSidebar = (bar, setBar) => {
+    const router = useRouter();
 
+    const profilemenu = [
+        { icon: <ShoppingOutlined />, title: "Siparişlerim", url: '/uyelik/siparislerim', },
+        { icon: <HeartOutlined />, title: "Koleksiyonlarım", url: '/uyelik/koleksiyonlarim', },
+        { icon: <UserOutlined />, title: "Üyelik Bilgilerim", url: '/uyelik/uyelik-bilgilerim', },
+        { icon: <EnvironmentOutlined />, title: "Adreslerim", url: '/uyelik/adreslerim',},
+        { icon: <FireOutlined />, title: "Kampanyalarım", url: '/uyelik/kampanyalarim', },
+        { icon: <CarryOutOutlined />, title: "Anımsatıcılarım", url: '/uyelik/bildirimler', },
+        { icon: <LikeOutlined />, title: "Değerlendirmelerim", url: '/uyelik/degerlendirmelerim', },
+        { icon: <BellOutlined />, title: "İzinler", url: '/uyelik/izinler', },
+        { icon: <CommentOutlined />, title: "Yardım", url: '/uyelik/yardim', },
+      ];
 
-
-inactive 
-
-
-
-*/
-const profilemenu = [
-    { icon: <ShoppingOutlined />, title: "Siparişlerim", url: '/uyelik/siparislerim', active: true,},
-    { icon: <HeartFilled />, title: "Koleksiyonlarım", url: '/uyelik/collections', },
-    { icon: <UserOutlined />, title: "Üyelik Bilgilerim", url: '/uyelik/user-information', },
-    { icon: <EnvironmentOutlined />, title: "Adreslerim", url: '/uyelik/addresses', },
-    { icon: <FireFilled />, title: "Kampanyalarım", url: '/uyelik/campaigns', },
-    { icon: <CarryOutOutlined />, title: "Anımsatıcılarım", url: '/uyelik/reminders', },
-    { icon: <LikeOutlined />, title: "Değerlendirmelerim", url: '/uyelik/reviews', },
-    { icon: <BellOutlined />, title: "İzinler", url: '/uyelik/notifications', },
-    { icon: <CommentOutlined />, title: "Yardım", url: '/uyelik/help', },
-  ];
-
-const AccountMenuSidebar = ({ data }) => (
-    <aside className="ps-widget--account-dashboard">
-        <div className="account-menu">
-            {profilemenu.map((elem, index) => (
-                <Link href={elem.url}>
+    return (
+        <aside className="ps-widget--account-dashboard">
+            <div className="account-menu">
+                {profilemenu.map((elem, index) => (
                     <span
-                        className={'account-menu-item'+ (elem.active ? ' active' :"")
-                        }
+                        className={'account-menu-item'+ (elem.url==router.pathname ? ' active' :"")}
+                        onClick={()=>router.push(elem.url)}
                         key={'sub' + index}>
                         <a className="account-menu-item-p">
                             <i>{elem.icon}</i>
@@ -38,10 +32,10 @@ const AccountMenuSidebar = ({ data }) => (
                             {elem.title}
                         </a>
                     </span>
-                </Link>
-            ))}
-        </div>
-    </aside>
-);
+                ))}
+            </div>
+        </aside>
+    );
+}
 
 export default AccountMenuSidebar;

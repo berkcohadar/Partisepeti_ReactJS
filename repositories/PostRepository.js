@@ -1,4 +1,4 @@
-import Repository, { basePostUrl, serializeQuery } from './Repository';
+import Repository, { baseDomain, serializeQuery } from './Repository';
 
 class PostRepository {
     constructor(callback) {
@@ -7,7 +7,7 @@ class PostRepository {
 
     async getPosts(payload) {
         const endPoint = `posts?${serializeQuery(payload)}`;
-        const reponse = await Repository.get(`${basePostUrl}/${endPoint}`)
+        const reponse = await Repository.get(`${baseDomain}/${endPoint}`)
             .then((response) => {
                 if (response.data.length > 0) {
                     return response.data;
@@ -21,7 +21,7 @@ class PostRepository {
 
     async getPostBySlug(payload) {
         const reponse = await Repository.get(
-            `${basePostUrl}/posts?slug=${payload}`
+            `${baseDomain}/posts?slug=${payload}`
         )
             .then((response) => {
                 if (response.data.length > 0) {
@@ -36,7 +36,7 @@ class PostRepository {
 
     async getPostsByCollectionSlug(payload) {
         const endPoint = `collections?${serializeQuery(payload)}`;
-        const reponse = await Repository.get(`${basePostUrl}/${endPoint}`)
+        const reponse = await Repository.get(`${baseDomain}/${endPoint}`)
             .then((response) => {
                 if (response.data && response.data[0].posts.length > 0) {
                     return response.data[0].posts;
@@ -53,7 +53,7 @@ class PostRepository {
 
     async getPostItemsByKeyword(payload) {
         const reponse = await Repository.get(
-            `${basePostUrl}/posts?title_contains=${payload}`
+            `${baseDomain}/posts?title_contains=${payload}`
         )
             .then((response) => {
                 return response.data;
@@ -64,7 +64,7 @@ class PostRepository {
 
     async getPostItemsByCategory(payload) {
         const reponse = await Repository.get(
-            `${basePostUrl}/posts?title_contains=${payload}`
+            `${baseDomain}/posts?title_contains=${payload}`
         )
             .then((response) => {
                 return response.data;

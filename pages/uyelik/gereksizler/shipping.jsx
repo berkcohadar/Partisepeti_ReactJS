@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import Shipping from '~/components/partials/account/Shipping';
+import Shipping from '~/components/partials/account/gereksizler/Shipping';
 import { getCart } from '~/store/cart/action';
 import ContainerPage from '~/components/layouts/ContainerPage';
 

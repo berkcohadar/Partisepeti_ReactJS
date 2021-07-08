@@ -9,7 +9,7 @@ export const initialState = {
 
 function reducer(state = initialState, action) {
     switch (action.type) {
-        case actionTypes.GET_ORDER_SUCCESS:
+        case actionTypes.GET_ORDERS_SUCCESS:
             return {
                 ...state,
                 ...{ orders: action.payload },

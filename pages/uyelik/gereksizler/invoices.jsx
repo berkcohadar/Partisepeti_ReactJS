@@ -1,27 +1,27 @@
 import React from 'react';
 
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import InvoiceDetail from '~/components/partials/account/InvoiceDetail';
+import Invoices from '~/components/partials/account/gereksizler/Invoices';
 import ContainerPage from '~/components/layouts/ContainerPage';
 
-const InvoiceDetailPage = () => {
+const InvoicePage = () => {
     const breadCrumb = [
         {
             text: 'Anasayfa',
             url: '/',
         },
         {
-            text: 'Invoice Detail',
+            text: 'Invoices',
         },
     ];
     return (
-        <ContainerPage title="Invoice detail" boxed={true}>
+        <ContainerPage title="Invoice" boxed={true}>
             <div className="ps-page--my-account">
                 <BreadCrumb breacrumb={breadCrumb} />
-                <InvoiceDetail />
+                <Invoices />
             </div>
         </ContainerPage>
     );
 };
 
-export default InvoiceDetailPage;
+export default InvoicePage;

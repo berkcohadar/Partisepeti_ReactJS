@@ -60,8 +60,7 @@ class OrderItems extends Component {
                                                 </div>
                                             </td>
                                             <td>
-                                            ₺
-                                                {product.quantity *
+                                            ₺ {product.quantity *
                                                     product.products[0].cart_price}
                                             </td>
                                         </tr>

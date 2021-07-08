@@ -7,7 +7,7 @@ import WidgetShopAds from '~/components/shared/widgets/WidgetShopAds';
 const ProductWidgets = () => {
     return (
         <section>
-            <WidgetProductSameBrands collectionSlug="1" />
+            <WidgetProductSameBrands collectionSlug="20" />
             <WidgetProductFeatures />
             <WidgetSaleOnSite />
             <WidgetShopAds />

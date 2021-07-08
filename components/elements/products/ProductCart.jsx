@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { StrapiProductThumbnail } from '~/utilities/product-helper';
 const ProductCart = ({ product }) => {
+    if (product.product){
     return (
         <div className="ps-product--cart">
             <div className="ps-product__thumbnail">
@@ -13,7 +14,10 @@ const ProductCart = ({ product }) => {
                 </Link>
             </div>
         </div>
-    );
+    );}
+    else {
+        return null
+    }
 };
 
 export default ProductCart;

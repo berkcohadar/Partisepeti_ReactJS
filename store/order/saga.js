@@ -1,6 +1,6 @@
 import { all, put, call, takeEvery } from 'redux-saga/effects';
 import { polyfill } from 'es6-promise';
-import { actionTypes, getOrderSuccess, getOrderError, createOrderSuccess, createOrderError, createOrderFormSuccess  } from './action';
+import { actionTypes, getOrdersSuccess, getOrdersError, createOrderSuccess, createOrderError, createOrderFormSuccess  } from './action';
 import OrderRepository from '../../repositories/OrderRepository';
 import Router from 'next/router';
 
@@ -74,7 +74,7 @@ function* createOrderRequest({payload}) {
             yield put(createOrderFormSuccess(data));
             modalSuccess('success');
         } else {
-            modalDanger('warning');
+            modalWarning('warning');
             yield put(createOrderError(data.error));
         }
         
@@ -84,6 +84,28 @@ function* createOrderRequest({payload}) {
     }
 }
 
+function* getOrdersRequest() {
+    try {
+        const data = yield call(OrderRepository.getOrdersRequest);
+        console.log(data);
+
+        if(!data.error) {
+            yield put(getOrdersSuccess(data));
+            modalSuccess('success');
+        } else {
+            modalWarning('warning');
+            yield put(getOrdersError(data.error));
+        }
+        
+    } catch (err) {
+        console.log(err)
+        yield put(getOrdersError(err));
+    }
+}
+
+
 export default function* rootSaga() {
     yield all([takeEvery(actionTypes.CREATE_ORDER, createOrderRequest)]);
+    yield all([takeEvery(actionTypes.GET_ORDERS, getOrdersRequest)]);
+
 }

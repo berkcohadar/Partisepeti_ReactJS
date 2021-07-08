@@ -49,7 +49,19 @@ class UserRepository {
             .catch((error) => {return { error: JSON.stringify(error) }});
         return reponse;
     }
-    
+    async getOrdersRequest() {
+        const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
+        const reponse = await axios({
+            method: 'get',
+            url: baseUrl + '/orders/customer-orders/',
+            headers: {"Content-Type": "application/json", "Authorization": "JWT "+token}, 
+            })
+            .then((response) => {
+                return response.data;
+            })
+            .catch((error) => ({ error: JSON.stringify(error) }));
+        return reponse.results[0];
+    }
 }
 
 export default new UserRepository();

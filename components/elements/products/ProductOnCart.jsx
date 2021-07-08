@@ -11,28 +11,33 @@ const ProductOnCart = ({product}) => {
         e.preventDefault();
         dispatch(removeItem(product));
     };
-    return (
-        <div className="ps-product--cart-mobile" >
-            <div className="ps-product__thumbnail">
-                {StrapiProductThumbnail(product)}
+    if (product.product){
+        return (
+            <div className="ps-product--cart-mobile" >
+                <div className="ps-product__thumbnail">
+                    {StrapiProductThumbnail(product)}
+                </div>
+                <div className="ps-product__content">
+                    <a
+                        className="ps-product__remove"
+                        onClick={(e) => handleRemoveCartItem(e)}>
+                        <i className="icon-cross"></i>
+                    </a>
+                    <Link href="/product/[pid]" as={`/product/${product.product.id}`}>
+                        <a className="ps-product__title">{product.item.title}</a>
+                    </Link>
+                    <p>
+                        <small>
+                            ₺{product.product.cart_price} x {product.quantity}
+                        </small>
+                    </p>
+                </div>
             </div>
-            <div className="ps-product__content">
-                <a
-                    className="ps-product__remove"
-                    onClick={(e) => handleRemoveCartItem(e)}>
-                    <i className="icon-cross"></i>
-                </a>
-                <Link href="/product/[pid]" as={`/product/${product.product.id}`}>
-                    <a className="ps-product__title">{product.item.title}</a>
-                </Link>
-                <p>
-                    <small>
-                        ₺{product.product.cart_price} x {product.quantity}
-                    </small>
-                </p>
-            </div>
-        </div>
-    );
+        );
+    }
+    else{
+        return null
+    }
 };
 
 export default ProductOnCart;

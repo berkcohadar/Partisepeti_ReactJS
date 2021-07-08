@@ -1,27 +1,28 @@
 import React from 'react';
 
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import RecentViewedProducts from '~/components/partials/account/RecentViewedProducts';
+import UserInformation from '~/components/partials/account/UserInformation';
 import ContainerPage from '~/components/layouts/ContainerPage';
 
-const RecentViewedProductsPage = () => {
+const UserInformationPage = () => {
     const breadCrumb = [
         {
             text: 'Anasayfa',
             url: '/',
         },
         {
-            text: 'Recent Viewed Products',
+            text: 'User Information',
         },
     ];
+
     return (
-        <ContainerPage title="Recent Viewed Products">
+        <ContainerPage title="User Information" boxed={true}>
             <div className="ps-page--my-account">
-                <BreadCrumb breacrumb={breadCrumb} />
-                <RecentViewedProducts />
+                {/* <BreadCrumb breacrumb={breadCrumb} /> */}
+                <UserInformation />
             </div>
         </ContainerPage>
     );
 };
 
-export default RecentViewedProductsPage;
+export default UserInformationPage;

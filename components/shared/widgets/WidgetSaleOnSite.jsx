@@ -6,7 +6,7 @@ const WidgetSaleOnSite = () => {
         <aside className="widget widget_sell-on-site">
             <p>
                 <i className="icon-store"></i> Sell on Partisepeti?
-                <Link href="/uyelik/register">
+                <Link href="/uyelik/kayit">
                     <a> Register Now !</a>
                 </Link>
             </p>

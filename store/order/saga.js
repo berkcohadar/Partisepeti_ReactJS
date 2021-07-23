@@ -88,7 +88,6 @@ function* getOrdersRequest() {
     try {
         const data = yield call(OrderRepository.getOrdersRequest);
         console.log(data);
-
         if(!data.error) {
             yield put(getOrdersSuccess(data));
             modalSuccess('success');

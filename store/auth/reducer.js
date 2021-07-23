@@ -14,7 +14,7 @@ function reducer(state = initState, action) {
             return {
                 ...state,
                 ...{
-                    token: action.payload.key,
+                    token: action.payload.key.key,
                     isLoggedIn: true,
                     email: action.payload.user.username,
                     // name: action.payload.user.first_name,

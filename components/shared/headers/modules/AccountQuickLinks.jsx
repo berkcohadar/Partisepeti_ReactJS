@@ -69,15 +69,15 @@ const AccountQuickLinks = (props) => {
         return (
             <div className="ps-block--user-header">
                 <div className="ps-block__left">
-                    <Link href="/uyelik/login">
+                    <Link href="/uyelik/giris">
                         <i className="icon-user"></i>
                     </Link>
                 </div>
                 <div className="ps-block__right">
-                    <Link href="/uyelik/login">
+                    <Link href="/uyelik/giris">
                         <a>Giriş</a>
                     </Link>
-                    <Link href="/uyelik/register">
+                    <Link href="/uyelik/kayit">
                         <a>Üye Ol</a>
                     </Link>
                 </div>

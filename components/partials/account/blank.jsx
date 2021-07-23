@@ -5,14 +5,10 @@ import OrderView from './OrderView';
 import { connect } from 'react-redux';
 import { getOrders } from '~/store/order/action';
 
-class Orders extends Component {
+class Blank extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-    }
-    componentDidMount() {
-        this.props.dispatch(getOrders());
-
     }
 
     render() {
@@ -29,9 +25,8 @@ class Orders extends Component {
                             <div className="ps-page__content">
                                 <div className="ps-section--account-setting">
                                     <div className="ps-section__header">
-                                        <h3>Siparişlerim</h3>
+                                        <h3>Çok Yakında Sizlerle!</h3>
                                     </div>
-                                    <OrderView orders={this.props.orders} ></OrderView>
                                 </div>
                             </div>
                         </div>
@@ -42,8 +37,4 @@ class Orders extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {orders:state.order};
-};
-
-export default connect(mapStateToProps)(Orders);
+export default Blank;

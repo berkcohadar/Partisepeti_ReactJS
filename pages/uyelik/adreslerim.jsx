@@ -3,7 +3,7 @@ import BreadCrumb from '~/components/elements/BreadCrumb';
 import Addresses from '~/components/partials/account/Addresses';
 import ContainerPage from '~/components/layouts/ContainerPage';
 
-const MyAccountPage = () => {
+const MyAddressesPage = () => {
     const breadCrumb = [
         {
             text: 'Anasayfa',
@@ -23,4 +23,4 @@ const MyAccountPage = () => {
     );
 };
 
-export default MyAccountPage;
+export default MyAddressesPage;

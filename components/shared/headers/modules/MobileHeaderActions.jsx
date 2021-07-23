@@ -42,7 +42,7 @@ class MobileHeaderActions extends Component {
                     <AccountQuickLinksMobile />
                 ) : (
                     <div className="header__extra">
-                        <Link href="/uyelik/login">
+                        <Link href="/uyelik/giris">
                             <i className="icon-user"></i>
                         </Link>
                     </div>

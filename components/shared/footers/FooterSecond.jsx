@@ -84,7 +84,7 @@ const FooterSecond = ({ classes }) => (
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link href="/uyelik/login">
+                                            <Link href="/uyelik/giris">
                                                 <a>My account</a>
                                             </Link>
                                         </li>

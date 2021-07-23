@@ -45,7 +45,7 @@ class UserRepository {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         const reponse = await axios({
             method: 'get',
-            url: baseUrl + '/customers/profile/',
+            url: baseUrl + '/profile/',
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token,}, 
             })
             .then((response) => {

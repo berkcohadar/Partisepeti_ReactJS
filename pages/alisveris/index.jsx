@@ -147,11 +147,11 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
                                         ? Object.keys(brandsView).map(
                                               (item, index) => {
                                                   return (
-                                                      <div>
+                                                      <div key={index}>
                                                           <h5>{item} </h5>
                                                           {brandsView[item].map(
-                                                              (subItem) => (
-                                                                  <div className="ps-checkbox">
+                                                              (subItem,subIndex) => (
+                                                                  <div key={subIndex} className="ps-checkbox">
                                                                       <input
                                                                           className="form-control"
                                                                           type="checkbox"

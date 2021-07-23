@@ -12,7 +12,7 @@ const AccountMenuSidebar = (bar, setBar) => {
         { icon: <UserOutlined />, title: "Üyelik Bilgilerim", url: '/uyelik/uyelik-bilgilerim', },
         { icon: <EnvironmentOutlined />, title: "Adreslerim", url: '/uyelik/adreslerim',},
         { icon: <FireOutlined />, title: "Kampanyalarım", url: '/uyelik/kampanyalarim', },
-        { icon: <CarryOutOutlined />, title: "Anımsatıcılarım", url: '/uyelik/bildirimler', },
+        { icon: <CarryOutOutlined />, title: "Anımsatıcılarım", url: '/uyelik/animsaticilarim', },
         { icon: <LikeOutlined />, title: "Değerlendirmelerim", url: '/uyelik/degerlendirmelerim', },
         { icon: <BellOutlined />, title: "İzinler", url: '/uyelik/izinler', },
         { icon: <CommentOutlined />, title: "Yardım", url: '/uyelik/yardim', },

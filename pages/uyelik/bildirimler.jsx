@@ -1,10 +1,9 @@
 import React from 'react';
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import Addresses from '~/components/partials/account/Addresses';
-import Notifications from '~/components/partials/account/Notifications';
+import Blank from '~/components/partials/account/Blank';
 import ContainerPage from '~/components/layouts/ContainerPage';
 
-const AccountNotificationsPage = () => {
+const NotificationsPage = () => {
     const breadCrumb = [
         {
             text: 'Anasayfa',
@@ -15,13 +14,13 @@ const AccountNotificationsPage = () => {
         },
     ];
     return (
-        <ContainerPage title="Notifications" boxed={true}>
+        <ContainerPage boxed={true} title="Address">
             <div className="ps-page--my-account">
                 {/* <BreadCrumb breacrumb={breadCrumb} /> */}
-                <Notifications />
+                <Blank />
             </div>
         </ContainerPage>
     );
 };
 
-export default AccountNotificationsPage;
+export default NotificationsPage;

@@ -7,6 +7,7 @@ class CartRepository {
     }
     async addToCart(product) {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
+        console.log(token)
         const email = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).email;
         console.log(JSON.stringify({
             customer: email,
@@ -65,7 +66,7 @@ class CartRepository {
         const response = await axios({
             method: 'get',
             url: baseUrl + '/orders/cart/',
-            headers: {"Content-Type": "application/json", "Authorization": "Token "+token,}, 
+            headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             })
             .then((response) => {
                 return response.data;

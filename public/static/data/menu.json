@@ -168,11 +168,11 @@
                             },
                             {
                                 "text": "My Account",
-                                "url": "/uyelik/login"
+                                "url": "/uyelik/giris"
                             },
                             {
                                 "text": "Login / Register",
-                                "url": "/uyelik/login"
+                                "url": "/uyelik/giris"
                             }
                         ]
                     }

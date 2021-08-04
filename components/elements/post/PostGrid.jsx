@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { baseDomain } from '~/repositories/Repository';
+import { baseUrl } from '~/repositories/Repository';
 import LazyLoad from 'react-lazyload';
 import moment from 'moment';
 
@@ -11,7 +11,7 @@ const PostGrid = ({ post }) => {
             imageThumbnailView = (
                 <LazyLoad>
                     <img
-                        src={`${baseDomain}${post.thumbnail.url}`}
+                        src={`${baseUrl}${post.thumbnail.url}`}
                         alt="img"
                     />
                 </LazyLoad>

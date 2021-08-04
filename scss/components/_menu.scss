@@ -552,48 +552,40 @@
     .ant-menu-submenu {
         > .ant-menu-submenu-title {
             > a {
-                color: $color-heading;
+                color: $color-1st;
                 font-size: 16px;
-                font-weight: 500;
+                font-weight: 500 !important;   
             }
-
             > span {
+                color: $color-1st;
                 font-size: 16px;
-                color: $color-heading;
-                font-weight: 500;
+                font-weight: 500 !important;
 
             }
-            > i::before {
+            .ant-menu-submenu-arrow{ // > i::before && > i::after
                 color: $color-psbutton !important;
                 background: $color-psbutton !important;
+                transform: scale(1.5);
             }
-            > i::after {
-                color: $color-psbutton !important;
-                background: $color-psbutton !important;
-
-            }
-            .ant-menu-submenu-arrow::after {
-                color: $color-psbutton !important;
-                background: $color-psbutton !important;
-            }
-
         }
 
         > .ant-menu-sub {
             padding-left: 20px;
-            background: #3d3d3d;
+            background-color: transparent;
             border-radius: 6px;
             border: none;
+            .ant-menu-item{
+                margin: 0;
+            }
         }
     }
     .ant-menu-item a{
-        color: $color-heading;
+        color: $color-navbar !important;
+        font-size: 14px;
+        font-weight: 400;
     }
     .ant-menu-item-active {
         color: $color-1st;
         background-color: transparent;
-    }
-    .ant-menu-item::after{
-        // display: none !important;
     }
 }

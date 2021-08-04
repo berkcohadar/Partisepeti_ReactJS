@@ -29,16 +29,16 @@ class MobileHeaderActions extends Component {
         const { cartTotal } = this.props.cart;
         return (
             <div className="navigation__right">
-                <Link href="/uyelik/shopping-cart">
+                {/* <Link href="/uyelik/shopping-cart">
                     <a className="header__extra" href="#">
                     {cartTotal ? <i className="icon-cart-full"></i> : <i className="icon-cart"></i>}
                         <span>
                             <i>{cartTotal ? cartTotal : 0}</i>
                         </span>
                     </a>
-                </Link>
+                </Link> */}
 
-                {auth.isLoggedIn && Boolean(auth.isLoggedIn) === true ? (
+                {/* {auth.isLoggedIn && Boolean(auth.isLoggedIn) === true ? (
                     <AccountQuickLinksMobile />
                 ) : (
                     <div className="header__extra">
@@ -46,7 +46,7 @@ class MobileHeaderActions extends Component {
                             <i className="icon-user"></i>
                         </Link>
                     </div>
-                )}
+                )} */}
             </div>
         );
     }

@@ -67,7 +67,7 @@ class NavigationList extends Component {
             cartDrawer,
             categoriesDrawer,
         } = this.state;
-
+        const { cartTotal } = this.props.cart;
         return (
             <div className="navigation--list">
                 <Drawer
@@ -175,14 +175,22 @@ class NavigationList extends Component {
                         <i className="icon-user"></i>
                         {/* <span> Categories</span> */}
                     </a>
-                    <a
+                    <a className={`navigation__item ${
+                            cartDrawer === true ? 'active' : ''
+                        }`}
+                        onClick={this.handleShowCartDrawer}>
+                    {cartTotal ? <i className="icon-cart-full"></i> : <i className="icon-cart"></i>}
+                    {cartTotal ?<span>
+                            <i>{cartTotal ? cartTotal : 0}</i>
+                        </span>:null}
+                    </a>
+                    {/* <a
                         className={`navigation__item ${
                             cartDrawer === true ? 'active' : ''
                         }`}
                         onClick={this.handleShowCartDrawer}>
                         <i className="icon-cart"></i>
-                        {/* <span> Cart</span> */}
-                    </a>
+                    </a> */}
                 </div>
             </div>
         );
@@ -190,6 +198,6 @@ class NavigationList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return state.setting;
+    return state;
 };
 export default connect(mapStateToProps)(NavigationList);

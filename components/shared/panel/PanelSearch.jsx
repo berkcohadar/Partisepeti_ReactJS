@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getProductsByKeyword } from '../../../store/product/action';
-import ProductResult from '../../elements/products/ProductSearchResult';
+import ProductSearchResult from '../../elements/products/ProductSearchResult';
 import { connect } from 'react-redux';
 
 class PanelSearch extends Component {
@@ -55,7 +55,7 @@ class PanelSearch extends Component {
                         <input
                             className="form-control"
                             type="text"
-                            placeholder="Search something..."
+                            placeholder="Bunu arıyorum..."
                             onChange={this.handleSearch.bind(this)}
                         />
                         <button>
@@ -65,7 +65,7 @@ class PanelSearch extends Component {
                 </form>
                 {searchResults &&
                     searchResults.map((product) => (
-                        <ProductResult product={product} key={product.id} />
+                        <ProductSearchResult product={product} key={product.id} />
                     ))}
             </div>
         );

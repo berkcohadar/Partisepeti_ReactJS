@@ -6,6 +6,7 @@ const nextSettings = {
         title: 'Partisepeti',
         titleDescription: 'Eğlenceye Dair Her şey',
     },
+    future: { webpack5: true }
 };
 
 module.exports = withPlugins([withImages(), nextSettings]);

@@ -113,10 +113,24 @@
     }
 
     .ps-panel__content {
-        padding: 0 20px;
-        background-color: $color-navbar;
+        background-color: $color-dirty; //$color-navbar
+        width: 100%;
         > ul {
-            background-color: $color-navbar;
+            background-color: transparent;
+            padding: 10px 10px;
+
+            > li{
+                margin-bottom: 10px;
+                padding: 3px 20px;
+                border-radius: 8px;
+                background-color: rgba($color-navbar-contrast,0.3);
+                box-shadow: $shadow-main;
+            }
+        }
+        .ps-panel__content-text{
+            color: $color-1st !important;
+            font-size: 16px;
+            font-weight: 500;
         }
     }
 
@@ -125,6 +139,7 @@
         min-height: 70vh;
         overflow: auto;
         max-height: 100%;
+        background-color: #fafafa;
         .ps-form--search-mobile {
             margin-bottom: 30px;
             input {
@@ -168,7 +183,7 @@
     }
 
     .ps-panel__content {
-        border: 1px solid $color-navbar;
+        border: 1px solid $color-heading; //$color-navbar
         height: calc(100vh - 50px);
     }
 }

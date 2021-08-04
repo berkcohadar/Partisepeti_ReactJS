@@ -1,4 +1,4 @@
-import Repository, { baseDomain, serializeQuery } from './Repository';
+import Repository, { baseUrl, serializeQuery } from './Repository';
 
 class StoreRepository {
     constructor(callback) {
@@ -7,7 +7,7 @@ class StoreRepository {
 
     async getStores(payload) {
         const endPoint = `stores?${serializeQuery(payload)}`;
-        const reponse = await Repository.get(`${baseDomain}/${endPoint}`)
+        const reponse = await Repository.get(`${baseUrl}/${endPoint}`)
             .then((response) => {
                 if (response.data.length > 0) {
                     return response.data;
@@ -24,7 +24,7 @@ class StoreRepository {
 
     async getStoreBySlug(payload) {
         const reponse = await Repository.get(
-            `${baseDomain}/stores?slug=${payload}`
+            `${baseUrl}/stores?slug=${payload}`
         )
             .then((response) => {
                 if (response.data.length > 0) {
@@ -39,7 +39,7 @@ class StoreRepository {
 
     async getStoreItemsByKeyword(payload) {
         const reponse = await Repository.get(
-            `${baseDomain}/posts?title_contains=${payload}`
+            `${baseUrl}/posts?title_contains=${payload}`
         )
             .then((response) => {
                 return response.data;
@@ -50,7 +50,7 @@ class StoreRepository {
 
     async getPostItemsByCategory(payload) {
         const reponse = await Repository.get(
-            `${baseDomain}/posts?title_contains=${payload}`
+            `${baseUrl}/posts?title_contains=${payload}`
         )
             .then((response) => {
                 return response.data;

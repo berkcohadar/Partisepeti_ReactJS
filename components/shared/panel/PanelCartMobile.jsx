@@ -26,14 +26,14 @@ class PanelCartMobile extends Component {
                         cartItems.map((product) => (
                             <div
                                 className="ps-product--cart-mobile"
-                                key={product.id}>
+                                key={product.item.id}>
                                 <div className="ps-product__thumbnail">
                                     <Link
                                         href="/product/[pid]"
-                                        as={`/product/${product.id}`}>
+                                        as={`/product/${product.item.id}`}>
                                         <a>
                                             <img
-                                                src={product.thumbnail}
+                                                src={product.item.thumbnail}
                                                 alt="partisepeti"
                                             />
                                         </a>
@@ -50,17 +50,18 @@ class PanelCartMobile extends Component {
                                     </a>
                                     <Link
                                         href="/product/[pid]"
-                                        as={`/product/${product.id}`}>
+                                        as={`/product/${product.item.id}`}>
                                         <a className="ps-product__title">
-                                            {product.title}
+                                            {product.item.title}
                                         </a>
                                     </Link>
                                     <p>
                                         <strong>Satıcı:</strong>{' '}
-                                        {product.brand}
+                                        {product.item.brand}
                                     </p>
                                     <small>
-                                        {product.quantity} x ₺  {product.products[0].cart_price}
+                                        {product.quantity} x ₺ {product.product.cart_price}
+                                        {console.log(product)}
                                     </small>
                                 </div>
                             </div>

@@ -14,3 +14,10 @@ yarn dev
 ```bash
 npm run dev
 ```
+
+```bash
+npm install
+npm i -d postcss
+npm run build
+npm run start
+```

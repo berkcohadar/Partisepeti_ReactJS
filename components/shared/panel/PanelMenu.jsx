@@ -45,7 +45,7 @@ class PanelMenu extends Component {
                                 key={item.text}
                                 title={
                                     <Link href={item.url}>
-                                        <a>{item.text}</a>
+                                        <a className="ps-panel__content-text">{item.text}</a>
                                     </Link>
                                 }>
                                 {item.subMenu.map((subItem) => (
@@ -63,13 +63,13 @@ class PanelMenu extends Component {
                                 key={item.text}
                                 title={
                                     <Link href={item.url}>
-                                        <a>{item.text}</a>
+                                        <a className="ps-panel__content-text">{item.text}</a>
                                     </Link>
                                 }>
                                 {item.childs.map((megaItem) => (
                                     <SubMenu
                                         key={megaItem.heading}
-                                        title={<span>{megaItem.heading}</span>}>
+                                        title={<span className="ps-panel__content-text">{megaItem.heading}</span>}>
                                         {megaItem.megaItems.map(
                                             (megaSubItem) => (
                                                 <Menu.Item

@@ -223,7 +223,7 @@ function* removeItemSaga(payload) {
             JSON.parse(localStorage.getItem('persist:partisepeti')).cart
         );
         let index = localCart.cartItems.findIndex(
-            (item) => item.id === product.id
+            (item) => item.item.id === product.item.id
         );
         if (
             JSON.parse(

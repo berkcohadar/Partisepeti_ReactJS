@@ -8,7 +8,7 @@ const OrderView = ({orders}) => {
     const helpComponent = <p>Sorun Bildir</p>;
     const [first_click, setClick] = useState(false);
     const [button, setButton] = useState(null);
-    const [order, setOrder] = useState(null);
+    const [orderNo, setOrder] = useState(null);
 
     const buttonHandle = (event, component, buttonNo) => {
         event.stopPropagation();
@@ -34,17 +34,17 @@ const OrderView = ({orders}) => {
                     className="ps-order-item"
                     key={index}
                     style={
-                        order === index
+                        orderNo === index
                             ? {
                                   height: height,
-                                  boxShadow: '0px 0px 4px 0px #1c1a18',
+                                  boxShadow: 'rgba(50, 50, 93, 0.25) 0px 2px 6px -1px, rgba(0, 0, 0, 0.3) 0px -1px 3px -1px',
                               }
                             : { height: '20vh' }
                     }
                     onClick={() => {
                         setHeight('60vh');
                         setOrder(index);
-                        setComponent(<OrderItems />);
+                        setComponent(<OrderItems order={order}/>);
                     }}>
                     <div className="ps-order-item-area">
                         <div className="ps-order-item-main">
@@ -67,12 +67,11 @@ const OrderView = ({orders}) => {
                         </div>
                         <div className="ps-order-item-info">
                             <div>
-                                <p>Ürünler - ₺ {order.total_amount}.00</p>
-                                    <div style={{display:"flex"}}>
-                                        <img style={{height:"50px"}} src="https://images.pexels.com/photos/5635136/pexels-photo-5635136.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></img>
-                                        <img style={{height:"50px"}} src="https://images.pexels.com/photos/5635136/pexels-photo-5635136.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></img>
-                                        <img style={{height:"50px"}} src="https://images.pexels.com/photos/5635136/pexels-photo-5635136.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></img>
-                                        <img style={{height:"50px"}} src="https://images.pexels.com/photos/5635136/pexels-photo-5635136.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></img>
+                                <p>Ürünler - ₺<strong>{order.total_amount}.00</strong></p>
+                                    <div className="ps-order-item-images">
+                                        {order.ordered_items.map((product,index)=>(
+                                        <a href={"/product/"+product.product_id}><img key={index} className="ps-order-item-image" src={product.product_item_thumbnail}></img></a>
+                                        ))}
                                     </div>
                             </div>
                         </div>
@@ -80,7 +79,7 @@ const OrderView = ({orders}) => {
                     <div
                         className="ps-order-item-drawer"
                         style={
-                            comp && order === index
+                            comp && orderNo === index
                                 ? { opacity: 1, display: 'block' }
                                 : {}
                         }>

@@ -17,14 +17,14 @@ const Shipping = () => {
                                     <figure>
                                         <small>Contact</small>
                                         <p>test@gmail.com</p>
-                                        <Link href="/uyelik/checkout">
+                                        <Link href="/uyelik/siparis-bilgilerim">
                                             <a>Change</a>
                                         </Link>
                                     </figure>
                                     <figure>
                                         <small>Ship to</small>
                                         <p>2015 South Street, Midland, Texas</p>
-                                        <Link href="/uyelik/checkout">
+                                        <Link href="/uyelik/siparis-bilgilerim">
                                             <a>Change</a>
                                         </Link>
                                     </figure>
@@ -37,13 +37,13 @@ const Shipping = () => {
                                     </figure>
                                 </div>
                                 <div className="ps-block__footer">
-                                    <Link href="/uyelik/checkout">
+                                    <Link href="/uyelik/siparis-bilgilerim">
                                         <a>
                                             <i className="icon-arrow-left mr-2"></i>
                                             Return to information
                                         </a>
                                     </Link>
-                                    <Link href="/uyelik/payment">
+                                    <Link href="/uyelik/siparis-odeme">
                                         <a className="ps-btn">
                                             Continue to payment
                                         </a>

@@ -3248,8 +3248,16 @@
     .ps-list--arrow {
         li {
             border-bottom: 2px solid transparent;
+            display: flex;
+            align-items: flex-end;
+            i{
+                color: $color-1st !important;
+                font-size: 22px;
+                font-weight: 500;
+                padding: 2px;
+            }
             a {
-                padding-left: 0;
+                padding-left: 10px;
                 color:$color-1st;
                 font-weight: 500;
                 &:before {
@@ -3287,6 +3295,8 @@
         padding-top: 10px;
         transform: translate(0 20px) scale3d(1, 1, 0);
         transition: all 0.4s ease;
+        box-shadow: $shadow-main;
+        border-radius: 8px;
         @include hidden;
     }
     &:hover {

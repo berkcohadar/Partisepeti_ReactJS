@@ -148,11 +148,11 @@
                         "megaItems": [
                             {
                                 "text": "Shopping Cart",
-                                "url": "/uyelik/shopping-cart"
+                                "url": "/uyelik/sepetim"
                             },
                             {
                                 "text": "Checkout",
-                                "url": "/uyelik/checkout"
+                                "url": "/uyelik/siparis-bilgilerim"
                             },
                             {
                                 "text": "Whishlist",

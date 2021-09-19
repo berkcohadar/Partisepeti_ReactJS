@@ -174,7 +174,7 @@ class ShoppingCart extends Component {
                                             </h3>
                                         </div>
                                     </div>
-                                    <Link href="/uyelik/checkout">
+                                    <Link href="/uyelik/siparis-bilgilerim">
                                         <a className="ps-btn ps-btn--fullwidth">
                                             Sepeti Onayla
                                         </a>

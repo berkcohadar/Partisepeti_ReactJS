@@ -14,15 +14,13 @@ const HeaderActions = (props) => {
         headerAuthView = <AccountQuickLinks isLoggedIn={false} />;
     }
     return (
-        <div className="header__actions">
-            {/* <Link href="/uyelik/compare">
+        <div className="header__actions">            
+            <Link href="/uyelik/wishlist">
                 <a className="header__extra">
-                    <i className="icon-chart-bars"></i>
-                    <span>
-                        <i>{compare ? compare.compareTotal : 0}</i>
-                    </span>
+                    <i  className="icon-map-marker"></i>
+                    <span className="location-hover">Mağazalarımız</span>
                 </a>
-            </Link> */}
+            </Link>
             <Link href="/uyelik/wishlist">
                 <a className="header__extra">
                     <i className="icon-heart"></i>

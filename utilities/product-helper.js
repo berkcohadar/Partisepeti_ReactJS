@@ -182,7 +182,7 @@ export function StrapiProductThumbnail(product) {
                 </a>
             </Link>
         );
-    } else if (product.item.thumbnail) {
+    } else if (product.item) { //product.item.thumbnail?? error in orders page
         view = (
             <Link href="/product/[pid]" as={`/product/${product.product.id}`}>
                 <a>
@@ -190,6 +190,19 @@ export function StrapiProductThumbnail(product) {
                         <img
                             src={`${product.item.thumbnail}`}
                             alt={product.item.title}
+                        />
+                    </LazyLoad>
+                </a>
+            </Link>
+        );
+    } else if (product.product_item_thumbnail) {
+        view = (
+            <Link href="/product/[pid]" as={`/product/${product.product_id}`}>
+                <a>
+                    <LazyLoad>
+                        <img
+                            src={`${product.product_item_thumbnail}`}
+                            alt={product.product_item_title}
                         />
                     </LazyLoad>
                 </a>

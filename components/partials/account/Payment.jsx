@@ -24,6 +24,14 @@ class Payment extends Component {
         // while(this.props.paymentUrl=="");
         // Router.push(this.props.paymentUrl);
     };
+    componentDidMount(){
+        console.log("girdi\n\n\n\n")
+
+        if(!this.props.orderInfo){
+            console.log("girdi\n\n\n\n")
+            Router.push('/uyelik/siparis-bilgilerim');
+        }
+    }
     render() {
         // let month = [],
         //     year = [];
@@ -46,17 +54,17 @@ class Payment extends Component {
                                     <div className="ps-block__panel">
                                         <figure>
                                             <strong>İletişim</strong>
-                                            <p>{this.props.orderInfo.email}</p>
-                                            <Link href="/uyelik/checkout">
+                                            <p>{this.props.orderInfo?this.props.orderInfo.email:"Bilgi yok."}</p>
+                                            <Link href="/uyelik/siparis-bilgilerim">
                                                 <a>Değiştir</a>
                                             </Link>
                                         </figure>
                                         <figure>
                                             <strong>Adres</strong>
                                             <p>
-                                            {this.props.orderInfo.address}
+                                            {this.props.orderInfo?this.props.orderInfo.address:"Bilgi yok."}
                                             </p>
-                                            <Link href="/uyelik/checkout">
+                                            <Link href="/uyelik/siparis-bilgilerim">
                                                 <a>Değiştir</a>
                                             </Link>
                                         </figure>
@@ -185,7 +193,7 @@ class Payment extends Component {
                                         </div>
                                     </div> */}
                                     <div className="ps-block__footer">
-                                        <Link href="/uyelik/checkout">
+                                        <Link href="/uyelik/siparis-bilgilerim">
                                             <a>
                                                 <i className="icon-arrow-left mr-2"></i>
                                                 Teslimat Bilgilerini Değiştir

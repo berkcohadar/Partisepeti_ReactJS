@@ -13,7 +13,7 @@ const CheckoutPage = () => {
         },
         {
             text: 'Alışveriş Sepetim',
-            url: '/uyelik/shopping-cart',
+            url: '/uyelik/sepetim',
         },
         {
             text: 'Ödeme Bilgileri',

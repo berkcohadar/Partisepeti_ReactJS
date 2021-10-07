@@ -33,18 +33,14 @@ class OrderItems extends Component {
     };
 
     render() {
-        const { amount, cartTotal, cartItems } = this.props;
-        let currentCartItems = [];
-        if (cartItems && cartItems.length > 0) {
-            currentCartItems = cartItems;
-        }
+
         return (
                 <div className="container">
                     <div className="ps-section__content" style={{background:"transparent"}}>
                         <div className="table-responsive" style={{maxHeight:"35vh",overflowY:"scroll"}}>
                             <table className="table ps-table--shopping-cart" >
                                 <tbody>
-                                    {currentCartItems.map(product => (
+                                    {this.props.order.ordered_items.map(product => (
                                         <tr key={product.id}>
                                             <td>
                                                 <ProductCart
@@ -52,7 +48,7 @@ class OrderItems extends Component {
                                                 />
                                             </td>
                                             <td className="price">
-                                            ₺   {product.products[0].cart_price}
+                                            ₺   {product.unit_paid_price}
                                             </td>
                                             <td>
                                                 <div className="form-group--number">
@@ -61,7 +57,7 @@ class OrderItems extends Component {
                                             </td>
                                             <td>
                                             ₺ {product.quantity *
-                                                    product.products[0].cart_price}
+                                                    product.unit_paid_price}
                                             </td>
                                         </tr>
                                     ))}
@@ -83,6 +79,6 @@ class OrderItems extends Component {
 }
 
 const mapStateToProps = state => {
-    return state.cart;
+    return state.order;
 };
 export default connect(mapStateToProps)(OrderItems);

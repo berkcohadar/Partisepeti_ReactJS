@@ -61,6 +61,10 @@ const modalDanger = type => {
 
 function* logOutSaga() {
     try {
+        // DELETE_CART
+        // DELETE_USER_INFO
+        // yield call(emptyCart());
+        // yield call(deleteUser());
         yield put(logOutSuccess());
         modalWarning('warning');
     } catch (err) {

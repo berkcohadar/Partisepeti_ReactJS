@@ -24,6 +24,14 @@ class Payment extends Component {
         // while(this.props.paymentUrl=="");
         // Router.push(this.props.paymentUrl);
     };
+    componentDidMount(){
+        console.log("girdi\n\n\n\n")
+
+        if(!this.props.orderInfo){
+            console.log("girdi\n\n\n\n")
+            Router.push('/uyelik/siparis-bilgilerim');
+        }
+    }
     render() {
         // let month = [],
         //     year = [];
@@ -46,7 +54,7 @@ class Payment extends Component {
                                     <div className="ps-block__panel">
                                         <figure>
                                             <strong>İletişim</strong>
-                                            <p>{this.props.orderInfo.email}</p>
+                                            <p>{this.props.orderInfo?this.props.orderInfo.email:"Bilgi yok."}</p>
                                             <Link href="/uyelik/siparis-bilgilerim">
                                                 <a>Değiştir</a>
                                             </Link>
@@ -54,7 +62,7 @@ class Payment extends Component {
                                         <figure>
                                             <strong>Adres</strong>
                                             <p>
-                                            {this.props.orderInfo.address}
+                                            {this.props.orderInfo?this.props.orderInfo.address:"Bilgi yok."}
                                             </p>
                                             <Link href="/uyelik/siparis-bilgilerim">
                                                 <a>Değiştir</a>

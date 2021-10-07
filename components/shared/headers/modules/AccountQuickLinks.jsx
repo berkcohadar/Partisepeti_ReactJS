@@ -3,46 +3,47 @@ import { connect, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import { logOut } from '~/store/auth/action';
 import { getProfile } from '~/store/user/action';
+import {HeartOutlined,CarryOutOutlined,EnvironmentOutlined,LikeOutlined,ShoppingOutlined,BellOutlined,CommentOutlined,UserOutlined,FireOutlined,} from "@ant-design/icons";
 
 const AccountQuickLinks = (props) => {
     const dispatch = useDispatch();
     const handleLogout = (e) => {
         e.preventDefault();
-        // dispatch(logOut());     
-        dispatch(getProfile());     
-
+        dispatch(logOut());
     };
     const accountLinks = [
         {
             text: 'Siparişlerim',
             url: '/uyelik/siparislerim',
-        },
-        {
-            text: 'Üyelik Bilgilerim',
-            url: '/uyelik/user-information',
-        },
-        {
-            text: 'Bildirimler',
-            url: '/uyelik/notifications',
+            icon: 'icon-cart-add'
         },
         {
             text: 'Koleksiyonlarım',
-            url: '/uyelik/recent-viewed-product',
+            url: '/uyelik/koleksiyonlarim',
+            icon: 'icon-heart'
+        },
+        {
+            text: 'Üyelik Bilgilerim',
+            url: '/uyelik/uyelik-bilgilerim',
+            icon: 'icon-user'
         },
         {
             text: 'Adreslerim',
-            url: '/uyelik/addresses',
+            url: '/uyelik/adreslerim',
+            icon: 'icon-map-marker'
         },
         {
-            text: 'Kampanyalarım',
-            url: '/uyelik/user-information',
+            text: 'Kampanyalarim',
+            url: '/uyelik/kampanyalarim',
+            icon: 'icon-percent'
         },
     ];
     const { isLoggedIn, profile } = props;
 
     // View
     const linksView = accountLinks.map((item) => (
-        <li key={item.text}>
+        <li className="" key={item.text}>
+            <i className={item.icon}></i>
             <Link href={item.url}>
                 <a>{item.text}</a>
             </Link>
@@ -57,9 +58,14 @@ const AccountQuickLinks = (props) => {
                     <ul className="ps-list--arrow">
                         {linksView}
                         <li className="ps-block__footer">
-                            <a href="#" onClick={(e) => handleLogout(e)}>
-                                Logout
-                            </a>
+                        <i className="icon-exit-right"></i>
+                        <Link href='#' onClick={(e) => handleLogout(e)} >
+                            <a>Güvenli Çıkış</a>
+                        </Link>
+                            {/* <a href="#" onClick={(e) => handleLogout(e)}>
+                                
+                                <i className="icon-exit-right"></i>Güvenli Çıkış
+                            </a> */}
                         </li>
                     </ul>
                     </div>

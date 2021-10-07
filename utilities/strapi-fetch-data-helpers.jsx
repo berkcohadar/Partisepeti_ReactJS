@@ -13,7 +13,12 @@ export async function getProductsByCollectionHelper(
     pageSize = 12
 ) {
     let products;
-    if (collectionSlug) {
+    if (collectionSlug == '#') {
+        console.log('\n\n\n')
+        console.log(collectionSlug)
+        products = await ProductRepository.getAllProducts();
+        console.log(products)
+    } else if(collectionSlug){
         products = await CollectionRepository.getProductsByCollectionSlug(
             collectionSlug
         );

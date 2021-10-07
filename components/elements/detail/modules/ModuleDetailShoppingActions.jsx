@@ -23,7 +23,7 @@ const ModuleDetailShoppingActions = ({ product, extended = false }) => {
         tmp.quantity = quantity;
         dispatch(addItem(tmp));
         setTimeout(function () {
-            Router.push('/uyelik/checkout');
+            Router.push('/uyelik/siparis-bilgilerim');
         }, 1000);
     };
 

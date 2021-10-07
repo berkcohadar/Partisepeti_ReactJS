@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 
 const HomeAdsColumns = () => {
     const [loading, setLoading] = useState(true);
-    const [categories, setCategories] = useState(null);
+    const [categories, setCategories] = useState([]);
     
     async function getCategories() {
         setLoading(true);
@@ -32,14 +32,15 @@ const HomeAdsColumns = () => {
         <div className="ps-home-ads">
             <div className="ps-container">
                 <div className="row">
-                {loading?<p>yukleniyor...</p>:categories.map((item,index)=>(
+                    {/* categories.map is not a function */}
+                {/* {loading?<p>yukleniyor...</p>:categories.map((item,index)=>(
                     <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
                         <Promotion
                             link={"/"+item.slug}
                             image={item ? item.img : null}
                         />
                     </div>
-                    ))}
+                    ))} */}
                 </div>
             </div>
         </div>

@@ -47,7 +47,7 @@ class Payment extends Component {
                                         <figure>
                                             <strong>İletişim</strong>
                                             <p>{this.props.orderInfo.email}</p>
-                                            <Link href="/uyelik/checkout">
+                                            <Link href="/uyelik/siparis-bilgilerim">
                                                 <a>Değiştir</a>
                                             </Link>
                                         </figure>
@@ -56,7 +56,7 @@ class Payment extends Component {
                                             <p>
                                             {this.props.orderInfo.address}
                                             </p>
-                                            <Link href="/uyelik/checkout">
+                                            <Link href="/uyelik/siparis-bilgilerim">
                                                 <a>Değiştir</a>
                                             </Link>
                                         </figure>
@@ -185,7 +185,7 @@ class Payment extends Component {
                                         </div>
                                     </div> */}
                                     <div className="ps-block__footer">
-                                        <Link href="/uyelik/checkout">
+                                        <Link href="/uyelik/siparis-bilgilerim">
                                             <a>
                                                 <i className="icon-arrow-left mr-2"></i>
                                                 Teslimat Bilgilerini Değiştir

@@ -40,7 +40,7 @@ class UserRepository {
     async checkPaymentHelper(token){
         const reponse = await axios({
             method: 'get',
-            url: baseUrl + '/orders/check-order-payment/'+token,
+            url: baseUrl + '/orders/check-order-payment/'+token, //checkout/payment-control/TOKEN
             headers: {"Content-Type": "application/json"}, 
             })
             .then((response) => {

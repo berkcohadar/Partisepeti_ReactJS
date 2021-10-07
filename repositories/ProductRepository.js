@@ -28,12 +28,27 @@ class ProductRepository {
                 params = serializeQuery(params)
             }
         }
-        else{
-            params = serializeQuery(params)
-        }
+        // else{
+        //     params = serializeQuery(params)
+        // }
         const reponse = await Repository.get(
             `${baseUrl}/items/?${params}`
             // http://127.0.0.1:8000/items/?search=value&categories=2
+        )
+            .then((response) => {
+                return {
+                    items: response.data,
+                    totalItems: response.data.length,
+                };
+            })
+
+            .catch((error) => ({ error: JSON.stringify(error) }));
+        return reponse;
+    }
+
+    async getAllProducts() {
+        const reponse = await Repository.get(
+            `${baseUrl}/items`
         )
             .then((response) => {
                 return {

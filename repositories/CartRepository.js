@@ -5,6 +5,7 @@ class CartRepository {
     constructor(callback) {
         this.callback = callback;
     }
+    
     async addToCart(product) {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         console.log(token)
@@ -30,6 +31,7 @@ class CartRepository {
             .catch((error) =>  {return { error: JSON.stringify(error) }});
         return response;
     }
+
     async removeFromCart(cartItemId){
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         const response = await axios({

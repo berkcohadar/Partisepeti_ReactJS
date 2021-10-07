@@ -47,7 +47,7 @@ const PaymentCheckPage = () => {
     return (
         <ContainerPage title="Checkout" boxed={true}>
             <div className="ps-page--simple">
-                <PaymentCheck loading={loading} status={status} token={query.order}/>
+                <PaymentCheck loading={loading} status={status} token={query.siparis}/>
             </div>
         </ContainerPage>
     );

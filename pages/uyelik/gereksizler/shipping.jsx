@@ -14,11 +14,11 @@ const ShippingPage = () => {
         },
         {
             text: 'Alışveriş Sepetim',
-            url: '/uyelik/shopping-cart',
+            url: '/uyelik/sepetim',
         },
         {
             text: 'Ödeme Bilgileri',
-            url: '/uyelik/checkout',
+            url: '/uyelik/siparis-bilgilerim',
         },
         {
             text: 'Shipping',

@@ -13,7 +13,7 @@ class FormCheckoutInformation extends Component {
 
     handleLoginSubmit = (form) => {
         this.props.dispatch(orderInfo(form));
-        Router.push('/uyelik/payment');
+        Router.push('/uyelik/siparis-odeme');
     };
 
     render() {

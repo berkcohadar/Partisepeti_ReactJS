@@ -29,7 +29,7 @@ class MobileHeaderActions extends Component {
         const { cartTotal } = this.props.cart;
         return (
             <div className="navigation__right">
-                {/* <Link href="/uyelik/shopping-cart">
+                {/* <Link href="/uyelik/sepetim">
                     <a className="header__extra" href="#">
                     {cartTotal ? <i className="icon-cart-full"></i> : <i className="icon-cart"></i>}
                         <span>

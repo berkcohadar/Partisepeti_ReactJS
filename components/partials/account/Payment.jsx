@@ -25,10 +25,7 @@ class Payment extends Component {
         // Router.push(this.props.paymentUrl);
     };
     componentDidMount(){
-        console.log("girdi\n\n\n\n")
-
         if(!this.props.orderInfo){
-            console.log("girdi\n\n\n\n")
             Router.push('/uyelik/siparis-bilgilerim');
         }
     }

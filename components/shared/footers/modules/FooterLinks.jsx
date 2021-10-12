@@ -1,230 +1,83 @@
 import React from 'react';
 import Link from 'next/link';
+
+// URL will search with a keyword and specified category
+const searchURL = "/search?keyword=";
+
 const Links = {
-    consumerElectric: [
+    partiMalzemeleri: [
         {
-            text: 'Air Conditioners',
-            url: "/alisveris",
+            text: 'Kullan At',
         },
         {
-            text: 'Audios & Theaters',
-            url: "/alisveris",
+            text: 'Led Işıklar',
         },
         {
-            text: 'Car Electronics',
-            url: "/alisveris",
-        },
-        {
-            text: 'Office Electronics',
-            url: "/alisveris",
-        },
-        {
-            text: 'TV Televisions',
-            url: "/alisveris",
-        },
-        {
-            text: 'Washing Machines',
-            url: "/alisveris",
+            text: 'Süsleme',
         },
     ],
-    clothingAndApparel: [
+    balonSüsleme: [
         {
-            text: 'Printers',
-            url: "/alisveris",
+            text: 'Oda Süslemesi',
         },
         {
-            text: 'Projectors',
-            url: "/alisveris",
-        },
-        {
-            text: 'Scanners',
-            url: "/alisveris",
-        },
-        {
-            text: 'Store & Business',
-            url: "/alisveris",
-        },
-        {
-            text: '4K Ultra HD TVs',
-            url: "/alisveris",
-        },
-        {
-            text: 'LED TVs',
-            url: "/alisveris",
-        },
-        {
-            text: 'OLED TVs',
-            url: "/alisveris",
+            text: 'Uçan Balonlar',
         },
     ],
-    gardenAndKitchen: [
+    sevgililerGünü: [
         {
-            text: 'Cookware',
-            url: "/alisveris",
+            text: 'Hediyeler',
         },
         {
-            text: 'Decoration',
-            url: "/alisveris",
+            text: 'Ufak Sürprizler',
+        }
+    ],
+    cadılarBayramı: [
+        {
+            text: 'Kostümler',
         },
         {
-            text: 'Furniture',
-            url: "/alisveris",
-        },
-        {
-            text: 'Garden Tools',
-            url: "/alisveris",
-        },
-        {
-            text: 'Garden Equipments',
-            url: "/alisveris",
-        },
-        {
-            text: 'Powers And Hand Tools',
-            url: "/alisveris",
-        },
-        {
-            text: 'Utensil & Gadget',
-            url: "/alisveris",
+            text: 'Maskeler',
         },
     ],
-    healthAndBeauty: [
+    yılbaşıUrünleri: [
         {
-            text: 'Hair Care',
-            url: "/alisveris",
+            text: 'Yılbaşı Ağacı',
         },
         {
-            text: 'Decoration',
-            url: "/alisveris",
+            text: 'Ev süslemeleri',
         },
         {
-            text: 'Makeup',
-            url: "/alisveris",
-        },
-        {
-            text: 'Body Shower',
-            url: "/alisveris",
-        },
-        {
-            text: 'Skin Care',
-            url: "/alisveris",
-        },
-        {
-            text: 'Cologine',
-            url: "/alisveris",
-        },
-        {
-            text: 'Perfume',
-            url: "/alisveris",
-        },
-    ],
-    jewelryAndWatch: [
-        {
-            text: 'Necklace',
-            url: "/alisveris",
-        },
-        {
-            text: 'Pendant',
-            url: "/alisveris",
-        },
-        {
-            text: 'Diamond Ring',
-            url: "/alisveris",
-        },
-        {
-            text: 'Sliver Earing',
-            url: "/alisveris",
-        },
-        {
-            text: 'Leather Watcher',
-            url: "/alisveris",
-        },
-        {
-            text: 'Gucci',
-            url: "/alisveris",
-        },
-    ],
-    computerAndTechnology: [
-        {
-            text: 'Desktop PC',
-            url: "/alisveris",
-        },
-        {
-            text: 'Laptop',
-            url: "/alisveris",
-        },
-        {
-            text: 'Smartphones',
-            url: "/alisveris",
-        },
-        {
-            text: 'Tablet',
-            url: "/alisveris",
-        },
-        {
-            text: 'Game Controller',
-            url: "/alisveris",
-        },
-        {
-            text: 'Audio & Video',
-            url: "/alisveris",
-        },
-        {
-            text: 'Wireless Speaker',
-            url: "/alisveris",
+            text: 'Ev süslemeleri',
         },
     ],
 };
 
+const normalizeTitle = (title) => {
+    title = title.charAt(0).toUpperCase() + title.slice(1);
+    title = title.replace(/([A-Z])/g, ' $1').trim()
+    return title
+}
+
+const createLinks = () => {
+    let linksView = Object.keys(Links).map(function(key,index) {
+        return (
+            <p key={index}>
+                <strong>{normalizeTitle(key)}</strong>
+                {Links[key].map((item, itemIndex) => (
+                    <Link href={searchURL+item.text} key={item.text}>
+                        <a>{item.text}</a>
+                    </Link>
+                ))}
+            </p>
+        );
+    });
+    return linksView
+}
+
 const FooterLinks = () => (
     <div className="ps-footer__links">
-        <p>
-            <strong>Consumer Electric:</strong>
-            {Links.consumerElectric.map((item) => (
-                <Link href={item.url} key={item.text}>
-                    <a>{item.text}</a>
-                </Link>
-            ))}
-        </p>
-        <p>
-            <strong>Clothing &amp; Apparel:</strong>
-            {Links.clothingAndApparel.map((item) => (
-                <Link href={item.url} key={item.text}>
-                    <a>{item.text}</a>
-                </Link>
-            ))}
-        </p>
-        <p>
-            <strong>Home, Garden &amp; Kitchen:</strong>
-            {Links.gardenAndKitchen.map((item) => (
-                <Link href={item.url} key={item.text}>
-                    <a>{item.text}</a>
-                </Link>
-            ))}
-        </p>
-        <p>
-            <strong>Health &amp; Beauty:</strong>
-            {Links.healthAndBeauty.map((item) => (
-                <Link href={item.url} key={item.text}>
-                    <a>{item.text}</a>
-                </Link>
-            ))}
-        </p>
-        <p>
-            <strong>Jewelry &amp; Watches:</strong>
-            {Links.jewelryAndWatch.map((item) => (
-                <Link href={item.url} key={item.text}>
-                    <a>{item.text}</a>
-                </Link>
-            ))}
-        </p>
-        <p>
-            <strong>Computer &amp; Technologies:</strong>
-            {Links.computerAndTechnology.map((item) => (
-                <Link href={item.url} key={item.text}>
-                    <a>{item.text}</a>
-                </Link>
-            ))}
-        </p>
+    {createLinks()}
     </div>
 );
 

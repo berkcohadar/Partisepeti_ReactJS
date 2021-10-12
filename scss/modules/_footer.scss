@@ -14,7 +14,7 @@
 
         p {
             strong {
-                color: $color-heading;
+                color: $color-text;
                 margin-right: 20px;
                 font-weight: 600;
             }
@@ -69,8 +69,8 @@
 
         p {
             margin-bottom: 0;
-            line-height: 30px;
-            color: $color-heading;
+            line-height: 60px;
+            color: $color-text;
 
             &:last-child {
                 span {
@@ -83,6 +83,9 @@
                     display: inline-block;
                     margin-left: 20px;
                     vertical-align: middle;
+                    img{
+                        max-height: 50px;
+                    }
                 }
             }
         }

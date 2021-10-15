@@ -247,7 +247,7 @@ button.ps-btn {
     z-index: 10000;
     background-color: #fff;
     border: 1px solid #eaeaea;
-
+    bottom
     i {
         color: $color-text;
     }
@@ -266,4 +266,5 @@ button.ps-btn {
 }
 .ant-back-top {
     right: 50px !important;
+    bottom: 100px !important;
 }

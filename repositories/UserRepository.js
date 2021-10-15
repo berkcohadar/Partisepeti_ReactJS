@@ -8,10 +8,9 @@ class UserRepository {
     async loginRequest(e) {
         const reponse = await axios({
             method: 'post',
-            url: baseUrl + '/rest-auth/login/',
+            url: baseUrl + '/auth/login/',
             headers: {"Content-Type": "application/json"}, 
             data: JSON.stringify({
-                username: e.username,
                 email: e.username,
                 password: e.password,
               }),})
@@ -26,12 +25,13 @@ class UserRepository {
     async registerRequest(e) {
         const reponse = await axios({
             method: 'post',
-            url: baseUrl + '/rest-auth/registration/',
+            url: baseUrl + '/auth/registration/',
             headers: {"Content-Type": "application/json"}, 
             data: JSON.stringify({
+                first_name: e.first_name,
+                last_name: e.last_name,
                 email: e.username,
-                password1: e.password,
-                password2: e.password,
+                password: e.password,
               }),})
             .then((response) => {
                 return response.data;
@@ -45,7 +45,7 @@ class UserRepository {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         const reponse = await axios({
             method: 'get',
-            url: baseUrl + '/profile/',
+            url: baseUrl + '/auth/user/',
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token,}, 
             })
             .then((response) => {
@@ -60,7 +60,7 @@ class UserRepository {
         const gender_selection = {"Erkek":"E","Kadın":"K","Belirtmek İstemiyorum":"B",}
         const reponse = await axios({
             method: 'post',
-            url: baseUrl + '/profile/update/',
+            url: baseUrl + '/auth/user/update/',
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
                 user: {
@@ -83,7 +83,7 @@ class UserRepository {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         const reponse = await axios({
             method: 'get',
-            url: baseUrl + '/profile/address/',
+            url: baseUrl + '/customer/address/list/',
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token,}, 
             })
             .then((response) => {
@@ -98,7 +98,7 @@ class UserRepository {
         e.email = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).email;
         const reponse = await axios({
             method: 'post',
-            url: baseUrl + '/profile/address/add/',
+            url: baseUrl + '/customer/address/create/',
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
                 "customer": e.email,
@@ -125,7 +125,7 @@ class UserRepository {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         const reponse = await axios({
             method: 'post',
-            url: baseUrl + '/profile/address/update/'+e.id+'/',
+            url: baseUrl + '/customer/address/update/'+e.id+'/',
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
                 "customer": e.email,
@@ -152,7 +152,7 @@ class UserRepository {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         const reponse = await axios({
             method: 'post',
-            url: baseUrl + '/profile/address/delete/'+e.id+'/',
+            url: baseUrl + '/customer/address/delete/'+e.id+'/',
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token},
             })
             .then((response) => {

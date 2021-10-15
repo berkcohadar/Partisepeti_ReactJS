@@ -40,21 +40,3 @@ export async function getCollections() {
     }
 
 }
-
-export async function getProductsByCategoriesHelper(slug, pageSize = 12) {
-    let products;
-    if (slug) {
-        products = await CollectionRepository.getProductsByCategorySlug(slug);
-    } else {
-        const queries = {
-            _limit: pageSize,
-        };
-        products = await ProductRepository.getProducts(queries);
-    }
-
-    if (products) {
-        return products;
-    } else {
-        return null;
-    }
-}

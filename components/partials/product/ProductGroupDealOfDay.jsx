@@ -25,9 +25,6 @@ const ProductGroupDealOfDay = ({
         if (collectionSlug) {
             responseData = await getProductsByCollectionHelper(collectionSlug);
         }
-        if (categorySlug) {
-            responseData = await getProductsByCategoriesHelper(categorySlug);
-        }
 
         if (responseData) {
             setProductItems(responseData.items);

@@ -2,7 +2,6 @@ import { actionTypes } from './action';
 
 export const initialState = {
     collections: [],
-    categories: [],
     collection: {},
 };
 
@@ -17,11 +16,6 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 ...{ collection: action.payload },
-            };
-        case actionTypes.GET_CATEGORIES_SUCCESS:
-            return {
-                ...state,
-                ...{ categories: action.payload },
             };
         default:
             return state;

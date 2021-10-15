@@ -8,16 +8,11 @@ class CartRepository {
     
     async addToCart(product) {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
-        console.log(token)
         const email = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).email;
-        console.log(JSON.stringify({
-            customer: email,
-            product: product.product.id,
-            quantity: product.quantity,
-          }),)
+        
         const response = await axios({
             method: 'post',
-            url: baseUrl + '/orders/add-to-cart/',
+            url: baseUrl + '/cart/add/',
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
                 customer: email,
@@ -36,7 +31,7 @@ class CartRepository {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         const response = await axios({
             method: 'delete',
-            url: baseUrl + '/orders/remove-from-cart/'+cartItemId,
+            url: baseUrl + '/cart/remove/'+cartItemId,
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             })
             .then((response) => {
@@ -63,11 +58,12 @@ class CartRepository {
     //         .catch((error) => ({ error: JSON.stringify(error) }));
     //     return response;
     // }
+
     async getCart() {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         const response = await axios({
             method: 'get',
-            url: baseUrl + '/orders/cart/',
+            url: baseUrl + '/cart/',
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             })
             .then((response) => {

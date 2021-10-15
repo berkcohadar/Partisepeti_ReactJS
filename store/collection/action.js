@@ -20,17 +20,6 @@ export function getCollectionsSuccess(payload) {
     };
 }
 
-export function getCategories(payload) {
-    return { type: actionTypes.GET_CATEGORIES, payload };
-}
-
-export function getCategoriesSuccess(payload) {
-    return {
-        type: actionTypes.GET_CATEGORIES_SUCCESS,
-        payload,
-    };
-}
-
 export function getCollection(payload) {
     return { type: actionTypes.GET_COLLECTIONS, payload };
 }

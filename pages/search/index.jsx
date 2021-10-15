@@ -30,9 +30,9 @@ const SearchPage = ({ query }) => {
         };
         setLoading(true);
         const SPProducts = await ProductRepository.getProducts(queries);
-        if (SPProducts.items.results) {
-            if (SPProducts.items.results.length > 0) {
-                setProductItems(SPProducts.items.results);
+        if (SPProducts.items) {
+            if (SPProducts.items.length > 0) {
+                setProductItems(SPProducts.items);
             } else {
                 setProductItems(null);
             }
@@ -41,7 +41,7 @@ const SearchPage = ({ query }) => {
                 setLoading(false);
             }, 500);
 
-            return SPProducts.items.results;
+            return SPProducts.items;
         } else {
             setProductItems(null);
             return null;
@@ -106,7 +106,7 @@ const SearchPage = ({ query }) => {
                 <div className="ps-container">
                     <div className="ps-layout--shop">
                         <div className="ps-layout__left">
-                            <WidgetShopCategories productItems={productItems} />
+                            {productItems?<WidgetShopCategories productItems={productItems} />:null}
                             <aside className="widget widget_shop widget_shop--brand">
                                 <figure>
                                     {/* {brandsView

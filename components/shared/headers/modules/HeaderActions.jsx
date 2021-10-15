@@ -17,7 +17,7 @@ const HeaderActions = (props) => {
         <div className="header__actions">            
             <Link href="/uyelik/wishlist">
                 <a className="header__extra">
-                    <i  className="icon-map-marker"></i>
+                    <i  className="icon-home3"></i>
                     <span className="location-hover">Mağazalarımız</span>
                 </a>
             </Link>

@@ -53,9 +53,7 @@ function* createOrderRequest({payload}) {
         localCart.cartItems.map((item) => {
             payload.cartItems.push(item.cartItemId)
         });
-        console.log(payload)
         const data = yield call(OrderRepository.createOrderRequest, payload);
-        console.log(data);
         Router.push(data.paymentPageUrl);
         /*  */
         
@@ -87,7 +85,6 @@ function* createOrderRequest({payload}) {
 function* getOrdersRequest() {
     try {
         const data = yield call(OrderRepository.getOrdersRequest);
-        console.log(data);
         if(!data.error) {
             yield put(getOrdersSuccess(data));
             modalSuccess('success');

@@ -6,6 +6,8 @@ export const initState = {
     email: '',
     name: '',
     surname: '',
+    gender: '',
+    birth_date: '',
 };
 
 function reducer(state = initState, action) {
@@ -14,22 +16,24 @@ function reducer(state = initState, action) {
             return {
                 ...state,
                 ...{
-                    token: action.payload.key.key,
+                    token: action.payload.key,
                     isLoggedIn: true,
-                    email: action.payload.user.username,
-                    // name: action.payload.user.first_name,
-                    // surname: action.payload.user.last_name,
+                    email: action.payload.user.email,
+                    name: action.payload.user.first_name,
+                    surname: action.payload.user.last_name,
+                    gender: action.payload.user.gender,
+                    birth_date: action.payload.user.birth_date,
                 },
             };
         case actionTypes.LOGOUT_SUCCESS:
             return {
                 ...state,
-                ...{ token: '', isLoggedIn: false, email: '' },
+                ...{ token: '', isLoggedIn: false, email: '', name: '', surname: '', gender: '', birth_date: '', },
             };
         case actionTypes.LOGIN_FAIL:
             return {
                 ...state,
-                ...{ token: '', isLoggedIn: false, email: '' },
+                ...{ token: '', isLoggedIn: false, email: '', name: '', surname: '', gender: '', birth_date: '', },
             };
         default:
             return state;

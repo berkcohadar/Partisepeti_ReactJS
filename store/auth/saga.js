@@ -77,7 +77,7 @@ function* loginRequest({payload}) {
         const data = yield call(UserRepository.loginRequest, payload);
         console.log("\n\n\n",data,'\n\n\n')
         if(!data.error) {
-            yield put(loginSuccess({key:data,user:payload}));
+            yield put(loginSuccess({key:data.token,user:data.user}));
             modalSuccess('success');
         } else {
             modalDanger('warning');

@@ -5,15 +5,15 @@ import Rating from '~/components/elements/Rating';
 const ModuleDetailTopInformation = ({ product }) => {
     // Views.
     let priceView;
-    if (product.products[0].market_price>product.products[0].cart_price) {
+    if (product.products[0].market_price>product.products[0].price) {
         priceView = (
             <h4 className="ps-product__price sale">
                 <del className="mr-2">₺{product.products[0].market_price}</del>
-                ₺{product.products[0].cart_price}
+                ₺{product.products[0].price}
             </h4>
         );
     } else {
-        priceView = <h4 className="ps-product__price">₺{product.products[0].cart_price}</h4>;
+        priceView = <h4 className="ps-product__price">₺{product.products[0].price}</h4>;
     }
     return (
         <header>

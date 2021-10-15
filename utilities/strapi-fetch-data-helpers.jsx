@@ -13,12 +13,7 @@ export async function getProductsByCollectionHelper(
     pageSize = 12
 ) {
     let products;
-    if (collectionSlug == '#') {
-        console.log('\n\n\n')
-        console.log(collectionSlug)
-        products = await ProductRepository.getAllProducts();
-        console.log(products)
-    } else if(collectionSlug){
+    if (collectionSlug) {
         products = await CollectionRepository.getProductsByCollectionSlug(
             collectionSlug
         );
@@ -26,7 +21,7 @@ export async function getProductsByCollectionHelper(
         const queries = {
             _limit: pageSize,
         };
-        products = await ProductRepository.getRecords(queries);
+        products = await ProductRepository.getProducts(queries);
     }
 
     if (products) {
@@ -54,7 +49,7 @@ export async function getProductsByCategoriesHelper(slug, pageSize = 12) {
         const queries = {
             _limit: pageSize,
         };
-        products = await ProductRepository.getRecords(queries);
+        products = await ProductRepository.getProducts(queries);
     }
 
     if (products) {

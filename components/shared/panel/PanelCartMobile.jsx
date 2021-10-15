@@ -60,7 +60,7 @@ class PanelCartMobile extends Component {
                                         {product.item.brand}
                                     </p>
                                     <small>
-                                        {product.quantity} x ₺ {product.product.cart_price}
+                                        {product.quantity} x ₺ {product.product.price}
                                         {console.log(product)}
                                     </small>
                                 </div>

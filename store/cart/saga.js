@@ -88,7 +88,7 @@ const modalWarning = (type) => {
 export const calculateAmount = (obj) => {
     let total = 0;
     obj.map((item) => {
-        total += item.quantity * item.product.cart_price;
+        total += item.quantity * item.product.price;
     });
     return total;
 };
@@ -113,7 +113,7 @@ function* getCartSaga() {
                             id: key.product.id,
                             store: key.product.store,
                             market_price: key.product.market_price,
-                            cart_price: key.product.cart_price,
+                            price: key.product.price,
                             campaign_price: key.product.campaign_price,
                         },
                         item: {
@@ -150,7 +150,7 @@ function* addItemSaga(payload) {
                 id: payload.product.products[0].id,
                 store: payload.product.products[0].store,
                 market_price: payload.product.products[0].market_price,
-                cart_price: payload.product.products[0].cart_price,
+                price: payload.product.products[0].price,
                 campaign_price: payload.product.products[0].campaign_price,
             },
             item: {

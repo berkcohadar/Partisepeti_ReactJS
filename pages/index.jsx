@@ -28,7 +28,7 @@ const HomepageDefaultPage = () => {
             {/* <SiteFeatures /> */}
             {/* <HomeDefaultDealOfDay collectionSlug="3" /> */}
             <HomeDefaultProductListing
-                collectionSlug="4"
+                collectionSlug="1"
                 title="Popüler Ürünler"
             />
             <HomeDefaultProductListing
@@ -43,7 +43,7 @@ const HomepageDefaultPage = () => {
             />
 
             <HomeDefaultProductListing
-                collectionSlug="4"
+                collectionSlug="1"
                 title="Parti Malzemeleri"
             />
             {/* <HomeAds />

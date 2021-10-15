@@ -16,7 +16,7 @@ polyfill();
 
 function* getProducts({ payload }) {
     try {
-        const data = yield call(ProductRepository.getRecords, payload);
+        const data = yield call(ProductRepository.getProducts, payload);
         yield put(getProductsSuccess(data));
     } catch (err) {
         yield put(getProductsError(err));
@@ -109,7 +109,7 @@ function* getProductByKeyword({ keyword }) {
         const searchParams = {
             search: keyword,
         };
-        const result = yield call(ProductRepository.getRecords, searchParams);
+        const result = yield call(ProductRepository.getProducts, searchParams);
         yield put(getProductByKeywordsSuccess(result));
     } catch (err) {
         yield put(getProductsError(err));

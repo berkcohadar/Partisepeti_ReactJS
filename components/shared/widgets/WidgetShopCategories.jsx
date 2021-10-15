@@ -6,30 +6,33 @@ import { getCollections } from '~/utilities/strapi-fetch-data-helpers';
 import { Radio, Input } from 'antd';
 
 
-const WidgetShopCategories = () => {
+const WidgetShopCategories = ({productItems}) => {
     const Router = useRouter();
     const [categories, setCategories] = useState(null);
     const [loading, setLoading] = useState(false);
-
     const { slug } = Router.query;
 
-    async function getCategories() {
-        setLoading(true);
-        const responseData = await getCollections();
-        if (responseData) {
-            setCategories(responseData);
-            setTimeout(
-                function () {
-                    setLoading(false);
-                }.bind(this),
-                250
-            );
+    async function categoryList() {
+        let category_list = []
+        let flag = true
+        if (productItems && productItems.length > 0) {
+            productItems.map((item,index)=>{
+                item.categories.map((i,index1)=>{
+                    category_list.map((j,index2)=>{
+                        if (i.slug == j.slug) flag = false
+                    })
+                    if (flag) category_list.push(i)
+                })
+            })
         }
+        setCategories(category_list)
     }
 
     useEffect(() => {
-        getCategories();
+        categoryList();
     }, []);
+    
+
 
     // Views
     let categoriesView;

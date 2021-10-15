@@ -28,7 +28,7 @@ const ProductOnCart = ({product}) => {
                     </Link>
                     <p>
                         <small>
-                            ₺{product.product.cart_price} x {product.quantity}
+                            ₺{product.product.price} x {product.quantity}
                         </small>
                     </p>
                 </div>

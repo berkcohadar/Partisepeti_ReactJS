@@ -68,7 +68,7 @@ class ShoppingCart extends Component {
                                                 <td className="price">
                                                     ₺{' '}
                                                     {
-                                                        product.product.cart_price
+                                                        product.product.price
                                                     }
                                                 </td>
                                                 <td>
@@ -103,7 +103,7 @@ class ShoppingCart extends Component {
                                                 <td>
                                                     ₺
                                                     {product.quantity *
-                                                        product.product.cart_price}
+                                                        product.product.price}
                                                 </td>
                                                 <td>
                                                     <a

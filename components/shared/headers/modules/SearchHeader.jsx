@@ -67,7 +67,7 @@ const SearchHeader = () => {
                 const queries = {
                     search: keyword,
                 };
-                const products = ProductRepository.getRecords(queries);
+                const products = ProductRepository.getProducts(queries);
                 products.then((result) => {
                     setLoading(false);
                     setResultItems(result);

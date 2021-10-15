@@ -38,8 +38,8 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
         setLoading(true);
         const responseData = await ProductRepository.getProducts(params);
         if (responseData.items) {
-            setProductItems(responseData.items.results);
-            setTotal(responseData.items.count);
+            setProductItems(responseData.items);
+            setTotal(responseData.count);
             setTimeout(
                 function () {
                     setLoading(false);
@@ -139,7 +139,7 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
                     <ShopCategories />*/}
                     <div className="ps-layout--shop">
                         <div className="ps-layout__left">
-                            <WidgetShopCategories productItems={productItems} />
+                            {productItems?<WidgetShopCategories productItems={productItems} />:null}
                             <aside className="widget widget_shop widget_shop--brand">
                                 <h4 className="widget-title">Filtreler</h4>
                                 <figure>
@@ -214,7 +214,7 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
                                 loading={loading}
                             />
                             <ProductGroupByCarousel
-                                collectionSlug="3"
+                                collectionSlug="2"
                                 title="Best Sale Items"
                             />
                             <ProductGroupByCarousel

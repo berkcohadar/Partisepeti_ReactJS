@@ -86,10 +86,10 @@ export function StrapiProductPrice(product) {
     let view;
     if (product.cartItemId){
         try {
-            if (product.product.market_price > product.product.cart_price) {
+            if (product.product.market_price > product.product.price) {
                 view = (
                     <p className="ps-product__price sale">
-                        ₺{formatCurrency(product.product.cart_price)}
+                        ₺{formatCurrency(product.product.price)}
                         <del className="ml-2">
                             ₺{formatCurrency(product.product.market_price)}
                         </del>
@@ -98,7 +98,7 @@ export function StrapiProductPrice(product) {
             } else {
                 view = (
                     <p className="ps-product__price">
-                        ₺{formatCurrency(product.product.cart_price)}
+                        ₺{formatCurrency(product.product.price)}
                     </p>
                 );
             }
@@ -109,10 +109,10 @@ export function StrapiProductPrice(product) {
         }
     } else{
         try {
-            if (product.products[0].market_price > product.products[0].cart_price) {
+            if (product.products[0].market_price > product.products[0].price) {
                 view = (
                     <p className="ps-product__price sale">
-                        ₺{formatCurrency(product.products[0].cart_price)}
+                        ₺{formatCurrency(product.products[0].price)}
                         <del className="ml-2">
                             ₺{formatCurrency(product.products[0].market_price)}
                         </del>
@@ -121,7 +121,7 @@ export function StrapiProductPrice(product) {
             } else {
                 view = (
                     <p className="ps-product__price">
-                        ₺{formatCurrency(product.products[0].cart_price)}
+                        ₺{formatCurrency(product.products[0].price)}
                     </p>
                 );
             }
@@ -136,10 +136,10 @@ export function StrapiProductPrice(product) {
 export function StrapiProductPriceExpanded(product) {
     let view;
     try {
-        if (product.products[0].market_price > product.products[0].cart_price) {
+        if (product.products[0].market_price > product.products[0].price) {
             view = (
                 <p className="ps-product__price sale">
-                    ₺{formatCurrency(product.products[0].cart_price)}
+                    ₺{formatCurrency(product.products[0].price)}
                     <del className="ml-2">
                         ₺{formatCurrency(product.products[0].market_price)}
                     </del>
@@ -147,7 +147,7 @@ export function StrapiProductPriceExpanded(product) {
                         %
                         {100 -
                             Math.round(
-                                (product.products[0].cart_price /
+                                (product.products[0].price /
                                     product.products[0].market_price) *
                                     100
                             )}{' '}
@@ -158,7 +158,7 @@ export function StrapiProductPriceExpanded(product) {
         } else {
             view = (
                 <p className="ps-product__price">
-                    ${formatCurrency(product.products[0].cart_price)}
+                    ${formatCurrency(product.products[0].price)}
                 </p>
             );
         }
@@ -177,7 +177,7 @@ export function StrapiProductThumbnail(product) {
             <Link href="/product/[pid]" as={`/product/${product.id}`}>
                 <a>
                     <LazyLoad>
-                        <img src={`${product.thumbnail}`} alt={product.title} />
+                        <img src={`${product.thumbnail.replace('image/upload/','')}`} alt={product.title} />
                     </LazyLoad>
                 </a>
             </Link>

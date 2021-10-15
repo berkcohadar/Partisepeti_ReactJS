@@ -19,7 +19,7 @@ const ModulePaymentOrderSummary = ({ shipping, amount, cartItems }) => {
     //                     {product.item.title}
     //                     <span>x{product.quantity}</span>
     //                 </strong>
-    //                 <small>₺{product.quantity * product.product.cart_price}</small>
+    //                 <small>₺{product.quantity * product.product.price}</small>
     //             </a>
     //         </Link>
     //     ));

@@ -1,17 +1,6 @@
 import Repository, { baseUrl, serializeQuery } from './Repository';
 
 class ProductRepository {
-    async getRecords(params) {
-        const reponse = await Repository.get(
-            `${baseUrl}/items/?${serializeQuery(params)}`
-        )
-            .then((response) => {
-                return response.data.results;
-            })
-            .catch((error) => ({ error: JSON.stringify(error) }));
-        return reponse;
-    }
-
     async getProducts(params) {
         if(params){
             if ('properties' in params){
@@ -28,32 +17,13 @@ class ProductRepository {
                 params = serializeQuery(params)
             }
         }
-        // else{
-        //     params = serializeQuery(params)
-        // }
         const reponse = await Repository.get(
             `${baseUrl}/items/?${params}`
-            // http://127.0.0.1:8000/items/?search=value&categories=2
         )
             .then((response) => {
                 return {
-                    items: response.data,
-                    totalItems: response.data.length,
-                };
-            })
-
-            .catch((error) => ({ error: JSON.stringify(error) }));
-        return reponse;
-    }
-
-    async getAllProducts() {
-        const reponse = await Repository.get(
-            `${baseUrl}/items`
-        )
-            .then((response) => {
-                return {
-                    items: response.data,
-                    totalItems: response.data.length,
+                    items: response.data.results,
+                    totalItems: response.data.count,
                 };
             })
 

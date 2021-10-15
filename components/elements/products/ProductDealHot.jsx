@@ -22,16 +22,16 @@ const ProductDealHot = ({ product }) => {
                     </h3>
 
                     <div className="ps-product__meta">
-                        {product.products[0].market_price > product.products[0].cart_price ? (
+                        {product.products[0].market_price > product.products[0].price ? (
                             <h4 className="ps-product__price sale">
                                 <del className="mr-2">
                                     ${formatCurrency(product.products[0].market_price)}
                                 </del>
-                                ${formatCurrency(product.products[0].cart_price)}
+                                ${formatCurrency(product.products[0].price)}
                             </h4>
                         ) : (
                             <h4 className="ps-product__price">
-                                ${formatCurrency(product.products[0].cart_price)}
+                                ${formatCurrency(product.products[0].price)}
                             </h4>
                         )}
                         <div className="ps-product__rating">

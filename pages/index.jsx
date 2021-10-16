@@ -1,51 +1,55 @@
-import React, { useEffect } from 'react';
-import SiteFeatures from '~/components/partials/homepage/home-default/SiteFeatures';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import HomeAdsColumns from '~/components/partials/homepage/home-default/HomeAdsColumns';
-import HomeAds from '~/components/partials/homepage/home-default/HomeAds';
-import DownLoadApp from '~/components/partials/commons/DownLoadApp';
-import NewArrivals from '~/components/partials/homepage/home-default/NewArrivals';
-import Newletters from '~/components/partials/commons/Newletters';
-import HomeDefaultDealOfDay from '~/components/partials/homepage/home-default/HomeDefaultDealOfDay';
 import HomeDefaultTopCategories from '~/components/partials/homepage/home-default/HomeDefaultTopCategories';
 import ContainerHomeDefault from '~/components/layouts/ContainerHomeDefault';
 import HomeDefaultProductListing from '~/components/partials/homepage/home-default/HomeDefaultProductListing';
 import HomeDefaultBanner from '~/components/partials/homepage/home-default/HomeDefaultBanner';
-import {
-    getCart,
-} from '~/store/cart/action';
-import { useDispatch } from 'react-redux';
+import CollectionRepository from '~/repositories/CollectionRepository';
+
 
 const HomepageDefaultPage = () => {
-    // componentDidMount
-    // const dispatch = useDispatch();
-    // useEffect(() => {
-    //     dispatch(getCart());
-    // }, [dispatch]);
+    const [loading, setLoading] = useState(false);
+    const [categories, setCategories] = useState(null);
+
+    async function getCategories() {
+        setLoading(true);
+        const responseData = await CollectionRepository.getCollections();
+        if (responseData) {
+            setCategories(responseData);
+            setTimeout(
+                function () {
+                    setLoading(false);
+                }.bind(this),
+                250
+            );
+        }
+    }
+
+    useEffect(() => {
+        getCategories();
+    }, [])
+
+    let listingView;
+    if (!loading) {
+        if (categories && categories.length > 0){
+            listingView = categories.map((option)=>(
+                <HomeDefaultProductListing
+                collectionSlug = {option.id}
+                title={option.name} />
+            ))
+        } else{
+            listingView = <option value={0} key={"loading"}>Bekleniyor...</option>;
+        }
+    }
 
     return (
         <ContainerHomeDefault title="Eğlenceye Dair Her Şey">
             <HomeDefaultBanner />
+            {listingView}
             {/* <SiteFeatures /> */}
             {/* <HomeDefaultDealOfDay collectionSlug="3" /> */}
-            <HomeDefaultProductListing
-                collectionSlug="1"
-                title="Popüler Ürünler"
-            />
-            <HomeDefaultProductListing
-                collectionSlug="2"
-                title="Kek & Kurabiye"
-            />
             <HomeAdsColumns />
             <HomeDefaultTopCategories />
-            <HomeDefaultProductListing
-                collectionSlug="3"
-                title="Hediye & Sürpriz"
-            />
-
-            <HomeDefaultProductListing
-                collectionSlug="1"
-                title="Parti Malzemeleri"
-            />
             {/* <HomeAds />
             <DownLoadApp />
             <NewArrivals collectionSlug="new-arrivals-products" />

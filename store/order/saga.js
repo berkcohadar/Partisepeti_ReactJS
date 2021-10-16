@@ -51,7 +51,11 @@ function* createOrderRequest({payload}) {
             JSON.parse(localStorage.getItem('persist:partisepeti')).cart
         );
         localCart.cartItems.map((item) => {
-            payload.cartItems.push(item.cartItemId)
+            payload.cartItems.push({
+                price:item.product.price,
+                product:item.product.id,
+                quantity:item.quantity,
+            })
         });
         const data = yield call(OrderRepository.createOrderRequest, payload);
         Router.push(data.paymentPageUrl);

@@ -66,10 +66,13 @@ class MediaRepository {
         return reponse;
     }
 
-    async getCarousels() {
+    async getCarousels(params) {
+        mobileURL = baseUrl + '/mainpage-carousel/?carousel_type=M'
+        desktopURL = baseUrl + '/mainpage-carousel/?carousel_type=D'
+        
         const reponse = await axios({
             method: 'get',
-            url: baseUrl + '/core/carousel/',
+            url: params.mode == "D" ? desktopURL : mobileURL,
             headers: {"Content-Type": "application/json"}, 
             })
             .then((response) => {
@@ -79,11 +82,11 @@ class MediaRepository {
         
         return reponse;
     }
-    
+
     async getSliderMenu() {
         const reponse = await axios({
             method: 'get',
-            url: baseUrl + '/core/menu/?menu_type=left',
+            url: baseUrl + '/menu/?menu_type=left',
             headers: {"Content-Type": "application/json"}, 
             })
             .then((response) => {
@@ -96,7 +99,7 @@ class MediaRepository {
     async getNavigationMenu() {
         const reponse = await axios({
             method: 'get',
-            url: baseUrl + '/core/menu/?menu_type=main',
+            url: baseUrl + '/menu/?menu_type=main',
             headers: {"Content-Type": "application/json"}, 
             })
             .then((response) => {

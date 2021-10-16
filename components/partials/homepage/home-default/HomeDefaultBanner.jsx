@@ -7,43 +7,49 @@ import MediaRepository from '~/repositories/MediaRepository';
 import { baseUrl } from '~/repositories/Repository';
 import { getItemBySlug } from '~/utilities/product-helper';
 import Promotion from '~/components/elements/media/Promotion';
-
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 const HomeDefaultBanner = () => {
     const [bannerItems, setBannerItems] = useState(0);
     const [promotion1, setPromotion1] = useState(null);
     const [promotion2, setPromotion2] = useState(null);
     const [interval, handleInterval] = useState(0);
+
     async function getBannerItems() {
-        const responseData = await MediaRepository.getBannersBySlug(
-            'banner-home-fullwidth'
-        );
+        // check screen sizes, send "M" if mobile.
+        // mode = {"mode":"M"}
+        let mode = {"mode":"D"}
+        const responseData = await MediaRepository.getCarousels(mode)
         if (responseData) {
             setBannerItems(responseData);
         }
-        // clearInterval(intervalID);
     }
 
-    async function getPromotions() {
-        const responseData = await MediaRepository.getPromotionsBySlug(
-            'home_fullwidth_promotions'
-        );
-        if (responseData) {
-            setPromotion1(getItemBySlug(responseData, 'main_1'));
-            setPromotion2(getItemBySlug(responseData, 'main_2'));
-        }
-    }
     const handleOnMouseOver = () => {clearInterval(interval);};
     const handleOnMouseOut= () => { handleInterval(setInterval(changeSlide, 4000)); };
+
     const changeSlide = () => {
         const lastIndex = data.length - 1;
         setBannerItems(bannerItems => {
           return bannerItems === lastIndex ? 0 : bannerItems + 1;
         });
       };
+    
+    const prevSlide = () => {
+        const lastIndex = data.length - 1;
+        setBannerItems(bannerItems => {
+          return bannerItems === 0 ? lastIndex : bannerItems - 1;
+        });
+    }
+
+    const nextSlide = () => {
+        const lastIndex = data.length - 1;
+        setBannerItems(bannerItems => {
+          return bannerItems === lastIndex ? 0 : bannerItems + 1;
+        });
+    }
 
     useEffect(() => {
         getBannerItems();
-        getPromotions();
         // handleInterval(setInterval(changeSlide, 4000));
         // return () => clearInterval(interval);
     }, []);
@@ -59,36 +65,8 @@ const HomeDefaultBanner = () => {
         prevArrow: <PrevArrow />,
     };
 
-    // Views
     let mainCarouselView;
-    // {
-    //     id: 0,
-    //     url:
-    //         'https://images.pexels.com/photos/5422609/pexels-photo-5422609.jpeg',
-    //     alt: 'Yilbasi Isik Agac Christmas',
-    //     description:'Korkutmaya hazır mısın?'
-    // },
-    // {
-    //     id: 1,
-    //     url:
-    //         'https://images.pexels.com/photos/5727889/pexels-photo-5727889.jpeg',
-    //     alt: 'Sevgililer Gunu Valentines Day Hediye Sürpriz 14 Subat',
-    //     description:'Yılbaşını sevdiklerinizle geçirin!'
-    // },
-    // {
-    //     id: 2,
-    //     url:
-    //         'https://images.pexels.com/photos/6032713/pexels-photo-6032713.jpeg',
-    //     alt: 'Yilbasi Isik Agac Christmas',
-    //     description:'Ağacınızı süslediniz mi?'
-    // },
-    // {
-    //     id: 3,
-    //     url:
-    //         'https://images.unsplash.com/photo-1530098403657-0d93d64d087d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzl8fHZhbGVudGluZXMlMjBkYXl8ZW58MHx8MHw%3D',
-    //     alt: 'Yilbasi Isik Agac Christmas',
-    //     description:'Folyo balonlarımıza göz attınız mı?'
-    // },
+
     const data = [
         {
             id: 0,
@@ -179,6 +157,7 @@ const HomeDefaultBanner = () => {
             category:"Yılbaşı Ağaçları"
         },
     ];
+
     if (data) {
         const carouseItems = data.map((item) => (
             <div className="slide-item" key={item.id}>
@@ -198,6 +177,7 @@ const HomeDefaultBanner = () => {
             </Slider>
         );
     }
+
     return (
         <div className="ps-home-banner ps-home-banner--1">
             <div className="ps-container" style={{ display: 'block' }}>
@@ -227,8 +207,8 @@ const HomeDefaultBanner = () => {
                     })}
                 </div>
                 <section className="home-new-slider">
-                    {/* <LeftOutlined className="left-arrow" onClick={prevSlide} />
-      <RightOutlined className="right-arrow" onClick={nextSlide} /> */}
+                    <LeftOutlined className="left-arrow" onClick={prevSlide} />
+      <RightOutlined className="right-arrow" onClick={nextSlide} />
                     {data.map((slide, index) => {
                         return (
                             <div
@@ -253,16 +233,4 @@ const HomeDefaultBanner = () => {
 };
 
 export default HomeDefaultBanner;
-/*connect(state => state.media)();*/
-
-/* <div className="ps-section__left">{mainCarouselView}</div>
-                <div className="ps-section__right">
-                    <Promotion
-                        link="/alisveris"
-                        image={promotion1 ? promotion1.image : null}
-                    />
-                    <Promotion
-                        link="/alisveris"
-                        image={promotion2 ? promotion2.image : null}
-                    />
-                </div> */
+/* connect(state => state.media)(); */

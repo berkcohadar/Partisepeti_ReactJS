@@ -74,12 +74,6 @@ const HomeDefaultBanner = () => {
             </Slider>
         );
     }
-    // button_text: "Birbirinden güzel balon buketleri Partisepeti'nde"
-    // carousel_type: "D"
-    // description: "En güzel balon dekorları Partisepeti'nde! Uçan balon helyum süsleme buket."
-    // image_url: "https://res.cloudinary.com/de7a0a7nh/image/upload/v1633021028/er6vm83yaa0s32gxynhi"
-    // order: 1
-    // title: "Zincir Balonlar"
     return (
         <div className="ps-home-banner ps-home-banner--1">
             <div className="ps-container" style={{ display: 'block' }}>

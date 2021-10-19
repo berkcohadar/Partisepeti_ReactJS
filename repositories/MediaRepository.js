@@ -67,12 +67,11 @@ class MediaRepository {
     }
 
     async getCarousels(params) {
-        mobileURL = baseUrl + '/mainpage-carousel/?carousel_type=M'
-        desktopURL = baseUrl + '/mainpage-carousel/?carousel_type=D'
-        
+        let mobileURL = baseUrl + '/mainpage-carousel/?carousel_type=M'
+        let desktopURL = baseUrl + '/mainpage-carousel/?carousel_type=D'
         const reponse = await axios({
             method: 'get',
-            url: params.mode == "D" ? desktopURL : mobileURL,
+            url: params.innerWidth >= 1366 ? desktopURL : mobileURL,
             headers: {"Content-Type": "application/json"}, 
             })
             .then((response) => {

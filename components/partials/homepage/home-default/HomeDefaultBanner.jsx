@@ -4,53 +4,41 @@ import NextArrow from '~/components/elements/carousel/NextArrow';
 import PrevArrow from '~/components/elements/carousel/PrevArrow';
 import Link from 'next/link';
 import MediaRepository from '~/repositories/MediaRepository';
-import { baseUrl } from '~/repositories/Repository';
-import { getItemBySlug } from '~/utilities/product-helper';
-import Promotion from '~/components/elements/media/Promotion';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+
 const HomeDefaultBanner = () => {
-    const [bannerItems, setBannerItems] = useState(0);
-    const [promotion1, setPromotion1] = useState(null);
-    const [promotion2, setPromotion2] = useState(null);
+    const [banner, setBanner] = useState(0);
+    const [bannerItems, setBannerItems] = useState(null);
     const [interval, handleInterval] = useState(0);
 
     async function getBannerItems() {
-        // check screen sizes, send "M" if mobile.
-        // mode = {"mode":"M"}
-        let mode = {"mode":"D"}
-        const responseData = await MediaRepository.getCarousels(mode)
-        if (responseData) {
+        const myWindow = await window;
+        const responseData = await MediaRepository.getCarousels(myWindow)
+        if (responseData.length) {
             setBannerItems(responseData);
         }
     }
 
     const handleOnMouseOver = () => {clearInterval(interval);};
-    const handleOnMouseOut= () => { handleInterval(setInterval(changeSlide, 4000)); };
+    const handleOnMouseOut= () => { handleInterval(setInterval(nextSlide, 4000)); };
 
-    const changeSlide = () => {
-        const lastIndex = data.length - 1;
-        setBannerItems(bannerItems => {
-          return bannerItems === lastIndex ? 0 : bannerItems + 1;
-        });
-      };
-    
     const prevSlide = () => {
-        const lastIndex = data.length - 1;
-        setBannerItems(bannerItems => {
-          return bannerItems === 0 ? lastIndex : bannerItems - 1;
+        const lastIndex = bannerItems.length - 1;
+        setBanner(banner => {
+            return banner === 0 ? lastIndex : banner - 1;
         });
     }
 
     const nextSlide = () => {
-        const lastIndex = data.length - 1;
-        setBannerItems(bannerItems => {
-          return bannerItems === lastIndex ? 0 : bannerItems + 1;
+        const lastIndex = bannerItems.length - 1;
+        setBanner(banner => {
+            return banner === lastIndex ? 0 : banner + 1;
         });
     }
 
     useEffect(() => {
         getBannerItems();
-        // handleInterval(setInterval(changeSlide, 4000));
+        // handleInterval(setInterval(nextSlide, 4000));
         // return () => clearInterval(interval);
     }, []);
 
@@ -67,105 +55,14 @@ const HomeDefaultBanner = () => {
 
     let mainCarouselView;
 
-    const data = [
-        {
-            id: 0,
-            url:
-                'https://images.unsplash.com/photo-1576028133998-dfa6cf1ea901?auto=compress',
-            alt: 'Yilbasi Isik Agac Christmas',
-            description:'Korkutmaya hazır mısın?',
-            category:"Yılbaşı Süsleri"
-        },
-        {
-            id: 1,
-            url:
-                'https://images.unsplash.com/photo-1606830733744-0ad778449672?auto=compress',
-            alt: 'Sevgililer Gunu Valentines Day Hediye Sürpriz 14 Subat',
-            description:'Yılbaşını sevdiklerinizle geçirin!',
-            category:"Yılbaşı Ağaçları"
-        },
-        {
-            id: 2,
-            url:
-                'https://images.pexels.com/photos/5634668/pexels-photo-5634668.jpeg?auto=compress',
-            alt: 'Yilbasi Isik Agac Christmas',
-            description:'Ağacınızı süslediniz mi?',
-            category:"Halloween Ürünleri"
-        },
-        {
-            id: 3,
-            url:
-                'https://images.pexels.com/photos/5635101/pexels-photo-5635101.jpeg?auto=compress',
-            alt: 'Yilbasi Isik Agac Christmas',
-            description:'Folyo balonlarımıza göz attınız mı?',
-            category:"Halloween Kostümleri"
-        },
-        {
-            id: 4,
-            url:
-                'https://images.unsplash.com/photo-1511895654441-f6a0e1db5cbd?auto=compress',
-            alt: 'Yilbasi Isik Agac Christmas',
-            description:"Birbirinden güzel ağaç süsleri Partisepeti'nde!",
-            category:"Ağaç Süsleri"
-        },
-        {
-            id: 5,
-            url:
-                'https://images.pexels.com/photos/1303080/pexels-photo-1303080.jpeg?auto=compress',
-            alt: 'Yilbasi Isik Agac Christmas',
-            description:'Yaklaşan bir doğum günü mü var?',
-            category:"Hediye Kutuları"
-        },
-        {
-            id: 6,
-            url:
-                'https://images.unsplash.com/photo-1611142287927-64cede3148da?auto=compress',
-            alt: 'Yilbasi Isik Agac Christmas',
-            description:"Birbirinden güzel balon buketleri Partisepeti'nde",
-            category:"Zincir Balonlar"
-        },
-        {
-            id: 7,
-            url:
-                'https://images.pexels.com/photos/1303080/pexels-photo-1303080.jpeg?auto=compress',
-            alt: 'Yilbasi Isik Agac Christmas',
-            description:'Yaklaşan bir doğum günü mü var?',
-            category:"Hediye Kutuları"
-        },
-        {
-            id: 8,
-            url:
-                'https://images.pexels.com/photos/5634668/pexels-photo-5634668.jpeg?auto=compress',
-            alt: 'Yilbasi Isik Agac Christmas',
-            description:'Ağacınızı süslediniz mi?',
-            category:"Halloween Ürünleri"
-        },
-        {
-            id: 9,
-            url:
-                'https://images.unsplash.com/photo-1511895654441-f6a0e1db5cbd?auto=compress',
-            alt: 'Yilbasi Isik Agac Christmas',
-            description:"Birbirinden güzel ağaç süsleri Partisepeti'nde!",
-            category:"Ağaç Süsleri"
-        },
-        {
-            id: 10,
-            url:
-                'https://images.unsplash.com/photo-1606830733744-0ad778449672?auto=compress',
-            alt: 'Sevgililer Gunu Valentines Day Hediye Sürpriz 14 Subat',
-            description:'Yılbaşını sevdiklerinizle geçirin!',
-            category:"Yılbaşı Ağaçları"
-        },
-    ];
-
-    if (data) {
-        const carouseItems = data.map((item) => (
-            <div className="slide-item" key={item.id}>
+    if (bannerItems) {
+        const carousels = bannerItems.map((item) => (
+            <div className="slide-item" key={item.order}>
                 <Link href="/alisveris">
                     <a
                         className="ps-banner-item--default bg--cover"
                         style={{
-                            backgroundImage: `url(${item.url})`,
+                            backgroundImage: `url(${item.image_url})`,
                         }}
                     />
                 </Link>
@@ -173,22 +70,27 @@ const HomeDefaultBanner = () => {
         ));
         mainCarouselView = (
             <Slider {...carouselSetting} className="ps-carousel">
-                {carouseItems}
+                {carousels}
             </Slider>
         );
     }
-
+    // button_text: "Birbirinden güzel balon buketleri Partisepeti'nde"
+    // carousel_type: "D"
+    // description: "En güzel balon dekorları Partisepeti'nde! Uçan balon helyum süsleme buket."
+    // image_url: "https://res.cloudinary.com/de7a0a7nh/image/upload/v1633021028/er6vm83yaa0s32gxynhi"
+    // order: 1
+    // title: "Zincir Balonlar"
     return (
         <div className="ps-home-banner ps-home-banner--1">
             <div className="ps-container" style={{ display: 'block' }}>
                 <div className="CampaignDiv">
-                    {data.map((slide, index) => {
+                    {bannerItems?bannerItems.map((slide, index) => {
                         return (
                                 <div
                                 className="CampaignItem"
                                 key={index}
                                     style={
-                                    bannerItems == index
+                                    banner == index
                                             ? {
                                                 transform: 'scale(1.3)',
                                                 boxShadow:
@@ -196,36 +98,35 @@ const HomeDefaultBanner = () => {
                                             }
                                             : null
                                     }
-                                    onClick={() => setBannerItems(index)}>
+                                    onClick={() => setBanner(index)}>
                                     <img
                                         className="CampaignItemImage"
                                         id={index}
-                                        src={slide.url}></img>{' '}
-                                    <p style={bannerItems == index? {transform: 'scale(0.8)'}: null}>{slide.category}</p>
+                                        src={slide.image_url}></img>
+                                    <p style={banner == index? {transform: 'scale(0.8)'}: null}>{slide.title}</p>
                                 </div>   
                         );
-                    })}
+                    }):null}
                 </div>
                 <section className="home-new-slider">
                     <LeftOutlined className="left-arrow" onClick={prevSlide} />
-      <RightOutlined className="right-arrow" onClick={nextSlide} />
-                    {data.map((slide, index) => {
+                    {bannerItems?bannerItems.map((slide, index) => {
                         return (
                             <div
                                 // onMouseEnter={() => handleOnMouseOver()}
                                 // onMouseLeave={() => handleOnMouseOut()}
                                 className={
-                                    index === bannerItems ? 'home-new-slide active' : 'home-new-slide'
+                                    index === banner ? 'home-new-slide active' : 'home-new-slide'
                                 }
                                 key={index}>
-                                {index === bannerItems && (
-                                    <img src={slide.url} alt={slide.alt} />
+                                {index === banner && (
+                                    <img src={slide.image_url} alt={slide.description} />
                                 )}
-                                <section><p>{slide.description}</p></section>
+                                <section><p>{slide.button_text}</p></section>
                             </div>
                         );
-                    })}
-                    
+                    }):null}
+                    <RightOutlined className="right-arrow" onClick={nextSlide} />
                 </section>
             </div>
         </div>
@@ -233,4 +134,3 @@ const HomeDefaultBanner = () => {
 };
 
 export default HomeDefaultBanner;
-/* connect(state => state.media)(); */

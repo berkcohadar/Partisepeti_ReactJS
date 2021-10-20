@@ -103,9 +103,19 @@ function* getOrdersRequest() {
     }
 }
 
+function* clearOrdersRequest() {
+    try {
+        yield put(getOrdersSuccess([]));
+        modalSuccess('success');
+    } catch (err) {
+        console.log(err)
+        yield put(getOrdersError(err));
+    }
+}
 
 export default function* rootSaga() {
     yield all([takeEvery(actionTypes.CREATE_ORDER, createOrderRequest)]);
     yield all([takeEvery(actionTypes.GET_ORDERS, getOrdersRequest)]);
+    yield all([takeEvery(actionTypes.CLEAR_ORDERS, clearOrdersRequest)]);
 
 }

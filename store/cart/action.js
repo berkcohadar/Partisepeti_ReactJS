@@ -10,8 +10,6 @@ export const actionTypes = {
     REMOVE_ITEM: 'REMOVE_ITEM',
 
     CLEAR_CART: 'CLEAR_CART',
-    CLEAR_CART_SUCCESS: 'CLEAR_CART_SUCCESS',
-    CLEAR_CART_ERROR: 'CLEAR_CART_ERROR',
 
     INCREASE_QTY: 'INCREASE_QTY',
     INCREASE_QTY_SUCCESS: 'INCREASE_QTY_SUCCESS',
@@ -38,6 +36,12 @@ export function getCartError(error) {
     return {
         type: actionTypes.GET_CART_ERROR,
         error,
+    };
+}
+
+export function clearCart() {
+    return {
+        type: actionTypes.CLEAR_CART,
     };
 }
 

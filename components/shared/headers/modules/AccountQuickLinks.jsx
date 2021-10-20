@@ -2,13 +2,18 @@ import React from 'react';
 import { connect, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import { logOut } from '~/store/auth/action';
-import { getProfile } from '~/store/user/action';
+import { deleteProfile } from '~/store/user/action';
+import { clearCart } from '~/store/cart/action';
+import { clearOrders } from '~/store/order/action';
+
 import {HeartOutlined,CarryOutOutlined,EnvironmentOutlined,LikeOutlined,ShoppingOutlined,BellOutlined,CommentOutlined,UserOutlined,FireOutlined,} from "@ant-design/icons";
 
 const AccountQuickLinks = (props) => {
     const dispatch = useDispatch();
-    const handleLogout = (e) => {
-        e.preventDefault();
+    const handleLogout = () => {
+        dispatch(deleteProfile());
+        dispatch(clearCart());
+        dispatch(clearOrders());
         dispatch(logOut());
     };
     const accountLinks = [
@@ -59,9 +64,9 @@ const AccountQuickLinks = (props) => {
                         {linksView}
                         <li className="ps-block__footer">
                         <i className="icon-exit-right"></i>
-                        <Link href='#' onClick={(e) => handleLogout(e)} >
+                        <a href='#' onClick={() => handleLogout()} >
                             <a>Güvenli Çıkış</a>
-                        </Link>
+                        </a>
                             {/* <a href="#" onClick={(e) => handleLogout(e)}>
                                 
                                 <i className="icon-exit-right"></i>Güvenli Çıkış

@@ -328,11 +328,13 @@ function* decreaseItemQtySaga(payload) {
 
 function* clearCartSaga() {
     try {
-        const emptyCart = {
-            cartItems: [],
-            amount: 0,
-            cartTotal: 0,
-        };
+        const localCart = JSON.parse(
+            localStorage.getItem('persist:partisepeti')
+        ).cart;
+        let emptyCart = JSON.parse(localCart);
+        emptyCart.cartItems = [];
+        emptyCart.cartTotal = 0;
+        emptyCart.amount = 0;
         yield put(updateCartSuccess(emptyCart));
     } catch (err) {
         yield put(updateCartError(err));
@@ -341,6 +343,7 @@ function* clearCartSaga() {
 
 export default function* rootSaga() {
     yield all([takeEvery(actionTypes.GET_CART, getCartSaga)]);
+    yield all([takeEvery(actionTypes.CLEAR_CART, clearCartSaga)]);
     yield all([takeEvery(actionTypes.ADD_ITEM, addItemSaga)]);
     yield all([takeEvery(actionTypes.REMOVE_ITEM, removeItemSaga)]);
     yield all([takeEvery(actionTypes.INCREASE_QTY, increaseQtySaga)]);

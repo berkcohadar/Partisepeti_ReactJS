@@ -9,6 +9,8 @@ export const actionTypes = {
     CREATE_ORDER_SUCCESS: 'CREATE_ORDER_SUCCESS',
     CREATE_ORDER_FORM_SUCCESS: 'CREATE_ORDER_FORM_SUCCESS',
     CREATE_ORDER_ERROR: 'CREATE_ORDER_ERROR',
+
+    CLEAR_ORDERS : 'CLEAR_ORDERS'
 };
 
 export function getOrders() {
@@ -43,7 +45,6 @@ export function createOrder(payload) {
     };
 }
 
-
 export function createOrderFormSuccess(payload) {
     return {
         type: actionTypes.CREATE_ORDER_FORM_SUCCESS,
@@ -62,5 +63,12 @@ export function createOrderError(payload) {
     return {
         type: actionTypes.CREATE_ORDER_ERROR,
         payload,
+    };
+}
+
+export function clearOrders(error) {
+    return {
+        type: actionTypes.CLEAR_ORDERS,
+        error,
     };
 }

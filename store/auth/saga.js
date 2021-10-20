@@ -40,6 +40,7 @@ const modalWarning = type => {
     
     });
 };
+
 const modalDanger = type => {
     notification[type]({
         message: 'Oops!',
@@ -65,6 +66,7 @@ function* logOutSaga() {
         // DELETE_USER_INFO
         // yield call(emptyCart());
         // yield call(deleteUser());
+        
         yield put(logOutSuccess());
         modalWarning('warning');
     } catch (err) {
@@ -75,7 +77,6 @@ function* logOutSaga() {
 function* loginRequest({payload}) {
     try {
         const data = yield call(UserRepository.loginRequest, payload);
-        console.log("\n\n\n",data,'\n\n\n')
         if(!data.error) {
             yield put(loginSuccess({key:data.token,user:data.user}));
             modalSuccess('success');

@@ -101,7 +101,7 @@ const SearchHeader = () => {
         loadMoreView;
     if (!loading) {
         if (resultItems && resultItems.items.length > 0) {
-            if (resultItems.length > 5) {
+            if (resultItems.items.length > 5) {
                 loadMoreView = (
                     <div className="ps-panel__footer text-center">
                         <Link href={`/search?keyword=${keyword}`}>
@@ -110,7 +110,6 @@ const SearchHeader = () => {
                     </div>
                 );
             }
-            console.log("\n\n\n\nRESULTITEMS",resultItems)
             productItemsView = resultItems.items.map((product) => (
                 <ProductSearchResult product={product} key={product.id} />
             ));
@@ -146,6 +145,7 @@ const SearchHeader = () => {
             className="ps-form--quick-search"
             method="get"
             action="/"
+            ref={inputEl}
             onSubmit={handleSubmit}>
             <div className="ps-form__categories">
                 <select className="form-control">
@@ -154,7 +154,6 @@ const SearchHeader = () => {
             </div>
             <div className="ps-form__input">
                 <input
-                    ref={inputEl}
                     className="form-control"
                     type="text"
                     value={keyword}

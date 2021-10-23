@@ -24,7 +24,7 @@ const ProductDetailFullwidth = ({ product }) => {
                     <ModuleDetailActionsMobile product={product} />
                 </div>
             </div>
-            <DefaultDescription />
+            <DefaultDescription product={product?product:null}/>
         </div>
     );
 };

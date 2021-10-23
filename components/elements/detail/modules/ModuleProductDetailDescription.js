@@ -12,7 +12,7 @@ const ModuleProductDetailDescription = ({ product }) => (
             </Link>
         </p>
         <ul className="ps-list--dot">
-            <li>Barcode:    {product.barcode}</li>
+            <li>Barkod:    {product.barcode}</li>
             <li>Model Kodu: {product.model_code}</li>
             <li>Renk:   {product.color}</li>
             <li>Boyut:  {product.size}</li>

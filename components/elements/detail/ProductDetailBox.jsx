@@ -29,7 +29,7 @@ const ProductDetailBox = ({ product }) => (
                 </div>
                 <div className="col-xl-3">
                     <div className="ps-product__box">
-                        <WidgetProductSameBrands collectionSlug="shop-same-brand" />
+                        <WidgetProductSameBrands/>
                     </div>
                 </div>
             </div>

@@ -19,7 +19,7 @@ const AccountQuickLinks = (props) => {
     const accountLinks = [
         {
             text: 'Siparişlerim',
-            url: '/uyelik/siparislerim',
+            url: '/uyelik/',
             icon: 'icon-cart-add'
         },
         {

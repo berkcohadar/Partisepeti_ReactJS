@@ -29,6 +29,8 @@ const SearchHeader = () => {
     const [keyword, setKeyword] = useState('');
     const [resultItems, setResultItems] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [category, setCategory] = useState("");
+
     const debouncedSearchTerm = useDebounce(keyword, 300);
 
     const [categories, setCategories] = useState(null);
@@ -43,29 +45,36 @@ const SearchHeader = () => {
         e.preventDefault();
         Router.push(`/search?keyword=${keyword}`);
     }
+
+    function handleOptionChange(e) {
+        setCategory(e.target.value)
+    }
+
     const escFunction = useCallback((event) => {
         if(event.keyCode === 27) {
             handleClearKeyword();
           //Do whatever when esc is pressed
         }
       }, []);
+      
     function handleClickOutside(event) {
         if (inputEl.current && !inputEl.current.contains(event.target)) {
             handleClearKeyword();
         }
     }
+
     useEffect(() => {
         setLoading(true);
         const data = CollectionRepository.getCollections();
         data.then((result) => {
             setCategories(result);
-            setLoading(false);
         });
         if (debouncedSearchTerm) {
             setLoading(true);
             if (keyword) {
                 const queries = {
                     search: keyword,
+                    categories:category,
                 };
                 const products = ProductRepository.getProducts(queries);
                 products.then((result) => {
@@ -76,6 +85,7 @@ const SearchHeader = () => {
             } else {
                 setIsSearch(false);
                 setKeyword('');
+                setLoading(false)
             }
             if (loading) {
                 setIsSearch(false);
@@ -100,7 +110,7 @@ const SearchHeader = () => {
         selectOptionView,
         loadMoreView;
     if (!loading) {
-        if (resultItems && resultItems.items.length > 0) {
+        if ( resultItems && resultItems.items && resultItems.items.length > 0) {
             if (resultItems.items.length > 5) {
                 loadMoreView = (
                     <div className="ps-panel__footer text-center">
@@ -118,7 +128,7 @@ const SearchHeader = () => {
         }
         if (categories && categories.length > 0){
             selectOptionView = categories.map((option)=>(
-                <option value={option.name} key={option.name}>
+                <option value={option.id} key={option.name}>
                     {option.name}
                 </option>
             ))
@@ -148,7 +158,7 @@ const SearchHeader = () => {
             ref={inputEl}
             onSubmit={handleSubmit}>
             <div className="ps-form__categories">
-                <select className="form-control">
+                <select onChange={(val) => handleOptionChange(val)} className="form-control">
                     {selectOptionView}
                 </select>
             </div>
@@ -176,3 +186,4 @@ const SearchHeader = () => {
 };
 
 export default SearchHeader;
+

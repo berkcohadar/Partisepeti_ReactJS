@@ -484,21 +484,24 @@ textarea.form-control {
 .form-group--number {
     display: inline-block;
     position: relative;
+    color:$color-1st;
+    border-radius: 10px;
+    box-shadow: $shadow-main;
 
     button {
         background: none;
         border: none;
         background-color: transparent;
         @include vertical-align();
-        width: 20px;
-        height: 20px;
-        max-width: 20px;
+        width: 14px;
+        height: 14px;
+        max-width: 14px;
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;
         align-items: center;
         color: $color-1st;
-        font-size: 20px;
+        font-size: 14px;
         line-height: 1em;
 
         &.up {

@@ -53,7 +53,6 @@ const ModuleDetailShoppingActions = ({ product, extended = false }) => {
         return (
             <div className="ps-product__shopping">
                 <figure>
-                    <figcaption>Adet</figcaption>
                     <div className="form-group--number">
                         <button
                             className="up"
@@ -84,9 +83,6 @@ const ModuleDetailShoppingActions = ({ product, extended = false }) => {
                 <div className="ps-product__actions">
                     <a href="#" onClick={(e) => handleAddItemToWishlist(e)}>
                         <i className="icon-heart"></i>
-                    </a>
-                    <a href="#" onClick={(e) => handleAddItemToCompare(e)}>
-                        <i className="icon-chart-bars"></i>
                     </a>
                 </div>
             </div>

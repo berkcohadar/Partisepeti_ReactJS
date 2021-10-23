@@ -12,11 +12,20 @@ const { TabPane } = Tabs;
 const DefaultDescription = () => {
     return (
         <div className="ps-product__content ps-tab-root">
-            <Tabs defaultActiveKey="1">
-                <TabPane tab="Description" key="1">
+            <Tabs className="ps-product__tabs"defaultActiveKey="1">
+                <TabPane tab="Ürün Açıklaması" key="1">
                     <PartialDescription />
                 </TabPane>
-                <TabPane tab="Specification" key="2">
+                <TabPane tab="Özellikler" key="2">
+                    <h1>Yakında</h1>
+                </TabPane>
+                <TabPane tab="Yorumlar" key="4">
+                    <h1>Yakında</h1>
+                </TabPane>
+                <TabPane tab="Soru ve Cevaplar" key="5">
+                <h1>Yakında</h1>
+                </TabPane>
+                {/* <TabPane tab="Specification" key="2">
                     <PartialSpecification />
                 </TabPane>
                 <TabPane tab="Vendor" key="3">
@@ -30,7 +39,7 @@ const DefaultDescription = () => {
                 </TabPane>
                 <TabPane tab="More Offers" key="6">
                     <PartialOffer />
-                </TabPane>
+                </TabPane> */}
             </Tabs>
         </div>
     );

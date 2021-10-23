@@ -5,11 +5,17 @@ $color-heading: #ffff;
 .ps-product--detail .ant-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
     color: #000;
 }
+.ps-product--detail .ant-tabs-nav-list {
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    padding: auto;
+}
 
 .ps-product--detail .ant-tabs .ant-tabs-tab-btn {
     transition: all 0.3s ease-in-out;
     &:hover{
-        color: #000;
+        color: rgb(77, 77, 77);
     }
 }
 .ant-tabs-ink-bar {

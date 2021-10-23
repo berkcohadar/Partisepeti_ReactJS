@@ -25,7 +25,8 @@ const AccountMenuSidebar = (bar, setBar) => {
                     <span
                         className={'account-menu-item'+ (elem.url==router.pathname ? ' active' :"")}
                         onClick={()=>router.push(elem.url)}
-                        key={'sub' + index}>
+                        key={'sub' + index}
+                        >
                         <a className="account-menu-item-p">
                             <i>{elem.icon}</i>
                             {'\t'}

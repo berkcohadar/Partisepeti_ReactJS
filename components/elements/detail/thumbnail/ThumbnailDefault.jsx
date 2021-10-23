@@ -22,12 +22,13 @@ const ThumbnailDefault = ({ product, vertical = true }) => {
 
     useEffect(() => {
         let images = [];
+        images.push(product.thumbnail.replace('image/upload/',''))
         if (product && product.medias.length > 0) {
             product.medias.map((item) => {
                 images.push(`${item.media}`);
             });
-            setProductImages(images);
         }
+        setProductImages(images);
         setGallery(galleryCarousel.current);
         setVariant(variantCarousel.current);
     }, [product]);
@@ -168,7 +169,7 @@ const ThumbnailDefault = ({ product, vertical = true }) => {
                 </div>
             </figure>
             {variantCarouselView}
-            {lightboxView}
+            {lightboxView} 
         </div>
     );
 };

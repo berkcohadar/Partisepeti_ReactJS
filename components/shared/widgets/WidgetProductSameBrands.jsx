@@ -14,7 +14,6 @@ const WidgetProductSameBrands = ({ collectionSlug }) => {
             collectionSlug
         );
         if (responseData) {
-            console.log("\n\n\nYASDASDAS",responseData)
             setProductItems(responseData.items);
             setTimeout(
                 function () {

@@ -10,7 +10,7 @@ const ProductWidgets = ({ collectionSlug }) => {
     }
     return (
         <section>
-            <WidgetProductSameBrands collectionSlug={collectionSlug?collectionSlug:'' }/>
+            <WidgetProductSameBrands collectionSlug={collectionSlug}/>
             <WidgetProductFeatures />
             <WidgetSaleOnSite />
             <WidgetShopAds />

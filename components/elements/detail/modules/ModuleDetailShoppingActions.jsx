@@ -49,6 +49,14 @@ const ModuleDetailShoppingActions = ({ product, extended = false }) => {
             setQuantity(quantity - 1);
         }
     };
+    const handleSetQuantity = (e) => {
+        e.preventDefault();
+        if (e){
+            setQuantity(parseInt(e.target.value));
+        } else{
+            setQuantity(0)
+        }
+    };
     if (!extended) {
         return (
             <div className="ps-product__shopping">
@@ -67,7 +75,8 @@ const ModuleDetailShoppingActions = ({ product, extended = false }) => {
                         <input
                             className="form-control"
                             type="text"
-                            placeholder={quantity}
+                            onChange={(e) => handleSetQuantity(e)}
+                            value={quantity?quantity:0}
                         />
                     </div>
                 </figure>

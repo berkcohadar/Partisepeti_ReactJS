@@ -71,15 +71,15 @@ const ProductDefaultPage = () => {
                     <div className="ps-page__container">
                         <div className="ps-page__left">{productView}</div>
                         <div className="ps-page__right">
-                            <ProductWidgets collectionSlug={product ? product.categories?product.categories[0].id:'' : ''}/>
+                            {product?<ProductWidgets collectionSlug={product.categories[0].id}/>:null}
                         </div>
                     </div>
 
-                    <CustomerBought
+                    {product?<CustomerBought
                         layout="fullwidth"
                         collectionSlug={product ? product.categories?product.categories[0].id:'' : ''}
-                    />
-                    <RelatedProduct collectionSlug={product ? product.categories?product.categories[0].id:'' : ''} />
+                    />:null}
+                    {product?<RelatedProduct collectionSlug={product ? product.categories?product.categories[0].id:'' : ''} />:null}
                 </div>
             </div>
         </ContainerProductDetail>

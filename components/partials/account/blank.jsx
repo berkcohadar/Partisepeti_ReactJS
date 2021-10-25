@@ -1,9 +1,5 @@
-import React, { Component,useState } from 'react';
-import Link from 'next/link';
+import React, { Component } from 'react';
 import AccountMenuSidebar from './modules/AccountMenuSidebar';
-import OrderView from './OrderView';
-import { connect } from 'react-redux';
-import { getOrders } from '~/store/order/action';
 
 class Blank extends Component {
     constructor(props) {

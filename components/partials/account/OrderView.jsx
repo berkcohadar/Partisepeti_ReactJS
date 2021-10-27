@@ -45,7 +45,7 @@ const OrderView = ({orders}) => {
                         if (orderNo === index) {
                             setHeight('20vh');
                             setOrder(null);
-                            setComponent(null);
+                            setComponent(<p>Detayları görmek için tıklayınız</p>);
                         } else {
                             setHeight('60vh');
                             setOrder(index);

@@ -83,7 +83,13 @@ const OrderView = ({orders}) => {
                             </div>
                         </div>
                     </div>
-                    <div className="ps-order-item-drawer" >
+                    
+                    <div className={`ps-order-item-drawer ${
+                                orderNo === null || orderNo=== index
+                                    ? 'active'
+                                    : ''
+                            }`}
+                    > 
                         {comp}
                     </div>
                 </div>

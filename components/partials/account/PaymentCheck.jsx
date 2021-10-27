@@ -20,7 +20,7 @@ class PaymentCheck extends Component {
                     <div className="ps-section__header">
                         {this.props.loading?
                         <h1>Ödemeniz kontrol ediliyor lütfen bekleyiniz.</h1>:
-                        this.props.status=="success"?<h1>Siparişiniz onaylanmıştır.</h1>:
+                        this.props.status=="P"?<h1>Siparişiniz onaylanmıştır.</h1>:
                         <h1>Ödeme alınırken hata oluştu.</h1>
                     }
                     </div>

@@ -12,16 +12,32 @@ const PaymentCheckPage = () => {
     const Router = useRouter();
     const { query } = Router;
 
+    // query = ?siparis=TOKEN
+    // siparis/odeme-kontrol?siparis=1
+    
+    // address: "Turgut Özal Bulvarı İdealtepe Mahallesi No :101 - Partisepeti Mağazası"
+    // city: "Maltepe"
+    // country: "Turkiye"
+    // created_at: "2021-10-26T19:46:58.286678+03:00"
+    // email: "satici@partisepeti.com"
+    // first_name: "Berk"
+    // id: 6
+    // items: (7) [{…}, {…}, {…}, {…}, {…}, {…}, {…}]
+    // last_name: "Cohadar"
+    // order_status: "P"
+    // phone: "5382721098"
+    // zip_code: "34841"
+
     const [loading, setLoading] = useState(true);
     const [status, setStatus] = useState(false);
 
     const dispatch = useDispatch();
-
     async function checkPayment() {
         setLoading(true);
-        const responseData = await OrderRepository.checkPaymentHelper(query.order);
+        const responseData = await OrderRepository.checkPaymentHelper(query.siparis);
+        console.log("\n\n",responseData)
         if (responseData) {
-            setStatus(responseData.status);
+            setStatus(responseData.order_status);
             setTimeout(
                 function () {
                     setLoading(false);
@@ -47,7 +63,7 @@ const PaymentCheckPage = () => {
     return (
         <ContainerPage title="Checkout" boxed={true}>
             <div className="ps-page--simple">
-                <PaymentCheck loading={loading} status={status} token={query.siparis}/>
+                {status?<PaymentCheck loading={loading} status={status} token={query.siparis}/>:null}
             </div>
         </ContainerPage>
     );

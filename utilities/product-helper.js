@@ -208,6 +208,19 @@ export function StrapiProductThumbnail(product) {
                 </a>
             </Link>
         );
+    }  else if (product.order_status) {
+        view = (
+            <Link href="/product/[pid]" as={`/product/${product.product.id}`}>
+                <a>
+                    <LazyLoad>
+                        <img
+                            src={`${product.product.item.thumbnail.replace('image/upload/','')}`}
+                            alt={product.product.item.title}
+                        />
+                    </LazyLoad>
+                </a>
+            </Link>
+        );
     } else {
         view = (
             <Link href="/product/[pid]" as={`/product/${product.id}`}>

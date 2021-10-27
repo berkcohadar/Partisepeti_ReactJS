@@ -40,7 +40,7 @@ class OrderItems extends Component {
                         <div className="table-responsive" style={{maxHeight:"35vh",overflowY:"scroll"}}>
                             <table className="table ps-table--shopping-cart" >
                                 <tbody>
-                                    {this.props.order.ordered_items.map(product => (
+                                    {this.props.order.order_items.map(product => (
                                         <tr key={product.id}>
                                             <td>
                                                 <ProductCart
@@ -48,30 +48,21 @@ class OrderItems extends Component {
                                                 />
                                             </td>
                                             <td className="price">
-                                            ₺   {product.unit_paid_price}
+                                            ₺   {product.price}
                                             </td>
                                             <td>
                                                 <div className="form-group--number">
-                                                    1 Adet
+                                                    {product.quantity}
                                                 </div>
                                             </td>
                                             <td>
-                                            ₺ {product.quantity *
-                                                    product.unit_paid_price}
+                                            ₺ {product.total_price}
                                             </td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
                         </div>
-                        {/* <div className="ps-section__cart-actions">
-                            <Link href="/alisveris">
-                                <a>
-                                    <i className="icon-arrow-left mr-2"></i>
-                                    Alışverişe geri dön
-                                </a>
-                            </Link>
-                        </div> */}
                     </div>
                 </div>
         );

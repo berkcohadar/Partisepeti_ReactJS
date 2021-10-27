@@ -29,11 +29,12 @@ class UserRepository {
         
         return reponse;
     }
-    async checkPaymentHelper(token){
+    async checkPaymentHelper(order_token){
+        const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         const reponse = await axios({
             method: 'get',
-            url: baseUrl + '/checkout/payment-control/'+token, //checkout/payment-control/TOKEN
-            headers: {"Content-Type": "application/json"}, 
+            url: baseUrl + '/checkout/payment-control/'+order_token, //checkout/payment-control/TOKEN
+            headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             })
             .then((response) => {
                 return response.data.results[0];
@@ -45,7 +46,7 @@ class UserRepository {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         const reponse = await axios({
             method: 'get',
-            url: baseUrl + '/checkout/order/list/',
+            url: baseUrl + '/customer/order/list/',
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             })
             .then((response) => {

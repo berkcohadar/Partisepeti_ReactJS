@@ -31,7 +31,7 @@ class Orders extends Component {
                                     <div className="ps-section__header">
                                         <h3>Siparişlerim</h3>
                                     </div>
-                                    <OrderView orders={this.props.orders} ></OrderView>
+                                    {this.props.orders?<OrderView orders={this.props.orders} ></OrderView>:null}
                                 </div>
                             </div>
                         </div>

@@ -77,7 +77,7 @@ const OrderView = ({orders}) => {
                                 <p>Ürünler - ₺<strong>{order.paid_amount}.00</strong></p>
                                     <div className="ps-order-item-images">
                                         {order.order_items.map((product,index)=>(
-                                        <a href={"/product/"+product.product_id}><img key={index} className="ps-order-item-image" src={product.product_item_thumbnail}></img></a>
+                                        <a href={"/product/"+product.product.id}><img key={index} className="ps-order-item-image" src={product.product.item.thumbnail.replace('image/upload/','')}></img></a>
                                         ))}
                                     </div>
                             </div>

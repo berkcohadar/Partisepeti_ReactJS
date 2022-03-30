@@ -67,15 +67,32 @@ const SearchHeader = () => {
         setLoading(true);
         const data = CollectionRepository.getCollections();
         data.then((result) => {
+            result.unshift({
+            id: '',
+            name: "Tüm Kategoriler",
+            slug: "",
+            thumbnail: null,
+            description: "",
+            meta_description: "",
+            date_created: "2021-10-16T01:10:42.096670+03:00",
+        });
+            console.log(result);
             setCategories(result);
         });
         if (debouncedSearchTerm) {
             setLoading(true);
             if (keyword) {
-                const queries = {
+                var queries = {
                     search: keyword,
-                    categories:category,
                 };
+
+                if (category){
+                    var queries = {
+                        search: keyword,
+                        categories:category,
+                    };
+                }
+
                 const products = ProductRepository.getProducts(queries);
                 products.then((result) => {
                     setLoading(false);
@@ -128,7 +145,7 @@ const SearchHeader = () => {
         }
         if (categories && categories.length > 0){
             selectOptionView = categories.map((option)=>(
-                <option value={option.id} key={option.name}>
+                <option value={option.id} key={option.name} selected={option.id==category?true:false}>
                     {option.name}
                 </option>
             ))

@@ -116,7 +116,7 @@ const HomeDefaultBanner = () => {
                                 {index === banner && (
                                     <img src={slide.image_url} alt={slide.description} />
                                 )}
-                                <section><p>{slide.button_text}</p></section>
+                                <section><p>{slide.button_text}</p> <p className='slider--title'>{slide.button_text}</p> </section>
                             </div>
                         );
                     }):null}

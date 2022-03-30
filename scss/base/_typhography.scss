@@ -285,6 +285,7 @@ figure {
 }
 
 .layout--default {
+    overflow-x: hidden !important;
        a {
            color: inherit;
        }

@@ -31,6 +31,9 @@
             outline: none;
             box-shadow: 0 0 0 transparent;
         }
+        @include placeholder() {
+            color: rgba($color-text, 0.8);
+        }
     }
     &.ant-select {
         padding: 0;

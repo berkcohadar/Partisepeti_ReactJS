@@ -51,7 +51,7 @@ class RelatedProductFullwidth extends Component {
                     boxed === true ? 'boxed' : ''
                 }`}>
                 <div className="ps-section__header">
-                    <h3>Related products</h3>
+                    <h3>Aynı Kategoriden</h3>
                 </div>
                 <div className="ps-section__content">
                     <Slider {...carouselSetting} className="ps-carousel">

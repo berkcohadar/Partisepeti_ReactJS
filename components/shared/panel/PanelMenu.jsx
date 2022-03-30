@@ -23,13 +23,18 @@ const PanelMenu = () => {
             setLoading(false);
         });
     }, []);
-    let menudata;
+    let menudata = [];
     if (!loading) {
         if (categories && categories.length > 0){
             menudata = categories;
         } 
-
     }
+
+    menudata.push({
+        title:"Mağazalarımız",
+        category:"/magazalarimiz",
+
+    })
     const rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
 
     const onOpenChange = (openKeys) => {

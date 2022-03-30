@@ -1,38 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DatePicker, Form, input, Radio, ConfigProvider, Select } from 'antd';
 import moment from 'moment';
 import trTR from 'antd/lib/locale/tr_TR';
+import UserRepository from '~/repositories/UserRepository';
 
 const FormChangeUserInformation = ({ userInfo }) => {
+    const [birthday,setBirthday] = useState("");
+    const [gender,setGender] = useState("");
+
     const genderEquality = {
-        B: 'Berlirtmek İstemiyorum',
-        K: 'Kadın',
-        E: 'Erkek',
+        O: 'Berlirtmek İstemiyorum',
+        F: 'Kadın',
+        M: 'Erkek',
     };
     const dateFormat = 'YYYY/MM/DD';
     const { Option } = Select;
 
-    const onFinish = (values) => {
-        console.log('Success:', values);
+    const onFinish = (e) => {
+        setLoading(false)
+        if (birthday) {
+            e.date_of_birth = birthday
+        } else {
+            e.date_of_birth = moment(
+                userInfo.birth_date,
+                dateFormat
+            )
+        }
+        if (gender) {
+            e.gender = gender
+        } else {
+            e.gender = userInfo.gender
+        }
+        console.log('Result:', e);
+        UserRepository.profileUpdateRequest(e)
+        UserRepository.profileRequest()
     };
+
+    const changeBirthday = (date) => {
+        console.log(date)
+        setBirthday(date.format("MM/DD/YYYY"))
+    }
+
+    const changeGender = (gender) => {
+        console.log(gender)
+        let key = Object.keys(genderEquality).find(key => genderEquality[key] === gender)
+        setGender(key)
+    }
+
     const init = {
-        first_name: userInfo.profile.user
-            ? userInfo.profile.user.first_name
+        first_name: userInfo.first_name
+            ? userInfo.first_name
             : null,
-        last_name: userInfo.profile.user
-            ? userInfo.profile.user.last_name
+        last_name: userInfo.last_name
+            ? userInfo.last_name
             : null,
-        phone: userInfo.profile.phone
-            ? userInfo.profile.phone
+        phone: userInfo.phone
+            ? userInfo.phone
             : null,
-        email: userInfo.profile.user
-            ? userInfo.profile.user.username
+        email: userInfo.email
+            ? userInfo.email
             : null,
     }
-    console.log(init)
+
     return (
         <ConfigProvider locale={trTR}>
-            <Form
+            {init.email?<Form
+                onSubmitCapture={e => e.preventDefault()}
                 onFinish={onFinish}
                 className="ps-form--account-setting"
                 initialValues={init}>
@@ -76,14 +109,15 @@ const FormChangeUserInformation = ({ userInfo }) => {
                             </Form.Item>
                         </div>
                         <div className="col-sm-6">
-                            <Form.Item name="birthday" className="form-group">
+                            <Form.Item name="date_of_birth" className="form-group">
                                 <DatePicker
                                     className="form-control"
                                     defaultValue={moment(
-                                        '2015/01/01',
+                                        userInfo.birth_date,
                                         dateFormat
                                     )}  
                                     format={dateFormat}
+                                    onChange={changeBirthday}
                                 />
                             </Form.Item>
                         </div>
@@ -93,12 +127,12 @@ const FormChangeUserInformation = ({ userInfo }) => {
                                     className="form-control"
                                     placeholder={'Cinsiyet'}
                                     defaultValue={
-                                        userInfo.profile.gender
-                                            ? genderEquality[userInfo.profile.gender]
+                                        userInfo.gender
+                                            ? genderEquality[userInfo.gender]
                                             : null
                                     }
                                     bordered={false}
-                                    onChange={null}>
+                                    onChange={changeGender}>
                                     {Object.keys(genderEquality).map(
                                         (key, index) => (
                                             <Option value={genderEquality[key]}>
@@ -112,10 +146,10 @@ const FormChangeUserInformation = ({ userInfo }) => {
                     </div>
 
                     <div className="form-group submit">
-                        <button className="ps-btn">Profili Güncelle</button>
+                        <button type="submit" className="ps-btn">Profili Güncelle</button>
                     </div>
                 </div>
-            </Form>
+            </Form>:null}
         </ConfigProvider>
     );
 };

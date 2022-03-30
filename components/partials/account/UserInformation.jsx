@@ -30,7 +30,7 @@ class UserInformation extends Component {
                                     <div className="ps-section__header">
                                         <h3>Üyelik Bilgilerim</h3>
                                     </div>
-                                    <FormChangeUserInformation userInfo={this.props.userInfo}/>
+                                    <FormChangeUserInformation userInfo={this.props.userInfo.profile}/>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@ class UserInformation extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {userInfo:state.user}; //props.userInfo
+    return {userInfo:state.user};
 };
 
 export default connect(mapStateToProps)(UserInformation);

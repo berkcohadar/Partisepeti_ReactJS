@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Menu } from 'antd';
 import Link from 'next/link';
-import categories from '../../../public/static/data/static-categories.json';
 
 const { SubMenu } = Menu;
 
@@ -27,6 +26,14 @@ class PanelCategories extends Component {
             });
         }
     };
+    categories = [
+        {id:"1",slug:"/uyelik/siparislerim",name:"Siparişlerim"},
+        {id:"2",slug:"/uyelik/koleksiyonlarim",name:"Koleksiyonlarım"},
+        {id:"3",slug:"/uyelik/uyelik-bilgilerim",name:"Üyelik Bilgilerim"},
+        {id:"4",slug:"uyelik/adreslerim",name:"Adreslerim"},
+        // {id:"5",slug:"",name:""},
+
+    ];
 
     render() {
         return (
@@ -34,9 +41,9 @@ class PanelCategories extends Component {
                 mode="inline"
                 openKeys={this.state.openKeys}
                 onOpenChange={this.onOpenChange}>
-                {categories.map(category => (
-                    <Menu.Item key={category.id}>
-                        <a href={`/alisveris?categories=${category.slug}`}>
+                {this.categories.map(category => (
+                    <Menu.Item key={category.id} >
+                        <a href={`${category.slug}`}>
                             {category.name}
                         </a>
                     </Menu.Item>

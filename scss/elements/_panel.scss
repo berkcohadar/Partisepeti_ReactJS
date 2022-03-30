@@ -87,7 +87,7 @@
     .ps-panel__header {
         position: relative;
         text-align: center;
-        padding: 15px 20px;
+        padding: 13px 20px;
         background-color: $color-1st;
 
         h3 {
@@ -114,7 +114,7 @@
 
     .ps-panel__content {
         background-color: $color-dirty; //$color-navbar
-        width: 100%;
+        width: 97%;
         > ul {
             background-color: transparent;
             padding: 10px 10px;
@@ -123,8 +123,14 @@
                 margin-bottom: 10px;
                 padding: 3px 20px;
                 border-radius: 8px;
-                background-color: rgba($color-navbar-contrast,0.3);
+                background-color: rgba($color-navbar-contrast,0.2);
                 box-shadow: $shadow-main;
+                >span{
+                    > a {
+                        color:$color-text-2;
+                        font-weight: 600;
+                    }
+                }
             }
         }
         .ps-panel__content-text{

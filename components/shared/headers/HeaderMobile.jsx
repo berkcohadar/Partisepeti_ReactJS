@@ -37,7 +37,7 @@ class HeaderMobile extends Component {
                         </ul>
                     </div>
                 </div> */}
-                <div className="navigation--mobile">
+                <div className="navigation--mobile center-logo">
                     <div className="navigation__left">
                         <Link href="/">
                             <a className="ps-logo">

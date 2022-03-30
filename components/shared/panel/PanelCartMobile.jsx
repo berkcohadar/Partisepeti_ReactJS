@@ -19,11 +19,13 @@ class PanelCartMobile extends Component {
 
     render() {
         const { amount, cartItems } = this.props;
+        console.log("cart",cartItems)
         return (
             <div className="ps-cart--mobile">
                 <div className="ps-cart__content">
                     {cartItems && cartItems.length > 0 ? (
                         cartItems.map((product) => (
+                            
                             <div
                                 className="ps-product--cart-mobile"
                                 key={product.item.id}>
@@ -33,7 +35,7 @@ class PanelCartMobile extends Component {
                                         as={`/product/${product.item.id}`}>
                                         <a>
                                             <img
-                                                src={product.item.thumbnail}
+                                                src={product.item.thumbnail.replace('image/upload/','')}
                                                 alt="partisepeti"
                                             />
                                         </a>

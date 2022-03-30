@@ -11,9 +11,6 @@ const ProductWidgets = ({ collectionSlug }) => {
     return (
         <section>
             <WidgetProductSameBrands collectionSlug={collectionSlug}/>
-            <WidgetProductFeatures />
-            <WidgetSaleOnSite />
-            <WidgetShopAds />
         </section>
     );
 };

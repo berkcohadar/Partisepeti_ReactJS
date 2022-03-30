@@ -45,6 +45,7 @@ class PanelSearch extends Component {
     render() {
         const { searchProducts } = this.state;
         const { searchResults } = this.props;
+        console.log("AL SOK", searchResults)
         return (
             <div className="ps-panel__search-results">
                 <form
@@ -64,7 +65,7 @@ class PanelSearch extends Component {
                     </div>
                 </form>
                 {searchResults &&
-                    searchResults.map((product) => (
+                    searchResults.items.map((product) => (
                         <ProductSearchResult product={product} key={product.id} />
                     ))}
             </div>

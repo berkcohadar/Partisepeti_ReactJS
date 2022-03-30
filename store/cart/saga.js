@@ -168,7 +168,7 @@ function* addItemSaga(payload) {
         ).cart;
         let currentCart = JSON.parse(localCart);
         let existItem = currentCart.cartItems.find(
-            (item) => item.product.id === product.product.id
+            (item) => item.product.id === product.item.id
         );
         if (existItem) {
             existItem.quantity += product.quantity;
@@ -280,11 +280,11 @@ function* increaseQtySaga(payload) {
                     JSON.parse(localStorage.getItem('persist:partisepeti')).auth
                 ).isLoggedIn
             ) {
-                const data = yield call(CartRepository.addToCart, existItem);
+                const data = yield call(CartRepository.addToCart, selectedItem);
             } else {
                 const data = yield call(
                     CartRepository.addToCartGuest,
-                    existItem
+                    selectedItem
                 );
             }
         }
@@ -312,11 +312,11 @@ function* decreaseItemQtySaga(payload) {
                     JSON.parse(localStorage.getItem('persist:partisepeti')).auth
                 ).isLoggedIn
             ) {
-                const data = yield call(CartRepository.addToCart, existItem);
+                const data = yield call(CartRepository.addToCart, selectedItem);
             } else {
                 const data = yield call(
                     CartRepository.addToCartGuest,
-                    existItem
+                    selectedItem
                 );
             }
         }

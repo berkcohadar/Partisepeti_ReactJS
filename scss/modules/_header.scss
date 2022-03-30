@@ -502,8 +502,7 @@
                 display: flex;
                 align-items: center;
                 > img {
-                width: 40%;
-                    
+                width: 150px; 
                 }
             }
         }
@@ -512,7 +511,13 @@
             align-items: center;
         }
     }
+    .center-logo{
+        
+        @media (max-width: 1200px) {
+            justify-content: center !important;
+          }
 
+    }
     .header__extra {
         span {
             background-color: rgba($color-psbutton,0.9);

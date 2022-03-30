@@ -978,8 +978,6 @@
                 flex-flow: row nowrap;
                 justify-content: space-between;
                 align-items: flex-end;
-                max-width: 420px;
-
                 .ps-btn {
                     min-width: 180px;
                     text-align: center;
@@ -1044,7 +1042,7 @@
         }
 
         p {
-            color: $color-heading;
+            color: $color-text;
             margin-bottom: 0;
 
             strong {

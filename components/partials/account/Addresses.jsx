@@ -1,16 +1,27 @@
-import React, { Component } from 'react';
+import React, { useEffect, useRef, useState, useCallback  }  from 'react';
 import Link from 'next/link';
-import {HeartFilled,CarryOutOutlined,EnvironmentOutlined,LikeOutlined,ShoppingOutlined,BellOutlined,CommentOutlined,UserOutlined,FireFilled,} from "@ant-design/icons";
 import AccountMenuSidebar from './modules/AccountMenuSidebar';
+import UserRepository from '~/repositories/UserRepository';
 
-class Addresses extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+const Addresses = () => {
 
-    render() {
-        return (
+    // get the adresses
+    // if adresses then option values with 'Düzenle' button
+    // else message
+
+    const [ billingA, setBillingA] = useState(null);
+    const [ shippingA, setShippingA] = useState(null);
+
+    useEffect(() => {
+        const data = UserRepository.getAdressesRequest();
+        data.then((result) => {
+            console.log(result);
+            // setBillingA(result);
+            // setShippingA(result);
+        });
+    })
+
+    return (
             <section className="ps-my-account ps-page--account">
                 <div className="container">
                     <div className="row">
@@ -29,31 +40,50 @@ class Addresses extends Component {
                                         <div className="col-md-6 col-12">
                                             <figure className="ps-block--address">
                                                 <figcaption>
-                                                    Billing address
+                                                    Fatura Adresi
                                                 </figcaption>
                                                 <div className="ps-block__content">
+                                                    {billingA?
+                                                    <form className='ps-profile__adresses'>
+                                                        {billingA.map((item,index)=>{
+                                                        <div key={index}>
+                                                            <input type="radio" id={item.address_title} name={"address"+index} value={"address"+index}/>
+                                                            <label for={"address"+index}>{item.address_title}</label>
+                                                        </div>
+                                                        })}
+                                                    </form> :
                                                     <p>
-                                                        You Have Not Set Up This
-                                                        Type Of Address Yet.
+                                                        Henüz herhangi bir fatura adresi eklemediniz.
                                                     </p>
-                                                    <Link href="/uyelik/edit-address">
-                                                        <a>Edit</a>
+                                                    }
+                                                    <Link href="/uyelik/adres-duzenle">
+                                                        <a>Ekle</a>
                                                     </Link>
                                                 </div>
+                                                
                                             </figure>
                                         </div>
                                         <div className="col-md-6 col-12">
                                             <figure className="ps-block--address">
                                                 <figcaption>
-                                                    Shipping address
+                                                Teslimat Adresi
                                                 </figcaption>
                                                 <div className="ps-block__content">
+                                                    {shippingA?
+                                                    <form className='ps-profile__adresses'>
+                                                        {shippingA.map((item,index)=>{
+                                                        <div key={index}>
+                                                            <input type="radio" id={item.address_title} name={"address"+index} value={"address"+index}/>
+                                                            <label for={"address"+index}>{item.address_title}</label>
+                                                        </div>
+                                                        })}
+                                                    </form> :
                                                     <p>
-                                                        You Have Not Set Up This
-                                                        Type Of Address Yet.
+                                                        Henüz herhangi bir teslimat adresi eklemediniz.
                                                     </p>
-                                                    <Link href="/uyelik/edit-address">
-                                                        <a>Edit</a>
+                                                    }
+                                                    <Link href="/uyelik/adres-duzenle">
+                                                        <a>Ekle</a>
                                                     </Link>
                                                 </div>
                                             </figure>
@@ -66,7 +96,6 @@ class Addresses extends Component {
                 </div>
             </section>
         );
-    }
 }
 
 export default Addresses;

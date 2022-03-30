@@ -52,6 +52,7 @@ class NavigationList extends Component {
         });
     };
     handleShowCategoriesDrawer = () => {
+        console.log("anan",this.state.categoriesDrawer);
         this.setState({
             menuDrawer: false,
             cartDrawer: false,
@@ -138,7 +139,7 @@ class NavigationList extends Component {
                     visible={this.state.categoriesDrawer}>
                     <div className="ps-panel--wrapper">
                         <div className="ps-panel__header">
-                            <h3>Kategoriler</h3>
+                            <h3>Üyelİk</h3>
                             <span
                                 className="ps-panel__close"
                                 onClick={this.handleDrawerClose}>

@@ -46,20 +46,19 @@ class UserRepository {
         const reponse = await axios({
             method: 'get',
             url: baseUrl + '/auth/user/',
-            headers: {"Content-Type": "application/json", "Authorization": "Token "+token,}, 
+            headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             })
             .then((response) => {
                 return response.data;
             })
             .catch((error) => ({ error: JSON.stringify(error) }));
-        return reponse.results[0];
+        return reponse;
     }
 
     async profileUpdateRequest(e) {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
-        const gender_selection = {"Erkek":"E","Kadın":"K","Belirtmek İstemiyorum":"B",}
         const reponse = await axios({
-            method: 'post',
+            method: 'put',
             url: baseUrl + '/auth/user/update/',
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
@@ -68,15 +67,16 @@ class UserRepository {
                     last_name: e.last_name
                 },
                 date_of_birth: e.date_of_birth,
-                phone: e.phone,
-                gender: gender_selection[e.gender]
+                // phone: e.phone,
+                gender: e.gender,
               }),
             })
             .then((response) => {
                 return response.data;
             })
             .catch((error) => ({ error: JSON.stringify(error) }));
-        return reponse.results[0];
+        console.log(reponse)
+        return reponse;
     }
 
     async getAdressesRequest() {

@@ -1,31 +1,25 @@
 import React, { useState } from 'react';
 import OrderItems from './OrderItems';
+import {LikeOutlined,} from "@ant-design/icons";
+
+
 const OrderView = ({orders}) => {
     const [comp, setComponent] = useState(<p>Detayları görmek için tıklayınız</p>);
     const [height, setHeight] = useState('20vh');
     const deliveryComponent = <p>Kargo Takip</p>;
     const orderComponent = <p>Sipariş Detayı</p>;
     const helpComponent = <p>Sorun Bildir</p>;
-    const [first_click, setClick] = useState(false);
-    const [button, setButton] = useState(null);
     const [orderNo, setOrder] = useState(null);
 
     const buttonHandle = (event, component, buttonNo) => {
         event.stopPropagation();
-        if (first_click == false) {
-            setButton(buttonNo);
-            setClick(true);
-            setHeight('75vh');
-            setComponent(component);
-        } else if (buttonNo == button) {
-            setClick(false);
-            setHeight('20vh');
-            setComponent(null);
-        } else {
-            setClick(false);
-            setComponent(component);
-        }
+
     };
+
+    const orderStatusTranslate = {
+        'P':[<LikeOutlined />,'Ödendi']
+    }
+
     const data = [0, 1];
     return (
         <div className="ps-section__content">
@@ -56,28 +50,29 @@ const OrderView = ({orders}) => {
                     <div className="ps-order-item-area">
                         <div className="ps-order-item-main">
                             <div className="ps-order-item-main-status">
-                                <h4>{order.order_status}</h4>
+                                <i>{orderStatusTranslate[order.order_status][0]}</i>
+                                <h4>{orderStatusTranslate[order.order_status][1]}</h4>
                             </div>
                             <div className="ps-order-item-main-buttons">
-                                {/* <button className="ps-btn" onClick={() => buttonHandle()}>Sipariş Detayı</button> */}
                                 <button
                                     className="ps-btn"
-                                    onClick={() => buttonHandle()}>
+                                    onClick={(e) => buttonHandle(e)}>
                                     Kargom Nerede?
                                 </button>
                                 <button
                                     className="ps-btn ps-btn--black"
-                                    onClick={() => buttonHandle()}>
+                                    onClick={(e) => buttonHandle(e)}>
                                     Sorun Bildir
                                 </button>
                             </div>
                         </div>
                         <div className="ps-order-item-info">
                             <div>
-                                <p>Ürünler - ₺<strong>{order.paid_amount}.00</strong></p>
+                                <p>Ürünler - ₺<strong>{order.paid_amount}</strong></p>
                                     <div className="ps-order-item-images">
+                                        {console.log(order)}
                                         {order.order_items.map((product,index)=>(
-                                        <a href={"/product/"+product.product.id}><img key={index} className="ps-order-item-image" src={product.product.item.thumbnail.replace('image/upload/','')}></img></a>
+                                        <a href={"/product/"+product.product.item.id}><img key={index} className="ps-order-item-image" src={product.product.item.thumbnail.replace('image/upload/','')}></img></a>
                                         ))}
                                     </div>
                             </div>

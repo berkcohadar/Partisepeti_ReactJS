@@ -23,7 +23,7 @@ const ProductOnCart = ({product}) => {
                         onClick={(e) => handleRemoveCartItem(e)}>
                         <i className="icon-cross"></i>
                     </a>
-                    <Link href="/product/[pid]" as={`/product/${product.product.id}`}>
+                    <Link href="/product/[pid]" as={`/product/${product.item.id}`}>
                         <a className="ps-product__title">{product.item.title}</a>
                     </Link>
                     <p>

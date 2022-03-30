@@ -6,11 +6,10 @@ const FooterWidgets = () => (
         <aside className="widget widget_footer widget_contact-us">
             <h4 className="widget-title">Contact us</h4>
             <div className="widget_content">
-                <p>Call us 24/7</p>
-                <h3>1800 97 97 69</h3>
+                <p>Bize Ulaşın!</p>
+                <h3>0850 111 22 33 </h3>
                 <p>
-                    502 New Design Str, Melbourne, Australia <br />
-                    <a href="mailto:contact@partisepeti.co">contact@partisepeti.co</a>
+                    <a href="mailto:contact@partisepeti.co">destek@partisepeti.com</a>
                 </p>
                 <ul className="ps-list--social">
                     <li>
@@ -41,28 +40,23 @@ const FooterWidgets = () => (
             <ul className="ps-list--link">
                 <li>
                     <Link href="/page/blank">
-                        <a>Policy</a>
+                        <a>Hakkımızda</a>
                     </Link>
                 </li>
 
                 <li>
                     <Link href="/page/blank">
-                        <a>Term & Condition</a>
+                        <a>Mağazalarımız</a>
                     </Link>
                 </li>
                 <li>
                     <Link href="/page/blank">
-                        <a>Shipping</a>
+                        <a>Partisepeti'nde Sat</a>
                     </Link>
                 </li>
                 <li>
                     <Link href="/page/blank">
-                        <a>Return</a>
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/page/faqs">
-                        <a>FAQs</a>
+                        <a>Partisepeti Blog</a>
                     </Link>
                 </li>
             </ul>
@@ -72,22 +66,17 @@ const FooterWidgets = () => (
             <ul className="ps-list--link">
                 <li>
                     <Link href="/page/about-us">
-                        <a>About Us</a>
+                        <a>Kargo ve Teslimat</a>
                     </Link>
                 </li>
                 <li>
                     <Link href="/page/blank">
-                        <a>Affilate</a>
+                        <a>İptal ve İade</a>
                     </Link>
                 </li>
                 <li>
                     <Link href="/page/blank">
-                        <a>Career</a>
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/page/contact-us">
-                        <a>Contact</a>
+                        <a>Yurt Dışı Gönderimi</a>
                     </Link>
                 </li>
             </ul>
@@ -97,22 +86,17 @@ const FooterWidgets = () => (
             <ul className="ps-list--link">
                 <li>
                     <Link href="/page/about-us">
-                        <a>Our Press</a>
+                        <a>Mesafeli Satış Sözleşmesi</a>
                     </Link>
                 </li>
                 <li>
                     <Link href="/uyelik/siparis-bilgilerim">
-                        <a>Checkout</a>
+                        <a>Gizlilik ve Güvenlik</a>
                     </Link>
                 </li>
                 <li>
                     <Link href="/uyelik/user-information">
-                        <a>My account</a>
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/alisveris">
-                        <a>Shop</a>
+                        <a>Şikayet ve Bildirim</a>
                     </Link>
                 </li>
             </ul>

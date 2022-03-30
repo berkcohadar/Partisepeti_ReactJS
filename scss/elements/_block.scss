@@ -3330,6 +3330,20 @@
         font-size: 16px;
         color: $color-link;
     }
+    .ps-block__content { 
+        .ps-profile__adresses{  
+            display: block !important;
+            div {
+                display:flex !important;
+                align-items: center;
+                margin-top: 10px;
+            }
+            input {
+                margin-right: 10px;
+            }
+        }
+
+    }
 }
 
 .ps-block--invoice {

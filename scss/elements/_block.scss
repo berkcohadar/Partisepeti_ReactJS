@@ -3334,13 +3334,37 @@
         .ps-profile__adresses{  
             display: block !important;
             div {
+                box-shadow: $shadow-main;
+                transition: 0.2s;
+                border: none;
+                border-radius: 8px;
+                padding: 10px;
+                cursor: pointer !important;
+
                 display:flex !important;
                 align-items: center;
                 margin-top: 10px;
+
+                &:hover {
+                    box-shadow:  $shadow-main-double;
+                }
+                
             }
             input {
+                cursor: pointer !important;
                 margin-right: 10px;
             }
+            label {
+                cursor: pointer !important;
+                line-height: 24px;
+
+            }
+        }
+        .ps-profile__adresses__btn {
+            margin: 20px 0px;
+            
+            display: flex;
+            justify-content: center;
         }
 
     }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DatePicker, Form, input, Radio, ConfigProvider, Select } from 'antd';
 import moment from 'moment';
 import trTR from 'antd/lib/locale/tr_TR';
@@ -7,64 +7,82 @@ import UserRepository from '~/repositories/UserRepository';
 const FormChangeUserInformation = ({ userInfo }) => {
     const [birthday,setBirthday] = useState("");
     const [gender,setGender] = useState("");
+    const [loading,setLoading] = useState(false);
+    const [init, setInit] = useState("");
 
     const genderEquality = {
-        O: 'Berlirtmek İstemiyorum',
-        F: 'Kadın',
-        M: 'Erkek',
+        'O': 'Belirtmek İstemiyorum',
+        'F': 'Kadın',
+        'M': 'Erkek',
     };
+
     const dateFormat = 'YYYY/MM/DD';
     const { Option } = Select;
 
-    const onFinish = (e) => {
+    async function onFinish(e) {
         setLoading(false)
         if (birthday) {
             e.date_of_birth = birthday
+            setBirthday("")
         } else {
-            e.date_of_birth = moment(
-                userInfo.birth_date,
-                dateFormat
-            )
+            console.log(init.birth_date)
+            e.date_of_birth = init.birth_date
         }
         if (gender) {
             e.gender = gender
+            setGender("")
         } else {
-            e.gender = userInfo.gender
+            e.gender = Object.keys(genderEquality).find(key => genderEquality[key] === init.gender) 
         }
-        console.log('Result:', e);
-        UserRepository.profileUpdateRequest(e)
-        UserRepository.profileRequest()
-    };
+        console.log("dogru", e)
+        const profileUpdated = await UserRepository.profileUpdateRequest(e)
+        if (profileUpdated) {
+            const responseData = await UserRepository.profileRequest()
+            if (responseData) {
+                responseData.gender = genderEquality[responseData.gender]
+                setInit(responseData)
+                setTimeout(
+                    function () {
+                        setLoading(true);
+                    }.bind(this),
+                    250
+                );
+            }
+        }
+    }
 
     const changeBirthday = (date) => {
         console.log(date)
-        setBirthday(date.format("MM/DD/YYYY"))
+        setBirthday(date.format("YYYY-MM-DD"))
     }
 
-    const changeGender = (gender) => {
-        console.log(gender)
-        let key = Object.keys(genderEquality).find(key => genderEquality[key] === gender)
+    const changeGender = (g) => {
+        console.log(g)
+        let key = Object.keys(genderEquality).find(key => genderEquality[key] === g)
         setGender(key)
     }
 
-    const init = {
-        first_name: userInfo.first_name
-            ? userInfo.first_name
-            : null,
-        last_name: userInfo.last_name
-            ? userInfo.last_name
-            : null,
-        phone: userInfo.phone
-            ? userInfo.phone
-            : null,
-        email: userInfo.email
-            ? userInfo.email
-            : null,
+    async function getProfile() {
+        const responseData = await UserRepository.profileRequest()
+        if (responseData) {
+            responseData.gender = genderEquality[responseData.gender]
+            setInit(responseData)
+            setTimeout(
+                function () {
+                    setLoading(true);
+                }.bind(this),
+                250
+            );
+        }
     }
+
+    useEffect(() => {
+        if (init == "") getProfile()
+    })
 
     return (
         <ConfigProvider locale={trTR}>
-            {init.email?<Form
+            {init.email && loading ? <Form
                 onSubmitCapture={e => e.preventDefault()}
                 onFinish={onFinish}
                 className="ps-form--account-setting"
@@ -112,11 +130,11 @@ const FormChangeUserInformation = ({ userInfo }) => {
                             <Form.Item name="date_of_birth" className="form-group">
                                 <DatePicker
                                     className="form-control"
+                                    format={dateFormat}
                                     defaultValue={moment(
-                                        userInfo.birth_date,
+                                        init.birth_date,
                                         dateFormat
                                     )}  
-                                    format={dateFormat}
                                     onChange={changeBirthday}
                                 />
                             </Form.Item>
@@ -126,13 +144,9 @@ const FormChangeUserInformation = ({ userInfo }) => {
                                 <Select
                                     className="form-control"
                                     placeholder={'Cinsiyet'}
-                                    defaultValue={
-                                        userInfo.gender
-                                            ? genderEquality[userInfo.gender]
-                                            : null
-                                    }
                                     bordered={false}
-                                    onChange={changeGender}>
+                                    onChange={changeGender}
+                                    >
                                     {Object.keys(genderEquality).map(
                                         (key, index) => (
                                             <Option value={genderEquality[key]}>

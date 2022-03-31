@@ -56,18 +56,21 @@ class UserRepository {
     }
 
     async profileUpdateRequest(e) {
+        console.log("request", JSON.stringify({
+            first_name: e.first_name,
+            last_name: e.last_name,
+            birth_date: e.date_of_birth,
+            gender: e.gender,
+          }))
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
         const reponse = await axios({
             method: 'put',
             url: baseUrl + '/auth/user/update/',
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
-                user: {
-                    first_name: e.first_name,
-                    last_name: e.last_name
-                },
-                date_of_birth: e.date_of_birth,
-                // phone: e.phone,
+                first_name: e.first_name,
+                last_name: e.last_name,
+                birth_date: e.date_of_birth,
                 gender: e.gender,
               }),
             })
@@ -90,7 +93,7 @@ class UserRepository {
                 return response.data;
             })
             .catch((error) => ({ error: JSON.stringify(error) }));
-        return reponse.results[0];
+        return reponse.results;
     }
 
     async addAdressesRequest(e) {
@@ -133,12 +136,11 @@ class UserRepository {
                 "last_name": e.last_name,
                 "phone": e.phone,
                 "city": e.city,
-                "district": e.district,
                 "address": e.address,
                 "zip": e.zip,
                 "country": e.country,
                 "active": true,
-                "type": "Billing Address"
+                "address_type": e.address_type
               }),
             })
             .then((response) => {

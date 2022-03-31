@@ -12,13 +12,34 @@ const Addresses = () => {
     const [ billingA, setBillingA] = useState(null);
     const [ shippingA, setShippingA] = useState(null);
 
-    useEffect(() => {
+    async function getAddresses() {
         const data = UserRepository.getAdressesRequest();
+        let billingAddresses = []
+        let shippingAddresses = []
         data.then((result) => {
-            console.log(result);
-            // setBillingA(result);
-            // setShippingA(result);
+            result.map((key)=>(key["address_type"] == 'S'? shippingAddresses.push(key) : billingAddresses.push(key)))
+            billingAddresses.length ? setBillingA(billingAddresses):null;
+            shippingAddresses.length ? setShippingA(shippingAddresses):null;
         });
+    }
+    async function changeActiveAdress(e) {
+        const data = UserRepository.updateAdressesRequest(e);
+        // "customer": e.email,
+        // "first_name": e.first_name,
+        // "last_name": e.last_name,
+        // "phone": e.phone,
+        // "city": e.city,
+        // "address": e.address,
+        // "zip": e.zip,
+        // "country": e.country,
+        // "active": true,
+        // "address_type": e.address_type
+        data.then((result) => {
+        });
+    }
+
+    useEffect(() => {
+        if (billingA == null && shippingA == null ) getAddresses();
     })
 
     return (
@@ -45,20 +66,22 @@ const Addresses = () => {
                                                 <div className="ps-block__content">
                                                     {billingA?
                                                     <form className='ps-profile__adresses'>
-                                                        {billingA.map((item,index)=>{
-                                                        <div key={index}>
-                                                            <input type="radio" id={item.address_title} name={"address"+index} value={"address"+index}/>
-                                                            <label for={"address"+index}>{item.address_title}</label>
-                                                        </div>
-                                                        })}
+                                                        {billingA.map((item,index)=>(
+                                                        <div onClick={() => console.log("tiklandi")} key={index}>
+                                                            <input type="radio" id={item.title} name={"address"} checked={true}/>
+                                                            <label for={"address"+index}><b>{item.title}</b><br></br>{item.address}<br></br>{item.city +"/"+item.country}<br></br>{item.phone}</label>
+                                                    </div>
+                                                    ))}
                                                     </form> :
                                                     <p>
                                                         Henüz herhangi bir fatura adresi eklemediniz.
                                                     </p>
                                                     }
-                                                    <Link href="/uyelik/adres-duzenle">
-                                                        <a>Ekle</a>
-                                                    </Link>
+                                                    <div className='ps-profile__adresses__btn'>
+                                                        <Link href="/uyelik/adres-duzenle">
+                                                            <a class="ps-btn">+ Ekle</a>
+                                                        </Link>
+                                                    </div>
                                                 </div>
                                                 
                                             </figure>
@@ -71,20 +94,22 @@ const Addresses = () => {
                                                 <div className="ps-block__content">
                                                     {shippingA?
                                                     <form className='ps-profile__adresses'>
-                                                        {shippingA.map((item,index)=>{
-                                                        <div key={index}>
-                                                            <input type="radio" id={item.address_title} name={"address"+index} value={"address"+index}/>
-                                                            <label for={"address"+index}>{item.address_title}</label>
+                                                        {shippingA.map((item,index)=>(
+                                                        <div onClick={() => console.log("tiklandi")} key={index}>
+                                                            <input type="radio" id={item.title} name={"address"} checked={true} />
+                                                            <label for={"address"+index}><b>{item.title}</b><br></br>{item.address}<br></br>{item.city +"/"+item.country}<br></br>{item.phone}</label>
                                                         </div>
-                                                        })}
+                                                        ))}
                                                     </form> :
                                                     <p>
                                                         Henüz herhangi bir teslimat adresi eklemediniz.
                                                     </p>
                                                     }
-                                                    <Link href="/uyelik/adres-duzenle">
-                                                        <a>Ekle</a>
-                                                    </Link>
+                                                    <div className='ps-profile__adresses__btn'>
+                                                        <Link href="/uyelik/adres-duzenle">
+                                                            <a class="ps-btn">+ Ekle</a>
+                                                        </Link>
+                                                    </div>
                                                 </div>
                                             </figure>
                                         </div>

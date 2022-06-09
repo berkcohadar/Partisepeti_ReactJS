@@ -1,26 +1,50 @@
-import React, { Component } from 'react';
-import { Form, Input, notification } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Form, Input, Checkbox } from 'antd';
 import UserRepository from '~/repositories/UserRepository';
 
-const FormEditAddress = () => {
+const FormEditAddress = ({address_type, handleHideQuickView, addressDetails}) => {
+    const [is_active, setIsActive] = useState(false)
+    const [form] = Form.useForm();
+
     const handleAddressSubmit = (values) =>{
-        console.log(values)
-        // UserRepository.addAdressesRequest()
+        values.is_active = is_active
+        values.address_type = address_type
+
+        if (addressDetails) {
+            values.is_active = addressDetails.is_active
+            values.id = addressDetails.id
+            UserRepository.updateAdressesRequest(values)
+        }
+        else UserRepository.addAdressesRequest(values)
+        form.resetFields();
+        handleHideQuickView();
     }
 
+    const preferredChanged = (d) => {
+        setIsActive(d.target.checked)
+    }
+
+    useEffect(() => {
+        form.setFieldsValue(addressDetails)
+    }, [form, addressDetails])
+
+
     return (
-        <form className="ps-form--edit-address" action={handleAddressSubmit()}>
+        <form className="ps-form--edit-address">
             <div className="ps-form__header">
-                <h3>Billing address</h3>
+                {address_type=='S'?<h3>Teslimat Adresi</h3>:<h3>Fatura Adresi</h3>}
             </div>
             <div className="ps-form__content">
                 <Form
                     className="ps-form--account"
-                    onFinish={handleAddressSubmit}>
-                    <Form.Item name="address_name" rules={[{ required: false, }]}>
+                    onFinish={handleAddressSubmit}
+                    form={form}
+                    >
+                    <Form.Item name="title" rules={[{ required: false, }]}>
                         <Input className="form-control"
                                 type="text"
-                                placeholder="Adres Başlığı">
+                                placeholder="Adres Başlığı"
+                                >
                         </Input>
                     </Form.Item>
                     <div style={{'display':'flex', justifyContent:'space-between'}}>
@@ -34,7 +58,8 @@ const FormEditAddress = () => {
                             ]}>
                             <Input className="form-control"
                                     type="text"
-                                    placeholder="İsim">
+                                    placeholder="İsim"
+                                    >
                             </Input>
                         </Form.Item>
                         <Form.Item name="last_name"
@@ -47,7 +72,8 @@ const FormEditAddress = () => {
                             ]}>
                             <Input className="form-control"
                                         type="text"
-                                        placeholder="Soysim">
+                                        placeholder="Soysim"
+                                        >
                             </Input>
                         </Form.Item>
                     </div>
@@ -61,7 +87,8 @@ const FormEditAddress = () => {
                         ]}>
                         <Input className="form-control"
                                     type="text"
-                                    placeholder="İrtibat Numarası">
+                                    placeholder="İrtibat Numarası"
+                                    >
                         </Input>
                     </Form.Item>
                     
@@ -75,7 +102,8 @@ const FormEditAddress = () => {
                         ]}>
                         <Input className="form-control"
                                     type="text"
-                                    placeholder="Açık Adres">
+                                    placeholder="Açık Adres"
+                                    >
                         </Input>
                     </Form.Item>
                     <Form.Item name="city"
@@ -88,7 +116,8 @@ const FormEditAddress = () => {
                         ]}>
                         <Input className="form-control"
                                     type="text"
-                                    placeholder="Şehir">
+                                    placeholder="Şehir"
+                                    >
                         </Input>
                     </Form.Item>
                     <Form.Item name="country"
@@ -101,22 +130,37 @@ const FormEditAddress = () => {
                         ]}>
                         <Input className="form-control"
                                     type="text"
-                                    placeholder="Ülke">
+                                    placeholder="Ülke"
+                                    >
                         </Input>
                     </Form.Item>
                     <Form.Item name="zip_code"
                         rules={[
                             {
-                                required: true,
+                                required: false,
                                 message:
                                     'Lütfen posta kodunuzu yazın!',
                             },
                         ]}>
                         <Input className="form-control"
                                     type="text"
-                                    placeholder="Posta Kodu">
+                                    placeholder="Posta Kodu"
+                                    >
                         </Input>
                     </Form.Item>
+                    {addressDetails ? null :
+                        <Checkbox onChange={(d) => preferredChanged(d)} >
+                            {'Geçerli adresim olarak kaydet'}
+                        </Checkbox>
+                    }
+                    <div className='ps-profile__adresses__btn'>
+                            <button 
+                                class="ps-btn"
+                                type="submit" 
+                                
+                                >
+                                + Ekle</button>
+                    </div>
                 </Form>
             </div>
         </form>
@@ -124,46 +168,3 @@ const FormEditAddress = () => {
 }
 
 export default FormEditAddress;
-
-
-{/* 
-    <div className="form-group" style={{display:"flex",justifyContent:"space-between"}}>
-        <input type="text" style={{maxWidth:"48%"}} placeholder="İsim" className="form-control"/>
-        <input type="text" style={{maxWidth:"48%"}} placeholder="Soyisim" className="form-control"/>
-    </div>
-    <div className="form-group">
-        <label>
-            Email address <sup>*</sup>
-        </label>
-        <input type="text" placeholder="" className="form-control"/>
-    </div>
-    <div className="form-group">
-        </div>
-    <div className="form-group">
-        <label>
-            Country <sup>*</sup>
-        </label>
-        <input type="text" placeholder="" className="form-control"/>
-    </div>
-    <div className="form-group">
-        <label>
-            State <sup>*</sup>
-        </label>
-        <input type="text" placeholder="" className="form-control"/>
-    </div>
-    <div className="form-group">
-        <label>
-            Postcode <sup>*</sup>
-        </label>
-        <input type="text" placeholder="" className="form-control"/>
-    </div>
-    <div className="form-group">
-        <label>
-            Street Address <sup>*</sup>
-        </label>
-        <input type="text" placeholder="" className="form-control"/>
-    </div>
-    <div className="form-group submit">
-        <button type="submit" className="ps-btn">Save Address</button>
-    </div> 
-*/}

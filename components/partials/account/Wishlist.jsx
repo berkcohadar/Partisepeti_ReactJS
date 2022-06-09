@@ -71,12 +71,15 @@ class Wishlist extends Component {
                                                 <td>
                                                     <a
                                                         className="ps-btn"
-                                                        href=""
                                                         onClick={e =>
-                                                            this.handleAddItemToCart(
+                                                            {this.handleAddItemToCart(
                                                                 e,
                                                                 product
-                                                            )
+                                                            );
+                                                            this.handleRemoveWishListItem(
+                                                                e,
+                                                                product
+                                                            );}
                                                         }>
                                                         Sepete Ekle
                                                     </a>

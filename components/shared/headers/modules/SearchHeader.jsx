@@ -76,7 +76,6 @@ const SearchHeader = () => {
             meta_description: "",
             date_created: "2021-10-16T01:10:42.096670+03:00",
         });
-            console.log(result);
             setCategories(result);
         });
         if (debouncedSearchTerm) {

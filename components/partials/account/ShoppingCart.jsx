@@ -21,11 +21,13 @@ class ShoppingCart extends Component {
     }
 
     handleIncreaseItemQty(product) {
+        console.log("pro +: ",product)
         this.props.dispatch(increaseItemQty(product));
     }
 
     handleDecreaseItemQty(product) {
-        this.props.dispatch(decreaseItemQty(product));
+        if (product.quantity == 1) this.handleRemoveCartItem(product)
+        else this.props.dispatch(decreaseItemQty(product));
     }
 
     handleRemoveCartItem = (product) => {
@@ -44,14 +46,13 @@ class ShoppingCart extends Component {
                     <div className="ps-section__header">
                         <h1>Sepet Detayı</h1>
                     </div>
-                    <div className="ps-cart-display-page">
+                    <div className="ps-cart-display-page ">
                         <div className="ps-section__content">
                             <div className="table-responsive">
                                 <table className="table ps-table--shopping-cart">
                                     <thead>
                                         <tr>
                                             <th>Ürün</th>
-                                            <th>Fiyat</th>
                                             <th>Adet</th>
                                             <th>Toplam</th>
                                             <th>{'\t'}</th>
@@ -65,28 +66,16 @@ class ShoppingCart extends Component {
                                                         product={product}
                                                     />
                                                 </td>
-                                                <td className="price">
-                                                    ₺{' '}
-                                                    {
-                                                        product.product.price
-                                                    }
-                                                </td>
                                                 <td>
                                                     <div className="form-group--number">
                                                         <button
                                                             className="up"
-                                                            onClick={this.handleIncreaseItemQty.bind(
-                                                                this,
-                                                                product
-                                                            )}>
+                                                            onClick={() => this.handleIncreaseItemQty( product )}>
                                                             +
                                                         </button>
                                                         <button
                                                             className="down"
-                                                            onClick={this.handleDecreaseItemQty.bind(
-                                                                this,
-                                                                product
-                                                            )}>
+                                                            onClick={() => this.handleDecreaseItemQty( product )}>
                                                             -
                                                         </button>
                                                         <input

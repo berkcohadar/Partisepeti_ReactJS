@@ -189,7 +189,6 @@
 
 .ps-table--shopping-cart {
     thead {
-        // background-color: $color-navbar;
         background: $color-1st;
         // background: -moz-linear-gradient(135deg, $color-navbar 0%, $color-navbar 24%, $color-1st 61%);
         // background: -webkit-linear-gradient(135deg, $color-navbar 0%, $color-navbar 24%, $color-1st 61%);
@@ -256,11 +255,6 @@
     }
 
     @include media('<md') {
-        .form-group--number {
-            button{
-                display: none;
-            }
-        }
         tbody {
             tr {
                 td {

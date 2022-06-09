@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import OrderItems from './OrderItems';
-import {LikeOutlined,} from "@ant-design/icons";
+import OrderItems2 from './OrderItems2';
 
+import {LikeOutlined,} from "@ant-design/icons";
+import { Modal } from 'antd';
+import ProductDetailQuickView from '~/components/elements/detail/ProductDetailQuickView';
+import ProductRepository from '~/repositories/ProductRepository';
 
 const OrderView = ({orders}) => {
     const [comp, setComponent] = useState(<p>Detayları görmek için tıklayınız</p>);
-    const [height, setHeight] = useState('20vh');
-    const deliveryComponent = <p>Kargo Takip</p>;
-    const orderComponent = <p>Sipariş Detayı</p>;
-    const helpComponent = <p>Sorun Bildir</p>;
     const [orderNo, setOrder] = useState(null);
+    const [productQuick, setProduct] = useState(null);
+    const [isQuickView, setIsQuickView] = useState(false);
+    const [loading, setLoading] = useState(false)
+
 
     const buttonHandle = (event, component, buttonNo) => {
         event.stopPropagation();
@@ -19,31 +23,46 @@ const OrderView = ({orders}) => {
     const orderStatusTranslate = {
         'P':[<LikeOutlined />,'Ödendi']
     }
+    // href={"/product/"+product.product.item.id}
+    async function getProduct(id) {
+        const data = await ProductRepository.getProductsById(id);
+        if (data) {
+            setProduct(data);
+            setTimeout(
+                function () {
+                    setLoading(false);
+                }.bind(this),
+                250
+            );
+        }
+    }
+    const handleShowQuickView = (e, id) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setLoading(true)
+        setIsQuickView(true);
+        getProduct(id)
+    };
 
-    const data = [0, 1];
+    const handleHideQuickView = (e) => {
+        e.preventDefault();
+        setIsQuickView(false);
+    };
+
     return (
         <div className="ps-section__content">
             {orders.orders.map((order,index) => (
+                console.log(order),
                 <div
                     className="ps-order-item"
                     key={index}
-                    style={
-                        orderNo === index
-                            ? {
-                                  height: height,
-                                  boxShadow: 'rgba(50, 50, 93, 0.25) 0px 2px 6px -1px, rgba(0, 0, 0, 0.3) 0px -1px 3px -1px',
-                              }
-                            : { height: '20vh' }
-                    }
                     onClick={() => {
                         if (orderNo === index) {
-                            setHeight('20vh');
                             setOrder(null);
                             setComponent(<p>Detayları görmek için tıklayınız</p>);
                         } else {
-                            setHeight('60vh');
                             setOrder(index);
-                            setComponent(<OrderItems order={order}/>);
+                            setComponent(<OrderItems2 order={order}/>);
                         }
 
                     }}>
@@ -68,13 +87,21 @@ const OrderView = ({orders}) => {
                         </div>
                         <div className="ps-order-item-info">
                             <div>
-                                <p>Ürünler - ₺<strong>{order.paid_amount}</strong></p>
-                                    <div className="ps-order-item-images">
-                                        {console.log(order)}
-                                        {order.order_items.map((product,index)=>(
-                                        <a href={"/product/"+product.product.item.id}><img key={index} className="ps-order-item-image" src={product.product.item.thumbnail.replace('image/upload/','')}></img></a>
-                                        ))}
-                                    </div>
+
+                                <div className="ps-order-item-info-flex">
+                                    <p>{order.first_name} {order.last_name}</p> 
+                                    <p className="ps-order-item-info-flex--text"> {order.address}</p>
+                                </div>
+                                <div className="ps-order-item-info-flex">
+                                    <p>Ürünler - ₺<strong>{order.paid_amount}</strong></p> 
+                                    <p className="ps-order-item-info-flex--text">Ödeme: *** 6048</p> 
+
+                                </div>
+                                <div className="ps-order-item-images">
+                                    {order.order_items.map((product,index)=>(
+                                        <a onClick={(e) => handleShowQuickView(e, product.product.item.id)} ><img key={index} className="ps-order-item-image" src={product.product.item.thumbnail.replace('image/upload/','')}></img></a>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -89,6 +116,20 @@ const OrderView = ({orders}) => {
                     </div>
                 </div>
             ))}
+            {loading?
+                null:
+                <Modal
+                    centered
+                    footer={null}
+                    width={1024}
+                    onCancel={(e) => handleHideQuickView(e)}
+                    visible={isQuickView}
+                    closeIcon={<i className="icon icon-cross2"></i>}>
+                    <h3>Ürün Detayı</h3>
+                    <ProductDetailQuickView product={productQuick} />
+                </Modal>
+            }
+
         </div>
     );
 };

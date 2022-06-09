@@ -37,7 +37,7 @@ class OrderItems extends Component {
         return (
                 <div className="container">
                     <div className="ps-section__content" style={{background:"transparent"}}>
-                        <div className="table-responsive" style={{maxHeight:"35vh",overflowY:"scroll"}}>
+                        <div className="table-responsive" style={{maxHeight:"460px",overflowY:"scroll"}}>
                             <table className="table ps-table--shopping-cart" >
                                 <tbody>
                                     {this.props.order.order_items.map(product => (

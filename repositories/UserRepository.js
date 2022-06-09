@@ -98,56 +98,60 @@ class UserRepository {
 
     async addAdressesRequest(e) {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
-        e.email = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).email;
+        const email = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).email;
+
         const reponse = await axios({
             method: 'post',
             url: baseUrl + '/customer/address/create/',
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
-                "customer": e.email,
+                "customer": email,
                 "first_name": e.first_name,
                 "last_name": e.last_name,
                 "phone": e.phone,
-                "city": e.city,
-                "district": e.district,
+                "title": e.title,
                 "address": e.address,
-                "zip": e.zip,
+                "zip_code": e.zip,
+                "city": e.city,
                 "country": e.country,
-                "active": true,
-                "type": "Billing Address"
+                "is_active": e.is_active,
+                "address_type": e.address_type,
               }),
             })
             .then((response) => {
                 return response.data;
             })
             .catch((error) => ({ error: JSON.stringify(error) }));
-        return reponse.results[0];
+        return reponse;
     }
     
     async updateAdressesRequest(e) {
         const token = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).token;
+        const email = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).email;
+
         const reponse = await axios({
-            method: 'post',
-            url: baseUrl + '/customer/address/update/'+e.id+'/',
+            method: 'put',
+            url: baseUrl + '/customer/address/update/'+e.id,
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
-                "customer": e.email,
+                "customer": email,
                 "first_name": e.first_name,
                 "last_name": e.last_name,
                 "phone": e.phone,
-                "city": e.city,
+                "title": e.title,
                 "address": e.address,
-                "zip": e.zip,
+                "zip_code": e.zip_code,
+                "city": e.city,
                 "country": e.country,
-                "active": true,
-                "address_type": e.address_type
+                "is_active": e.is_active,
+                "address_type": e.address_type,
               }),
             })
             .then((response) => {
                 return response.data;
             })
             .catch((error) => ({ error: JSON.stringify(error) }));
-        return reponse.results[0];
+        return reponse;
     }
     
     async deleteAdressesRequest(e) {

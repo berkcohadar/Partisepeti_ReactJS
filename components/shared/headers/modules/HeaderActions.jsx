@@ -15,13 +15,13 @@ const HeaderActions = (props) => {
     }
     return (
         <div className="header__actions">            
-            <Link href="/uyelik/wishlist">
+            <Link href="/magazalarimiz">
                 <a className="header__extra">
                     <i  className="icon-home3"></i>
                     <span className="location-hover">Mağazalarımız</span>
                 </a>
             </Link>
-            <Link href="/uyelik/wishlist">
+            <Link href="/uyelik/favorilerim">
                 <a className="header__extra">
                     <i className="icon-heart"></i>
                     <span>

@@ -103,7 +103,6 @@ const HomeDefaultBanner = () => {
                     }):null}
                 </div>
                 <section className="home-new-slider">
-                    <LeftOutlined className="left-arrow" onClick={prevSlide} />
                     {bannerItems?bannerItems.map((slide, index) => {
                         return (
                             <div
@@ -120,7 +119,6 @@ const HomeDefaultBanner = () => {
                             </div>
                         );
                     }):null}
-                    <RightOutlined className="right-arrow" onClick={nextSlide} />
                 </section>
             </div>
         </div>

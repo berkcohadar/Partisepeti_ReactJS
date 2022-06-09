@@ -16,7 +16,7 @@ class CartRepository {
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
                 customer: email,
-                product: product.item.id,
+                product: product.product.id,
                 quantity: product.quantity,
               }),
             })

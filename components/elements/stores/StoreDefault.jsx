@@ -2,7 +2,12 @@ import React from 'react';
 import Rating from '~/components/elements/Rating';
 import Link from 'next/link';
 
-const StoreDefault = ({ source }) => {
+const StoreDefault = () => {
+    const source = {
+        slug : "",
+        name : "Partisepeti Maltepe", 
+        phone: "5327735466",
+    }
     return (
         <article className="ps-block--store-2">
             <div
@@ -18,7 +23,7 @@ const StoreDefault = ({ source }) => {
                     </h4>
 
                     <div className="ps-block__rating">
-                        <Rating value={product.rating}  />
+                        <Rating value={5}  />
                     </div>
                     <p>{source.address}</p>
                     {source.phone && (
@@ -31,12 +36,12 @@ const StoreDefault = ({ source }) => {
             <div className="ps-block__author">
                 <a className="ps-block__user" href="#">
                     <img
-                        src="/static/img/vendor/store/vendor-150x150.jpg"
+                        src="https://lh5.googleusercontent.com/p/AF1QipOdBZNy7bvzVa2Znsc-3qsNs1g_8tnHrJcLssiS=s508-k-no"
                         alt="partisepeti"
                     />
                 </a>
-                <Link href="/store/[slug]" as={`/store/${source.slug}`}>
-                    <a className="ps-btn">Visit Store</a>
+                <Link href="https://goo.gl/maps/Hw81RENwsD6Czv3b9" >
+                    <a target="_blank" className="ps-btn">Visit Store</a>
                 </Link>
             </div>
         </article>

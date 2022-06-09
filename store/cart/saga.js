@@ -168,7 +168,7 @@ function* addItemSaga(payload) {
         ).cart;
         let currentCart = JSON.parse(localCart);
         let existItem = currentCart.cartItems.find(
-            (item) => item.product.id === product.item.id
+            (item) => item.product.id === product.product.id
         );
         if (existItem) {
             existItem.quantity += product.quantity;
@@ -222,7 +222,7 @@ function* removeItemSaga(payload) {
             JSON.parse(localStorage.getItem('persist:partisepeti')).cart
         );
         let index = localCart.cartItems.findIndex(
-            (item) => item.item.id === product.item.id
+            (item) => item.product.id === product.product.id
         );
         if (
             JSON.parse(
@@ -264,13 +264,12 @@ function* removeItemSaga(payload) {
 
 function* increaseQtySaga(payload) {
     try {
-        selectedItem;
         const { product } = payload;
         let localCart = JSON.parse(
             JSON.parse(localStorage.getItem('persist:partisepeti')).cart
         );
         let selectedItem = localCart.cartItems.find(
-            (item) => item.id === product.id
+            (item) => item.product.id === product.product.id
         );
         if (selectedItem) {
             selectedItem.quantity++;
@@ -301,11 +300,15 @@ function* decreaseItemQtySaga(payload) {
             JSON.parse(localStorage.getItem('persist:partisepeti')).cart
         );
         let selectedItem = localCart.cartItems.find(
-            (item) => item.id === product.id
+            (item) => item.product.id === product.product.id
         );
 
         if (selectedItem) {
-            selectedItem.quantity--;
+            if (selectedItem.quantity < 1) {
+                quantity = 0;
+            } else {
+                selectedItem.quantity--;
+            }
             localCart.amount = calculateAmount(localCart.cartItems);
             if (
                 JSON.parse(

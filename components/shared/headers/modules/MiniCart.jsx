@@ -18,8 +18,8 @@ class MiniCart extends Component {
         // views
         let cartItemsView;
         if (cartItems && cartItems.length > 0) {
-            const productItems = cartItems.map((item) => {
-                return <ProductOnCart product={item} key={item.id} />;
+            const productItems = cartItems.map((item,index) => {
+                return <ProductOnCart product={item} key={index} />;
             });
             cartItemsView = (
                 <div className="ps-cart__content">

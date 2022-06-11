@@ -4,15 +4,16 @@ import AccountMenuSidebar from './modules/AccountMenuSidebar';
 import FormEditAddress from './modules/FormEditAddress';
 
 import UserRepository from '~/repositories/UserRepository';
-import { Modal } from 'antd';
+import { Form,Modal } from 'antd';
 
 const Addresses = () => {
     const [ billingA, setBillingA] = useState(null);
     const [ shippingA, setShippingA] = useState(null);
     const [ loading, setLoading] = useState(false);
     const [isQuickView, setIsQuickView] = useState(false);
-    const [editAddress, setEditAddress] = useState("")
-    const [address, setAddress] = useState(null)
+    const [editAddress, setEditAddress] = useState("");
+    const [address, setAddress] = useState(null);
+    const [form] = Form.useForm();
 
     const nullAddress = {
         address: "",
@@ -73,20 +74,22 @@ const Addresses = () => {
 
     const handleHideQuickView = (e) => {
         e.preventDefault();
+        form.resetFields()
         setIsQuickView(false);
-        setAddress(nullAddress)
+        setAddress(null);
     };
 
     const handleHideQuickViewBasic = () => {
-        getAddresses()
+        form.resetFields()
+        getAddresses();
         setIsQuickView(false);
-        setAddress(nullAddress)
+        setAddress(null);
     }
 
     const handleEditAddress = (e,addressDetails) => {
         e.preventDefault();
-        e.stopPropagation()
-        setAddress(addressDetails)
+        e.stopPropagation();
+        setAddress(addressDetails);
         setTimeout(
             function () {
                 handleShowQuickView(e,addressDetails.address_type);
@@ -122,8 +125,8 @@ const Addresses = () => {
                                                     <form className='ps-profile__adresses'>
                                                         {billingA.map((item,index)=>(
                                                         <div onClick={() => changeActiveAdress(item)} key={index}>
-                                                            <input type="radio" id={item.title} name={"address"} checked={item.is_active}/>
-                                                            <label for={"address"+index}><b>{item.title}</b><br></br>{item.address}<br></br>{item.city +"/"+item.country}<br></br>{item.phone}</label>
+                                                            <input type="radio" id={item.title} name={"address"} checked={item.is_active} readOnly/>
+                                                            <label htmlFor={"address"+index}><b>{item.title}</b><br></br>{item.address}<br></br>{item.city +"/"+item.country}<br></br>{item.phone}</label>
                                                             <i onClick={(e) => handleEditAddress(e,item)} className="icon-pencil4"></i>
                                                     </div>
                                                     ))}
@@ -133,7 +136,7 @@ const Addresses = () => {
                                                     </p>
                                                     }
                                                     <div className='ps-profile__adresses__btn'>
-                                                            <a class="ps-btn"
+                                                            <a className="ps-btn"
                                                             data-toggle="tooltip"
                                                             data-placement="top"
                                                             title="Quick View"
@@ -164,7 +167,7 @@ const Addresses = () => {
                                                     </p>
                                                     }
                                                     <div className='ps-profile__adresses__btn'>
-                                                            <a class="ps-btn"
+                                                            <a className="ps-btn"
                                                             data-toggle="tooltip"
                                                             data-placement="top"
                                                             title="Quick View"
@@ -187,7 +190,7 @@ const Addresses = () => {
                     visible={isQuickView}
                     closeIcon={<i className="icon icon-cross2"></i>}>
                         <h3>Adres Düzenle</h3>
-                        <FormEditAddress address_type={editAddress} handleHideQuickView={handleHideQuickViewBasic} addressDetails={address}/>
+                        <FormEditAddress form={form} address_type={editAddress} handleHideQuickView={handleHideQuickViewBasic} addressDetails={address} update={address?true:false}/>
                 </Modal>
             </section>
         );

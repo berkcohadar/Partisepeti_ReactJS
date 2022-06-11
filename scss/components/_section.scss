@@ -1573,6 +1573,16 @@
 
 .ps-my-account {
     min-height: 100vh;
+    .ps-address--checkbox{
+        font-size: 18px;
+        margin: 10px 0;
+    }
+    .ps-address--bottom{
+        margin-top: 20px;
+    }
+    .ps-block__footer{
+        margin-top: 20px;
+    }
 }
 
 .ps-order-tracking {

@@ -6,7 +6,7 @@ import { deleteProfile } from '~/store/user/action';
 import { clearCart } from '~/store/cart/action';
 import { clearOrders } from '~/store/order/action';
 
-import {HeartOutlined,CarryOutOutlined,EnvironmentOutlined,LikeOutlined,ShoppingOutlined,BellOutlined,CommentOutlined,UserOutlined,FireOutlined,} from "@ant-design/icons";
+import { HeartOutlined, CarryOutOutlined, EnvironmentOutlined, LikeOutlined, ShoppingOutlined, BellOutlined, CommentOutlined, UserOutlined, FireOutlined, } from "@ant-design/icons";
 
 const AccountQuickLinks = (props) => {
     const dispatch = useDispatch();
@@ -57,24 +57,20 @@ const AccountQuickLinks = (props) => {
 
     if (isLoggedIn === true) {
         return (
-                <div className="ps-block--user-account">
+            <div className="ps-block--user-account">
                 <i className="icon-user"></i>
                 <div className="ps-block__content">
                     <ul className="ps-list--arrow">
                         {linksView}
                         <li className="ps-block__footer">
-                        <i className="icon-exit-right"></i>
-                        <a href='#' onClick={() => handleLogout()} >
-                            <a>Güvenli Çıkış</a>
-                        </a>
-                            {/* <a href="#" onClick={(e) => handleLogout(e)}>
-                                
-                                <i className="icon-exit-right"></i>Güvenli Çıkış
-                            </a> */}
+                            <i className="icon-exit-right"></i>
+                            <a href='#' onClick={() => handleLogout()} >
+                                Güvenli Çıkış
+                            </a>
                         </li>
                     </ul>
-                    </div>
                 </div>
+            </div>
         );
     } else {
         return (

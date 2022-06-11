@@ -413,7 +413,7 @@ $shadow-main-triple:rgba(50, 50, 93, 0.25) 0px 6px 18px -1px, rgba(0, 0, 0, 0.3)
 
             .ps-order-item-info-end{
                 display: flex;
-                justify-content:end;
+                justify-content:flex-end; // end
             }
 
             .ps-order-item-images{

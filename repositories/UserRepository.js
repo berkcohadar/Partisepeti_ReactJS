@@ -111,7 +111,7 @@ class UserRepository {
                 "phone": e.phone,
                 "title": e.title,
                 "address": e.address,
-                "zip_code": e.zip,
+                "zip_code": e.zip_code,
                 "city": e.city,
                 "country": e.country,
                 "is_active": e.is_active,

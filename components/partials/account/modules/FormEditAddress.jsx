@@ -2,21 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { Form, Input, Checkbox } from 'antd';
 import UserRepository from '~/repositories/UserRepository';
 
-const FormEditAddress = ({address_type, handleHideQuickView, addressDetails}) => {
+const FormEditAddress = ({ form, address_type, handleHideQuickView, addressDetails, update}) => {
     const [is_active, setIsActive] = useState(false)
-    const [form] = Form.useForm();
+    const [saveBoth, setSaveBoth] = useState(false)
+    // const [form] = Form.useForm();
 
     const handleAddressSubmit = (values) =>{
-        values.is_active = is_active
+        // if (is_active != "default") 
+        values.is_active = is_active;
         values.address_type = address_type
 
-        if (addressDetails) {
-            values.is_active = addressDetails.is_active
+        console.log(values);
+        if (update) {
             values.id = addressDetails.id
             UserRepository.updateAdressesRequest(values)
         }
         else UserRepository.addAdressesRequest(values)
-        form.resetFields();
+
+        if (saveBoth) {
+            values.address_type = address_type=='B'?'S':'B';
+            UserRepository.addAdressesRequest(values)
+        }
+
+        // form.resetFields();
         handleHideQuickView();
     }
 
@@ -24,13 +32,16 @@ const FormEditAddress = ({address_type, handleHideQuickView, addressDetails}) =>
         setIsActive(d.target.checked)
     }
 
-    useEffect(() => {
-        form.setFieldsValue(addressDetails)
-    }, [form, addressDetails])
+    const saveBothAddresses = (d) => {
+        setSaveBoth(d.target.checked)
+    }
 
+    useEffect(() => {
+        form.setFieldsValue(addressDetails);
+    }, [update, addressDetails])
 
     return (
-        <form className="ps-form--edit-address">
+        <div className="ps-form--edit-address">
             <div className="ps-form__header">
                 {address_type=='S'?<h3>Teslimat Adresi</h3>:<h3>Fatura Adresi</h3>}
             </div>
@@ -40,6 +51,9 @@ const FormEditAddress = ({address_type, handleHideQuickView, addressDetails}) =>
                     onFinish={handleAddressSubmit}
                     form={form}
                     >
+                    <Checkbox onChange={(d) => saveBothAddresses(d)} >
+                            Bu adresi {address_type=='B'?'teslimat':'fatura'} adresi olarak da kaydet.
+                    </Checkbox>
                     <Form.Item name="title" rules={[{ required: false, }]}>
                         <Input className="form-control"
                                 type="text"
@@ -148,14 +162,14 @@ const FormEditAddress = ({address_type, handleHideQuickView, addressDetails}) =>
                                     >
                         </Input>
                     </Form.Item>
-                    {addressDetails ? null :
-                        <Checkbox onChange={(d) => preferredChanged(d)} >
+                    {console.log(update)}
+                    {update?
+                        null:<Checkbox onChange={(d) => preferredChanged(d)} >
                             {'Geçerli adresim olarak kaydet'}
-                        </Checkbox>
-                    }
+                        </Checkbox>}
                     <div className='ps-profile__adresses__btn'>
                             <button 
-                                class="ps-btn"
+                                className="ps-btn"
                                 type="submit" 
                                 
                                 >
@@ -163,7 +177,7 @@ const FormEditAddress = ({address_type, handleHideQuickView, addressDetails}) =>
                     </div>
                 </Form>
             </div>
-        </form>
+        </div>
     );
 }
 

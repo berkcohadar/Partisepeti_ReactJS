@@ -65,7 +65,7 @@ const createLinks = () => {
             <p key={index}>
                 <strong>{normalizeTitle(key)}</strong>
                 {Links[key].map((item, itemIndex) => (
-                    <Link href={searchURL+item.text} key={item.itemIndex}>
+                    <Link href={searchURL+item.text} key={itemIndex}>
                         <a>{item.text}</a>
                     </Link>
                 ))}

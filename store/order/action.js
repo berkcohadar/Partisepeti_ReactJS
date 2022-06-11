@@ -32,9 +32,10 @@ export function getOrdersError(error) {
 }
 
 export function orderInfo(payload) {
+    console.log(payload);
     return { 
         type: actionTypes.ORDER_INFO,
-        payload:payload
+        payload: payload,
     };
 }
 

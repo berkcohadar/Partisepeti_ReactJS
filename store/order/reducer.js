@@ -25,6 +25,14 @@ function reducer(state = initialState, action) {
                 ...{ paymentScript: action.payload.checkoutFormContent },
                 ...{ paymentUrl: action.payload.paymentPageUrl },
             };
+        case actionTypes.CLEAR_ORDERS:
+            return{
+                ...state,
+                ...{ orders: [] },
+                ...{ orderInfo: null },
+                ...{ paymentScript: "" },
+                ...{ paymentUrl: "" },
+            };
         default:
             return state;
     }

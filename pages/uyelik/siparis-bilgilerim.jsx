@@ -5,6 +5,8 @@ import Checkout from '~/components/partials/account/Checkout';
 import { getCart } from '~/store/cart/action';
 import { connect, useDispatch } from 'react-redux';
 import ContainerPage from '~/components/layouts/ContainerPage';
+import Router from 'next/router';
+
 const CheckoutPage = () => {
     const breadCrumb = [
         {
@@ -22,6 +24,8 @@ const CheckoutPage = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getCart());
+        if(!(JSON.parse( JSON.parse( localStorage.getItem('persist:partisepeti') ).auth ).isLoggedIn)) Router.push('/uyelik/giris')
+
     }, [dispatch]);
 
     return (

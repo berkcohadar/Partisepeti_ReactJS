@@ -17,6 +17,7 @@ const WidgetShopCategories = ({productItems}) => {
         let flag = true
         if (productItems && productItems.length > 0) {
             productItems.map((item,index)=>{
+                flag = true;
                 item.categories.map((i,index1)=>{
                     category_list.map((j,index2)=>{
                         if (i.slug == j.slug) flag = false
@@ -30,7 +31,7 @@ const WidgetShopCategories = ({productItems}) => {
 
     useEffect(() => {
         categoryList();
-    }, []);
+    }, [productItems]);
     
 
 

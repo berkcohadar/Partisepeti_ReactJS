@@ -20,21 +20,17 @@ const ModuleProductWideActions = ({ product }) => {
     return (
         <div className="ps-product__shopping">
             {StrapiProductPrice(product)}
-            <a className="ps-btn" href="#">
-                Sepete Ekle
-            </a>
-            <ul className="ps-product__actions">
-                <li>
-                    <a href="#" onClick={(e) => handleAddItemToWishlist(e)}>
-                        <i className="icon-heart"></i> Wishlist
-                    </a>
-                </li>
-                {/* <li>
-                    <a href="#" onClick={(e) => handleAddItemToCompare(e)}>
-                        <i className="icon-chart-bars"></i> Compare
-                    </a>
-                </li> */}
-            </ul>
+
+            <div className="ps-product__shopping-actions">
+                <a className="ps-product__fav" href="#" onClick={(e) => handleAddItemToWishlist(e)}>
+                    <i className="icon-heart"></i>
+                </a>
+                <a className="ps-btn" href="#">
+                    Sepete Ekle
+                </a>
+
+            </div>
+
         </div>
     );
 };

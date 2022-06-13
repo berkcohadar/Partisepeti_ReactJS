@@ -5,12 +5,13 @@ const ModuleShopSortBy = () => {
         <div className='ps-select-sort'>
             <select
                 className="ps-select form-control"
-                data-placeholder="Sort Items">
-                <option>En Yeniler</option>
-                <option>En Çok Satılanlar</option>
-                <option>En Çok Beğenilenler</option>
-                <option>Fiyata Göre: Artan</option>
-                <option>Fiyata Göre: Azalan</option>
+                data-placeholder="Sort Items"
+                id="sorting">
+                <option value="most recent">En Yeniler</option>
+                <option value="best seller">En Çok Satılanlar</option>
+                <option value="most liked">En Çok Beğenilenler</option>
+                <option value="increasing price">Fiyata Göre: Artan</option>
+                <option value="decreasing price">Fiyata Göre: Azalan</option>
             </select>
         </div>
     );

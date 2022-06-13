@@ -165,7 +165,7 @@ class UserRepository {
                 return response.data;
             })
             .catch((error) => ({ error: JSON.stringify(error) }));
-        return reponse.results[0];
+        return reponse;
     }
 }
 // Müşteri Üyelik Bilgileri GET:  api/profile/ 

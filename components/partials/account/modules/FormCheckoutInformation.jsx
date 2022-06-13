@@ -1,8 +1,3 @@
-// import React, { Component } from 'react';
-// 
-// import Router from 'next/router';
-// import { Form, Input } from 'antd';
-// import { connect } from 'react-redux';
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { useDispatch } from "react-redux";
 
@@ -23,9 +18,8 @@ const FormCheckoutInformation = () => {
     const [editAddress, setEditAddress] = useState("");
     const [address, setAddress] = useState(null);
     const [checked, setChecked] = useState(true);
-    const dispatch = useDispatch();
-
     const [form] = Form.useForm();
+    const dispatch = useDispatch();
 
     async function getAddresses() {
         setLoading(true)
@@ -43,7 +37,7 @@ const FormCheckoutInformation = () => {
                 250
             );
         }
-    }
+    };
 
     async function changeActiveAdress(e) {
         setLoading(true)
@@ -58,7 +52,7 @@ const FormCheckoutInformation = () => {
                 250
             );
         }
-    }
+    };
 
     useEffect(() => {
         getAddresses();
@@ -82,7 +76,7 @@ const FormCheckoutInformation = () => {
         getAddresses();
         setIsQuickView(false);
         setAddress(null);
-    }
+    };
 
     const handleEditAddress = (e, addressDetails) => {
         e.preventDefault();
@@ -94,18 +88,18 @@ const FormCheckoutInformation = () => {
             }.bind(this),
             500
         );
-    }
+    };
+
     const onChange = (e) => {
         setChecked(e.target.checked);
-      };
+    };
 
     const handleAddressSubmit = () => {
-        shippingA[0].email = JSON.parse( JSON.parse( localStorage.getItem('persist:partisepeti') ).auth ).email
-        console.log(shippingA[0])
-        
+        shippingA[0].email = JSON.parse( JSON.parse( localStorage.getItem('persist:partisepeti') ).auth ).email;       
         dispatch(orderInfo(shippingA[0]));
         Router.push('/uyelik/siparis-odeme');
     };
+
     return (
         <section className="ps-my-account ps-page--account">
             {!loading ?

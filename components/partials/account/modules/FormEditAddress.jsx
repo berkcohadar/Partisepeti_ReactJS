@@ -2,12 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { Form, Input, Checkbox } from 'antd';
 import UserRepository from '~/repositories/UserRepository';
 
-const FormEditAddress = ({ form, address_type, handleHideQuickView, addressDetails, update}) => {
+const FormEditAddress = ({ form, address_type, handleHideQuickView, addressDetails, update }) => {
     const [is_active, setIsActive] = useState(false)
     const [saveBoth, setSaveBoth] = useState(false)
-    // const [form] = Form.useForm();
+    const [loading, setLoading] = useState(false);
 
-    const handleAddressSubmit = (values) =>{
+    async function deleteAddress(e) {
+        setLoading(true)
+        const data = await UserRepository.deleteAdressesRequest(e);
+        if (data) {
+            setTimeout(
+                function () {
+                    setLoading(false);
+                }.bind(this),
+                250
+            );
+        }
+    }
+
+    const handleAddressSubmit = (values) => {
         // if (is_active != "default") 
         values.is_active = is_active;
         values.address_type = address_type
@@ -20,7 +33,7 @@ const FormEditAddress = ({ form, address_type, handleHideQuickView, addressDetai
         else UserRepository.addAdressesRequest(values)
 
         if (saveBoth) {
-            values.address_type = address_type=='B'?'S':'B';
+            values.address_type = address_type == 'B' ? 'S' : 'B';
             UserRepository.addAdressesRequest(values)
         }
 
@@ -36,6 +49,10 @@ const FormEditAddress = ({ form, address_type, handleHideQuickView, addressDetai
         setSaveBoth(d.target.checked)
     }
 
+    const handleDeleteAddress = () => {
+        deleteAddress(addressDetails);
+    }
+
     useEffect(() => {
         form.setFieldsValue(addressDetails);
     }, [update, addressDetails])
@@ -43,25 +60,25 @@ const FormEditAddress = ({ form, address_type, handleHideQuickView, addressDetai
     return (
         <div className="ps-form--edit-address">
             <div className="ps-form__header">
-                {address_type=='S'?<h3>Teslimat Adresi</h3>:<h3>Fatura Adresi</h3>}
+                {address_type == 'S' ? <h3>Teslimat Adresi</h3> : <h3>Fatura Adresi</h3>}
             </div>
             <div className="ps-form__content">
                 <Form
                     className="ps-form--account"
                     onFinish={handleAddressSubmit}
                     form={form}
-                    >
+                >
                     <Checkbox onChange={(d) => saveBothAddresses(d)} >
-                            Bu adresi {address_type=='B'?'teslimat':'fatura'} adresi olarak da kaydet.
+                        Bu adresi {address_type == 'B' ? 'teslimat' : 'fatura'} adresi olarak da kaydet.
                     </Checkbox>
                     <Form.Item name="title" rules={[{ required: false, }]}>
                         <Input className="form-control"
-                                type="text"
-                                placeholder="Adres Başlığı"
-                                >
+                            type="text"
+                            placeholder="Adres Başlığı"
+                        >
                         </Input>
                     </Form.Item>
-                    <div style={{'display':'flex', justifyContent:'space-between'}}>
+                    <div style={{ 'display': 'flex', justifyContent: 'space-between' }}>
                         <Form.Item name="first_name"
                             rules={[
                                 {
@@ -71,9 +88,9 @@ const FormEditAddress = ({ form, address_type, handleHideQuickView, addressDetai
                                 },
                             ]}>
                             <Input className="form-control"
-                                    type="text"
-                                    placeholder="İsim"
-                                    >
+                                type="text"
+                                placeholder="İsim"
+                            >
                             </Input>
                         </Form.Item>
                         <Form.Item name="last_name"
@@ -85,9 +102,9 @@ const FormEditAddress = ({ form, address_type, handleHideQuickView, addressDetai
                                 },
                             ]}>
                             <Input className="form-control"
-                                        type="text"
-                                        placeholder="Soysim"
-                                        >
+                                type="text"
+                                placeholder="Soysim"
+                            >
                             </Input>
                         </Form.Item>
                     </div>
@@ -100,12 +117,12 @@ const FormEditAddress = ({ form, address_type, handleHideQuickView, addressDetai
                             },
                         ]}>
                         <Input className="form-control"
-                                    type="text"
-                                    placeholder="İrtibat Numarası"
-                                    >
+                            type="text"
+                            placeholder="İrtibat Numarası"
+                        >
                         </Input>
                     </Form.Item>
-                    
+
                     <Form.Item name="address"
                         rules={[
                             {
@@ -115,9 +132,9 @@ const FormEditAddress = ({ form, address_type, handleHideQuickView, addressDetai
                             },
                         ]}>
                         <Input className="form-control"
-                                    type="text"
-                                    placeholder="Açık Adres"
-                                    >
+                            type="text"
+                            placeholder="Açık Adres"
+                        >
                         </Input>
                     </Form.Item>
                     <Form.Item name="city"
@@ -129,9 +146,9 @@ const FormEditAddress = ({ form, address_type, handleHideQuickView, addressDetai
                             },
                         ]}>
                         <Input className="form-control"
-                                    type="text"
-                                    placeholder="Şehir"
-                                    >
+                            type="text"
+                            placeholder="Şehir"
+                        >
                         </Input>
                     </Form.Item>
                     <Form.Item name="country"
@@ -143,9 +160,9 @@ const FormEditAddress = ({ form, address_type, handleHideQuickView, addressDetai
                             },
                         ]}>
                         <Input className="form-control"
-                                    type="text"
-                                    placeholder="Ülke"
-                                    >
+                            type="text"
+                            placeholder="Ülke"
+                        >
                         </Input>
                     </Form.Item>
                     <Form.Item name="zip_code"
@@ -157,23 +174,34 @@ const FormEditAddress = ({ form, address_type, handleHideQuickView, addressDetai
                             },
                         ]}>
                         <Input className="form-control"
-                                    type="text"
-                                    placeholder="Posta Kodu"
-                                    >
+                            type="text"
+                            placeholder="Posta Kodu"
+                        >
                         </Input>
                     </Form.Item>
-                    {console.log(update)}
-                    {update?
-                        null:<Checkbox onChange={(d) => preferredChanged(d)} >
+                    {update ?
+                        null : <Checkbox onChange={(d) => preferredChanged(d)} >
                             {'Geçerli adresim olarak kaydet'}
                         </Checkbox>}
                     <div className='ps-profile__adresses__btn'>
-                            <button 
-                                className="ps-btn"
-                                type="submit" 
-                                
-                                >
-                                + Ekle</button>
+                        <button
+                            className="ps-btn"
+                            type="submit"
+                        >
+                            + Ekle</button>
+                        {update ?
+                            <button
+                                onClick={() => handleDeleteAddress()}
+                                className="ps-btn ps-btn--danger"
+                                type="Reset"
+                            >
+                                - Sil</button> :
+                            <button
+                                className="ps-btn ps-btn--danger"
+                                type="Reset"
+                            >
+                                Sıfırla</button>
+                        }
                     </div>
                 </Form>
             </div>

@@ -13,7 +13,7 @@ import WidgetShopFilterByPriceRange from '~/components/shared/widgets/WidgetShop
 import ProductRepository from '~/repositories/ProductRepository';
 import { useRouter } from 'next/router';
 
-const ShopDefaultPage = ({ pageSize = 10 }) => {
+const ShopDefaultPage = ({ pageSize = 24 }) => {
     const breadCrumb = [
         {
             text: 'Anasayfa',
@@ -39,7 +39,7 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
         const responseData = await ProductRepository.getProducts(params);
         if (responseData.items) {
             setProductItems(responseData.items);
-            setTotal(responseData.count);
+            setTotal(responseData.totalItems);
             setTimeout(
                 function () {
                     setLoading(false);
@@ -209,7 +209,7 @@ const ShopDefaultPage = ({ pageSize = 10 }) => {
                             <ShopItems
                                 productItems={productItems}
                                 columns={6}
-                                pageSize={18}
+                                pageSize={24}
                                 total={total}
                                 loading={loading}
                             />

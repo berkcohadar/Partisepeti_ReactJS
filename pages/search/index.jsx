@@ -12,6 +12,8 @@ import ShopItems from '~/components/partials/shop/ShopItems';
 const SearchPage = ({ query }) => {
     const [pageSize] = useState(100);
     const [keyword, setKeyword] = useState('');
+
+
     const [loading, setLoading] = useState(true);
     const [productItems, setProductItems] = useState(null);
 
@@ -23,11 +25,15 @@ const SearchPage = ({ query }) => {
         }
     }
 
-    async function getProductsByKeyword(keyword) {
+    async function getProductsByKeyword(keyword,category) {
         handleSetKeyword();
         const queries = {
             search: keyword,
         };
+        if (category){
+            queries.categories = category;
+        }
+
         setLoading(true);
         const SPProducts = await ProductRepository.getProducts(queries);
         if (SPProducts.items) {
@@ -49,7 +55,7 @@ const SearchPage = ({ query }) => {
     }
 
     useEffect(() => {
-        getProductsByKeyword(query.keyword);
+        getProductsByKeyword(query.keyword,query.category);
     }, [query]);
 
     const breadcrumb = [
@@ -143,7 +149,9 @@ const SearchPage = ({ query }) => {
                             <div className="ps-shop__header">
                                 <h5>
                                     Arama sonuçları gösteriliyor: "
-                                    <strong>{keyword}</strong>"
+                                    {query.categoryName?<strong>{query.categoryName}</strong>:null}
+                                    {query.categoryName&&query.keyword?" / ":null}
+                                    {query.keyword?<strong>{query.keyword}</strong>:null}"
                                 </h5>
                             </div>
                             <ShopItems
@@ -172,26 +180,3 @@ SearchPage.getInitialProps = async ({ query }) => {
 };
 
 export default SearchPage;
-
-{
-    /* <ContainerPage title={`Search results for: "${keyword}" `} boxed={true}>
-<div className="ps-page">
-    <BreadCrumb breacrumb={breadcrumb} />
-</div>
-<div className="container">
-    <div className="ps-shop ps-shop--search">
-        <div className="container">
-            <div className="ps-shop__header">
-                <h1>
-                Arama sonuçları gösteriliyor: "<strong>{keyword}</strong>"
-                </h1>
-            </div>
-            <div className="ps-shop__content">
-                {statusView}
-                {shopItemsView}
-            </div>
-        </div>
-    </div>
-</div>
-</ContainerPage> */
-}

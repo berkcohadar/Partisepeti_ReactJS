@@ -20,7 +20,7 @@ const MegaMenu = ({ source }) => {
     return (
         <li className="menu-item-has-children has-mega-menu">
             <Link href={source.category_id !== '' ? '/alisveris?categories='+source.category_id : '/'}>
-                <a>
+                <a className="menu-item-heading">
                     {source.icon && <i className={source.icon}></i>}
                     {source.title}
                 </a>

@@ -58,15 +58,17 @@
                 border: none;
                 width: 10px;
                 height: 10px;
-                background-color: rgba(#000, 0.3);
+                background-color: rgba($color-psbutton, 0.2);
                 border-radius: 50%;
+                transition: all .3 ease-out;
             }
             &:last-child {
                 margin-right: 0;
             }
             &.slick-active {
                 button {
-                    background-color: $color-1st;
+                    background-color: $color-psbutton;
+                    transform: scale(1.5);
                 }
             }
         }

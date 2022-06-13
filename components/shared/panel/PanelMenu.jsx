@@ -5,7 +5,7 @@ import { Menu } from 'antd';
 import { menuPrimary } from '../../../public/static/data/menu';
 import Link from 'next/link';
 import MediaRepository from '~/repositories/MediaRepository';
-
+import Router from 'next/router';
 const { SubMenu } = Menu;
 
 const PanelMenu = () => {
@@ -17,8 +17,13 @@ const PanelMenu = () => {
 
     useEffect(() => {
         setLoading(true);
+        var obj = {
+            title:"Mağazalarımız",
+            category:"/magazalarimiz",
+        }
         const data = MediaRepository.getSliderMenu();
         data.then((result) => {
+            result.push(obj)
             setCategories(result);
             setLoading(false);
         });
@@ -30,11 +35,7 @@ const PanelMenu = () => {
         } 
     }
 
-    menudata.push({
-        title:"Mağazalarımız",
-        category:"/magazalarimiz",
 
-    })
     const rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
 
     const onOpenChange = (openKeys) => {
@@ -48,6 +49,10 @@ const PanelMenu = () => {
                 openKeys: latestOpenKey ? [latestOpenKey] : [],
             });
         }
+    };
+
+    const handleMenuItemClicked = (url) => {
+        Router.push(url);
     };
 
     return (
@@ -78,19 +83,19 @@ const PanelMenu = () => {
                 }
                 else{
                     return (
-                        <Menu.Item key={item.title}>
-                            {item.type === 'dynamic' ? (
-                                <Link
-                                    href={`${item.url}/[pid]`}
-                                    as={`${item.url}/${item.endPoint}`}>
-                                    l<a>{item.text}</a>
-                                </Link>
-                            ) : (
-                                <Link href={item.category} as={item.category}>
-                                    <a>{item.title}</a>
-                                </Link>
-                            )}
-                        </Menu.Item>
+                            <Menu.Item onClick={()=>handleMenuItemClicked(item.category)} key={item.title}>
+                                {item.type === 'dynamic' ? (
+                                    <Link
+                                        href={`${item.url}/[pid]`}
+                                        as={`${item.url}/${item.endPoint}`}>
+                                        l<a>{item.text}</a>
+                                    </Link>
+                                ) : (
+                                        <Link href={item.category} as={item.category}>
+                                            {item.title}
+                                        </Link>
+                                )}
+                            </Menu.Item>
                     );
                 }
                 // if (item.subMenu) {

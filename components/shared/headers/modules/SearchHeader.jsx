@@ -30,6 +30,8 @@ const SearchHeader = () => {
     const [resultItems, setResultItems] = useState(null);
     const [loading, setLoading] = useState(false);
     const [category, setCategory] = useState("");
+    const [categoryName, setCategoryName] = useState('');
+
 
     const debouncedSearchTerm = useDebounce(keyword, 300);
 
@@ -43,10 +45,12 @@ const SearchHeader = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        Router.push(`/search?keyword=${keyword}`);
+        Router.push(`/search?keyword=${keyword}&category=${category}&categoryName=${categoryName}`);
     }
 
     function handleOptionChange(e) {
+        var index = e.target.selectedIndex;
+        setCategoryName(e.target[index].text);
         setCategory(e.target.value)
     }
 

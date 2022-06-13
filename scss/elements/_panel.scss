@@ -75,7 +75,17 @@
         }
 
         .ant-menu-item {
-            padding: 0 !important;
+            margin-top: 0px;
+            padding: 3px 20px !important;
+            border-radius: 8px !important;
+            height: 54px !important;
+            min-height: 54px !important;
+            line-height: 40px !important;
+            > span > a{
+                    color: $color-1st;
+                    font-size: 16px;
+                    font-weight: 500;
+            }
         }
     }
 
@@ -157,7 +167,6 @@
     .ant-menu {
         .ant-menu-item {
             &.ant-menu-item-selected {
-                background-color: $color-1st;
                 &:after {
                     display: none;
                 }

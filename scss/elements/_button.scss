@@ -164,6 +164,9 @@ button.ps-btn {
             }
         }
     }
+    &.ps-btn--danger {
+        background-color: $color-danger;
+    }
 
     &:hover,
     &:active {
@@ -172,6 +175,9 @@ button.ps-btn {
 
         &.ps-btn--black {
             background-color: $color-1st;
+        }
+        &.ps-btn--danger {
+            background-color: #fe3333;
         }
     }
 }

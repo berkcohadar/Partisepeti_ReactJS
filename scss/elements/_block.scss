@@ -3379,9 +3379,9 @@
         }
         .ps-profile__adresses__btn {
             margin: 20px 0px;
-            
-            display: flex;
-            justify-content: center;
+            display: flex !important;
+            justify-content: space-around;
+
         }
 
     }

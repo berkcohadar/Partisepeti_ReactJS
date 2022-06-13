@@ -7,7 +7,7 @@ const FooterWidgets = () => (
             <h4 className="widget-title">Contact us</h4>
             <div className="widget_content">
                 <p>Bize Ulaşın!</p>
-                <h3>0850 111 22 33 </h3>
+                <h3>0530 127 45 98</h3>
                 <p>
                     <a href="mailto:contact@partisepeti.co">destek@partisepeti.com</a>
                 </p>

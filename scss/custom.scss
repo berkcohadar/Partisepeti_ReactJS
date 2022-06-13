@@ -579,9 +579,11 @@ $shadow-main-triple:rgba(50, 50, 93, 0.25) 0px 6px 18px -1px, rgba(0, 0, 0, 0.3)
   top:10rem;
 }
 
-.ant-menu-title-content {
-    padding-left: 10px !important ;
-}
 .ps-panel--mobile .ant-menu-inline .ant-menu-item{
     margin-bottom: 10px;
 }   
+
+.ant-menu-item-only-child{
+    padding: 3px 20px !important;
+    border-radius: 8px !important;
+}

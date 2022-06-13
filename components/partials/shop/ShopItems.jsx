@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { generateTempArray } from '~/utilities/common-helpers';
 import SkeletonProduct from '~/components/elements/skeletons/SkeletonProduct';
 
-const ShopItems = ({productItems, columns = 4, pageSize = 10 ,total=0,loading=false}) => {
+const ShopItems = ({productItems, columns = 4, pageSize = 24 ,total=0,loading=false}) => {
     const Router = useRouter();
     const { page } = Router.query;
     const { query } = Router;
@@ -93,6 +93,9 @@ const ShopItems = ({productItems, columns = 4, pageSize = 10 ,total=0,loading=fa
     let productItemsView;
     if (!loading) {
         if (productItems && productItems.length > 0) {
+            // 0 - 9 *1
+            // 10 - 19 *2
+            // 20 - 29 *3
             if (listView) {
                 const items = productItems.map((item) => (
                     <div  className={classes} key={item.id}>
@@ -155,7 +158,7 @@ const ShopItems = ({productItems, columns = 4, pageSize = 10 ,total=0,loading=fa
             <div className="ps-shopping__footer text-center">
                 <div className="ps-pagination">
                     <Pagination
-                        total={total - 1}
+                        total={total}
                         pageSize={pageSize}
                         responsive={true}
                         showSizeChanger={false}

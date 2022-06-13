@@ -17,14 +17,6 @@ export const ProductGroupWithCarousel = ({ products, type = 'normal' }) => {
         }
     };
     
-    const handleOnMouseOver = () => {clearInterval(interval);};
-    const handleOnMouseOut= () => {handleInterval(setInterval(changeSlide, 5000));clearInterval(interval);};
-    
-    useEffect(() => {
-        handleInterval(setInterval(changeSlide, 5000))
-        return () => clearInterval(interval);
-       
-    }, []);
     
     if (type === 'fullwidth') {
         return (
@@ -32,9 +24,10 @@ export const ProductGroupWithCarousel = ({ products, type = 'normal' }) => {
                 ref={slider => sliderRef.current = slider}
                 {...carouselFullwidth}
                 infinite={products.length > 7 ? true : false}
-                className='ps-carousel outside'>
+                className='ps-carousel outside'
+                autoplay={true}>
                 {products.map((item) => (
-                    <div onMouseEnter={() => handleOnMouseOver()} onMouseLeave={() => handleOnMouseOut()}  key={item.id}>
+                    <div key={item.id}>
                         <Product product={item} />
                     </div>
                 ))}
@@ -43,12 +36,11 @@ export const ProductGroupWithCarousel = ({ products, type = 'normal' }) => {
     } else {
         return (
             <Slider
-                onMouseEnter={() => handleOnMouseOver()}
-                onMouseLeave={() => handleOnMouseOut()}
                 ref={slider => sliderRef.current = slider}
                 {...carouselStandard}
                 infinite={products.length > 5 ? true : false}
-                className='ps-carousel outside'>
+                className='ps-carousel outside'
+                autoplay={true}>
                 {products.map((item) => (
                     <div  key={item.id}>
                         <Product product={item} />

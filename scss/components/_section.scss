@@ -536,13 +536,13 @@
             color: #fff;
             cursor: pointer;
             -webkit-appearance: none;
-            -moz-appearance: none;
-            
+            -moz-appearance: none;        
         }
         .ps-select-sort{
             display: flex;
             flex-flow: row nowrap;
             align-items: center;
+
             &:hover{
                 &:after{
                     opacity: 1;

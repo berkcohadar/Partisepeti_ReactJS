@@ -637,6 +637,11 @@
         padding-bottom: 10px;
         border-bottom: 1px solid #d1d1d1;
     }
+    .ps-profile__adresses__btn {
+        margin: 20px 0px;
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 .ps-form--account-setting {

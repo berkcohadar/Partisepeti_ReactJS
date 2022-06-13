@@ -12,7 +12,7 @@ const ContactUsPage = () => {
             url: '/',
         },
         {
-            text: 'ContactUs',
+            text: 'Bize Ulaşın',
         },
     ];
 

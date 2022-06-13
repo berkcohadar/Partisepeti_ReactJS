@@ -1949,13 +1949,16 @@
 .ps-block--contact-info {
     max-width: 270px;
     margin: 0 auto 50px;
+    padding: 20px;
     text-align: center;
+    box-shadow: $shadow-main;
+    border-radius: 12px;
 
     h4 {
         margin-bottom: 20px;
         font-weight: 600;
         font-size: 20px;
-        color: $color-heading;
+        color: $color-1st;
     }
 
     p {

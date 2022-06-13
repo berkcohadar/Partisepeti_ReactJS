@@ -4,14 +4,14 @@ const ContactForm = () => (
     <div className="ps-contact-form">
         <div className="container">
             <form className="ps-form--contact-us" action="/" method="get">
-                <h3>Get In Touch</h3>
+                <h3>Bizimle İletişime Geç</h3>
                 <div className="row">
                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
                         <div className="form-group">
                             <input
                                 className="form-control"
                                 type="text"
-                                placeholder="Name *"
+                                placeholder="İsim *"
                             />
                         </div>
                     </div>
@@ -29,7 +29,7 @@ const ContactForm = () => (
                             <input
                                 className="form-control"
                                 type="text"
-                                placeholder="Subject *"
+                                placeholder="Konu *"
                             />
                         </div>
                     </div>
@@ -38,12 +38,12 @@ const ContactForm = () => (
                             <textarea
                                 className="form-control"
                                 rows="5"
-                                placeholder="Message"></textarea>
+                                placeholder="Mesaj *"></textarea>
                         </div>
                     </div>
                 </div>
                 <div className="form-group submit">
-                    <button className="ps-btn">Send message</button>
+                    <button className="ps-btn">Mesaj Gönder</button>
                 </div>
             </form>
         </div>

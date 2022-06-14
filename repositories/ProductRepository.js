@@ -13,16 +13,16 @@ class ProductRepository {
                     )
                     .join('&');
             }
-            if ('color' in params) {
-                params['color'] = params['color'].split(' ')
-                params['color'].pop()
-                params = Object.keys(params)
-                    .map(
-                        (key) => key=='color'? params[key].map((prop)=>  `${encodeURIComponent(key)}=${encodeURIComponent(prop)}`).join('&'):
-                            `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
-                    )
-                    .join('&');
-            }
+            // if ('color' in params) {
+            //     params['color'] = params['color'].split(' ')
+            //     params['color'].pop()
+            //     params = Object.keys(params)
+            //         .map(
+            //             (key) => key=='color'? params[key].map((prop)=>  `${encodeURIComponent(key)}=${encodeURIComponent(prop)}`).join('&'):
+            //                 `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
+            //         )
+            //         .join('&');
+            // }
             else{
                 params = serializeQuery(params)
             }

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { addItem } from '~/store/cart/action';
-import { addItemToCompare } from '~/store/compare/action';
 import { addItemToWishlist } from '~/store/wishlist/action';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 
-const ModuleDetailShoppingActions = ({ product, extended = false }) => {
+const ModuleDetailShoppingActions = ({ product, extended = false, quantity, setQuantity }) => {
     const dispatch = useDispatch();
-    const [quantity, setQuantity] = useState(1);
+    // const [quantity, setQuantity] = useState(1);
     const Router = useRouter();
 
     const handleAddItemToCart = (e) => {
@@ -27,11 +26,6 @@ const ModuleDetailShoppingActions = ({ product, extended = false }) => {
         }, 1000);
     };
 
-    const handleAddItemToCompare = (e) => {
-        e.preventDefault();
-        dispatch(addItemToCompare(product));
-    };
-
     const handleAddItemToWishlist = (e) => {
         e.preventDefault();
         let tmp = product;
@@ -47,14 +41,17 @@ const ModuleDetailShoppingActions = ({ product, extended = false }) => {
         e.preventDefault();
         if (quantity > 1) {
             setQuantity(quantity - 1);
+        } else {
+            setQuantity(1)
         }
     };
     const handleSetQuantity = (e) => {
         e.preventDefault();
         if (e){
-            setQuantity(parseInt(e.target.value));
+            if (parseInt(e.target.value) > 0) setQuantity(parseInt(e.target.value));
+            else setQuantity(1)
         } else{
-            setQuantity(0)
+            setQuantity(1)
         }
     };
     if (!extended) {
@@ -76,7 +73,7 @@ const ModuleDetailShoppingActions = ({ product, extended = false }) => {
                             className="form-control"
                             type="text"
                             onChange={(e) => handleSetQuantity(e)}
-                            value={quantity?quantity:0}
+                            value={quantity?quantity:1}
                         />
                     </div>
                 </figure>
@@ -115,7 +112,7 @@ const ModuleDetailShoppingActions = ({ product, extended = false }) => {
                             </button>
                             <input
                                 className="form-control"
-                                type="text"
+                                type="number"
                                 placeholder={quantity}
                                 disabled
                             />

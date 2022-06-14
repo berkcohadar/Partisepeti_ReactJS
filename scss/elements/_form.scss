@@ -529,6 +529,11 @@ textarea.form-control {
             color: rgba(0, 0, 0, 0.5);
         }
     }
+    @include media('<sm') {
+        .form-control {
+            height: 50px;
+        }
+    }
 }
 
 .form-group--select {

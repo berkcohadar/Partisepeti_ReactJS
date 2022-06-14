@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { addItem } from '~/store/cart/action';
 import { useDispatch } from 'react-redux';
 
-const ModuleDetailActionsMobile = ({ product }) => {
+const ModuleDetailActionsMobile = ({ product, quantity }) => {
     const dispatch = useDispatch();
     const handleAddItemToCart = (e) => {
         e.preventDefault();
         let tmp = product;
-        tmp.quantity = 1;
+        tmp.quantity = quantity;
         dispatch(addItem(tmp));
     };
     return (

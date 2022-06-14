@@ -20,10 +20,10 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
             url: '/',
         },
         {
-            text: 'Alışveriş', //Shop Default
+            text: 'Alışveriş',
         },
     ];
-    //...
+    
     const Router = useRouter();
     const { page } = Router.query;
     const { query } = Router;
@@ -49,72 +49,86 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
     }
 
     const handleItemFilter = (key,item) => {
-        // If item is already in the query, we should remove it.
-        // Otherwise we have to add it.
-        // We have "color", "size" and "properties"
+        if (key === "Renk") key = "color";
+        else if (key === "Boyut") key = "size";
 
-        // alisveris? => base url
-        // If property key includes "&" at the beginning, remove that as well.
+        if (key === "color" || key === "size") {
+            if (Router.query[key]) {
+                let tmp = Router.query[key].split('+')
+                if (tmp.includes(item+" ")) {
+                    item = item.replace(" ","%20")
+                    if (tmp.length == 1) {
+                        delete Router.query[key];
+                        Router.push(Router.asPath.replace('&'+key+'='+item+'+',''))
+                    } else {
+                        Router.push(Router.asPath.replace(''+item+'+',''))
+                    }                    
+                } else {
+                    let index = Router.asPath.indexOf("&"+key+"=");
+                    let length = ("&"+key+"=").length
+                    let newPath = Router.asPath.slice(0, index+length) +
+                        item+ "+" + Router.asPath.slice(index+length);
 
-        if (key === "Renk" || key === "Boyut") {
-            if (Router.query.color) {
-                var tmp = Router.query.color.split(' ')
-                console.log(tmp)
-                if (tmp.includes('' + item)) {
-                    console.log(Router.query.color);
-                    if (tmp.length < 3) {
-                        Router.push(
-                            Router.asPath.replace('color=' + item + '+', '')
-                        );
-                        delete Router.query['color'];
-                    } else Router.push(Router.asPath.replace(item + '+', ''));
-                    return;
+                    Router.push(newPath);
+
+                    index = null;
+                    length = null;
+                    newPath = null;
                 }
+                tmp = null;
+
+            } else {
+                Router.push(Router.asPath + "&"+key+"=" + item + "+")
             }
-            Router.push(
-                Router.query.categories
-                    ? Router.query.color
-                        ? Router.asPath + item + '+'
-                        : Router.asPath + '&color=' + item + '+'
-                    : Router.asPath + '?color=' + item + '+'
-            );
         } else {
-            if (Router.query.properties) {
-                var tmp = Router.query.properties.split(' ')
-                if (tmp.includes('' + item)) {
-                    if (Router.query.properties.length < 3) {
-                        Router.push(
-                            Router.asPath.replace('&properties=' + item + '+', '')
-                        );
-                        delete Router.query['properties'];
-                    } else Router.push(Router.asPath.replace(item + '+', ''));
-                    return;
-                }
-            }
-            Router.push(
-                Router.query.categories
-                    ? Router.query.properties
-                        ? Router.asPath + item + '+'
-                        : Router.asPath + '&properties=' + item + '+'
-                    : Router.asPath + '?properties=' + item + '+'
-            );
-        }
+            key = "properties"
+            item = item[1]
+            if (Router.query[key]) {
+                let tmp = Router.query[key].split(' ')
+                if (tmp.includes(item.toString())) {
+                    if (tmp.length == 2) {
+                        delete Router.query[key];
+                        Router.push(Router.asPath.replace('&'+key+'='+item+'+',''))
+                    } else {
+                        Router.push(Router.asPath.replace(''+item+'+',''))
+                    }                    
+                } else {
+                    let index = Router.asPath.indexOf("&"+key+"=");
+                    let length = ("&"+key+"=").length
+                    let newPath = Router.asPath.slice(0, index+length) +
+                        item+ "+" + Router.asPath.slice(index+length);
 
-    };
+                    Router.push(newPath);
+
+                    index = null;
+                    length = null;
+                    newPath = null;
+                }
+                tmp = null;
+
+            } else {
+                Router.push(Router.asPath + "&"+key+"=" + item + "+")
+            }
+        }
+    }
 
     useEffect(() => {
         let params = {};
+        if (Router.asPath == "/alisveris") {
+            Router.push("/alisveris?")
+        }
         if (query) {
             if (query.page) params['page'] = page;
             if (query.categories) params['categories'] = query.categories;
             if (query.color) params['color'] = query.color
+            if (query.size) params['size'] = query.size
             if (query.properties) {
                 var temp = query.properties.split(' ');
                 temp.pop();
                 setFilters(temp);
                 params['properties'] = query.properties;
             } 
-            else if (!query.properties && checked_filters.length == 0) setFilters([]);
+            else if (!query.properties) setFilters([]);
             else params = query;
         } else params = { _limit: pageSize };
         getProducts(params);
@@ -122,7 +136,7 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
 
     let brandsView = {};
     if (productItems && productItems.length > 0) {
-        productItems.map((item) =>
+        productItems.map((item) => {
             item.properties.map((property) => {
                 brandsView[property.code.code] !== undefined
                     ? brandsView[property.code.code].some((row) =>
@@ -136,8 +150,8 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
                     : (brandsView[property.code.code] = [
                         [property.property, property.id],
                     ]);
-            })
-        );
+            })    
+        });
         productItems.map((item) => {
             if (item.color) {
                 brandsView['Renk'] !== undefined

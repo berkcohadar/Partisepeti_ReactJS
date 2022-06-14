@@ -119,12 +119,6 @@ const PSStores = () => {
                                 </div>
                             ))}
                         </div>
-                        <p>Satın alma sorunlarınız ve diğer tüm sorularınız için lütfen <a href="tel:05301274598">0530 127 45 98</a>
-                        , <a href="tel:05360265791">0536 026 57 91</a>, <a href="tel:05304230173">0530 423 01 73</a>,
-                        veya <a href="tel:05331677592">0533 167 75 92</a> iletişim numaralarımızdan biriyle irtibata geçiniz.
-                        Bize Pazartesi-Cumartesi günleri arasında 09:00-19:30 saatlerinde veya 7/24 <a href="mailto:destek@partisepeti.com">
-                        destek@partisepeti.com</a> adresinden e-posta yolu ile ulaşabilirsiniz.</p>
-
                     </div>
                 </div>
 

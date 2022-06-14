@@ -4,9 +4,8 @@ import Link from 'next/link';
 const FooterWidgets = () => (
     <div className="ps-footer__widgets">
         <aside className="widget widget_footer widget_contact-us">
-            <h4 className="widget-title">Contact us</h4>
             <div className="widget_content">
-                <p>Bize Ulaşın!</p>
+                <h2><a href="/bize-ulasin">Bize Ulaşın!</a></h2>
                 <h3>0530 127 45 98</h3>
                 <p>
                     <a href="mailto:contact@partisepeti.co">destek@partisepeti.com</a>
@@ -36,67 +35,64 @@ const FooterWidgets = () => (
             </div>
         </aside>
         <aside className="widget widget_footer">
-            <h4 className="widget-title">Quick links</h4>
             <ul className="ps-list--link">
                 <li>
-                    <Link href="/page/blank">
-                        <a>Hakkımızda</a>
+                    <Link href="/bilgiler?page=hakkimizda">
+                        Hakkımızda
                     </Link>
                 </li>
 
                 <li>
-                    <Link href="/page/blank">
-                        <a>Mağazalarımız</a>
+                    <Link href="/magazalarimiz">
+                        Mağazalarımız
                     </Link>
                 </li>
                 <li>
-                    <Link href="/page/blank">
-                        <a>Partisepeti'nde Sat</a>
+                    <Link href="/vendor/become-a-vendor">
+                        Partisepeti'nde Sat
                     </Link>
                 </li>
                 <li>
-                    <Link href="/page/blank">
-                        <a>Partisepeti Blog</a>
+                    <a href="http://blog.partisepeti.com" target="_blank">
+                        Partisepeti Blog
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <aside className="widget widget_footer">
+            <ul className="ps-list--link">
+                <li>
+                    <Link href="/bilgiler?page=hakkimizda">
+                        Kargo ve Teslimat
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/bilgiler?page=iptal-ve-iade">
+                        İptal ve İade
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/bilgiler?page=yurt-disi-gonderimi">
+                        Yurt Dışı Gönderimi
                     </Link>
                 </li>
             </ul>
         </aside>
         <aside className="widget widget_footer">
-            <h4 className="widget-title">Company</h4>
             <ul className="ps-list--link">
                 <li>
-                    <Link href="/page/about-us">
-                        <a>Kargo ve Teslimat</a>
+                    <Link href="/bilgiler?page=mesafeli-satis-sozlesmesi">
+                        Mesafeli Satış Sözleşmesi
                     </Link>
                 </li>
                 <li>
-                    <Link href="/page/blank">
-                        <a>İptal ve İade</a>
+                    <Link href="/bilgiler?page=gizlilik-ve-guvenlik">
+                        Gizlilik ve Güvenlik
                     </Link>
                 </li>
                 <li>
-                    <Link href="/page/blank">
-                        <a>Yurt Dışı Gönderimi</a>
-                    </Link>
-                </li>
-            </ul>
-        </aside>
-        <aside className="widget widget_footer">
-            <h4 className="widget-title">Bussiness</h4>
-            <ul className="ps-list--link">
-                <li>
-                    <Link href="/page/about-us">
-                        <a>Mesafeli Satış Sözleşmesi</a>
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/uyelik/siparis-bilgilerim">
-                        <a>Gizlilik ve Güvenlik</a>
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/uyelik/user-information">
-                        <a>Şikayet ve Bildirim</a>
+                    <Link href="/bilgiler?page=sikayet-ve-bildirim">
+                        Şikayet ve Bildirim
                     </Link>
                 </li>
             </ul>

@@ -458,3 +458,26 @@
         @include hidden;
     }
 }
+.ps-page--legal__info{
+    .ps-legal__info{
+        padding: 0 40px;
+        .ps-product__tabs{
+            .ant-tabs-nav-list{
+                .ant-tabs-tab{
+                    .ant-tabs-tab-btn{
+                        font-size: 18px;
+                        color: $color-text;
+                    }
+                }
+                .ant-tabs-tab-active{
+                    .ant-tabs-tab-btn{
+                        color: $color-1st;
+                    }
+                }
+            }
+        }
+        p {
+            padding: 0 20px;
+        }
+    }
+}

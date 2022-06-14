@@ -857,8 +857,6 @@
     }
 
     .ps-product__desc {
-        margin-bottom: 20px;
-        border-bottom: 1px solid #e1e1e1;
 
         p {
             color: $color-heading;
@@ -1764,11 +1762,22 @@
                 margin-bottom: 0.5em;
             }
 
+            .ps-product__actions {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 10px;
+                margin-right: 20px;
+                a > i {
+                    font-size: 24px;
+                }
+            }
+
             figure {
                 margin-bottom: 0.5em;
                 width: 100%;
 
                 .form-group--number {
+                    min-height: 50px;
                     width: 100%;
                     max-width: 100%;
                 }

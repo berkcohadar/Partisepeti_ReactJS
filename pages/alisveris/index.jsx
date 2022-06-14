@@ -31,7 +31,6 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
     const [loading, setLoading] = useState(false);
     const [productItems, setProductItems] = useState(null);
     const [total, setTotal] = useState(0);
-    const [index1, setIndex] = useState(0);
     const [checked_filters, setFilters] = useState([]);
 
     async function getProducts(params) {
@@ -49,27 +48,58 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
         }
     }
 
-    const handleItemFilter = (item) => {
-        if (Router.query.properties) {
-            var tmp = Router.query.properties.split(' ')
-            if (tmp.includes(''+item)) {
-                if (Router.query.properties.length < 3) {
-                    Router.push(
-                        Router.asPath.replace('&properties=' + item + '+', '')
-                    );
-                    delete Router.query['properties'];
-                } else Router.push(Router.asPath.replace(item + '+', ''));
-                return;
+    const handleItemFilter = (key,item) => {
+        // If item is already in the query, we should remove it.
+        // Otherwise we have to add it.
+        // We have "color", "size" and "properties"
+
+        // alisveris? => base url
+        // If property key includes "&" at the beginning, remove that as well.
+
+        if (key === "Renk" || key === "Boyut") {
+            if (Router.query.color) {
+                var tmp = Router.query.color.split(' ')
+                console.log(tmp)
+                if (tmp.includes('' + item)) {
+                    console.log(Router.query.color);
+                    if (tmp.length < 3) {
+                        Router.push(
+                            Router.asPath.replace('color=' + item + '+', '')
+                        );
+                        delete Router.query['color'];
+                    } else Router.push(Router.asPath.replace(item + '+', ''));
+                    return;
+                }
             }
+            Router.push(
+                Router.query.categories
+                    ? Router.query.color
+                        ? Router.asPath + item + '+'
+                        : Router.asPath + '&color=' + item + '+'
+                    : Router.asPath + '?color=' + item + '+'
+            );
+        } else {
+            if (Router.query.properties) {
+                var tmp = Router.query.properties.split(' ')
+                if (tmp.includes('' + item)) {
+                    if (Router.query.properties.length < 3) {
+                        Router.push(
+                            Router.asPath.replace('&properties=' + item + '+', '')
+                        );
+                        delete Router.query['properties'];
+                    } else Router.push(Router.asPath.replace(item + '+', ''));
+                    return;
+                }
+            }
+            Router.push(
+                Router.query.categories
+                    ? Router.query.properties
+                        ? Router.asPath + item + '+'
+                        : Router.asPath + '&properties=' + item + '+'
+                    : Router.asPath + '?properties=' + item + '+'
+            );
         }
-        setIndex(item);
-        Router.push(
-            Router.query.categories
-                ? Router.query.properties
-                    ? Router.asPath + item + '+'
-                    : Router.asPath + '&properties=' + item + '+'
-                : Router.asPath + '?properties=' + item + '+'
-        );
+
     };
 
     useEffect(() => {
@@ -77,14 +107,14 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
         if (query) {
             if (query.page) params['page'] = page;
             if (query.categories) params['categories'] = query.categories;
+            if (query.color) params['color'] = query.color
             if (query.properties) {
                 var temp = query.properties.split(' ');
                 temp.pop();
                 setFilters(temp);
                 params['properties'] = query.properties;
-
-            }
-            else if (!query.properties && checked_filters.length==0) setFilters([]);
+            } 
+            else if (!query.properties && checked_filters.length == 0) setFilters([]);
             else params = query;
         } else params = { _limit: pageSize };
         getProducts(params);
@@ -96,34 +126,32 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
             item.properties.map((property) => {
                 brandsView[property.code.code] !== undefined
                     ? brandsView[property.code.code].some((row) =>
-                          row.includes(property.id)
-                      )
+                        row.includes(property.id)
+                    )
                         ? null
                         : brandsView[property.code.code].push([
-                              property.property,
-                              property.id,
-                          ])
+                            property.property,
+                            property.id,
+                        ])
                     : (brandsView[property.code.code] = [
-                          [property.property, property.id],
-                      ]);
+                        [property.property, property.id],
+                    ]);
             })
         );
         productItems.map((item) => {
-            if (item.color) 
-            {
+            if (item.color) {
                 brandsView['Renk'] !== undefined
-                ? brandsView['Renk'].includes(item.color)
-                    ? null
-                    : brandsView['Renk'].push(item.color)
-                : (brandsView['Renk'] = [item.color]);
+                    ? brandsView['Renk'].includes(item.color)
+                        ? null
+                        : brandsView['Renk'].push(item.color)
+                    : (brandsView['Renk'] = [item.color]);
             }
-            if (item.size) 
-            {
-            brandsView['Boyut'] !== undefined 
-                ? brandsView['Boyut'].includes(item.size)
-                    ? null
-                    : brandsView['Boyut'].push(item.size)
-                : (brandsView['Boyut'] = [item.size]);
+            if (item.size) {
+                brandsView['Boyut'] !== undefined
+                    ? brandsView['Boyut'].includes(item.size)
+                        ? null
+                        : brandsView['Boyut'].push(item.size)
+                    : (brandsView['Boyut'] = [item.size]);
             }
         });
     }
@@ -139,67 +167,67 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
                     <ShopCategories />*/}
                     <div className="ps-layout--shop">
                         <div className="ps-layout__left">
-                            {productItems?<WidgetShopCategories productItems={productItems} />:null}
+                            {productItems ? <WidgetShopCategories productItems={productItems} /> : null}
                             <aside className="widget widget_shop widget_shop--brand">
                                 <h4 className="widget-title">Filtreler</h4>
                                 <figure>
                                     {brandsView
                                         ? Object.keys(brandsView).map(
-                                              (item, index) => {
-                                                  return (
-                                                      <div key={index}>
-                                                          <h5>{item} </h5>
-                                                          {brandsView[item].map(
-                                                              (subItem,subIndex) => (
-                                                                  <div key={subIndex} className="ps-checkbox">
-                                                                      <input
-                                                                          className="form-control"
-                                                                          type="checkbox"
-                                                                          id={
+                                            (item, index) => {
+                                                return (
+                                                    <div key={index}>
+                                                        <h5>{item} </h5>
+                                                        {brandsView[item].map(
+                                                            (subItem, subIndex) => (
+                                                                <div key={subIndex} className="ps-checkbox">
+                                                                    <input
+                                                                        className="form-control"
+                                                                        type="checkbox"
+                                                                        id={
                                                                             item ===
+                                                                                'Renk' ||
+                                                                                item ===
+                                                                                'Boyut'
+                                                                                ? subItem
+                                                                                : subItem[0]
+                                                                        }
+                                                                        onChange={() =>
+                                                                            handleItemFilter(
+                                                                                item,subItem
+                                                                            )
+                                                                        }
+                                                                        checked={
+                                                                            checked_filters
+                                                                                ? checked_filters.includes(
+                                                                                    '' +
+                                                                                    subItem[1]
+                                                                                )
+                                                                                : false
+                                                                        }
+                                                                    />
+                                                                    <label
+                                                                        htmlFor={
+                                                                            item ===
+                                                                                'Renk' ||
+                                                                                item ===
+                                                                                'Boyut'
+                                                                                ? subItem
+                                                                                : subItem[0]
+                                                                        }>
+                                                                        {item ===
                                                                             'Renk' ||
-                                                                        item ===
+                                                                            item ===
                                                                             'Boyut'
                                                                             ? subItem
-                                                                            : subItem[0]
-                                                                          }
-                                                                          onChange={() =>
-                                                                              handleItemFilter(
-                                                                                  subItem[1]
-                                                                              )
-                                                                          }
-                                                                          checked={
-                                                                              checked_filters
-                                                                                  ? checked_filters.includes(
-                                                                                        '' +
-                                                                                            subItem[1]
-                                                                                    )
-                                                                                  : false
-                                                                          }
-                                                                      />
-                                                                      <label
-                                                                          htmlFor={
-                                                                              item ===
-                                                                                  'Renk' ||
-                                                                              item ===
-                                                                                  'Boyut'
-                                                                                  ? subItem
-                                                                                  : subItem[0]
-                                                                          }>
-                                                                          {item ===
-                                                                              'Renk' ||
-                                                                          item ===
-                                                                              'Boyut'
-                                                                              ? subItem
-                                                                              : subItem[0]}
-                                                                      </label>
-                                                                  </div>
-                                                              )
-                                                          )}
-                                                      </div>
-                                                  );
-                                              }
-                                          )
+                                                                            : subItem[0]}
+                                                                    </label>
+                                                                </div>
+                                                            )
+                                                        )}
+                                                    </div>
+                                                );
+                                            }
+                                        )
                                         : null}
                                 </figure>
                             </aside>

@@ -22,7 +22,7 @@ const PaymentPage = () => {
             url: '/uyelik/siparis-bilgilerim',
         },
         {
-            text: 'Payment',
+            text: 'Ödeme',
         },
     ];
     const dispatch = useDispatch();

@@ -3,26 +3,27 @@ import Repository, { baseUrl, serializeQuery } from './Repository';
 class ProductRepository {
     async getProducts(params) {
         if(params){
-            if ('properties' in params){
-                params['properties'] = params['properties'].split(' ')
-                params['properties'].pop()
+            if ('properties' in params || 'color' in params || 'size' in params){
+                if (params['properties']){
+                    params['properties'] = params['properties'].split(' ')
+                    params['properties'].pop()
+                }
+                if (params['color']){
+                    params['color'] = params['color'].split(' ')
+                    params['color'].pop()
+                }
+                if (params['size']){
+                    params['size'] = params['size'].split(' ')
+                    params['size'].pop()
+                }
                 params = Object.keys(params)
                     .map(
-                        (key) => key=='properties'? params[key].map((prop)=>  `${encodeURIComponent(key)}=${encodeURIComponent(prop)}`).join('&'):
+                        (key) => key=='properties'? params[key].map((prop)=>
+                        `${encodeURIComponent(key)}=${encodeURIComponent(prop)}`).join('&'):
                             `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
                     )
                     .join('&');
             }
-            // if ('color' in params) {
-            //     params['color'] = params['color'].split(' ')
-            //     params['color'].pop()
-            //     params = Object.keys(params)
-            //         .map(
-            //             (key) => key=='color'? params[key].map((prop)=>  `${encodeURIComponent(key)}=${encodeURIComponent(prop)}`).join('&'):
-            //                 `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
-            //         )
-            //         .join('&');
-            // }
             else{
                 params = serializeQuery(params)
             }

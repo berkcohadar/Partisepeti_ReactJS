@@ -120,16 +120,26 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
         if (query) {
             if (query.page) params['page'] = page;
             if (query.categories) params['categories'] = query.categories;
-            if (query.color) params['color'] = query.color
-            if (query.size) params['size'] = query.size
+            var currentFilters = [];
+            if (query.color) {
+                params['color'] = query.color;
+                currentFilters.push(query.color.slice(0, -1))
+            }
+            if (query.size) {
+                params['size'] = query.size;
+                currentFilters.push(query.size.slice(0, -1))
+            }
             if (query.properties) {
                 var temp = query.properties.split(' ');
                 temp.pop();
-                setFilters(temp);
+                temp.map((elem)=>(currentFilters.push(elem)))
+                
                 params['properties'] = query.properties;
             } 
-            else if (!query.properties) setFilters([]);
-            else params = query;
+            else setFilters([]);
+            setFilters(currentFilters);
+            console.log(checked_filters);
+            // else params = query;
         } else params = { _limit: pageSize };
         getProducts(params);
     }, [query]);
@@ -197,43 +207,25 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
                                                                     <input
                                                                         className="form-control"
                                                                         type="checkbox"
-                                                                        id={
-                                                                            item ===
-                                                                                'Renk' ||
-                                                                                item ===
-                                                                                'Boyut'
-                                                                                ? subItem
-                                                                                : subItem[0]
-                                                                        }
-                                                                        onChange={() =>
-                                                                            handleItemFilter(
-                                                                                item,subItem
-                                                                            )
-                                                                        }
-                                                                        checked={
-                                                                            checked_filters
-                                                                                ? checked_filters.includes(
-                                                                                    '' +
-                                                                                    subItem[1]
-                                                                                )
-                                                                                : false
-                                                                        }
+                                                                        id={ item === 'Renk'
+                                                                                || item === 'Boyut' ?
+                                                                                subItem
+                                                                                : subItem[0]}
+                                                                        onChange={() => handleItemFilter(item,subItem)}
+                                                                        checked={checked_filters?
+                                                                                    checked_filters.includes('' + subItem[1]) || checked_filters.includes('' + subItem)
+                                                                                    : false}
                                                                     />
                                                                     <label
                                                                         htmlFor={
-                                                                            item ===
-                                                                                'Renk' ||
-                                                                                item ===
-                                                                                'Boyut'
-                                                                                ? subItem
-                                                                                : subItem[0]
-                                                                        }>
-                                                                        {item ===
-                                                                            'Renk' ||
-                                                                            item ===
-                                                                            'Boyut'
-                                                                            ? subItem
-                                                                            : subItem[0]}
+                                                                            item === 'Renk'
+                                                                                || item === 'Boyut' ?
+                                                                                subItem
+                                                                                : subItem[0]}>
+                                                                        {item === 'Renk'
+                                                                                || item === 'Boyut' ?
+                                                                                subItem
+                                                                                : subItem[0]}
                                                                     </label>
                                                                 </div>
                                                             )

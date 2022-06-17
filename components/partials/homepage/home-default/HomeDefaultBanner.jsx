@@ -81,23 +81,21 @@ const HomeDefaultBanner = () => {
                     {bannerItems?bannerItems.map((slide, index) => {
                         return (
                                 <div
-                                className="CampaignItem"
+                                className={banner == index ? "CampaignItem active":"CampaignItem"}
                                 key={index}
-                                    style={
-                                    banner == index
-                                            ? {
-                                                transform: 'scale(1.3)',
-                                                boxShadow:
-                                                    '0px 0px 10px 0px #1c1a18',
-                                            }
-                                            : null
-                                    }
                                     onClick={() => setBanner(index)}>
-                                    <img
+                                    <div className="CampaignItemImage"
+                                    id={index}
+                                    style={{
+                                        backgroundImage:`url(${slide.image_url})`
+                                    }}>
+                                        <p>{slide.title}</p>
+                                    </div>
+                                    {/* <img
                                         className="CampaignItemImage"
                                         id={index}
                                         src={slide.image_url}></img>
-                                    <p style={banner == index? {transform: 'scale(0.8)'}: null}>{slide.title}</p>
+                                    <p style={banner == index? {transform: 'scale(0.8)'}: null}>{slide.title}</p> */}
                                 </div>   
                         );
                     }):null}

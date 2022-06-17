@@ -501,12 +501,13 @@
                 display: inline-block;
                 vertical-align: middle;
                 margin-right: 10px;
-
                 a {
                     line-height: 100%;
-                    font-size: 22px;
+                    font-size: 28px;
                     color: #999999;
-                    vertical-align: middle;
+                    i {
+                        font-weight: 500;
+                    }
                 }
 
                 &:last-child {
@@ -522,6 +523,10 @@
         }
     }
 
+    .ps-filter {
+        display: none !important;
+    }
+
     .ps-shopping__actions {
         display: flex;
         flex-flow: row nowrap;
@@ -533,9 +538,9 @@
 
         .form-control {
             appearance: none;
-            height: 30px;
-            width: 150px;
-            padding-left: 5px !important;
+            height: 38px;
+            width: 170px;
+            padding-left: 10px !important;
             background-color: $color-1st;
             color: #fff;
             cursor: pointer;
@@ -546,6 +551,7 @@
             display: flex;
             flex-flow: row nowrap;
             align-items: center;
+            margin-right: 5px;
 
             &:hover{
                 &:after{
@@ -588,6 +594,7 @@
             margin-bottom: 0;
             display: inline-block;
             color: $color-heading;
+            
             strong {
                 color: $color-heading;
             }
@@ -633,10 +640,6 @@
         }
     }
 
-    @include media('<lg') {
-        margin-top: 40px;
-    }
-
     @include media('<sm') {
         .ps-shopping__header {
             flex-flow: row nowrap;
@@ -649,6 +652,13 @@
 
             .ps-shopping__view {
                 padding-left: 10px;
+  
+            }
+
+            .ps-filter {
+                display: block !important;
+                margin-left: 0;
+                margin-right: auto;
             }
         }
 

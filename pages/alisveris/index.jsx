@@ -9,6 +9,7 @@ import ShopBanner from '~/components/partials/shop/ShopBanner';
 import WidgetShopCategories from '~/components/shared/widgets/WidgetShopCategories';
 import WidgetShopBrands from '~/components/shared/widgets/WidgetShopBrands';
 import WidgetShopFilterByPriceRange from '~/components/shared/widgets/WidgetShopFilterByPriceRange';
+import ModuleProductFilter from '~/components/elements/products/modules/ModuleProductfilter';
 
 import ProductRepository from '~/repositories/ProductRepository';
 import { useRouter } from 'next/router';
@@ -118,6 +119,8 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
             Router.push("/alisveris?")
         }
         if (query) {
+            if (query.search) params['search'] = query.search;
+            if (query.ordering) params['ordering'] = query.ordering;
             if (query.page) params['page'] = page;
             if (query.categories) params['categories'] = query.categories;
             var currentFilters = [];
@@ -138,7 +141,6 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
             } 
             else setFilters([]);
             setFilters(currentFilters);
-            console.log(checked_filters);
             // else params = query;
         } else params = { _limit: pageSize };
         getProducts(params);
@@ -186,62 +188,20 @@ const ShopDefaultPage = ({ pageSize = 24 }) => {
             <div className="ps-page--shop">
                 <BreadCrumb breacrumb={breadCrumb} layout="fullwidth" />
                 <div className="ps-container">
+                    
                     {/* <ShopBanner />
                     <ShopBrands /> 
                     <ShopCategories />*/}
                     <div className="ps-layout--shop">
                         <div className="ps-layout__left">
-                            {productItems ? <WidgetShopCategories productItems={productItems} /> : null}
-                            <aside className="widget widget_shop widget_shop--brand">
-                                <h4 className="widget-title">Filtreler</h4>
-                                <figure>
-                                    {brandsView
-                                        ? Object.keys(brandsView).map(
-                                            (item, index) => {
-                                                return (
-                                                    <div key={index}>
-                                                        <h5>{item} </h5>
-                                                        {brandsView[item].map(
-                                                            (subItem, subIndex) => (
-                                                                <div key={subIndex} className="ps-checkbox">
-                                                                    <input
-                                                                        className="form-control"
-                                                                        type="checkbox"
-                                                                        id={ item === 'Renk'
-                                                                                || item === 'Boyut' ?
-                                                                                subItem
-                                                                                : subItem[0]}
-                                                                        onChange={() => handleItemFilter(item,subItem)}
-                                                                        checked={checked_filters?
-                                                                                    checked_filters.includes('' + subItem[1]) || checked_filters.includes('' + subItem)
-                                                                                    : false}
-                                                                    />
-                                                                    <label
-                                                                        htmlFor={
-                                                                            item === 'Renk'
-                                                                                || item === 'Boyut' ?
-                                                                                subItem
-                                                                                : subItem[0]}>
-                                                                        {item === 'Renk'
-                                                                                || item === 'Boyut' ?
-                                                                                subItem
-                                                                                : subItem[0]}
-                                                                    </label>
-                                                                </div>
-                                                            )
-                                                        )}
-                                                    </div>
-                                                );
-                                            }
-                                        )
-                                        : null}
-                                </figure>
-                            </aside>
-                            {/* <WidgetShopFilterByPriceRange /> */}
+                            <ModuleProductFilter productItems={productItems} brandsView={brandsView} handleItemFilter={handleItemFilter} checked_filters={checked_filters}/>
                         </div>
                         <div className="ps-layout__right">
                             <ShopItems
                                 productItems={productItems}
+                                brandsView={brandsView}
+                                handleItemFilter={handleItemFilter}
+                                checked_filters={checked_filters}
                                 columns={6}
                                 pageSize={24}
                                 total={total}

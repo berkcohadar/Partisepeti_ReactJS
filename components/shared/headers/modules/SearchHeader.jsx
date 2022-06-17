@@ -45,7 +45,7 @@ const SearchHeader = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        Router.push(`/search?keyword=${keyword}&category=${category}&categoryName=${categoryName}`);
+        Router.push(`/alisveris?&search=${keyword}&categories=${category}&categoryName=${categoryName}`);
     }
 
     function handleOptionChange(e) {

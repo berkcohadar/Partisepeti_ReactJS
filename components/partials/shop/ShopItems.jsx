@@ -7,15 +7,28 @@ import ModuleShopSortBy from '~/components/partials/shop/modules/ModuleShopSortB
 import { useRouter } from 'next/router';
 import { generateTempArray } from '~/utilities/common-helpers';
 import SkeletonProduct from '~/components/elements/skeletons/SkeletonProduct';
+import { Drawer } from 'antd';
+import ModuleProductFilter from '~/components/elements/products/modules/ModuleProductfilter';
 
-const ShopItems = ({productItems, columns = 4, pageSize = 24 ,total=0,loading=false}) => {
+
+
+const ShopItems = ({ productItems, brandsView, handleItemFilter, checked_filters, columns = 4, pageSize = 24, total = 0, loading = false }) => {
     const Router = useRouter();
     const { page } = Router.query;
     const { query } = Router;
     const [listView, setListView] = useState(true);
+    const [mobileFilters, setMobileFilters] = useState(false)
     const [classes, setClasses] = useState(
         'col-xl-4 col-lg-4 col-md-3 col-sm-6 col-6'
     );
+
+    const handleShowFilterDrawer = () => {
+        setMobileFilters(mobileFilters ? false : true);
+    };
+
+    const handleCloseFilterDrawer = () => {
+        setMobileFilters(mobileFilters ? false : true);
+    };
 
     function handleChangeViewMode(e) {
         e.preventDefault();
@@ -27,10 +40,10 @@ const ShopItems = ({productItems, columns = 4, pageSize = 24 ,total=0,loading=fa
     }
 
     // 'tn': 320px,
-// 'xs': 480px,
-// 'sm': 768px,
-// 'md': 992px,
-// 'lg': 1200px,
+    // 'xs': 480px,
+    // 'sm': 768px,
+    // 'md': 992px,
+    // 'lg': 1200px,
 
     function handleSetColumns() {
         switch (columns) {
@@ -55,9 +68,9 @@ const ShopItems = ({productItems, columns = 4, pageSize = 24 ,total=0,loading=fa
     useEffect(() => {
         let params;
         if (query) {
-            if(query.categories && query.page){
+            if (query.categories && query.page) {
                 params = {
-                    categories:query.categories,
+                    categories: query.categories,
                     page: page,
                     _limit: pageSize,
                 };
@@ -78,7 +91,7 @@ const ShopItems = ({productItems, columns = 4, pageSize = 24 ,total=0,loading=fa
                 params = query;
                 params._limit = pageSize;
             }
-        } 
+        }
         else {
             params = {
                 _limit: pageSize,
@@ -98,7 +111,7 @@ const ShopItems = ({productItems, columns = 4, pageSize = 24 ,total=0,loading=fa
             // 20 - 29 *3
             if (listView) {
                 const items = productItems.map((item) => (
-                    <div  className={classes} key={item.id}>
+                    <div className={classes} key={item.id}>
                         <Product product={item} />
                     </div>
                 ));
@@ -126,21 +139,52 @@ const ShopItems = ({productItems, columns = 4, pageSize = 24 ,total=0,loading=fa
 
     return (
         <div className="ps-shopping">
+            <Drawer
+                className="ps-panel--mobile ps-panel--shopping"
+                placement="right"
+                closable={false}
+                onClose={() => handleCloseFilterDrawer()}
+                visible={mobileFilters}
+            >
+                <div className="ps-panel--wrapper">
+                    <div className="ps-panel__header">
+                        <h3>Ürün Filtreleme</h3>
+                        <span
+                            className="ps-panel__close"
+                            onClick={() => handleCloseFilterDrawer()}>
+                            <i className="icon-cross"></i>
+                        </span>
+                    </div>
+                    <div className="ps-panel__content">
+                        <ModuleProductFilter productItems={productItems} brandsView={brandsView} handleItemFilter={handleItemFilter} checked_filters={checked_filters} />
+                    </div>
+                </div>
+            </Drawer>
             <div className="ps-shopping__header">
                 <p>
-                    <strong className="mr-2">{productItems?productItems.length:"-"}</strong>
+                    <strong className="mr-2">{productItems ? productItems.length : "-"}</strong>
                     Ürün bulundu
                 </p>
                 <div className="ps-shopping__actions">
+                    <div className="ps-shopping__view ps-filter">
+                        <ul className="ps-tab-list">
+                            <li className={'active'}>
+                                <a
+                                    href="#"
+                                    onClick={() => handleShowFilterDrawer()}>
+                                    <i className="icon-equalizer"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <ModuleShopSortBy />
                     <div className="ps-shopping__view">
-                        <p>Görünüm</p>
                         <ul className="ps-tab-list">
                             <li className={listView === true ? 'active' : ''}>
                                 <a
                                     href="#"
                                     onClick={(e) => handleChangeViewMode(e)}>
-                                    <i className="icon-grid"></i>
+                                    <i className="icon-icons2"></i>
                                 </a>
                             </li>
                             <li className={listView !== true ? 'active' : ''}>

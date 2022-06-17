@@ -307,7 +307,24 @@
         }
     }
 }
+.ps-page--product_share{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0 20px;
+    a {
+        color: $color-1st;
+        font-size: 24px;
+        i {
+            transition: all .3 ease-out;
+            font-weight: 500;
+        }
+        &:hover {
+            transform: scale(1.2);
+        }
 
+    }
+}
 .ps-page--product {
     padding-top: 30px;
 

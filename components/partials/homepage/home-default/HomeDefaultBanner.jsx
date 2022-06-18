@@ -4,12 +4,10 @@ import NextArrow from '~/components/elements/carousel/NextArrow';
 import PrevArrow from '~/components/elements/carousel/PrevArrow';
 import Link from 'next/link';
 import MediaRepository from '~/repositories/MediaRepository';
-import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
 const HomeDefaultBanner = () => {
     const [banner, setBanner] = useState(0);
     const [bannerItems, setBannerItems] = useState(null);
-    const [interval, handleInterval] = useState(0);
 
     async function getBannerItems() {
         const myWindow = await window;
@@ -19,28 +17,9 @@ const HomeDefaultBanner = () => {
         }
     }
 
-    const handleOnMouseOver = () => {clearInterval(interval);};
-    const handleOnMouseOut= () => { handleInterval(setInterval(nextSlide, 4000)); };
-
-    const prevSlide = () => {
-        const lastIndex = bannerItems.length - 1;
-        setBanner(banner => {
-            return banner === 0 ? lastIndex : banner - 1;
-        });
-    }
-
-    const nextSlide = () => {
-        const lastIndex = bannerItems.length - 1;
-        setBanner(banner => {
-            return banner === lastIndex ? 0 : banner + 1;
-        });
-    }
-
     useEffect(() => {
         getBannerItems();
-        // handleInterval(setInterval(nextSlide, 4000));
-        // return () => clearInterval(interval);
-    }, []);
+    }, [bannerItems]);
 
     const carouselSetting = {
         dots: false,

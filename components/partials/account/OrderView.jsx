@@ -6,6 +6,7 @@ import {LikeOutlined,} from "@ant-design/icons";
 import { Modal } from 'antd';
 import ProductDetailQuickView from '~/components/elements/detail/ProductDetailQuickView';
 import ProductRepository from '~/repositories/ProductRepository';
+import router from 'next/router';
 
 const OrderView = ({orders}) => {
     const [comp, setComponent] = useState(<p>Detayları görmek için tıklayınız</p>);
@@ -17,7 +18,7 @@ const OrderView = ({orders}) => {
 
     const buttonHandle = (event, component, buttonNo) => {
         event.stopPropagation();
-
+        router.push('/uyelik/yardim')
     };
 
     const orderStatusTranslate = {

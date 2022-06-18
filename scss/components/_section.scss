@@ -141,30 +141,7 @@
         }
     }
 
-    @include media('<1630px') {
-        .ps-cart-display-page .ps-section__content{
-            margin: 0 auto;
-            min-width: 75%;
-            width: 75%;
-            max-width: 75%;
-        }   
-    }
-    @include media('<1510px') {
-        .ps-cart-display-page .ps-section__content{
-            margin: 0 auto;
-            min-width: 80%;
-            width: 80%;
-            max-width: 80%;
-        }
-    }
-    @include media('<1270px') {
-        .ps-cart-display-page .ps-section__content{
-            margin: 0 auto;
-            min-width: 90%;
-            width: 90%;
-            max-width: 90%;
-        }
-    }
+    
     /**/    
     @include media('<lg') {
         padding: 10px 0;

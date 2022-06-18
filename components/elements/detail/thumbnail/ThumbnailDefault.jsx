@@ -42,6 +42,7 @@ const ThumbnailDefault = ({ product, vertical = true }) => {
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
     };
+    
     const variantSetting = {
         responsive: [
             {

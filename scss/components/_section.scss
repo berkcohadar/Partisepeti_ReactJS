@@ -2268,6 +2268,12 @@
         // background-color: rgba( $color-1st, 0.1);
         border-radius: 8px;
         padding: 10px;
+        .ps-account-permissions{
+            display: block;
+            > label {
+                margin: 10px;
+            }
+        }
     }
 }
 
@@ -2457,6 +2463,70 @@
 
             h1 {
                 font-size: 30px;
+            }
+        }
+    }
+}
+
+.ps-product-comments {
+    box-shadow: $shadow-main-double;
+    border-radius: 12px;
+    margin: 20px;
+    padding: 20px;
+    .ps-product-comment__header{
+        height: 50px;
+        line-height: 50px;
+        display: flex;
+        justify-content: space-between;
+        .ps-product-comment__buttons{
+            display: flex;
+            justify-content: space-between;
+            width: 220px;
+            > a {
+                padding: 10px 20px;
+                line-height: 20px;
+                height: 40px;
+                min-width: 100px;
+                max-width: 105px;
+                text-align: center;
+            }
+        }
+    }
+    .ps-product-comment__body {
+        > p {
+            margin-top: 10px;
+            color: $color-1st;
+            font-size: 14px;
+        }
+        .ps-product-comment__images {
+            display: flex;
+            height: 150px;
+            display: flex;
+            flex-wrap: nowrap; // important
+            overflow-x: auto;
+            > div {
+                flex-grow: 0; // important
+                flex-shrink: 0; // important
+                max-width: 100%; // important  
+                height: 130px;
+                margin-right: 10px;
+                object-fit: cover;
+                cursor: pointer;
+
+                > img {
+                    height: inherit;
+                    object-fit: cover;
+                    height: 120px;
+                    box-shadow: $shadow-main;
+                    margin: 5px;
+                    border-radius: 8px;
+                    transition: all .3s ease-in-out;
+                }
+                &:hover {
+                    > img {
+                        transform: scale(1.05);
+                    }
+                }
             }
         }
     }

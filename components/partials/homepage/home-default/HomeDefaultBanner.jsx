@@ -91,11 +91,6 @@ const HomeDefaultBanner = () => {
                                     }}>
                                         <p>{slide.title}</p>
                                     </div>
-                                    {/* <img
-                                        className="CampaignItemImage"
-                                        id={index}
-                                        src={slide.image_url}></img>
-                                    <p style={banner == index? {transform: 'scale(0.8)'}: null}>{slide.title}</p> */}
                                 </div>   
                         );
                     }):null}
@@ -104,14 +99,12 @@ const HomeDefaultBanner = () => {
                     {bannerItems?bannerItems.map((slide, index) => {
                         return (
                             <div
-                                // onMouseEnter={() => handleOnMouseOver()}
-                                // onMouseLeave={() => handleOnMouseOut()}
                                 className={
                                     index === banner ? 'home-new-slide active' : 'home-new-slide'
                                 }
                                 key={index}>
                                 {index === banner && (
-                                    <img src={slide.image_url} alt={slide.description} />
+                                    <img src={bannerItems[banner].image_url} alt={bannerItems[banner].description} />
                                 )}
                                 <section><p>{slide.button_text}</p> <p className='slider--title'>{slide.button_text}</p> </section>
                             </div>

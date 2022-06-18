@@ -20,8 +20,8 @@ const ProductDefaultPage = () => {
     const { pid } = router.query;
     const [product, setProduct] = useState(null);
     const [shareDrawer, setShareDrawer] = useState(null);
-
     const [loading, setLoading] = useState(false);
+    const shareLinks = [];
 
     async function getProduct(pid) {
         setLoading(true);
@@ -38,6 +38,17 @@ const ProductDefaultPage = () => {
     }
     const toggleShareDrawer = () => {
         setShareDrawer(shareDrawer ? false : true);
+    }
+
+    const handleShareLink = (e, key) => {
+        e.preventDefault();
+
+        if (key["desc"] === "copy") {
+            console.log(key["link"]);
+        } else {
+            window.location.href = key["link"];
+        }
+
     }
 
     useEffect(() => {
@@ -57,6 +68,7 @@ const ProductDefaultPage = () => {
             text: product ? product.title : 'Loading...',
         },
     ];
+
     // Views
     let productView, headerView;
     if (!loading) {
@@ -69,14 +81,37 @@ const ProductDefaultPage = () => {
     } else {
         productView = <SkeletonProductDetail />;
     }
-    const arr = [
-        {comp: <i className="fa fa-whatsapp"></i>, link:"", text:"Whatsapp"},
-        {comp: <i className="icon-paper-plane"></i>, link:"", text:"Kısa Mesaj"},
-        {comp: <i className="icon-copy"></i>, link:"", text:"Linki Kopyala"},
-        {comp: <i className="fa fa-instagram"></i>, link:"", text:"Instagram"},
-        {comp: <i className="fa fa-twitter"></i>, link:"", text:"Twitter"},
+    // whatsapp://send?text=Check%20this%20out%3A%20SKLZ%20
+    // Accelerator%20Pro%2C%20Indoor%20Putting%20Mat%2C%20Golf%20Accessorie...%20
+    // https%3A%2F%2Fwww.amazon.com%2Fdp%2FB013BYCKDQ%2Fref%3Dcm_sw_r_wa_awdb_imm_9QP1EVXCP5CGCMYZCXSE
+    
+    // sms:?body=Check%20this%20out%3A%20SKLZ%20
+    // Accelerator%20Pro%2C%20Indoor%20Putting%20Mat%2C%20Golf%20Accessori...%20
+    // https%3A%2F%2Fwww.amazon.com%2Fdp%2FB013BYCKDQ%2Fref%3Dcm_sw_r_sms_awdb_imm_9QP1EVXCP5CGCMYZCXSE"
+    // const url = 'https://wwww.partisepeti.com' + router.asPath
 
-    ]
+    // Android => sms:?body
+    // Apple => sms:&body=
+
+    if (product) {
+        const url = 'http://192.168.0.208:3000' + router.asPath
+        const productTitle = product.title
+        const shareText = "Partisepeti'nde bulduğum şu ürüne göz at!%0a%0a"
+    
+        const shareBody = shareText+productTitle+"%0a"+url
+    
+        let tempArr = [
+            {comp: <i className="fa fa-whatsapp"></i>, desc:"whatsapp", link:"whatsapp://send?text="+shareBody, text:"Whatsapp"},
+            {comp: <i className="icon-paper-plane"></i>, desc:"sms", link:"sms:&body="+shareBody, text:"Kısa Mesaj"},
+            {comp: <i className="icon-copy"></i>, desc:"copy", link:url, text:"Linki Kopyala"},
+            {comp: <i className="fa fa-instagram"></i>, desc:"instagram", link:"instagram:", text:"Instagram"},
+            {comp: <i className="fa fa-twitter"></i>, desc:"twitter", link:"twitter:", text:"Twitter"},
+            {comp: <i className="fa fa-facebook"></i>, desc:"facebook", link:"facebook:", text:"Facebook"},
+            {comp: <i className="fa fa-pinterest"></i>, desc:"pinterest", link:"pinterest:", text:"Pinterest"},
+        ];
+        tempArr.map((item)=>(shareLinks.push(item)))
+    }
+
     return (
         <ContainerProductDetail title={product ? product.title : 'Loading...'}>
             {headerView}
@@ -99,12 +134,10 @@ const ProductDefaultPage = () => {
                     </div>
                     <div className="ps-panel--share_content">
                         <div className="ps-panel-share_slider">
-                            {arr.map((key) => (
-                                <div className="ps-panel-share-slide">
+                            {shareLinks.map((key) => (
+                                <div onClick={(e) => handleShareLink(e,key)} className="ps-panel-share-slide">
                                     {key["comp"]}
-                                    <a href={key["link"]}> {key["text"]} </a>
-                                    {/* <img src="https://media.istockphoto.com/photos/abstract-red-gradient-color-background-christmas-valentine-wallpaper-picture-id1054309772?k=20&m=1054309772&s=612x612&w=0&h=E9khewnAJNrfDCcfTwIu34CZWluLLy4pYJxAqkKcgFs=">
-                                    </img> */}
+                                    <a > {key["text"]} </a>
                                 </div>
                             ))}
                         </div>

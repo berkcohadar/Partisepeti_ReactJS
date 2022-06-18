@@ -1,6 +1,6 @@
 import React from 'react';
 import BreadCrumb from '~/components/elements/BreadCrumb';
-import Blank from '~/components/partials/account/Blank';
+import UserPerms from '~/components/partials/account/UserPermissions';
 import ContainerPage from '~/components/layouts/ContainerPage';
 
 const PermissionsPage = () => {
@@ -17,7 +17,7 @@ const PermissionsPage = () => {
         <ContainerPage boxed={true} title="Address">
             <div className="ps-page--my-account">
                 {/* <BreadCrumb breacrumb={breadCrumb} /> */}
-                <Blank />
+                <UserPerms />
             </div>
         </ContainerPage>
     );

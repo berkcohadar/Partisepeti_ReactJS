@@ -2,6 +2,10 @@
     "name": "partisepeti_react",
     "version": "1.4.0",
     "private": true,
+    "engines": {
+        "node" : "14.17.6",
+        "npm" : "6.14.15"
+    },
     "scripts": {
         "export": "npm run build && next export -o _static",
         "dev": "next dev -H 0.0.0.0",

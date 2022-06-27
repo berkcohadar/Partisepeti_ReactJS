@@ -1,6 +1,7 @@
 import axios from 'axios';
-// const baseDomain = 'http://165.22.85.114/api'; // API for products
-const baseDomain = 'http://192.168.0.208:8000/api'; // API for products
+// const baseDomain = 'http://192.168.0.208:8000/api'; // API for products
+
+const baseDomain = 'http://164.92.140.87:1337/api'; // API for products
 
 
 export const customHeaders = {

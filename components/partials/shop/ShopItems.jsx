@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { generateTempArray } from '~/utilities/common-helpers';
 import SkeletonProduct from '~/components/elements/skeletons/SkeletonProduct';
 import { Drawer } from 'antd';
-import ModuleProductFilter from '~/components/elements/products/modules/ModuleProductfilter';
+import ModuleProductFilter from '~/components/elements/products/modules/ModuleProductFilter';
 
 
 

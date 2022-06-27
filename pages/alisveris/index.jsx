@@ -9,7 +9,7 @@ import ShopBanner from '~/components/partials/shop/ShopBanner';
 import WidgetShopCategories from '~/components/shared/widgets/WidgetShopCategories';
 import WidgetShopBrands from '~/components/shared/widgets/WidgetShopBrands';
 import WidgetShopFilterByPriceRange from '~/components/shared/widgets/WidgetShopFilterByPriceRange';
-import ModuleProductFilter from '~/components/elements/products/modules/ModuleProductfilter';
+import ModuleProductFilter from '~/components/elements/products/modules/ModuleProductFilter';
 
 import ProductRepository from '~/repositories/ProductRepository';
 import { useRouter } from 'next/router';

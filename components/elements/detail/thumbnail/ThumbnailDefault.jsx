@@ -22,7 +22,7 @@ const ThumbnailDefault = ({ product, vertical = true }) => {
 
     useEffect(() => {
         let images = [];
-        images.push(product.thumbnail.replace('image/upload/',''))
+        images.push(product.thumbnail)
         if (product && product.medias.length > 0) {
             product.medias.map((item) => {
                 images.push(`${item.media}`);

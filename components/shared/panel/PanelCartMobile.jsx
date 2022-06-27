@@ -35,7 +35,7 @@ class PanelCartMobile extends Component {
                                         as={`/product/${product.item.id}`}>
                                         <a>
                                             <img
-                                                src={product.item.thumbnail.replace('image/upload/','')}
+                                                src={product.item.thumbnail}
                                                 alt="partisepeti"
                                             />
                                         </a>

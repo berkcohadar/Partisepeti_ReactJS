@@ -177,7 +177,7 @@ export function StrapiProductThumbnail(product) {
             <Link href="/product/[pid]" as={`/product/${product.id}`}>
                 <a>
                     <LazyLoad>
-                        <img src={`${product.thumbnail.replace('image/upload/','')}`} alt={product.title} />
+                        <img src={`${product.thumbnail}`} alt={product.title} />
                     </LazyLoad>
                 </a>
             </Link>
@@ -188,7 +188,7 @@ export function StrapiProductThumbnail(product) {
                 <a>
                     <LazyLoad>
                         <img
-                            src={`${product.item.thumbnail.replace('image/upload/','')}`}
+                            src={`${product.item.thumbnail}`}
                             alt={product.item.title}
                         />
                     </LazyLoad>
@@ -201,7 +201,7 @@ export function StrapiProductThumbnail(product) {
                 <a>
                     <LazyLoad>
                         <img
-                            src={`${product.product_item_thumbnail.replace('image/upload/','')}`}
+                            src={`${product.product_item_thumbnail}`}
                             alt={product.product_item_title}
                         />
                     </LazyLoad>
@@ -214,7 +214,7 @@ export function StrapiProductThumbnail(product) {
                 <a>
                     <LazyLoad>
                         <img
-                            src={`${product.product.item.thumbnail.replace('image/upload/','')}`}
+                            src={`${product.product.item.thumbnail}`}
                             alt={product.product.item.title}
                         />
                     </LazyLoad>

@@ -41,7 +41,7 @@ class OrderItems2 extends Component {
                         {this.props.order.order_items.map(product => (
                             <div className="ps-order__items--area" style= {{display:"flex"}}>
                                 <div className="ps-order__items--thumbnail">
-                                    <img src={product.product.item.thumbnail.replace('image/upload/','')} alt={"trial"}/>
+                                    <img src={product.product.item.thumbnail} alt={"trial"}/>
                                 </div>
                                 <div className="ps-order__items--details">
                                     <p className="ps-order__items--details__title">{product.product.item.title}</p>

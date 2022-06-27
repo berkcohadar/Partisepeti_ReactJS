@@ -100,7 +100,7 @@ const OrderView = ({orders}) => {
                                 </div>
                                 <div className="ps-order-item-images">
                                     {order.order_items.map((product,index)=>(
-                                        <a onClick={(e) => handleShowQuickView(e, product.product.item.id)} ><img key={index} className="ps-order-item-image" src={product.product.item.thumbnail.replace('image/upload/','')}></img></a>
+                                        <a onClick={(e) => handleShowQuickView(e, product.product.item.id)} ><img key={index} className="ps-order-item-image" src={product.product.item.thumbnail}></img></a>
                                     ))}
                                 </div>
                             </div>

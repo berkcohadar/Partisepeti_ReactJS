@@ -27,3 +27,6 @@ yarn-error.log*
 package-lock.json
 
 .now
+
+# DigitalOcean
+/_static/

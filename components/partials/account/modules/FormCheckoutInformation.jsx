@@ -95,9 +95,12 @@ const FormCheckoutInformation = () => {
     };
 
     const handleAddressSubmit = () => {
-        shippingA[0].email = JSON.parse( JSON.parse( localStorage.getItem('persist:partisepeti') ).auth ).email;       
-        dispatch(orderInfo(shippingA[0]));
-        Router.push('/uyelik/siparis-odeme');
+        // billing address and shipping address should be sent separetly
+        if (typeof window !== 'undefined') {
+            shippingA[0].email = JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).email;
+            dispatch(orderInfo(shippingA[0]));
+            Router.push('/uyelik/siparis-odeme');
+        }
     };
 
     return (
@@ -139,8 +142,8 @@ const FormCheckoutInformation = () => {
                             {'Fatura adresim teslimat adresimle aynı.'}
                         </Checkbox>
                     </div>
-                    
-                    {!checked?<div className="col-md-12 col-12">
+
+                    {!checked ? <div className="col-md-12 col-12">
                         <figure className="ps-block--address ps-address--bottom">
                             <figcaption>
                                 Fatura Adresi
@@ -171,18 +174,30 @@ const FormCheckoutInformation = () => {
 
                         </figure>
                     </div> : null}
-                </div> : null}
-                <div className="ps-form__submit">
-                     <Link href="/uyelik/sepetim">
-                         <a>
-                             <i className="icon-arrow-left mr-2"></i>
-                             Sepete geri dön
-                         </a>
-                     </Link>
-                     <div className="ps-block__footer">
-                         <button className="ps-btn ps-btn--black" onClick={() => handleAddressSubmit() }>Alışverişi Tamamla</button>
-                     </div>
-                 </div>
+                </div>
+
+                : null}
+            {typeof window !== 'undefined'? (JSON.parse(JSON.parse(localStorage.getItem('persist:partisepeti')).auth).isLoggedIn) ? null :
+                <div>
+                    <FormEditAddress form={form} address_type={"S"} handleHideQuickView={handleHideQuickViewBasic} addressDetails={address} update={address ? true : false} />
+                    <div className="col-md-12 col-12">
+                        <Checkbox checked={checked} className="ps-address--checkbox" onChange={(e) => onChange(e)} >
+                            {'Fatura adresim teslimat adresimle aynı.'}
+                        </Checkbox>
+                    </div>
+                </div> : null
+            }
+            <div className="ps-form__submit">
+                <Link href="/uyelik/sepetim">
+                    <a>
+                        <i className="icon-arrow-left mr-2"></i>
+                        Sepete geri dön
+                    </a>
+                </Link>
+                <div className="ps-block__footer">
+                    <button className="ps-btn ps-btn--black" onClick={() => handleAddressSubmit()}>Alışverişi Tamamla</button>
+                </div>
+            </div>
             <Modal
                 centered
                 footer={null}

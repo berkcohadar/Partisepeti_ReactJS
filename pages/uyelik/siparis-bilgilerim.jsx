@@ -24,7 +24,9 @@ const CheckoutPage = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getCart());
-        if(!(JSON.parse( JSON.parse( localStorage.getItem('persist:partisepeti') ).auth ).isLoggedIn)) Router.push('/uyelik/giris')
+        if (typeof window !== 'undefined') {
+            // if(!(JSON.parse( JSON.parse( localStorage.getItem('persist:partisepeti') ).auth ).isLoggedIn)) Router.push('/uyelik/giris')
+        }
 
     }, [dispatch]);
 
@@ -39,3 +41,4 @@ const CheckoutPage = () => {
 };
 
 export default connect()(CheckoutPage);
+

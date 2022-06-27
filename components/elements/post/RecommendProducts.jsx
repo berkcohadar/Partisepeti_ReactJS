@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
-import { relatedProduct } from '../../../public/static/data/product';
 import Product from '../products/Product';
 import NextArrow from '../carousel/NextArrow';
 import PrevArrow from '../carousel/PrevArrow';
 
-class RecommentProducts extends Component {
+class RecommendProducts extends Component {
     render() {
         const carouselSetting = {
             dots: false,
@@ -56,12 +55,9 @@ class RecommentProducts extends Component {
         };
         return (
             <Slider {...carouselSetting} className="ps-carousel outside">
-                {relatedProduct.map(product => (
-                    <Product product={product} key={product.title} />
-                ))}
             </Slider>
         );
     }
 }
 
-export default RecommentProducts;
+export default RecommendProducts;

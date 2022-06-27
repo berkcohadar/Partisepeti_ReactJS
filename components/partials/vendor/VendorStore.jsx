@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
-import { relatedProduct } from '../../../public/static/data/product';
 import Product from '../../elements/products/Product';
 import VendorProducts from './modules/VendorProducts';
 import NextArrow from '../../elements/carousel/NextArrow';
@@ -26,7 +25,7 @@ class VendorStore extends Component {
                                 <div className="ps-block__container">
                                     <div className="ps-block__header">
                                         <h4>Digitalworld us</h4>
-                                        <Rating value={product.rating}  />
+                                        <Rating value={5}  />
                                         <p>
                                             <strong>85% Positive</strong> (562
                                             rating)
@@ -150,13 +149,6 @@ class VendorStore extends Component {
                                     <Slider
                                         {...carouselStandard}
                                         className="ps-carousel">
-                                        {relatedProduct &&
-                                            relatedProduct.map((product) => (
-                                                <ProductOffline
-                                                    product={product}
-                                                    key={product.id}
-                                                />
-                                            ))}
                                     </Slider>
                                 </div>
                             </div>

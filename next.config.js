@@ -11,16 +11,5 @@ const nextSettings = {
 
 module.exports = withPlugins([withImages(), nextSettings]);
 module.exports = {
-    exportPathMap: async function (
-      defaultPathMap,
-      { dev, dir, outDir, distDir, buildId }
-    ) {
-      return {
-          '/': { page: '/' },
-          '/bize-ulasin': { page: '/bize-ulasin' },
-      }
-    },
-  }
-module.exports = {
   trailingSlash: true,
 }

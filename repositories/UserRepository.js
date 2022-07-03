@@ -25,7 +25,7 @@ class UserRepository {
     async registerRequest(e) {
         const reponse = await axios({
             method: 'post',
-            url: baseUrl + '/auth/registration/',
+            url: baseUrl + '/auth/register/',
             headers: {"Content-Type": "application/json"}, 
             data: JSON.stringify({
                 first_name: e.first_name,

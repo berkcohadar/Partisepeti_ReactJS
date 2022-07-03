@@ -5,7 +5,11 @@ const FooterWidgets = () => (
     <div className="ps-footer__widgets">
         <aside className="widget widget_footer widget_contact-us">
             <div className="widget_content">
-                <h2><a href="/bize-ulasin">Bize Ulaşın!</a></h2>
+                <h2>
+                    <Link href="/bize-ulasin">
+                        <a>Bize Ulaşın!</a>
+                    </Link>
+                </h2>
                 <h3>0530 127 45 98</h3>
                 <p>
                     <a href="mailto:contact@partisepeti.co">destek@partisepeti.com</a>

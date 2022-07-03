@@ -63,17 +63,18 @@ const PanelMenu = () => {
             className="menu--mobile-2">
             {menudata?menudata.map((item) => {
                 if (item.childs){
+                    console.log(item)
                     return (
                             <SubMenu
                                 key={item.title}
                                 title={
-                                    <Link href={item.category}>
+                                    <Link href={'/alisveris?&categories='+item.category_id}>
                                         <a className="ps-panel__content-text">{item.title}</a>
                                     </Link>
                                 }>
                                 {item.childs.map((subItem) => (
                                     <Menu.Item key={subItem.title}>
-                                        <Link href={subItem.category}>
+                                        <Link href={'/alisveris?&categories='+subItem.category_id}>
                                             <a>{subItem.title}</a>
                                         </Link>
                                     </Menu.Item>
@@ -88,10 +89,10 @@ const PanelMenu = () => {
                                     <Link
                                         href={`${item.url}/[pid]`}
                                         as={`${item.url}/${item.endPoint}`}>
-                                        l<a>{item.text}</a>
+                                        <a>{item.text}</a>
                                     </Link>
                                 ) : (
-                                        <Link href={item.category} as={item.category}>
+                                        <Link href={'/alisveris?&categories='+item.category_id} as={item.category}>
                                             {item.title}
                                         </Link>
                                 )}

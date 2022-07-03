@@ -41,7 +41,7 @@ const HomeDefaultBanner = () => {
                     <a
                         className="ps-banner-item--default bg--cover"
                         style={{
-                            backgroundImage: `url(${item.image_url})`,
+                            backgroundImage: `url(${item.get_image})`,
                         }}
                     />
                 </Link>

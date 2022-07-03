@@ -1,3 +1,8 @@
+### Temporary Webpage URL
+```bash
+marketplace.scistoneprojects.com
+```
+
 ### About
 This project is a web application interface developed by SciStone Organization upon the request of partisepeti.com company. The project is based on NodeJS and was developed using its library ReactJS and React's framework NextJS. The project design was made using HTML and SASS (Syntactically Awesome Style Sheets).
 

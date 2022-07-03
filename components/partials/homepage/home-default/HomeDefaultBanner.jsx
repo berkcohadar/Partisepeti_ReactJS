@@ -83,7 +83,7 @@ const HomeDefaultBanner = () => {
                                 }
                                 key={index}>
                                 {index === banner && (
-                                    <img src={bannerItems[banner].image_url} alt={bannerItems[banner].description} />
+                                    <img src={bannerItems[banner].get_image} alt={bannerItems[banner].description} />
                                 )}
                                 <section><p>{slide.button_text}</p> <p className='slider--title'>{slide.button_text}</p> </section>
                             </div>

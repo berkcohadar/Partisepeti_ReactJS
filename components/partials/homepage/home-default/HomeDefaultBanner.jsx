@@ -66,7 +66,7 @@ const HomeDefaultBanner = () => {
                                     <div className="CampaignItemImage"
                                     id={index}
                                     style={{
-                                        backgroundImage:`url(${slide.image_url})`
+                                        backgroundImage:`url(${slide.get_image})`
                                     }}>
                                         <p>{slide.title}</p>
                                     </div>

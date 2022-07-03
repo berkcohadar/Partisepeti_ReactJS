@@ -19,7 +19,7 @@ const HomeDefaultBanner = () => {
 
     useEffect(() => {
         getBannerItems();
-    }, [bannerItems]);
+    }, []);
 
     const carouselSetting = {
         dots: false,

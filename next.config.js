@@ -16,7 +16,8 @@ module.exports = {
       { dev, dir, outDir, distDir, buildId }
     ) {
       return {
-        '/bize-ulasin': { page: '/bize-ulasin' },
+          '/': { page: '/' },
+          '/bize-ulasin': { page: '/bize-ulasin' },
       }
     },
   }

@@ -15,7 +15,7 @@ const StyleSheets = () => (
         <meta name="author" content="nouthemes" />
         <meta name="keywords" content="Partisepeti, React" />
         <meta name="description" content="Partisepeti - React" />
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+        {/* <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/> */}
         <link
             href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700&amp;amp;subset=latin-ext"
             rel="stylesheet"

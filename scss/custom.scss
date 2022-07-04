@@ -81,27 +81,30 @@ $shadow-main-triple:rgba(50, 50, 93, 0.25) 0px 6px 18px -1px, rgba(0, 0, 0, 0.3)
 }
 .CampaignDiv {
     .active {
-        box-shadow: 0px 0px 12px 0px $color-1st;
+        
+        box-shadow: 0px 0px 12px 0px $color-1st !important;
     }
+    margin-bottom: 1vh;
     display: flex;
-    
     justify-content: space-between;
     width: 100%;
-    height: 200px;
+    height: 13vh;
     flex-wrap: nowrap; // important
     overflow-x: auto;
     overflow-y: hidden;
     transition: all 0.3s ease-out;
+    
     .CampaignItem {
+        box-shadow: 0px 0px 4px 0px $color-1st;
         cursor: pointer;
         display: flex;
         flex-direction: column;
         justify-content: center;
         vertical-align: middle;
         text-align: center;
-        width: 160px;
-        height: 160px;
-        margin: 20px;    
+        width: 11vh;
+        height: 11vh;
+        margin: 1vh;    
         border-radius: 100%;
         flex-grow: 0; // important
         flex-shrink: 0; // important
@@ -121,8 +124,8 @@ $shadow-main-triple:rgba(50, 50, 93, 0.25) 0px 6px 18px -1px, rgba(0, 0, 0, 0.3)
             top: 0;
             bottom: 0;
             margin: auto;
-            width: 160px;
-            height: 160px;
+            width: 11vh;
+            height: 11vh;
             border-radius: 100%;
             transition: all 0.3s ease-out;
             object-fit: cover;
@@ -143,170 +146,25 @@ $shadow-main-triple:rgba(50, 50, 93, 0.25) 0px 6px 18px -1px, rgba(0, 0, 0, 0.3)
         }
 
     }
-
-    @media (max-width: 480px) {
-        height: 100px;
-        .CampaignItem {
-            width: 60px;
-            height: 60px;
-            .CampaignItemImage {
-                > p {
-                    font-size: 14px;
-                    opacity: 1;
-                }
-                width: 60px;
-                height: 60px;
-            }
-        }
-    }
-
-    @media (max-width: 768px) {
-        height: 120px;
-        .CampaignItem {
-            width: 80px;
-            height: 80px;
-            .CampaignItemImage {
-                > p {
-                    font-size: 14px;
-                    opacity: 1;
-                }
-                width: 80px;
-                height: 80px;
-            }
-        }
-    }
-
-    @media (max-width: 992px) {
-        height: 140px;
-        .CampaignItem {
-            width: 100px;
-            height: 100px;
-            .CampaignItemImage {
-                > p {
-                    font-size: 15px;
-                    opacity: 1;
-                }
-                width: 100px;
-                height: 100px;
-            }
-        }
-    }
-
     @media (max-width: 1200px) {
-        height: 160px;
         .CampaignItem {
-            width: 120px;
-            height: 120px;
             .CampaignItemImage {
                 > p {
-                    font-size: 16px;
+                    font-size: 12px;
                     opacity: 1;
                 }
-                width: 120px;
-                height: 120px;
             }
         }
     }
 
 }
 
-// .CampaignDiv {
-//     top:0;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     text-align: center;
-//     margin:0 auto;
-//     margin-bottom: 10px;
-//     width:100%;
-//     height: 120px;
-//     border-radius:10px;
-//     @media (max-width: 1100px) {
-//         width:85%;
-//         height: 110px;
-
-//     }
-//     @media (max-width: 992px) {
-//         width:95%;
-//         height: 90px;
-
-//     }
-//     @media (max-width: 550px) {
-//         width:100%;
-//         height: 65px;
-
-//     }
-// }
-// .CampaignItem {
-//     justify-content: center;
-//     align-items: center;
-//     text-align: center;
-//     margin:auto;
-//     width:85px;
-//     height:85px;
-//     border:none !important;
-//     border-radius:100px;
-//     box-shadow: 0px 0px 4px 0px $color-1st;
-//     transition: all 0.3s;
-//     cursor:pointer;
-//     position: relative;
-//     overflow: hidden;
-//     &:hover{
-//         border:none !important;
-//         box-shadow: 0px 0px 12px 0px $color-1st;
-//         img{
-//           filter: blur(1px);
-//         }
-//         p{
-//           opacity: 1;
-//         }
-//     }
-//     img{
-//         display: inline;
-//         margin: 0 auto;
-//         height: inherit;
-//         width: auto !important;
-//         max-width: 9999999px !important;
-//         transform: scale(1.8);
-//         transition: all 0s;
-//     }
-//     p{
-//       display: block;
-//       opacity: 0;
-//       position: absolute;
-//       margin: 0 5%;
-//       font-size: 14px;
-//       color: $color-heading;
-//       top: 1.5rem;
-//       width: 90%;
-//       font-weight: 500;
-//       text-shadow: 0 0 0.2em #000, 0 0 0.5em #000, 0 0 0.3em #000;
-//       transition: all 0.3s;
-//       @media (max-width: 1200px) {
-//         position: relative;
-//         display: none;
-//     }
-//     }
-//     @media (max-width: 1100px) {
-//         width:60px;
-//         height:60px;
-//     }
-//     @media (max-width: 750px) {
-//         width:50px;
-//         height:50px;
-//     }
-//     @media (max-width: 620px) {
-//         width:40px;
-//         height:40px;
-//     }
-
-// }
-
 // 'tn': 320px,
 // 'xs': 480px,
 // 'sm': 768px,
 // 'md': 992px,
 // 'lg': 1200px,
+
 .home-new-slider{
     position: relative;
     display: flex;
@@ -315,7 +173,7 @@ $shadow-main-triple:rgba(50, 50, 93, 0.25) 0px 6px 18px -1px, rgba(0, 0, 0, 0.3)
     text-align: center;
     overflow: hidden;
     height: 65vh;
-    margin-bottom: 2%;
+    margin-bottom: 1vh;
     div{
         width: inherit;
         height: inherit;
@@ -340,7 +198,7 @@ $shadow-main-triple:rgba(50, 50, 93, 0.25) 0px 6px 18px -1px, rgba(0, 0, 0, 0.3)
         right: 0%;
         letter-spacing: -1px;  
         background:  $color-1st; /* fallback color */
-        background: rgba( $color-1st, 0.4);
+        background: rgba( $color-1st, 0.6);
         border-radius: 0 0 8px 8px;
         height: 10%;
         width: inherit;

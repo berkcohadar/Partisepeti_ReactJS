@@ -31,11 +31,11 @@ const SearchHeader = () => {
     const [loading, setLoading] = useState(false);
     const [category, setCategory] = useState("");
     const [categoryName, setCategoryName] = useState('');
+    const [categories, setCategories] = useState(null);
 
 
     const debouncedSearchTerm = useDebounce(keyword, 300);
 
-    const [categories, setCategories] = useState(null);
 
     function handleClearKeyword() {
         setKeyword('');
@@ -66,24 +66,26 @@ const SearchHeader = () => {
             handleClearKeyword();
         }
     }
+    async function getCategories() {
+        setLoading(true);
+        const data = await CollectionRepository.getCollections();
+        if (data) {
+            data.unshift({
+                id: '',
+                name: "Tüm Kategoriler",
+                slug: "",
+                thumbnail: null,
+                description: "",
+                meta_description: "",
+                date_created: "2021-10-16T01:10:42.096670+03:00",
+            });
+            setCategories(data);
+        }
+    }
 
     useEffect(() => {
-        setLoading(true);
-        const data = CollectionRepository.getCollections();
-        data.then((result) => {
-            result.unshift({ // error
-            id: '',
-            name: "Tüm Kategoriler",
-            slug: "",
-            thumbnail: null,
-            description: "",
-            meta_description: "",
-            date_created: "2021-10-16T01:10:42.096670+03:00",
-        });
-            setCategories(result);
-        });
+        getCategories();
         if (debouncedSearchTerm) {
-            setLoading(true);
             if (keyword) {
                 var queries = {
                     search: keyword,

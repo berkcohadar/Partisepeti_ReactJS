@@ -237,14 +237,16 @@
 }
 
 .navigation--list {
+    display: flex;
+    vertical-align: middle;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     overflow: hidden;
     z-index: 1000;
-    padding: 30px 30px;
-    height: 90px;
+    padding: auto;
+    height: 11vh;
     background-color: $color-1st;
     box-shadow: 0px 0px 12px 0px #000;
     border-radius: 8px 8px 0 0;
@@ -300,11 +302,11 @@
     }
 
     .navigation__content {
-        max-width: 400px;
+        width: 100%;
         margin: 0 auto;
         display: flex;
         flex-flow: row nowrap;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
     }
 

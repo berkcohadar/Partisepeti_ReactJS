@@ -491,7 +491,7 @@
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        padding: 10px 10px;
+        min-height: 9vh;
         border-bottom: none;
 
         .navigation__left {
@@ -603,10 +603,6 @@
 
         .ps-search--mobile {
             display: block;
-        }
-
-        .navigation--mobile {
-            padding: 10px 10px;
         }
     }
 

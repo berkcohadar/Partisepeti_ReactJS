@@ -172,11 +172,13 @@ $shadow-main-triple:rgba(50, 50, 93, 0.25) 0px 6px 18px -1px, rgba(0, 0, 0, 0.3)
     align-items: center;
     text-align: center;
     overflow: hidden;
-    height: 65vh;
+    height: fit-content;
+    max-height: 65vh;
     margin-bottom: 1vh;
     div{
         width: inherit;
-        height: inherit;
+        height: fit-content;
+        max-height: 65vh;
         border-radius: 0 0 12px 12px !important;
         overflow: hidden;
         display:flex;
@@ -257,16 +259,8 @@ $shadow-main-triple:rgba(50, 50, 93, 0.25) 0px 6px 18px -1px, rgba(0, 0, 0, 0.3)
 
 .home-new-slider>div>img {
     align-self: center;
-    // width: 100%;
     width:100vw;
     display: inline;
-    // @media (max-width: 1100px) {
-    @media (max-width: 660px) {
-        width: auto !important;
-        max-width: 9999999px !important;
-        height: inherit;
-    }
-    // margin-top: -100px;
 }
 
 .home-new-slide{

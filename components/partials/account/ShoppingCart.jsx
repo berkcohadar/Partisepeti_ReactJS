@@ -137,8 +137,8 @@ class ShoppingCart extends Component {
                                                                       }>
                                                                       <span className="ps-block__estimate">
                                                                           <Link
-                                                                              href="/product/[pid]"
-                                                                              as={`/product/${product.id}`}>
+                                                                              href="/urun-detayi/[pid]"
+                                                                              as={`/urun-detayi/${product.id}`}>
                                                                               <a className="ps-product__title">
                                                                                   {
                                                                                       product.title

@@ -73,7 +73,7 @@ class Product extends Component {
         return (
             <div className="ps-product">
                 <div className="ps-product__thumbnail">
-                    <Link href="/product/[pid]" as={`/product/${product.id}`}>
+                    <Link href="/urun-detayi/[pid]" as={`/urun-detayi/${product.id}`}>
                         <a>
                             <LazyLoad>
                                 <img
@@ -137,8 +137,8 @@ class Product extends Component {
                     </Link>
                     <div className="ps-product__content">
                         <Link
-                            href="/product/[pid]"
-                            as={`/product/${product.id}`}>
+                            href="/urun-detayi/[pid]"
+                            as={`/urun-detayi/${product.id}`}>
                             <a className="ps-product__title">{product.title}</a>
                         </Link>
                         <div className="ps-product__rating">
@@ -163,8 +163,8 @@ class Product extends Component {
                     </div>
                     <div className="ps-product__content hover">
                         <Link
-                            href="/product/[pid]"
-                            as={`/product/${product.id}`}>
+                            href="/urun-detayi/[pid]"
+                            as={`/urun-detayi/${product.id}`}>
                             <a className="ps-product__title">{product.title}</a>
                         </Link>
                         {product.is_sale === true ? (

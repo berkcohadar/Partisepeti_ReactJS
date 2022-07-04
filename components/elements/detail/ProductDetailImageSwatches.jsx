@@ -53,7 +53,7 @@ class ProductDetailImageSwatches extends Component {
                     <div className="ps-product__thumbnail" data-vertical="true">
                         <figure>
                             <div className="ps-wrapper">
-                                {product.variants.map((variant) => {
+                                {product.products.map((variant) => {
                                     if (variant.id == this.state.currentId) {
                                         return (
                                             <Slider
@@ -91,7 +91,7 @@ class ProductDetailImageSwatches extends Component {
                                 })}
                             </div>
                         </figure>
-                        {product.variants.map((variant) => {
+                        {product.products.map((variant) => {
                             if (variant.id == this.state.currentId) {
                                 return (
                                     <Slider
@@ -160,7 +160,7 @@ class ProductDetailImageSwatches extends Component {
                                 <figcaption>
                                     Color: <strong> Choose an option</strong>
                                 </figcaption>
-                                {product.variants.map((variant) => {
+                                {product.products.map((variant) => {
                                     return (
                                         <div
                                             className="ps-variant ps-variant--image"

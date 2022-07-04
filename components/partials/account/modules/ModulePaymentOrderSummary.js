@@ -13,7 +13,7 @@ const ModulePaymentOrderSummary = ({ shipping, amount, cartItems }) => {
     }
     // if (cartItems && cartItems.length > 0) {
     //     listItemsView = cartItems.map(product => (
-    //         <Link href={"/product/"+product.item.id} key={product.item.id}>
+    //         <Link href={"/urun-detayi/"+product.item.id} key={product.item.id}>
     //             <a>
     //                 <strong>
     //                     {product.item.title}

@@ -174,7 +174,7 @@ export function StrapiProductThumbnail(product) {
 
     if (product.thumbnail) {
         view = (
-            <Link href="/product/[pid]" as={`/product/${product.id}`}>
+            <Link href="/urun-detayi/[pid]" as={`/urun-detayi/${product.id}`}>
                 <a>
                     <LazyLoad>
                         <img src={`${product.thumbnail}`} alt={product.title} />
@@ -184,7 +184,7 @@ export function StrapiProductThumbnail(product) {
         );
     } else if (product.item) { //product.item.thumbnail?? error in orders page
         view = (
-            <Link href="/product/[pid]" as={`/product/${product.item.id}`}>
+            <Link href="/urun-detayi/[pid]" as={`/urun-detayi/${product.item.id}`}>
                 <a>
                     <LazyLoad>
                         <img
@@ -197,7 +197,7 @@ export function StrapiProductThumbnail(product) {
         );
     } else if (product.product_item_thumbnail) {
         view = (
-            <Link href="/product/[pid]" as={`/product/${product.product_id}`}>
+            <Link href="/urun-detayi/[pid]" as={`/urun-detayi/${product.product_id}`}>
                 <a>
                     <LazyLoad>
                         <img
@@ -210,7 +210,7 @@ export function StrapiProductThumbnail(product) {
         );
     }  else if (product.order_status) {
         view = (
-            <Link href="/product/[pid]" as={`/product/${product.product.item.id}`}>
+            <Link href="/urun-detayi/[pid]" as={`/urun-detayi/${product.product.item.id}`}>
                 <a>
                     <LazyLoad>
                         <img
@@ -223,7 +223,7 @@ export function StrapiProductThumbnail(product) {
         );
     } else {
         view = (
-            <Link href="/product/[pid]" as={`/product/${product.id}`}>
+            <Link href="/urun-detayi/[pid]" as={`/urun-detayi/${product.id}`}>
                 <a>
                     <LazyLoad>
                         <img

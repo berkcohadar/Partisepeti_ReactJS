@@ -19,7 +19,7 @@ const ProductSimple = ({ product }) => {
             </div>
             <div className="ps-product__container">
                 <div className="ps-product__content">
-                    <Link href="/product/[pid]">
+                    <Link href="/urun-detayi/[pid]">
                         <a className="ps-product__title">{product.title}</a>
                     </Link>
                     <div className="ps-product__rating">

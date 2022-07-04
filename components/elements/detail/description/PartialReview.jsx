@@ -8,7 +8,7 @@ const PartialReview = () => (
             <div className="ps-block--average-rating">
                 <div className="ps-block__header">
                     <h3>4.00</h3>
-                    <Rating value={product.rating}  />
+                    <Rating value={4}  />
 
                     <span>1 Review</span>
                 </div>

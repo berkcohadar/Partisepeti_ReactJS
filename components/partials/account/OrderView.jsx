@@ -24,7 +24,7 @@ const OrderView = ({orders}) => {
     const orderStatusTranslate = {
         'P':[<LikeOutlined />,'Ödendi']
     }
-    // href={"/product/"+product.product.item.id}
+    // href={"/urun-detayi/"+product.product.item.id}
     async function getProduct(id) {
         const data = await ProductRepository.getProductsById(id);
         if (data) {

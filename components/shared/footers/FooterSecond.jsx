@@ -52,7 +52,7 @@ const FooterSecond = ({ classes }) => (
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link href="/product/affiliate">
+                                            <Link href="/urun-detayi/affiliate">
                                                 <a>Affilate</a>
                                             </Link>
                                         </li>

@@ -24,7 +24,7 @@ const ProductOnHeader = ({ product }) => {
             <div className="ps-product__thumbnail">{thumbnailImage}</div>
             <div className="ps-product__wrapper">
                 <div className="ps-product__content">
-                    <Link href="/product/[pid]" as={`/product/${product.id}`}>
+                    <Link href="/urun-detayi/[pid]" as={`/urun-detayi/${product.id}`}>
                         <a className="ps-product__title">{product.title}</a>
                     </Link>
                 </div>

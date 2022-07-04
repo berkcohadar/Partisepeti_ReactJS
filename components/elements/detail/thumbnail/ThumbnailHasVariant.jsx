@@ -75,9 +75,8 @@ class ThumbnailHasVariant extends Component {
         const { product } = this.props;
         const { photoIndex, isOpen } = this.state;
         const productImages = [];
-        product.images.map((variant) => {
-            productImages.push(`${baseUrl}${variant.url}`);
-        });
+        productImages.push(product.thumbnail)
+
 
         return (
             <div className="ps-product__thumbnail" data-vertical="true">
@@ -88,20 +87,18 @@ class ThumbnailHasVariant extends Component {
                             ref={(slider) => (this.slider1 = slider)}
                             asNavFor={this.state.variantCarousel}
                             className="ps-product__gallery ps-carousel inside">
-                            {product.images.map((variant, index) => (
-                                <div className="item" key={variant.id}>
-                                    <a
-                                        href="#"
-                                        onClick={(e) =>
-                                            this.handleOpenLightbox(e, index)
-                                        }>
-                                        <img
-                                            src={`${baseUrl}${variant.url}`}
-                                            alt="partisepeti-image"
-                                        />
-                                    </a>
-                                </div>
-                            ))}
+                            <div className="item" key={1}>
+                                <a
+                                    href="#"
+                                    onClick={(e) =>
+                                        this.handleOpenLightbox(e, 1)
+                                    }>
+                                    <img
+                                        src={product.thumbnail}
+                                        alt="partisepeti-image"
+                                    />
+                                </a>
+                            </div>
                         </Slider>
                     </div>
                 </figure>
@@ -115,14 +112,13 @@ class ThumbnailHasVariant extends Component {
                     focusOnSelect={true}
                     {...variantSetting}
                     className="ps-product__variants">
-                    {product.images.map((variant) => (
-                        <div className="item" key={variant.id}>
-                            <img
-                                src={`${baseUrl}${variant.url}`}
-                                alt="partisepeti-image"
-                            />
-                        </div>
-                    ))}
+                    <div className="item" key={1}>
+                        <img
+                            src={product.thumbnail}
+                            alt="partisepeti-image"
+                        />
+                    </div>
+
                 </Slider>
                 {isOpen && (
                     <Lightbox

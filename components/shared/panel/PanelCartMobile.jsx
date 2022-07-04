@@ -31,8 +31,8 @@ class PanelCartMobile extends Component {
                                 key={product.item.id}>
                                 <div className="ps-product__thumbnail">
                                     <Link
-                                        href="/product/[pid]"
-                                        as={`/product/${product.item.id}`}>
+                                        href="/urun-detayi/[pid]"
+                                        as={`/urun-detayi/${product.item.id}`}>
                                         <a>
                                             <img
                                                 src={product.item.thumbnail}
@@ -51,8 +51,8 @@ class PanelCartMobile extends Component {
                                         <i className="icon-cross"></i>
                                     </a>
                                     <Link
-                                        href="/product/[pid]"
-                                        as={`/product/${product.item.id}`}>
+                                        href="/urun-detayi/[pid]"
+                                        as={`/urun-detayi/${product.item.id}`}>
                                         <a className="ps-product__title">
                                             {product.item.title}
                                         </a>

@@ -71,7 +71,7 @@ const SearchHeader = () => {
         setLoading(true);
         const data = CollectionRepository.getCollections();
         data.then((result) => {
-            result.unshift({
+            result.unshift({ // error
             id: '',
             name: "Tüm Kategoriler",
             slug: "",

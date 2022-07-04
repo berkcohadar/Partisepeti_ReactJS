@@ -12,7 +12,7 @@ const ProductWide = ({ product }) => {
             {console.log(product)}
             <div className="ps-product__container">
                 <div className="ps-product__content">
-                    <Link href="/product/[pid]" as={`/product/${product.id}`}>
+                    <Link href="/urun-detayi/[pid]" as={`/urun-detayi/${product.id}`}>
                         <a className="ps-product__title">{product.title}</a>
                     </Link>
                     <p className="ps-product__vendor">
@@ -22,7 +22,7 @@ const ProductWide = ({ product }) => {
                         </Link>
                     </p>
                     <ul className="ps-product__desc">
-                        <li>{product.description}</li>
+                        <li>{"product.item.description"}</li>
                     </ul>
                 </div>
                 <ModuleProductWideActions product={product} />

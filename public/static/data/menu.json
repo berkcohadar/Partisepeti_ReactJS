@@ -90,23 +90,23 @@
                         "megaItems": [
                             {
                                 "text": "Default",
-                                "url": "/product/3"
+                                "url": "/urun-detayi/3"
                             },
                             {
                                 "text": "Extended",
-                                "url": "/product/extended/7"
+                                "url": "/urun-detayi/extended/7"
                             },
                             {
                                 "text": "Full Content",
-                                "url": "/product/full-content/7"
+                                "url": "/urun-detayi/full-content/7"
                             },
                             {
                                 "text": "Boxed",
-                                "url": "/product/boxed/7"
+                                "url": "/urun-detayi/boxed/7"
                             },
                             {
                                 "text": "Sidebar",
-                                "url": "/product/sidebar/7"
+                                "url": "/urun-detayi/sidebar/7"
                             }
                         ]
                     },
@@ -115,31 +115,31 @@
                         "megaItems": [
                             {
                                 "text": "Simple",
-                                "url": "/product/3"
+                                "url": "/urun-detayi/3"
                             },
                             {
                                 "text": "Image swatches",
-                                "url": "/product/image-swatches/11"
+                                "url": "/urun-detayi/image-swatches/11"
                             },
                             {
                                 "text": "Countdown",
-                                "url": "/product/countdown/10"
+                                "url": "/urun-detayi/countdown/10"
                             },
                             {
                                 "text": "Affiliate",
-                                "url": "/product/affiliate/7"
+                                "url": "/urun-detayi/affiliate/7"
                             },
                             {
                                 "text": "On sale",
-                                "url": "/product/on-sale/7"
+                                "url": "/urun-detayi/on-sale/7"
                             },
                             {
                                 "text": "Grouped",
-                                "url": "/product/groupped/22"
+                                "url": "/urun-detayi/groupped/22"
                             },
                             {
                                 "text": "Out Of Stock",
-                                "url": "/product/out-of-stock/7"
+                                "url": "/urun-detayi/out-of-stock/7"
                             }
                         ]
                     },

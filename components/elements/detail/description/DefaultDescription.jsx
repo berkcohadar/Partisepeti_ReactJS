@@ -61,7 +61,7 @@ const DefaultDescription = ({product}) => {
                 <TabPane tab="Ürün Açıklaması" key="1">
                     {/* <PartialDescription /> */}
                     <div className="ps-document"> 
-                        <p>{product.description}</p>
+                        <p>{"product.item.description"}</p>
                     </div>
                 </TabPane>
                 <TabPane tab="Özellikler" key="2">

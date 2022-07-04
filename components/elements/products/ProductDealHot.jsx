@@ -15,8 +15,8 @@ const ProductDealHot = ({ product }) => {
                     <h5>Investor</h5>
                     <h3 className="ps-product__name">
                         <Link
-                            href="/product/[pid]"
-                            as={`/product/${product.id}`}>
+                            href="/urun-detayi/[pid]"
+                            as={`/urun-detayi/${product.id}`}>
                             <a>{product.title}</a>
                         </Link>
                     </h3>

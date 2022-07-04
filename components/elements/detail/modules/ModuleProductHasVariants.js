@@ -58,8 +58,8 @@ class ModuleProductHasVariants extends Component {
     handleSelectColor(colorId) {
         const { product } = this.props;
 
-        if (product && product.variants.length > 0) {
-            const selectedVariant = product.variants.find(
+        if (product && product.products.length > 0) {
+            const selectedVariant = product.products.find(
                 (item) => item.id === colorId
             );
 
@@ -86,8 +86,8 @@ class ModuleProductHasVariants extends Component {
 
     componentDidMount() {
         const { product } = this.props;
-        if (product && product.variants.length > 0) {
-            this.setState({ selectedVariant: product.variants[0] });
+        if (product && product.products.length > 0) {
+            this.setState({ selectedVariant: product.products[0] });
         }
     }
 
@@ -119,8 +119,8 @@ class ModuleProductHasVariants extends Component {
         }
 
         if (product) {
-            if (product.variants.length > 0) {
-                let colorSelectionArea = product.variants.map((item) => {
+            if (product.products.length > 0) {
+                let colorSelectionArea = product.products.map((item) => {
                     return (
                         <div
                             className={`ps-variant ps-variant--image ${
@@ -137,7 +137,7 @@ class ModuleProductHasVariants extends Component {
 
                             {item.thumbnail !== null ? (
                                 <img
-                                    src={`${baseUrl}${item.thumbnail.url}`}
+                                    src={`${baseUrl}${item.thumbnail}`}
                                     alt=""
                                 />
                             ) : (

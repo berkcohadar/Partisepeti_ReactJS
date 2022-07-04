@@ -94,7 +94,7 @@ function* registerRequest({payload}) {
     try {
         const data = yield call(UserRepository.registerRequest, payload);
         if(!data.error) {
-            yield put(loginSuccess(data,payload.username));
+            yield put(loginSuccess({key:data.token,user:data.user}));
             modalSuccess('success');
         } else {
             modalDanger('warning');

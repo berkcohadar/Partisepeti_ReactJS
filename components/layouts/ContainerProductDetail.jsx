@@ -19,7 +19,6 @@ const ContainerProductDetail = ({ children, title }) => {
             </Head>
             <HeaderMobileProduct />
             <main>{children}</main>
-            {/* <Newletters /> */}
             <FooterFullwidth />
         </div>
     );

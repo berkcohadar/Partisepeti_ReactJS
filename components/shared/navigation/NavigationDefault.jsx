@@ -1,10 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { notification } from 'antd';
-
-import menuData from '../../../public/static/data/menu';
-import CurrencyDropdown from '../headers/modules/CurrencyDropdown';
-import LanguageSwicher from '../headers/modules/LanguageSwicher';
 import MenuCategoriesDropdown from '~/components/shared/menus/MenuCategoriesDropdown';
 
 import MediaRepository from '~/repositories/MediaRepository';

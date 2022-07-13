@@ -1,8 +1,6 @@
 import React, {  useEffect, useRef, useState } from 'react';
-import { connect } from 'react-redux';
 
 import { Menu } from 'antd';
-import { menuPrimary } from '../../../public/static/data/menu';
 import Link from 'next/link';
 import MediaRepository from '~/repositories/MediaRepository';
 import Router from 'next/router';

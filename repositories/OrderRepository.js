@@ -13,14 +13,14 @@ class UserRepository {
             headers: {"Content-Type": "application/json", "Authorization": "Token "+token}, 
             data: JSON.stringify({
                 items: e.cartItems,
-                first_name: e.firstName,
-                last_name: e.lastName,
+                first_name: e.first_name,
+                last_name: e.last_name,
                 email: e.email,
                 address: e.address,
                 city: e.city,
-                country: "Turkiye",
-                zip_code: e.postalCode,
-                phone: "5382721098",
+                country: e.country,
+                zip_code: e.zip_code,
+                phone: e.phone,
               }),})
             .then((response) => {
                 return response.data;

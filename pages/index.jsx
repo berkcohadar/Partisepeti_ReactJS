@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import HomeAdsColumns from '~/components/partials/homepage/home-default/HomeAdsColumns';
-import HomeDefaultTopCategories from '~/components/partials/homepage/home-default/HomeDefaultTopCategories';
 import ContainerHomeDefault from '~/components/layouts/ContainerHomeDefault';
-import HomeDefaultProductListing from '~/components/partials/homepage/home-default/HomeDefaultProductListing';
-import HomeDefaultBanner from '~/components/partials/homepage/home-default/HomeDefaultBanner';
+import HomeDefaultProductListing from '~/components/partials/homepage/HomeDefaultProductListing';
+import HomeDefaultBanner from '~/components/partials/homepage/HomeDefaultBanner';
 import CollectionRepository from '~/repositories/CollectionRepository';
 
 
@@ -46,14 +44,6 @@ const HomepageDefaultPage = () => {
         <ContainerHomeDefault title="Eğlenceye Dair Her Şey">
             <HomeDefaultBanner />
             {listingView}
-            {/* <SiteFeatures /> */}
-            {/* <HomeDefaultDealOfDay collectionSlug="3" /> */}
-            <HomeAdsColumns />
-            <HomeDefaultTopCategories />
-            {/* <HomeAds />
-            <DownLoadApp />
-            <NewArrivals collectionSlug="new-arrivals-products" />
-            <Newletters /> */}
         </ContainerHomeDefault>
     );
 };

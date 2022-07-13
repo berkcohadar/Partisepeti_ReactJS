@@ -3,69 +3,6 @@ import { convertSlugsQueryString } from '../utilities/product-helper';
 import axios from 'axios';
 
 class MediaRepository {
-    async getBannersBySlugs(payload) {
-        let query = '';
-        payload.forEach((item) => {
-            if (query === '') {
-                query = `slug_in=${item}`;
-            } else {
-                query = query + `&slug_in=${item}`;
-            }
-        });
-        const reponse = await Repository.get(`${baseUrl}/banners?${query}`)
-            .then((response) => {
-                return response.data;
-            })
-            .catch((error) => ({ error: JSON.stringify(error) }));
-        return reponse;
-    }
-
-    async getBannersBySlug(payload) {
-        const endPoint = `banners?slug_in=${payload}`;
-        const reponse = await Repository.get(`${baseUrl}/${endPoint}`)
-            .then((response) => {
-                if (response.data) {
-                    return response.data[0].items;
-                } else {
-                    return null;
-                }
-            })
-            .catch((error) => {
-                console.log(JSON.stringify(error));
-                return null;
-            });
-        return reponse;
-    }
-
-    async getPromotionsBySlug(payload) {
-        const endPoint = `promotions?slug_in=${payload}`;
-        const reponse = await Repository.get(`${baseUrl}/${endPoint}`)
-            .then((response) => {
-                if (response.data) {
-                    return response.data[0].items;
-                } else {
-                    return null;
-                }
-            })
-            .catch((error) => {
-                console.log(JSON.stringify(error));
-                return null;
-            });
-        return reponse;
-    }
-
-    async getPromotionsBySlugs(payload) {
-        const query = convertSlugsQueryString(payload);
-        const reponse = await Repository.get(`${baseUrl}/promotions?${query}`)
-            .then((response) => {
-                return response.data;
-            })
-            .catch((error) => ({
-                error: JSON.stringify(error),
-            }));
-        return reponse;
-    }
-
     async getCarousels(params) {
         let mobileURL = baseUrl + '/mainpage-carousel/?carousel_type=M'
         let desktopURL = baseUrl + '/mainpage-carousel/?carousel_type=D'

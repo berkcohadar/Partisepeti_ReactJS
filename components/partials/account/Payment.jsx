@@ -215,4 +215,3 @@ const mapStateToProps = state => {
     return state.order;
 };
 export default connect(mapStateToProps)(Payment);
-
